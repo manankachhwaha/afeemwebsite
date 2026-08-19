@@ -10,7 +10,7 @@ export const site = {
   whatsappNumber: "919876543210",
   email: "hello@afeem.in",
   instagram: "https://instagram.com/afeem",
-  url: "https://www.afeem.in",
+  url: "https://afeem-website.pages.dev",
 };
 
 export function whatsappLink(message: string) {
