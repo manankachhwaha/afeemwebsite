@@ -1,0 +1,123 @@
+@import "tailwindcss";
+
+:root {
+  /* Warm luxury palette: gold / brown / light warm-yellow */
+  --color-cream: #fbf5e9;       /* page background — warm ivory */
+  --color-cream-soft: #f6ecd9;  /* secondary section background */
+  --color-yellow-warm: #f0dfa8; /* warm light-yellow accent / tint */
+  --color-yellow-soft: #f8edc9; /* softer yellow wash */
+  --color-gold: #c6993f;        /* primary gold accent */
+  --color-gold-light: #e0bd72;  /* lighter gold for hovers/highlights */
+  --color-gold-dark: #a2782c;   /* deep gold for text-on-light */
+  --color-brown: #3a2818;       /* espresso brown — headings, dark sections */
+  --color-brown-soft: #6b4e35;  /* secondary brown text */
+  --color-brown-mute: #8a715a;  /* muted brown for captions/meta */
+  --color-white: #fffdf8;
+
+  --background: var(--color-cream);
+  --foreground: var(--color-brown);
+}
+
+@theme inline {
+  --color-cream: var(--color-cream);
+  --color-cream-soft: var(--color-cream-soft);
+  --color-yellow-warm: var(--color-yellow-warm);
+  --color-yellow-soft: var(--color-yellow-soft);
+  --color-gold: var(--color-gold);
+  --color-gold-light: var(--color-gold-light);
+  --color-gold-dark: var(--color-gold-dark);
+  --color-brown: var(--color-brown);
+  --color-brown-soft: var(--color-brown-soft);
+  --color-brown-mute: var(--color-brown-mute);
+  --color-afeem-white: var(--color-white);
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+
+  --font-display: var(--font-playfair);
+  --font-sans: var(--font-inter);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-inter), Arial, Helvetica, sans-serif;
+}
+
+h1, h2, h3, h4,
+.font-display {
+  font-family: var(--font-playfair), Georgia, serif;
+  letter-spacing: -0.01em;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  @keyframes fade-up {
+    from {
+      opacity: 0;
+      transform: translateY(14px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .animate-fade-up {
+    animation: fade-up 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+
+  .animate-fade-up-delay-1 { animation-delay: 0.08s; }
+  .animate-fade-up-delay-2 { animation-delay: 0.16s; }
+  .animate-fade-up-delay-3 { animation-delay: 0.24s; }
+}
+
+/* Thin gold divider used across editorial sections */
+.gold-rule {
+  height: 1px;
+  width: 3rem;
+  background: linear-gradient(90deg, var(--color-gold), var(--color-gold-light));
+}
+
+/* Subtle warm placeholder used in place of real photography */
+.warm-placeholder {
+  position: relative;
+  background:
+    radial-gradient(circle at 22% 18%, rgba(255, 244, 217, 0.65), transparent 42%),
+    radial-gradient(circle at 82% 78%, rgba(162, 120, 44, 0.4), transparent 55%),
+    linear-gradient(150deg, #f2e5c6 0%, #e7cd93 42%, #c69a40 78%, #a2782c 100%);
+  box-shadow: inset 0 0 0 1px rgba(58, 40, 24, 0.08);
+}
+
+.warm-placeholder-dark {
+  position: relative;
+  background:
+    radial-gradient(circle at 20% 15%, rgba(230, 189, 114, 0.28), transparent 45%),
+    radial-gradient(circle at 85% 85%, rgba(198, 153, 63, 0.22), transparent 55%),
+    linear-gradient(150deg, #55391f 0%, #3a2818 55%, #241608 100%);
+  box-shadow: inset 0 0 0 1px rgba(240, 223, 168, 0.08);
+}
+
+/* Fine grain + vignette layered on placeholders for a textured, intentional feel */
+.warm-placeholder::before,
+.warm-placeholder-dark::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  opacity: 0.5;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='120' height='120'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix type='saturate' values='0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)' opacity='0.35'/></svg>");
+  background-size: 160px 160px;
+}
+
+.warm-placeholder::after,
+.warm-placeholder-dark::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  box-shadow: inset 0 0 60px rgba(0, 0, 0, 0.18);
+}
+
+::selection {
+  background: var(--color-gold-light);
+  color: var(--color-brown);
+}
