@@ -6,6 +6,7 @@ import Button from "@/components/ui/Button";
 import ServiceCard from "@/components/salon/ServiceCard";
 import { serviceCategories, getCategory } from "@/data/services";
 import { whatsappLink } from "@/data/site";
+import { Reveal, RevealGroup, RevealItem } from "@/components/motion";
 
 export function generateStaticParams() {
   return serviceCategories.map((c) => ({ category: c.slug }));
@@ -36,12 +37,14 @@ export default async function CategoryPage({
       <PageHero eyebrow="Afeem Spa & Salon" title={cat.name} description={cat.intro} />
       <section className="py-16 md:py-24">
         <Container className="flex flex-col gap-10">
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-12">
+          <RevealGroup className="grid sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-12" stagger={0.08}>
             {cat.services.map((s) => (
-              <ServiceCard key={s.slug} categorySlug={cat.slug} service={s} />
+              <RevealItem key={s.slug}>
+                <ServiceCard categorySlug={cat.slug} service={s} />
+              </RevealItem>
             ))}
-          </div>
-          <div className="flex flex-wrap gap-4 pt-6 border-t border-brown/10">
+          </RevealGroup>
+          <Reveal className="flex flex-wrap gap-4 pt-6 border-t border-brown/10">
             <Button href="/contact#book" variant="primary">
               Book {cat.shortName}
             </Button>
@@ -51,7 +54,7 @@ export default async function CategoryPage({
             >
               Enquire on WhatsApp
             </Button>
-          </div>
+          </Reveal>
         </Container>
       </section>
     </>

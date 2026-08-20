@@ -80,7 +80,6 @@ h1, h2, h3, h4,
 
 /* Subtle warm placeholder used in place of real photography */
 .warm-placeholder {
-  position: relative;
   background:
     radial-gradient(circle at 22% 18%, rgba(255, 244, 217, 0.65), transparent 42%),
     radial-gradient(circle at 82% 78%, rgba(162, 120, 44, 0.4), transparent 55%),
@@ -89,7 +88,6 @@ h1, h2, h3, h4,
 }
 
 .warm-placeholder-dark {
-  position: relative;
   background:
     radial-gradient(circle at 20% 15%, rgba(230, 189, 114, 0.28), transparent 45%),
     radial-gradient(circle at 85% 85%, rgba(198, 153, 63, 0.22), transparent 55%),
@@ -120,4 +118,47 @@ h1, h2, h3, h4,
 ::selection {
   background: var(--color-gold-light);
   color: var(--color-brown);
+}
+
+html.custom-cursor-active,
+html.custom-cursor-active * {
+  cursor: none !important;
+}
+
+/* Thin gold scrollbar for a considered, premium feel */
+html {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-gold) transparent;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-gold);
+  border-radius: 999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-gold-dark);
+}
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }

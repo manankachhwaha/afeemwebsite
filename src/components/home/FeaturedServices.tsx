@@ -3,6 +3,7 @@ import SectionHeading from "@/components/ui/SectionHeading";
 import Button from "@/components/ui/Button";
 import ServiceCard from "@/components/salon/ServiceCard";
 import { serviceCategories } from "@/data/services";
+import { Reveal, RevealGroup, RevealItem } from "@/components/motion";
 
 const featured = [
   { categorySlug: "hair", serviceSlug: "hair-colour" },
@@ -23,17 +24,19 @@ export default function FeaturedServices() {
   return (
     <section className="py-16 md:py-24">
       <Container className="flex flex-col gap-10">
-        <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6">
+        <Reveal className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6">
           <SectionHeading eyebrow="Signature Services" title="Featured at Afeem" />
           <Button href="/salon-spa" variant="secondary" className="shrink-0">
             View All Services
           </Button>
-        </div>
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
+        </Reveal>
+        <RevealGroup className="grid grid-cols-2 lg:grid-cols-4 gap-8" stagger={0.1}>
           {items.map(({ categorySlug, service }) => (
-            <ServiceCard key={service.slug} categorySlug={categorySlug} service={service} />
+            <RevealItem key={service.slug}>
+              <ServiceCard categorySlug={categorySlug} service={service} />
+            </RevealItem>
           ))}
-        </div>
+        </RevealGroup>
       </Container>
     </section>
   );

@@ -5,6 +5,7 @@ import Container from "@/components/ui/Container";
 import Visual from "@/components/ui/Visual";
 import Button from "@/components/ui/Button";
 import { journalPosts, getPost } from "@/data/journal";
+import { Reveal, ImageReveal } from "@/components/motion";
 
 export function generateStaticParams() {
   return journalPosts.map((p) => ({ slug: p.slug }));
@@ -39,15 +40,19 @@ export default async function JournalPostPage({
           <Link href="/journal" className="text-xs uppercase tracking-wide text-brown-mute hover:text-gold-dark">
             ← Afeem Journal
           </Link>
-          <span className="text-xs uppercase tracking-wide text-gold-dark">{post.bucket}</span>
-          <h1 className="font-display text-3xl sm:text-4xl text-brown leading-tight">{post.title}</h1>
-          <p className="text-sm text-brown-mute">{new Date(post.date).toLocaleDateString("en-IN", { year: "numeric", month: "long", day: "numeric" })} · {post.readTime}</p>
-          <Visual ratio="aspect-[16/9]" />
-          <div className="flex flex-col gap-4 pt-4">
+          <Reveal className="flex flex-col gap-3">
+            <span className="text-xs uppercase tracking-wide text-gold-dark">{post.bucket}</span>
+            <h1 className="font-display text-3xl sm:text-4xl text-brown leading-tight">{post.title}</h1>
+            <p className="text-sm text-brown-mute">{new Date(post.date).toLocaleDateString("en-IN", { year: "numeric", month: "long", day: "numeric" })} · {post.readTime}</p>
+          </Reveal>
+          <ImageReveal delay={0.1}>
+            <Visual ratio="aspect-[16/9]" />
+          </ImageReveal>
+          <Reveal delay={0.2} className="flex flex-col gap-4 pt-4">
             {post.content.map((para, i) => (
               <p key={i} className="text-brown-soft leading-relaxed">{para}</p>
             ))}
-          </div>
+          </Reveal>
         </Container>
       </section>
 

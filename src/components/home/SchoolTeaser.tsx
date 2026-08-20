@@ -1,6 +1,7 @@
 import Container from "@/components/ui/Container";
 import Button from "@/components/ui/Button";
 import Visual from "@/components/ui/Visual";
+import { Reveal, ImageReveal } from "@/components/motion";
 
 const journeySteps = ["Learn", "Hands-on Practice", "Live Salon Exposure", "Build Portfolio", "Career Opportunities"];
 
@@ -8,7 +9,7 @@ export default function SchoolTeaser() {
   return (
     <section className="py-16 md:py-24">
       <Container className="grid md:grid-cols-2 gap-12 items-center">
-        <div className="flex flex-col gap-5 order-2 md:order-1">
+        <Reveal className="flex flex-col gap-5 order-2 md:order-1">
           <span className="text-xs uppercase tracking-[0.25em] text-gold-dark">Afeem Beauty School</span>
           <h2 className="font-display text-3xl sm:text-4xl text-brown leading-tight">
             Learn the Art of Beauty.
@@ -34,8 +35,10 @@ export default function SchoolTeaser() {
               Book Counselling
             </Button>
           </div>
-        </div>
-        <Visual label="Afeem Beauty School" ratio="aspect-[4/3]" className="order-1 md:order-2" />
+        </Reveal>
+        <ImageReveal delay={0.15} className="order-1 md:order-2">
+          <Visual label="Afeem Beauty School" ratio="aspect-[4/3]" />
+        </ImageReveal>
       </Container>
     </section>
   );

@@ -1,13 +1,16 @@
 import Container from "@/components/ui/Container";
 import Button from "@/components/ui/Button";
 import Visual from "@/components/ui/Visual";
+import { Reveal, ImageReveal } from "@/components/motion";
 
 export default function ExperienceIntro() {
   return (
     <section className="py-16 md:py-24 bg-cream-soft">
       <Container className="grid md:grid-cols-2 gap-12 items-center">
-        <Visual label="The Afeem Experience" ratio="aspect-[4/3]" />
-        <div className="flex flex-col gap-5">
+        <ImageReveal>
+          <Visual label="The Afeem Experience" ratio="aspect-[4/3]" />
+        </ImageReveal>
+        <Reveal delay={0.15} className="flex flex-col gap-5">
           <span className="text-xs uppercase tracking-[0.25em] text-gold-dark">The Afeem Experience</span>
           <h2 className="font-display text-3xl sm:text-4xl text-brown leading-tight">
             More than a salon. An experience designed around you.
@@ -24,7 +27,7 @@ export default function ExperienceIntro() {
               Discover Afeem
             </Button>
           </div>
-        </div>
+        </Reveal>
       </Container>
     </section>
   );

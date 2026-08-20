@@ -6,6 +6,7 @@ import SectionHeading from "@/components/ui/SectionHeading";
 import Visual from "@/components/ui/Visual";
 import Button from "@/components/ui/Button";
 import { serviceCategories, packages } from "@/data/services";
+import { Reveal, RevealGroup, RevealItem, ImageReveal } from "@/components/motion";
 
 export const metadata: Metadata = {
   title: "Salon & Spa in Jodhpur",
@@ -23,36 +24,51 @@ export default function SalonSpaPage() {
       />
 
       <section className="py-16 md:py-24">
-        <Container className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {serviceCategories.map((cat) => (
-            <Link key={cat.slug} href={`/salon-spa/${cat.slug}`} className="group flex flex-col gap-4">
-              <Visual label={cat.name} ratio="aspect-[4/3]" className="group-hover:opacity-90 transition-opacity" />
-              <div>
-                <h2 className="font-display text-xl text-brown">{cat.name}</h2>
-                <p className="text-sm text-brown-soft mt-1">{cat.tagline}</p>
-              </div>
-            </Link>
-          ))}
-          <Link href="/bridal" className="group flex flex-col gap-4">
-            <Visual label="Afeem Bridal" dark ratio="aspect-[4/3]" className="group-hover:opacity-90 transition-opacity" />
-            <div>
-              <h2 className="font-display text-xl text-brown">Bridal</h2>
-              <p className="text-sm text-brown-soft mt-1">Your wedding beauty journey, thoughtfully planned.</p>
-            </div>
-          </Link>
+        <Container>
+          <RevealGroup className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6" stagger={0.08}>
+            {serviceCategories.map((cat) => (
+              <RevealItem key={cat.slug}>
+                <Link href={`/salon-spa/${cat.slug}`} className="group flex flex-col gap-4">
+                  <ImageReveal>
+                    <Visual label={cat.name} ratio="aspect-[4/3]" className="transition-transform duration-500 ease-out group-hover:scale-105" />
+                  </ImageReveal>
+                  <div>
+                    <h2 className="font-display text-xl text-brown">{cat.name}</h2>
+                    <p className="text-sm text-brown-soft mt-1">{cat.tagline}</p>
+                  </div>
+                </Link>
+              </RevealItem>
+            ))}
+            <RevealItem>
+              <Link href="/bridal" className="group flex flex-col gap-4">
+                <ImageReveal>
+                  <Visual label="Afeem Bridal" dark ratio="aspect-[4/3]" className="transition-transform duration-500 ease-out group-hover:scale-105" />
+                </ImageReveal>
+                <div>
+                  <h2 className="font-display text-xl text-brown">Bridal</h2>
+                  <p className="text-sm text-brown-soft mt-1">Your wedding beauty journey, thoughtfully planned.</p>
+                </div>
+              </Link>
+            </RevealItem>
+          </RevealGroup>
         </Container>
       </section>
 
       <section id="packages" className="py-16 md:py-24 bg-cream-soft scroll-mt-20">
         <Container className="flex flex-col gap-10">
-          <SectionHeading
-            eyebrow="Curated Packages"
-            title="Afeem Packages"
-            description="Combine our most-loved services into a single, unhurried visit."
-          />
-          <div className="grid sm:grid-cols-3 gap-6">
+          <Reveal>
+            <SectionHeading
+              eyebrow="Curated Packages"
+              title="Afeem Packages"
+              description="Combine our most-loved services into a single, unhurried visit."
+            />
+          </Reveal>
+          <RevealGroup className="grid sm:grid-cols-3 gap-6" stagger={0.1}>
             {packages.map((p) => (
-              <div key={p.slug} className="bg-white p-8 flex flex-col gap-4 border border-brown/10">
+              <RevealItem
+                key={p.slug}
+                className="bg-white p-8 flex flex-col gap-4 border border-brown/10 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_24px_50px_-28px_rgba(58,40,24,0.35)] hover:border-gold/40"
+              >
                 <h3 className="font-display text-xl text-brown">{p.name}</h3>
                 <p className="text-sm text-brown-soft leading-relaxed">{p.description}</p>
                 <ul className="text-sm text-brown-soft flex flex-col gap-1">
@@ -69,15 +85,15 @@ export default function SalonSpaPage() {
                 <Button href="/contact#book" variant="secondary" className="mt-2">
                   Book Package
                 </Button>
-              </div>
+              </RevealItem>
             ))}
-          </div>
+          </RevealGroup>
         </Container>
       </section>
 
       <section className="py-16 md:py-24">
         <Container className="grid md:grid-cols-2 gap-12 items-center">
-          <div className="flex flex-col gap-5">
+          <Reveal className="flex flex-col gap-5">
             <span className="text-xs uppercase tracking-[0.25em] text-gold-dark">Afeem Experiences</span>
             <h2 className="font-display text-3xl text-brown leading-tight">Not sure what to book?</h2>
             <p className="text-brown-soft leading-relaxed">
@@ -90,8 +106,10 @@ export default function SalonSpaPage() {
                 Build My Experience
               </Button>
             </div>
-          </div>
-          <Visual label="Find Your Afeem Experience" ratio="aspect-[4/3]" />
+          </Reveal>
+          <ImageReveal delay={0.15}>
+            <Visual label="Find Your Afeem Experience" ratio="aspect-[4/3]" />
+          </ImageReveal>
         </Container>
       </section>
     </>

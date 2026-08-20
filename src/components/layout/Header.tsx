@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useState } from "react";
+import { motion, useMotionValueEvent, useScroll } from "motion/react";
 import Container from "@/components/ui/Container";
 import Button from "@/components/ui/Button";
 import { whatsappLink } from "@/data/site";
@@ -40,9 +41,31 @@ const mobileNavItems = [{ href: "/", label: "Home" }, ...navItems];
 export default function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
+  const [hidden, setHidden] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const { scrollY } = useScroll();
+
+  useMotionValueEvent(scrollY, "change", (latest) => {
+    const prev = scrollY.getPrevious() ?? 0;
+    setScrolled(latest > 16);
+    if (mobileOpen) return;
+    if (latest < 140) {
+      setHidden(false);
+      return;
+    }
+    const delta = latest - prev;
+    if (delta > 0.5) setHidden(true);
+    else if (delta < -0.5) setHidden(false);
+  });
 
   return (
-    <header className="sticky top-0 z-50 border-b border-brown/10 bg-cream/95 backdrop-blur">
+    <motion.header
+      animate={{ y: hidden ? "-100%" : "0%" }}
+      transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
+      className={`sticky top-0 z-50 border-b transition-colors duration-300 ${
+        scrolled ? "border-brown/10 bg-cream/95 backdrop-blur shadow-[0_8px_30px_-20px_rgba(58,40,24,0.4)]" : "border-transparent bg-cream/60 backdrop-blur-sm"
+      }`}
+    >
       <Container className="flex h-[4.5rem] xl:h-20 items-center justify-between gap-4">
         <Link href="/" className="shrink-0 flex items-baseline gap-2 font-display text-xl sm:text-2xl tracking-wide text-brown">
           AFEEM
@@ -105,6 +128,7 @@ export default function Header() {
           aria-label="Toggle menu"
           className="xl:hidden flex flex-col gap-1.5 p-2 -mr-2 shrink-0"
           onClick={() => setMobileOpen((v) => !v)}
+          onMouseDown={() => setHidden(false)}
         >
           <span className={`block h-px w-6 bg-brown transition-transform ${mobileOpen ? "translate-y-1.5 rotate-45" : ""}`} />
           <span className={`block h-px w-6 bg-brown transition-opacity ${mobileOpen ? "opacity-0" : ""}`} />
@@ -151,6 +175,6 @@ export default function Header() {
           </Container>
         </div>
       )}
-    </header>
+    </motion.header>
   );
 }

@@ -5,6 +5,7 @@ import Visual from "@/components/ui/Visual";
 import Button from "@/components/ui/Button";
 import { branches, getBranch } from "@/data/branches";
 import { whatsappLink } from "@/data/site";
+import { Reveal, ImageReveal } from "@/components/motion";
 
 export function generateStaticParams() {
   return branches.map((b) => ({ branch: b.slug }));
@@ -34,8 +35,10 @@ export default async function BranchPage({
     <article>
       <section className="py-12 md:py-16">
         <Container className="grid md:grid-cols-2 gap-12">
-          <Visual label={b.name} ratio="aspect-[4/5]" />
-          <div className="flex flex-col gap-5">
+          <ImageReveal>
+            <Visual label={b.name} ratio="aspect-[4/5]" />
+          </ImageReveal>
+          <Reveal delay={0.15} className="flex flex-col gap-5">
             <h1 className="font-display text-3xl sm:text-4xl text-brown">{b.name}</h1>
             <p className="text-brown-soft leading-relaxed">{b.address}</p>
             <div className="grid grid-cols-2 gap-4 py-2">
@@ -63,7 +66,7 @@ export default async function BranchPage({
                 Enquire on WhatsApp
               </Button>
             </div>
-          </div>
+          </Reveal>
         </Container>
       </section>
 

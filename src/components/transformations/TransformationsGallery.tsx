@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { AnimatePresence, motion } from "motion/react";
 import Visual from "@/components/ui/Visual";
 import Button from "@/components/ui/Button";
 import { transformations, transformationFilters } from "@/data/transformations";
@@ -18,36 +19,53 @@ export default function TransformationsGallery() {
           <button
             key={f}
             onClick={() => setActive(f)}
-            className={`px-5 py-2 text-sm border transition-colors ${
-              active === f ? "bg-brown text-white border-brown" : "border-brown/20 text-brown-soft hover:border-gold"
+            className={`relative px-5 py-2 text-sm border transition-colors duration-300 ${
+              active === f ? "text-white border-brown" : "border-brown/20 text-brown-soft hover:border-gold"
             }`}
           >
-            {f}
+            {active === f && (
+              <motion.span
+                layoutId="filter-pill"
+                className="absolute inset-0 bg-brown"
+                transition={{ type: "spring", stiffness: 400, damping: 32 }}
+              />
+            )}
+            <span className="relative">{f}</span>
           </button>
         ))}
       </div>
 
-      <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
-        {filtered.map((t) => (
-          <div key={t.id} className="flex flex-col gap-3">
-            <div className="grid grid-cols-2 gap-1">
-              <Visual label="Before" ratio="aspect-[3/4]" />
-              <Visual label="After" ratio="aspect-[3/4]" />
-            </div>
-            <div>
-              <h3 className="font-display text-lg text-brown">{t.title}</h3>
-              <p className="text-sm text-brown-soft">{t.service} · {t.expert} · Afeem {t.branch}</p>
-            </div>
-            <Button
-              href={whatsappLink(`Hi Afeem, I'd like to book a look similar to "${t.title}".`)}
-              variant="secondary"
-              className="self-start"
+      <motion.div layout className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        <AnimatePresence mode="popLayout">
+          {filtered.map((t) => (
+            <motion.div
+              key={t.id}
+              layout
+              initial={{ opacity: 0, scale: 0.94 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.94 }}
+              transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+              className="group flex flex-col gap-3"
             >
-              Book This Look
-            </Button>
-          </div>
-        ))}
-      </div>
+              <div className="grid grid-cols-2 gap-1">
+                <Visual label="Before" ratio="aspect-[3/4]" className="transition-transform duration-500 ease-out group-hover:scale-105" />
+                <Visual label="After" ratio="aspect-[3/4]" className="transition-transform duration-500 ease-out group-hover:scale-105" />
+              </div>
+              <div>
+                <h3 className="font-display text-lg text-brown">{t.title}</h3>
+                <p className="text-sm text-brown-soft">{t.service} · {t.expert} · Afeem {t.branch}</p>
+              </div>
+              <Button
+                href={whatsappLink(`Hi Afeem, I'd like to book a look similar to "${t.title}".`)}
+                variant="secondary"
+                className="self-start"
+              >
+                Book This Look
+              </Button>
+            </motion.div>
+          ))}
+        </AnimatePresence>
+      </motion.div>
     </div>
   );
 }

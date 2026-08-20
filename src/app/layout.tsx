@@ -5,6 +5,10 @@ import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import WhatsAppButton from "@/components/layout/WhatsAppButton";
 import StickyBookBar from "@/components/layout/StickyBookBar";
+import SmoothScroll from "@/components/motion/SmoothScroll";
+import Cursor from "@/components/motion/Cursor";
+import ScrollProgress from "@/components/motion/ScrollProgress";
+import PageTransition from "@/components/motion/PageTransition";
 import { site } from "@/data/site";
 
 const playfair = Playfair_Display({
@@ -73,11 +77,17 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }}
         />
-        <Header />
-        <main className="flex-1 pb-16 md:pb-0">{children}</main>
-        <Footer />
-        <WhatsAppButton />
-        <StickyBookBar />
+        <SmoothScroll>
+          <ScrollProgress />
+          <Cursor />
+          <Header />
+          <main className="flex-1 pb-16 md:pb-0">
+            <PageTransition>{children}</PageTransition>
+          </main>
+          <Footer />
+          <WhatsAppButton />
+          <StickyBookBar />
+        </SmoothScroll>
       </body>
     </html>
   );

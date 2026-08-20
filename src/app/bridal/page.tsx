@@ -5,6 +5,7 @@ import SectionHeading from "@/components/ui/SectionHeading";
 import Visual from "@/components/ui/Visual";
 import BridalConsultationForm from "@/components/bridal/BridalConsultationForm";
 import { testimonials } from "@/data/testimonials";
+import { Reveal, RevealGroup, RevealItem, ImageReveal } from "@/components/motion";
 
 export const metadata: Metadata = {
   title: "Bridal Makeup & Beauty in Jodhpur",
@@ -43,61 +44,74 @@ export default function BridalPage() {
 
       <section className="py-16 md:py-24">
         <Container className="flex flex-col gap-10">
-          <SectionHeading eyebrow="What We Cover" title="Everything for Your Celebration" />
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <Reveal>
+            <SectionHeading eyebrow="What We Cover" title="Everything for Your Celebration" />
+          </Reveal>
+          <RevealGroup className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6" stagger={0.06}>
             {coverage.map((c) => (
-              <div key={c.title} className="border border-brown/10 p-6 bg-white flex flex-col gap-2">
+              <RevealItem
+                key={c.title}
+                className="border border-brown/10 p-6 bg-white flex flex-col gap-2 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_20px_45px_-26px_rgba(58,40,24,0.35)] hover:border-gold/40"
+              >
                 <h3 className="font-display text-lg text-brown">{c.title}</h3>
                 <p className="text-sm text-brown-soft leading-relaxed">{c.desc}</p>
-              </div>
+              </RevealItem>
             ))}
-          </div>
+          </RevealGroup>
         </Container>
       </section>
 
       <section className="py-16 md:py-24 bg-brown">
         <Container className="flex flex-col gap-10">
-          <SectionHeading
-            eyebrow="The Journey"
-            title="How Afeem Bridal Works"
-            light
-          />
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <Reveal>
+            <SectionHeading
+              eyebrow="The Journey"
+              title="How Afeem Bridal Works"
+              light
+            />
+          </Reveal>
+          <RevealGroup className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6" stagger={0.08}>
             {journey.map((j, i) => (
-              <div key={j.step} className="flex flex-col gap-2">
+              <RevealItem key={j.step} className="flex flex-col gap-2">
                 <span className="text-yellow-warm text-sm font-medium">{String(i + 1).padStart(2, "0")}</span>
                 <h3 className="text-white font-display text-lg">{j.step}</h3>
                 <p className="text-white/70 text-sm leading-relaxed">{j.desc}</p>
-              </div>
+              </RevealItem>
             ))}
-          </div>
+          </RevealGroup>
         </Container>
       </section>
 
       {bridalReviews.length > 0 && (
         <section className="py-16 md:py-24">
-          <Container className="grid md:grid-cols-2 gap-8">
-            {bridalReviews.map((r) => (
-              <div key={r.name} className="border border-brown/10 p-8">
-                <p className="text-brown-soft leading-relaxed">&ldquo;{r.quote}&rdquo;</p>
-                <p className="text-brown font-medium mt-4">{r.name} · <span className="text-brown-mute font-normal">{r.service}</span></p>
-              </div>
-            ))}
+          <Container>
+            <RevealGroup className="grid md:grid-cols-2 gap-8" stagger={0.1}>
+              {bridalReviews.map((r) => (
+                <RevealItem key={r.name} className="border border-brown/10 p-8">
+                  <p className="text-brown-soft leading-relaxed">&ldquo;{r.quote}&rdquo;</p>
+                  <p className="text-brown font-medium mt-4">{r.name} · <span className="text-brown-mute font-normal">{r.service}</span></p>
+                </RevealItem>
+              ))}
+            </RevealGroup>
           </Container>
         </section>
       )}
 
       <section id="book" className="py-16 md:py-24 bg-cream-soft scroll-mt-20">
         <Container className="grid lg:grid-cols-2 gap-12 items-start">
-          <div className="flex flex-col gap-5">
+          <Reveal className="flex flex-col gap-5">
             <SectionHeading
               eyebrow="Get Started"
               title="Book Your Bridal Consultation"
               description="Tell us about your wedding and we'll build a plan around your dates, functions and budget."
             />
-            <Visual label="Afeem Bridal" ratio="aspect-[4/3]" />
-          </div>
-          <BridalConsultationForm />
+            <ImageReveal>
+              <Visual label="Afeem Bridal" ratio="aspect-[4/3]" />
+            </ImageReveal>
+          </Reveal>
+          <Reveal delay={0.15}>
+            <BridalConsultationForm />
+          </Reveal>
         </Container>
       </section>
     </>

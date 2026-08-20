@@ -6,6 +6,7 @@ import Visual from "@/components/ui/Visual";
 import Button from "@/components/ui/Button";
 import { courses, getCourse } from "@/data/courses";
 import { whatsappLink, site } from "@/data/site";
+import { Reveal, RevealGroup, RevealItem, ImageReveal } from "@/components/motion";
 
 export function generateStaticParams() {
   return courses.map((c) => ({ course: c.slug }));
@@ -40,8 +41,10 @@ export default async function CoursePage({
     <article>
       <section className="py-12 md:py-16">
         <Container className="grid md:grid-cols-2 gap-12">
-          <Visual label={c.name} ratio="aspect-[4/5]" />
-          <div className="flex flex-col gap-5">
+          <ImageReveal>
+            <Visual label={c.name} ratio="aspect-[4/5]" />
+          </ImageReveal>
+          <Reveal delay={0.15} className="flex flex-col gap-5">
             <nav className="text-xs text-brown-mute uppercase tracking-wide">
               <Link href="/beauty-school" className="hover:text-gold-dark">Beauty School</Link>
               <span className="mx-2">/</span>
@@ -76,50 +79,58 @@ export default async function CoursePage({
               </Button>
             </div>
             <p className="text-xs text-brown-mute">{c.nextBatch}</p>
-          </div>
+          </Reveal>
         </Container>
       </section>
 
       <section className="py-12 bg-cream-soft">
-        <Container className="grid sm:grid-cols-2 gap-8">
-          <div>
-            <h2 className="text-sm uppercase tracking-wide text-brown-mute mb-3">Curriculum & Modules</h2>
-            <ul className="flex flex-col gap-2">
-              {c.curriculum.map((m) => (
-                <li key={m} className="text-sm text-brown-soft flex gap-2">
-                  <span className="text-gold-dark">✓</span>{m}
-                </li>
-              ))}
-            </ul>
-          </div>
-          <div>
-            <h2 className="text-sm uppercase tracking-wide text-brown-mute mb-3">Practical Training</h2>
-            <p className="text-sm text-brown-soft leading-relaxed">{c.practicalFocus}</p>
-            <h2 className="text-sm uppercase tracking-wide text-brown-mute mt-6 mb-3">Career Opportunities</h2>
-            <ul className="flex flex-col gap-1.5">
-              {c.careerOutcomes.map((o) => (
-                <li key={o} className="text-sm text-brown-soft">{o}</li>
-              ))}
-            </ul>
-          </div>
+        <Container>
+          <Reveal className="grid sm:grid-cols-2 gap-8">
+            <div>
+              <h2 className="text-sm uppercase tracking-wide text-brown-mute mb-3">Curriculum & Modules</h2>
+              <ul className="flex flex-col gap-2">
+                {c.curriculum.map((m) => (
+                  <li key={m} className="text-sm text-brown-soft flex gap-2">
+                    <span className="text-gold-dark">✓</span>{m}
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div>
+              <h2 className="text-sm uppercase tracking-wide text-brown-mute mb-3">Practical Training</h2>
+              <p className="text-sm text-brown-soft leading-relaxed">{c.practicalFocus}</p>
+              <h2 className="text-sm uppercase tracking-wide text-brown-mute mt-6 mb-3">Career Opportunities</h2>
+              <ul className="flex flex-col gap-1.5">
+                {c.careerOutcomes.map((o) => (
+                  <li key={o} className="text-sm text-brown-soft">{o}</li>
+                ))}
+              </ul>
+            </div>
+          </Reveal>
         </Container>
       </section>
 
       <section className="py-12">
         <Container className="flex flex-col gap-6">
           <h2 className="font-display text-2xl text-brown">Student Work</h2>
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
+          <RevealGroup className="grid grid-cols-2 sm:grid-cols-4 gap-4" stagger={0.06}>
             {Array.from({ length: 4 }).map((_, i) => (
-              <Visual key={i} label={c.category} ratio="aspect-[3/4]" />
+              <RevealItem key={i}>
+                <ImageReveal>
+                  <Visual label={c.category} ratio="aspect-[3/4]" />
+                </ImageReveal>
+              </RevealItem>
             ))}
-          </div>
+          </RevealGroup>
         </Container>
       </section>
 
       {c.faqs.length > 0 && (
         <section className="py-12 bg-cream-soft">
           <Container className="max-w-3xl flex flex-col gap-6">
-            <h2 className="font-display text-2xl text-brown">Frequently Asked Questions</h2>
+            <Reveal>
+              <h2 className="font-display text-2xl text-brown">Frequently Asked Questions</h2>
+            </Reveal>
             <div className="flex flex-col divide-y divide-brown/10">
               {c.faqs.map((f) => (
                 <details key={f.q} className="py-4 group">
@@ -139,17 +150,19 @@ export default async function CoursePage({
         <section className="py-12 md:py-16 border-t border-brown/10">
           <Container className="flex flex-col gap-8">
             <h2 className="font-display text-2xl text-brown">Other Courses</h2>
-            <div className="grid sm:grid-cols-2 gap-8">
+            <RevealGroup className="grid sm:grid-cols-2 gap-8" stagger={0.1}>
               {related.map((r) => (
-                <Link key={r.slug} href={`/beauty-school/${r.slug}`} className="flex gap-5 border border-brown/10 bg-white p-5">
-                  <Visual ratio="aspect-square" className="w-24 shrink-0" />
-                  <div>
-                    <h3 className="font-display text-lg text-brown">{r.name}</h3>
-                    <p className="text-sm text-brown-soft mt-1 line-clamp-2">{r.summary}</p>
-                  </div>
-                </Link>
+                <RevealItem key={r.slug}>
+                  <Link href={`/beauty-school/${r.slug}`} className="flex gap-5 border border-brown/10 bg-white p-5 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_20px_45px_-26px_rgba(58,40,24,0.35)] hover:border-gold/40">
+                    <Visual ratio="aspect-square" className="w-24 shrink-0" />
+                    <div>
+                      <h3 className="font-display text-lg text-brown">{r.name}</h3>
+                      <p className="text-sm text-brown-soft mt-1 line-clamp-2">{r.summary}</p>
+                    </div>
+                  </Link>
+                </RevealItem>
               ))}
-            </div>
+            </RevealGroup>
           </Container>
         </section>
       )}

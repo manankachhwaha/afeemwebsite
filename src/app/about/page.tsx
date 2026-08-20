@@ -6,6 +6,7 @@ import Visual from "@/components/ui/Visual";
 import Button from "@/components/ui/Button";
 import { experts } from "@/data/experts";
 import { whatsappLink } from "@/data/site";
+import { Reveal, RevealGroup, RevealItem, ImageReveal } from "@/components/motion";
 
 export const metadata: Metadata = {
   title: "About Afeem",
@@ -23,8 +24,10 @@ export default function AboutPage() {
 
       <section className="py-16 md:py-24">
         <Container className="grid md:grid-cols-2 gap-12 items-center">
-          <Visual label="The Afeem Story" ratio="aspect-[4/3]" />
-          <div className="flex flex-col gap-5">
+          <ImageReveal>
+            <Visual label="The Afeem Story" ratio="aspect-[4/3]" />
+          </ImageReveal>
+          <Reveal delay={0.15} className="flex flex-col gap-5">
             <span className="text-xs uppercase tracking-[0.25em] text-gold-dark">Our Story</span>
             <h2 className="font-display text-3xl text-brown leading-tight">Two verticals, one standard.</h2>
             <p className="text-brown-soft leading-relaxed">
@@ -33,40 +36,46 @@ export default function AboutPage() {
               so by the time they graduate, they&rsquo;ve already worked with real clients. It&rsquo;s
               this connection between learning and doing that sets Afeem apart in Jodhpur.
             </p>
-          </div>
+          </Reveal>
         </Container>
       </section>
 
       <section className="py-16 md:py-24 bg-cream-soft">
-        <Container className="grid sm:grid-cols-2 gap-8">
-          <div className="bg-white p-8 border border-brown/10 flex flex-col gap-3">
-            <h3 className="font-display text-xl text-brown">Afeem Spa & Salon</h3>
-            <p className="text-sm text-brown-soft italic">Experience the art of beauty.</p>
-            <p className="text-sm text-brown-soft leading-relaxed">
-              Hair, skin, spa, makeup and nails — delivered with an editorial eye and genuine care,
-              across our Jodhpur locations.
-            </p>
-            <Button href="/salon-spa" variant="secondary" className="self-start mt-2">Explore Salon & Spa</Button>
-          </div>
-          <div className="bg-white p-8 border border-brown/10 flex flex-col gap-3">
-            <h3 className="font-display text-xl text-brown">Afeem Beauty School</h3>
-            <p className="text-sm text-brown-soft italic">Learn the art of beauty.</p>
-            <p className="text-sm text-brown-soft leading-relaxed">
-              Structured courses in makeup, hair, skin and nails — with real, live salon exposure
-              built into every programme.
-            </p>
-            <Button href="/beauty-school" variant="secondary" className="self-start mt-2">Explore Beauty School</Button>
-          </div>
+        <Container>
+          <RevealGroup className="grid sm:grid-cols-2 gap-8" stagger={0.12}>
+            <RevealItem className="bg-white p-8 border border-brown/10 flex flex-col gap-3 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_24px_50px_-28px_rgba(58,40,24,0.35)] hover:border-gold/40">
+              <h3 className="font-display text-xl text-brown">Afeem Spa & Salon</h3>
+              <p className="text-sm text-brown-soft italic">Experience the art of beauty.</p>
+              <p className="text-sm text-brown-soft leading-relaxed">
+                Hair, skin, spa, makeup and nails — delivered with an editorial eye and genuine care,
+                across our Jodhpur locations.
+              </p>
+              <Button href="/salon-spa" variant="secondary" className="self-start mt-2">Explore Salon & Spa</Button>
+            </RevealItem>
+            <RevealItem className="bg-white p-8 border border-brown/10 flex flex-col gap-3 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_24px_50px_-28px_rgba(58,40,24,0.35)] hover:border-gold/40">
+              <h3 className="font-display text-xl text-brown">Afeem Beauty School</h3>
+              <p className="text-sm text-brown-soft italic">Learn the art of beauty.</p>
+              <p className="text-sm text-brown-soft leading-relaxed">
+                Structured courses in makeup, hair, skin and nails — with real, live salon exposure
+                built into every programme.
+              </p>
+              <Button href="/beauty-school" variant="secondary" className="self-start mt-2">Explore Beauty School</Button>
+            </RevealItem>
+          </RevealGroup>
         </Container>
       </section>
 
       <section className="py-16 md:py-24">
         <Container className="flex flex-col gap-10">
-          <SectionHeading eyebrow="Meet the Team" title="Meet the Afeem Experts" description="The people behind every cut, colour, facial and bridal look." />
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+          <Reveal>
+            <SectionHeading eyebrow="Meet the Team" title="Meet the Afeem Experts" description="The people behind every cut, colour, facial and bridal look." />
+          </Reveal>
+          <RevealGroup className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8" stagger={0.08}>
             {experts.map((e) => (
-              <div key={e.slug} className="flex flex-col gap-3">
-                <Visual ratio="aspect-[4/5]" />
+              <RevealItem key={e.slug} className="flex flex-col gap-3">
+                <ImageReveal>
+                  <Visual ratio="aspect-[4/5]" />
+                </ImageReveal>
                 <div>
                   <h3 className="font-display text-lg text-brown">{e.name}</h3>
                   <p className="text-sm text-gold-dark">{e.designation}</p>
@@ -85,16 +94,20 @@ export default function AboutPage() {
                     Book with {e.name.split(" ")[0]}
                   </Button>
                 </div>
-              </div>
+              </RevealItem>
             ))}
-          </div>
+          </RevealGroup>
         </Container>
       </section>
 
       <section className="py-16 md:py-24 bg-brown">
         <Container className="flex flex-col items-center text-center gap-6 max-w-xl mx-auto">
-          <SectionHeading eyebrow="Visit Us" title="Find an Afeem Near You" align="center" light />
-          <Button href="/locations" variant="outline-light">View Locations</Button>
+          <Reveal>
+            <SectionHeading eyebrow="Visit Us" title="Find an Afeem Near You" align="center" light />
+          </Reveal>
+          <Reveal delay={0.15}>
+            <Button href="/locations" variant="outline-light">View Locations</Button>
+          </Reveal>
         </Container>
       </section>
     </>
