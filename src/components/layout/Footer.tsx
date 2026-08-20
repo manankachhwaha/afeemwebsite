@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import Container from "@/components/ui/Container";
 import { site } from "@/data/site";
 
@@ -41,7 +42,7 @@ export default function Footer() {
       <Container className="py-16">
         <div className="grid grid-cols-1 md:grid-cols-5 gap-12">
           <div className="md:col-span-2 flex flex-col gap-4">
-            <span className="font-display text-3xl">AFEEM</span>
+            <Image src="/afeem-logo.png" alt="Afeem" width={300} height={163} className="h-14 w-auto" />
             <p className="text-sm uppercase tracking-[0.25em] text-yellow-warm">{site.tagline}</p>
             <p className="text-sm text-white/70 max-w-xs leading-relaxed">{site.description}</p>
             <div className="gold-rule" />

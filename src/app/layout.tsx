@@ -4,11 +4,12 @@ import "./globals.css";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import WhatsAppButton from "@/components/layout/WhatsAppButton";
+import InstagramButton from "@/components/layout/InstagramButton";
 import StickyBookBar from "@/components/layout/StickyBookBar";
 import SmoothScroll from "@/components/motion/SmoothScroll";
-import Cursor from "@/components/motion/Cursor";
 import ScrollProgress from "@/components/motion/ScrollProgress";
 import PageTransition from "@/components/motion/PageTransition";
+import IntroSplash from "@/components/motion/IntroSplash";
 import { site } from "@/data/site";
 
 const playfair = Playfair_Display({
@@ -78,14 +79,15 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }}
         />
         <SmoothScroll>
+          <IntroSplash />
           <ScrollProgress />
-          <Cursor />
           <Header />
           <main className="flex-1 pb-16 md:pb-0">
             <PageTransition>{children}</PageTransition>
           </main>
           <Footer />
           <WhatsAppButton />
+          <InstagramButton />
           <StickyBookBar />
         </SmoothScroll>
       </body>

@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { useState } from "react";
 import { motion, useMotionValueEvent, useScroll } from "motion/react";
 import Container from "@/components/ui/Container";
@@ -15,6 +16,7 @@ const salonLinks = [
   { href: "/salon-spa/spa-wellness", label: "Spa & Wellness" },
   { href: "/salon-spa#packages", label: "Packages" },
   { href: "/bridal", label: "Bridal" },
+  { href: "/transformations", label: "Transformations" },
 ];
 
 const schoolLinks = [
@@ -26,13 +28,16 @@ const schoolLinks = [
   { href: "/beauty-school#careers", label: "Career Opportunities" },
 ];
 
-const navItems = [
-  { href: "/salon-spa", label: "Salon & Spa", children: salonLinks },
-  { href: "/beauty-school", label: "Beauty School", children: schoolLinks },
-  { href: "/transformations", label: "Transformations" },
+const aboutLinks = [
   { href: "/about", label: "About Afeem" },
   { href: "/journal", label: "Journal" },
   { href: "/locations", label: "Locations" },
+];
+
+const navItems = [
+  { href: "/salon-spa", label: "Salon & Spa", children: salonLinks },
+  { href: "/beauty-school", label: "Beauty School", children: schoolLinks },
+  { href: "/about", label: "About", children: aboutLinks },
   { href: "/contact", label: "Contact" },
 ];
 
@@ -66,15 +71,22 @@ export default function Header() {
         scrolled ? "border-brown/10 bg-cream/95 backdrop-blur shadow-[0_8px_30px_-20px_rgba(58,40,24,0.4)]" : "border-transparent bg-cream/60 backdrop-blur-sm"
       }`}
     >
-      <Container className="flex h-[4.5rem] xl:h-20 items-center justify-between gap-4">
-        <Link href="/" className="shrink-0 flex items-baseline gap-2 font-display text-xl sm:text-2xl tracking-wide text-brown">
-          AFEEM
-          <span className="hidden 2xl:inline text-[10px] tracking-[0.3em] uppercase text-gold-dark font-sans font-normal">
+      <Container className="flex h-[4.5rem] lg:h-20 items-center justify-between gap-4">
+        <Link href="/" className="shrink-0 flex items-center gap-3">
+          <Image
+            src="/afeem-logo.png"
+            alt="Afeem"
+            width={300}
+            height={163}
+            priority
+            className="h-11 sm:h-12 w-auto"
+          />
+          <span className="hidden xl:inline text-[10px] tracking-[0.3em] uppercase text-gold-dark font-sans font-normal">
             {"Beauty · Wellness · Education"}
           </span>
         </Link>
 
-        <nav className="hidden xl:flex items-center gap-5 2xl:gap-7">
+        <nav className="hidden lg:flex items-center gap-6 xl:gap-8">
           {navItems.map((item) => (
             <div
               key={item.href}
@@ -84,7 +96,7 @@ export default function Header() {
             >
               <Link
                 href={item.href}
-                className="whitespace-nowrap text-[11px] 2xl:text-xs font-medium uppercase tracking-[0.08em] text-brown-soft hover:text-gold-dark transition-colors py-2"
+                className="whitespace-nowrap text-xs font-medium uppercase tracking-[0.08em] text-brown-soft hover:text-gold-dark transition-colors py-2"
               >
                 {item.label}
               </Link>
@@ -111,22 +123,15 @@ export default function Header() {
           ))}
         </nav>
 
-        <div className="hidden xl:flex items-center gap-2 2xl:gap-3 shrink-0">
-          <Button
-            href={whatsappLink("Hi Afeem, I'd like to enquire.")}
-            variant="secondary"
-            className="hidden 2xl:inline-flex text-[11px] px-5 py-2.5"
-          >
-            Enquire on WhatsApp
-          </Button>
-          <Button href="/contact#book" variant="primary" className="text-[11px] px-5 py-2.5">
+        <div className="hidden lg:flex items-center shrink-0">
+          <Button href="/contact#book" variant="primary" className="text-xs px-5 py-2.5">
             Book Now
           </Button>
         </div>
 
         <button
           aria-label="Toggle menu"
-          className="xl:hidden flex flex-col gap-1.5 p-2 -mr-2 shrink-0"
+          className="lg:hidden flex flex-col gap-1.5 p-2 -mr-2 shrink-0"
           onClick={() => setMobileOpen((v) => !v)}
           onMouseDown={() => setHidden(false)}
         >
@@ -137,7 +142,7 @@ export default function Header() {
       </Container>
 
       {mobileOpen && (
-        <div className="xl:hidden border-t border-brown/10 bg-cream max-h-[calc(100vh-4.5rem)] overflow-y-auto">
+        <div className="lg:hidden border-t border-brown/10 bg-cream max-h-[calc(100vh-4.5rem)] overflow-y-auto">
           <Container className="py-4 flex flex-col gap-1">
             {mobileNavItems.map((item) => (
               <div key={item.href} className="border-b border-brown/5 py-2">

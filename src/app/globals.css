@@ -50,27 +50,6 @@ h1, h2, h3, h4,
   letter-spacing: -0.01em;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  @keyframes fade-up {
-    from {
-      opacity: 0;
-      transform: translateY(14px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-
-  .animate-fade-up {
-    animation: fade-up 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
-  }
-
-  .animate-fade-up-delay-1 { animation-delay: 0.08s; }
-  .animate-fade-up-delay-2 { animation-delay: 0.16s; }
-  .animate-fade-up-delay-3 { animation-delay: 0.24s; }
-}
-
 /* Thin gold divider used across editorial sections */
 .gold-rule {
   height: 1px;
@@ -80,6 +59,7 @@ h1, h2, h3, h4,
 
 /* Subtle warm placeholder used in place of real photography */
 .warm-placeholder {
+  isolation: isolate;
   background:
     radial-gradient(circle at 22% 18%, rgba(255, 244, 217, 0.65), transparent 42%),
     radial-gradient(circle at 82% 78%, rgba(162, 120, 44, 0.4), transparent 55%),
@@ -88,6 +68,7 @@ h1, h2, h3, h4,
 }
 
 .warm-placeholder-dark {
+  isolation: isolate;
   background:
     radial-gradient(circle at 20% 15%, rgba(230, 189, 114, 0.28), transparent 45%),
     radial-gradient(circle at 85% 85%, rgba(198, 153, 63, 0.22), transparent 55%),
@@ -120,11 +101,6 @@ h1, h2, h3, h4,
   color: var(--color-brown);
 }
 
-html.custom-cursor-active,
-html.custom-cursor-active * {
-  cursor: none !important;
-}
-
 /* Thin gold scrollbar for a considered, premium feel */
 html {
   scrollbar-width: thin;
@@ -147,11 +123,6 @@ html {
 
 ::-webkit-scrollbar-thumb:hover {
   background: var(--color-gold-dark);
-}
-
-@keyframes marquee {
-  from { transform: translateX(0); }
-  to { transform: translateX(-50%); }
 }
 
 @media (prefers-reduced-motion: reduce) {

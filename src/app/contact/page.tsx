@@ -22,18 +22,22 @@ export default function ContactPage() {
         <Container className="grid lg:grid-cols-2 gap-12 items-start">
           <Reveal className="flex flex-col gap-5">
             <SectionHeading eyebrow="Book Now" title="Book an Appointment" description="Tell us your preferred branch, service, date and time — we'll confirm on WhatsApp." />
-            <div className="flex flex-col gap-4 mt-2">
+            <div className="flex flex-col gap-6 mt-2">
               {branches.map((b) => (
-                <div key={b.slug} className="text-sm text-brown-soft">
+                <div key={b.slug} className="text-sm text-brown-soft flex flex-col gap-2">
                   <p className="text-brown font-medium">{b.name}</p>
                   <p>{b.address}</p>
                   <a href={b.phoneHref} className="text-gold-dark">{b.phone}</a>
+                  <Button
+                    href={whatsappLink(`Hi Afeem, I'd like to enquire about ${b.name}.`)}
+                    variant="secondary"
+                    className="self-start mt-1"
+                  >
+                    Enquire — {b.name}
+                  </Button>
                 </div>
               ))}
             </div>
-            <Button href={whatsappLink("Hi Afeem, I'd like to enquire.")} variant="secondary" className="self-start mt-2">
-              Or Enquire on WhatsApp
-            </Button>
           </Reveal>
           <Reveal delay={0.15}>
             <BookingForm />
