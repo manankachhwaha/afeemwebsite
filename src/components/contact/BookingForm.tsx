@@ -3,27 +3,37 @@
 import { FormEvent, useState } from "react";
 import Button from "@/components/ui/Button";
 import { serviceCategories } from "@/data/services";
-import { branches } from "@/data/branches";
+import { branches, branchWhatsappLink, getBranch } from "@/data/branches";
 import { site } from "@/data/site";
+import { useBranch } from "@/lib/BranchContext";
 
 export default function BookingForm() {
   const [submitted, setSubmitted] = useState(false);
+  const { selectedBranch } = useBranch();
 
   function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
     const form = new FormData(e.currentTarget);
+    const branchSlug = String(form.get("branch") || "");
+    const branch = getBranch(branchSlug);
     const lines = [
       "Hi Afeem, I'd like to book an appointment.",
       "",
       `Name: ${form.get("name")}`,
       `Phone: ${form.get("phone")}`,
-      `Branch: ${form.get("branch")}`,
+      `Branch: ${branch?.name ?? "Not specified"}`,
       `Service: ${form.get("service")}`,
       `Preferred Date: ${form.get("date")}`,
       `Preferred Time: ${form.get("time")}`,
       `Notes: ${form.get("notes") || "—"}`,
     ];
-    window.open(`https://wa.me/${site.whatsappNumber}?text=${encodeURIComponent(lines.join("\n"))}`, "_blank");
+    const message = lines.join("\n");
+    // Route the request to that specific branch's WhatsApp so leads never get
+    // mixed up between locations; fall back to the general line if somehow unset.
+    const target = branch
+      ? branchWhatsappLink(branch, message)
+      : `https://wa.me/${site.whatsappNumber}?text=${encodeURIComponent(message)}`;
+    window.open(target, "_blank", "noopener,noreferrer");
     setSubmitted(true);
   }
 
@@ -51,10 +61,16 @@ export default function BookingForm() {
         </div>
         <div>
           <label htmlFor="branch" className="text-sm font-medium text-brown mb-2 block">Branch</label>
-          <select id="branch" name="branch" defaultValue="" className="w-full border border-brown/20 bg-cream px-4 py-3 text-sm focus:outline-none focus:border-gold">
+          <select
+            id="branch"
+            name="branch"
+            key={selectedBranch?.slug ?? "none"}
+            defaultValue={selectedBranch?.slug ?? ""}
+            className="w-full border border-brown/20 bg-cream px-4 py-3 text-sm focus:outline-none focus:border-gold"
+          >
             <option value="" disabled>Select branch</option>
             {branches.map((b) => (
-              <option key={b.slug} value={b.name}>{b.name}</option>
+              <option key={b.slug} value={b.slug}>{b.name}</option>
             ))}
           </select>
         </div>

@@ -4,9 +4,10 @@ import PageHero from "@/components/ui/PageHero";
 import SectionHeading from "@/components/ui/SectionHeading";
 import BookingForm from "@/components/contact/BookingForm";
 import Button from "@/components/ui/Button";
-import { branches } from "@/data/branches";
-import { site, whatsappLink } from "@/data/site";
+import { branches, branchWhatsappLink } from "@/data/branches";
+import { site } from "@/data/site";
 import { Reveal, RevealGroup, RevealItem } from "@/components/motion";
+import { BranchCallButton } from "@/components/branch/BranchCTA";
 
 export const metadata: Metadata = {
   title: "Contact & Book",
@@ -29,11 +30,11 @@ export default function ContactPage() {
                   <p>{b.address}</p>
                   <a href={b.phoneHref} className="text-gold-dark">{b.phone}</a>
                   <Button
-                    href={whatsappLink(`Hi Afeem, I'd like to enquire about ${b.name}.`)}
+                    href={branchWhatsappLink(b, `Hi Afeem, I'd like to enquire about ${b.name}.`)}
                     variant="secondary"
                     className="self-start mt-1"
                   >
-                    Enquire — {b.name}
+                    Enquire — {b.shortName}
                   </Button>
                 </div>
               ))}
@@ -47,10 +48,12 @@ export default function ContactPage() {
 
       <section className="py-16 bg-cream-soft">
         <Container>
-          <RevealGroup className="grid sm:grid-cols-3 gap-8 text-center sm:text-left" stagger={0.1}>
-            <RevealItem>
+          <RevealGroup className="grid sm:grid-cols-3 gap-8 text-center sm:text-left items-start" stagger={0.1}>
+            <RevealItem className="flex flex-col items-center sm:items-start gap-1">
               <p className="text-xs uppercase tracking-wide text-brown-mute mb-1">Call Us</p>
-              <a href={site.phoneHref} className="text-gold-dark font-medium">{site.phone}</a>
+              <BranchCallButton variant="ghost" className="px-0 normal-case tracking-normal text-base">
+                {site.phone}
+              </BranchCallButton>
             </RevealItem>
             <RevealItem>
               <p className="text-xs uppercase tracking-wide text-brown-mute mb-1">Email</p>

@@ -3,12 +3,24 @@
 import { useEffect, useRef } from "react";
 import Lenis from "lenis";
 
+// Flip to false to disable momentum-smoothed scroll entirely (falls back to
+// native scrolling everywhere) without removing the code.
+const SMOOTH_SCROLL_ENABLED = true;
+
 export default function SmoothScroll({ children }: { children: React.ReactNode }) {
   const lenisRef = useRef<Lenis | null>(null);
 
   useEffect(() => {
+    if (!SMOOTH_SCROLL_ENABLED) return;
+
     const isReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    if (isReducedMotion) return;
+    // Only smooth scroll for mouse/trackpad users. Touch devices already have
+    // excellent native momentum scrolling — layering Lenis on top of it tends
+    // to fight the browser's own physics and feel "floaty" rather than smooth,
+    // and it complicates anchor-link and keyboard scrolling on mobile for no
+    // real benefit. Native scroll-behavior handles anchor links everywhere.
+    const isFinePointer = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+    if (isReducedMotion || !isFinePointer) return;
 
     const lenis = new Lenis({
       duration: 1.1,

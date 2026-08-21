@@ -170,7 +170,27 @@ Floating **"Chat with Afeem"** button site-wide. Pages pre-fill relevant enquiry
 
 ## 15. Branch Pages
 
-One page per branch: **AFEEM — [Branch]** with address · phone · WhatsApp · Google Maps · opening hours · available services · photos · parking · reviews. CTA: Book at This Location.
+Afeem has **two real branches** in Jodhpur. This is the source of truth for branch data — update here first, then `src/data/branches.ts`.
+
+### Ratanada
+- **Address:** Circuit House Rd, opposite LIC, near Petrol Pumps, Hanwant Nagar, Ratanada, Jodhpur, Rajasthan 342001
+- **Phone:** 063789 86584
+- **Google:** 4.7★, 1,046 reviews
+- **Hours:** Open until 9:00 PM (opening time & weekly off — *placeholder, confirm*)
+- **WhatsApp number:** *placeholder — assumed same as phone until confirmed*
+- **Instagram:** *placeholder — assumed shared @afeem account until a branch-specific handle is confirmed*
+
+### Pal Road
+- **Address:** Opp Passport Office, Main Pal Rd, near N S Garden, Jodhpur, Rajasthan 342008
+- **Phone:** 070146 32226
+- **Google:** 4.7★, 671 reviews
+- **Hours:** Open until 9:00 PM (opening time & weekly off — *placeholder, confirm*)
+- **WhatsApp number:** *placeholder — assumed same as phone until confirmed*
+- **Instagram:** *placeholder — assumed shared @afeem account until a branch-specific handle is confirmed*
+
+One page per branch: **AFEEM — [Branch]** with address · phone (click-to-call) · branch WhatsApp · Google Maps embed · opening hours · branch Instagram · Google rating/reviews link · available services · photos. CTA: Book at This Branch.
+
+A header branch switcher lets visitors pick their nearest branch; the choice persists in `localStorage` and drives branch-aware Call/WhatsApp/booking CTAs site-wide (prompting a picker if no branch is chosen yet).
 
 ---
 

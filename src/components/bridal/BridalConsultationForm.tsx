@@ -3,14 +3,16 @@
 import { useState, FormEvent } from "react";
 import Button from "@/components/ui/Button";
 import { site } from "@/data/site";
+import { branches, branchWhatsappLink, getBranch } from "@/data/branches";
+import { useBranch } from "@/lib/BranchContext";
 
 const serviceOptions = ["Bridal Makeup", "Pre-Bridal", "Hair", "Skin Preparation", "Nails", "Groom", "Wedding Guest", "Bridal Packages"];
 const budgetOptions = ["Under ₹25,000", "₹25,000 – ₹50,000", "₹50,000 – ₹1,00,000", "Above ₹1,00,000", "Not sure yet"];
-const branchOptions = ["Afeem — Ratanada", "Afeem — Shastri Nagar", "No preference"];
 
 export default function BridalConsultationForm() {
   const [services, setServices] = useState<string[]>([]);
   const [submitted, setSubmitted] = useState(false);
+  const { selectedBranch } = useBranch();
 
   function toggleService(s: string) {
     setServices((prev) => (prev.includes(s) ? prev.filter((x) => x !== s) : [...prev, s]));
@@ -19,6 +21,8 @@ export default function BridalConsultationForm() {
   function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
     const form = new FormData(e.currentTarget);
+    const branchSlug = String(form.get("branch") || "");
+    const branch = getBranch(branchSlug);
     const lines = [
       "Hi Afeem, I'd like to book a Bridal Consultation.",
       "",
@@ -30,11 +34,15 @@ export default function BridalConsultationForm() {
       `Number of People: ${form.get("people")}`,
       `Services Required: ${services.join(", ") || "—"}`,
       `Budget Range: ${form.get("budget")}`,
-      `Preferred Branch: ${form.get("branch")}`,
+      `Preferred Branch: ${branch?.name ?? "No preference"}`,
       `Instagram/WhatsApp: ${form.get("social")}`,
       `Additional Requirements: ${form.get("notes") || "—"}`,
     ];
-    window.open(`https://wa.me/${site.whatsappNumber}?text=${encodeURIComponent(lines.join("\n"))}`, "_blank");
+    const message = lines.join("\n");
+    const target = branch
+      ? branchWhatsappLink(branch, message)
+      : `https://wa.me/${site.whatsappNumber}?text=${encodeURIComponent(message)}`;
+    window.open(target, "_blank", "noopener,noreferrer");
     setSubmitted(true);
   }
 
@@ -69,7 +77,7 @@ export default function BridalConsultationForm() {
               type="button"
               key={s}
               onClick={() => toggleService(s)}
-              className={`px-4 py-2 text-sm border transition-colors ${
+              className={`px-4 py-2 text-sm border transition-colors active:scale-[0.97] ${
                 services.includes(s)
                   ? "bg-brown text-white border-brown"
                   : "border-brown/20 text-brown-soft hover:border-gold"
@@ -83,7 +91,23 @@ export default function BridalConsultationForm() {
 
       <div className="grid sm:grid-cols-2 gap-6">
         <SelectField label="Budget Range" name="budget" options={budgetOptions} />
-        <SelectField label="Preferred Branch" name="branch" options={branchOptions} />
+        <div>
+          <label className="text-sm font-medium text-brown mb-2 block" htmlFor="branch">
+            Preferred Branch
+          </label>
+          <select
+            id="branch"
+            name="branch"
+            key={selectedBranch?.slug ?? "none"}
+            defaultValue={selectedBranch?.slug ?? ""}
+            className="w-full border border-brown/20 bg-cream px-4 py-3 text-sm text-brown focus:outline-none focus:border-gold"
+          >
+            <option value="">No preference</option>
+            {branches.map((b) => (
+              <option key={b.slug} value={b.slug}>{b.name}</option>
+            ))}
+          </select>
+        </div>
       </div>
 
       <Field label="Instagram / WhatsApp Handle" name="social" placeholder="@yourhandle" />

@@ -28,11 +28,11 @@ export default function Button({
   onClick?: () => void;
   type?: "button" | "submit";
 }) {
-  const classes = `inline-flex items-center justify-center gap-2 px-7 py-3 text-sm font-medium tracking-wide uppercase transition-colors duration-200 ${variants[variant]} ${className}`;
+  const classes = `inline-flex items-center justify-center gap-2 px-7 py-3 text-sm font-medium tracking-wide uppercase transition-[color,background-color,border-color,transform] duration-200 active:scale-[0.97] ${variants[variant]} ${className}`;
 
   if (href) {
     return (
-      <Link href={href} className={classes}>
+      <Link href={href} onClick={onClick} className={classes}>
         {children}
       </Link>
     );

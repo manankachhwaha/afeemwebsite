@@ -2,11 +2,13 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { motion, useMotionValueEvent, useScroll } from "motion/react";
 import Container from "@/components/ui/Container";
 import Button from "@/components/ui/Button";
 import { whatsappLink } from "@/data/site";
+import { branches } from "@/data/branches";
+import { useBranch } from "@/lib/BranchContext";
 
 const salonLinks = [
   { href: "/salon-spa/hair", label: "Hair" },
@@ -43,12 +45,53 @@ const navItems = [
 
 const mobileNavItems = [{ href: "/", label: "Home" }, ...navItems];
 
+function BranchSwitcher({ size = "sm" }: { size?: "sm" | "lg" }) {
+  const { selectedBranch, choose } = useBranch();
+  return (
+    <div className="flex items-center gap-1.5">
+      {branches.map((b) => {
+        const active = selectedBranch?.slug === b.slug;
+        return (
+          <button
+            key={b.slug}
+            type="button"
+            onClick={() => choose(b.slug)}
+            aria-pressed={active}
+            className={`uppercase tracking-wide border transition-colors active:scale-[0.97] ${
+              size === "sm" ? "px-2.5 py-1 text-[10px]" : "px-4 py-2 text-xs flex-1 text-center"
+            } ${
+              active
+                ? "bg-gold text-brown border-gold"
+                : "border-gold/40 text-gold-dark hover:border-gold"
+            }`}
+          >
+            {b.shortName}
+          </button>
+        );
+      })}
+    </div>
+  );
+}
+
 export default function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
   const [hidden, setHidden] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const { scrollY } = useScroll();
+  const navRef = useRef<HTMLElement>(null);
+
+  // Close an open dropdown on outside click/tap so touch users aren't stuck with it open.
+  useEffect(() => {
+    if (!openDropdown) return;
+    function handlePointerDown(e: PointerEvent) {
+      if (navRef.current && !navRef.current.contains(e.target as Node)) {
+        setOpenDropdown(null);
+      }
+    }
+    document.addEventListener("pointerdown", handlePointerDown);
+    return () => document.removeEventListener("pointerdown", handlePointerDown);
+  }, [openDropdown]);
 
   useMotionValueEvent(scrollY, "change", (latest) => {
     const prev = scrollY.getPrevious() ?? 0;
@@ -67,26 +110,27 @@ export default function Header() {
     <motion.header
       animate={{ y: hidden ? "-100%" : "0%" }}
       transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
+      style={{ willChange: "transform" }}
       className={`sticky top-0 z-50 border-b transition-colors duration-300 ${
         scrolled ? "border-brown/10 bg-cream/95 backdrop-blur shadow-[0_8px_30px_-20px_rgba(58,40,24,0.4)]" : "border-transparent bg-cream/60 backdrop-blur-sm"
       }`}
     >
-      <Container className="flex h-[4.5rem] lg:h-20 items-center justify-between gap-4">
-        <Link href="/" className="shrink-0 flex items-center gap-3">
+      <Container className="flex items-center justify-between gap-4 py-2.5">
+        <Link href="/" className="shrink-0 flex flex-col items-center">
           <Image
             src="/afeem-logo.png"
             alt="Afeem"
             width={300}
             height={163}
             priority
-            className="h-11 sm:h-12 w-auto"
+            className="h-14 sm:h-16 lg:h-[4.5rem] w-auto object-contain"
           />
-          <span className="hidden xl:inline text-[10px] tracking-[0.3em] uppercase text-gold-dark font-sans font-normal">
+          <span className="text-[8px] sm:text-[9px] tracking-[0.28em] sm:tracking-[0.32em] uppercase text-gold-dark font-sans font-normal mt-1">
             {"Beauty · Wellness · Education"}
           </span>
         </Link>
 
-        <nav className="hidden lg:flex items-center gap-6 xl:gap-8">
+        <nav ref={navRef} className="hidden lg:flex items-center gap-6 xl:gap-8">
           {navItems.map((item) => (
             <div
               key={item.href}
@@ -94,15 +138,39 @@ export default function Header() {
               onMouseEnter={() => item.children && setOpenDropdown(item.label)}
               onMouseLeave={() => item.children && setOpenDropdown(null)}
             >
-              <Link
-                href={item.href}
-                className="whitespace-nowrap text-xs font-medium uppercase tracking-[0.08em] text-brown-soft hover:text-gold-dark transition-colors py-2"
-              >
-                {item.label}
-              </Link>
+              <div className="flex items-center gap-1">
+                <Link
+                  href={item.href}
+                  onClick={() => setOpenDropdown(null)}
+                  className="whitespace-nowrap text-xs font-medium uppercase tracking-[0.08em] text-brown-soft hover:text-gold-dark focus-visible:text-gold-dark transition-colors py-2"
+                >
+                  {item.label}
+                </Link>
+                {item.children && (
+                  <button
+                    type="button"
+                    aria-label={`${openDropdown === item.label ? "Close" : "Open"} ${item.label} menu`}
+                    aria-expanded={openDropdown === item.label}
+                    onClick={() => setOpenDropdown((cur) => (cur === item.label ? null : item.label))}
+                    className="p-1 -ml-1 text-brown-soft hover:text-gold-dark transition-colors"
+                  >
+                    <svg
+                      viewBox="0 0 12 8"
+                      className={`h-2.5 w-2.5 transition-transform duration-200 ${openDropdown === item.label ? "rotate-180" : ""}`}
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="1.6"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    >
+                      <path d="M1 1.5 6 6.5 11 1.5" />
+                    </svg>
+                  </button>
+                )}
+              </div>
               {item.children && (
                 <div
-                  className={`absolute left-1/2 -translate-x-1/2 top-full w-56 transition-all duration-150 ${
+                  className={`absolute left-1/2 -translate-x-1/2 top-full w-56 transition-[opacity,transform] duration-150 ${
                     openDropdown === item.label ? "opacity-100 translate-y-0 pointer-events-auto" : "opacity-0 -translate-y-1 pointer-events-none"
                   }`}
                 >
@@ -111,7 +179,8 @@ export default function Header() {
                       <Link
                         key={child.href}
                         href={child.href}
-                        className="block px-5 py-2.5 text-sm text-brown-soft hover:bg-yellow-soft hover:text-gold-dark whitespace-nowrap"
+                        onClick={() => setOpenDropdown(null)}
+                        className="block px-5 py-2.5 text-sm text-brown-soft hover:bg-yellow-soft hover:text-gold-dark active:bg-yellow-soft whitespace-nowrap"
                       >
                         {child.label}
                       </Link>
@@ -123,7 +192,8 @@ export default function Header() {
           ))}
         </nav>
 
-        <div className="hidden lg:flex items-center shrink-0">
+        <div className="hidden lg:flex items-center gap-3 shrink-0">
+          <BranchSwitcher />
           <Button href="/contact#book" variant="primary" className="text-xs px-5 py-2.5">
             Book Now
           </Button>
@@ -142,7 +212,7 @@ export default function Header() {
       </Container>
 
       {mobileOpen && (
-        <div className="lg:hidden border-t border-brown/10 bg-cream max-h-[calc(100vh-4.5rem)] overflow-y-auto">
+        <div className="lg:hidden border-t border-brown/10 bg-cream max-h-[75vh] overflow-y-auto">
           <Container className="py-4 flex flex-col gap-1">
             {mobileNavItems.map((item) => (
               <div key={item.href} className="border-b border-brown/5 py-2">
@@ -169,6 +239,10 @@ export default function Header() {
                 )}
               </div>
             ))}
+            <div className="pt-4 flex flex-col gap-2">
+              <span className="text-xs uppercase tracking-[0.15em] text-brown-mute">Your Branch</span>
+              <BranchSwitcher size="lg" />
+            </div>
             <div className="flex flex-col gap-3 pt-4">
               <Button href={whatsappLink("Hi Afeem, I'd like to enquire.")} variant="secondary">
                 Enquire on WhatsApp

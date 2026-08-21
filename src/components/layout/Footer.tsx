@@ -2,6 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import Container from "@/components/ui/Container";
 import { site } from "@/data/site";
+import { branches } from "@/data/branches";
 
 const columns = [
   {
@@ -42,16 +43,27 @@ export default function Footer() {
       <Container className="py-16">
         <div className="grid grid-cols-1 md:grid-cols-5 gap-12">
           <div className="md:col-span-2 flex flex-col gap-4">
-            <Image src="/afeem-logo.png" alt="Afeem" width={300} height={163} className="h-14 w-auto" />
+            <Image
+              src="/afeem-logo.png"
+              alt="Afeem"
+              width={300}
+              height={163}
+              className="w-32 h-auto self-start object-contain"
+            />
             <p className="text-sm uppercase tracking-[0.25em] text-yellow-warm">{site.tagline}</p>
             <p className="text-sm text-white/70 max-w-xs leading-relaxed">{site.description}</p>
             <div className="gold-rule" />
-            <div className="text-sm text-white/70 flex flex-col gap-1">
-              <a href={site.phoneHref} className="hover:text-gold-light">{site.phone}</a>
-              <a href={`mailto:${site.email}`} className="hover:text-gold-light">{site.email}</a>
-              <a href={site.instagram} target="_blank" rel="noreferrer" className="hover:text-gold-light">
-                @afeem on Instagram
-              </a>
+            <div className="flex flex-col gap-3">
+              {branches.map((b) => (
+                <div key={b.slug} className="text-sm text-white/70 flex flex-col gap-0.5">
+                  <span className="text-yellow-warm text-xs uppercase tracking-wide">{b.shortName}</span>
+                  <a href={b.phoneHref} className="hover:text-gold-light">{b.phone}</a>
+                  <a href={b.instagram} target="_blank" rel="noreferrer" className="hover:text-gold-light">
+                    Instagram{b.instagramIsPlaceholder ? " (TBC)" : ""}
+                  </a>
+                </div>
+              ))}
+              <a href={`mailto:${site.email}`} className="text-sm text-white/70 hover:text-gold-light">{site.email}</a>
             </div>
           </div>
           {columns.map((col) => (

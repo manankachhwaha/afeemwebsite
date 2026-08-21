@@ -34,7 +34,7 @@ export const experts: Expert[] = [
     specialisation: ["Skin Prep", "Brightening Facials", "Acne Care"],
     experience: "7 years",
     bio: "Sneha designs Afeem's pre-bridal skin prep timelines and leads our clinical-grade facial protocols.",
-    branch: "Afeem — Shastri Nagar",
+    branch: "Afeem — Pal Road",
   },
   {
     slug: "kabir-oswal",
@@ -52,7 +52,7 @@ export const experts: Expert[] = [
     specialisation: ["Nail Art", "Gel Extensions", "Bridal Nails"],
     experience: "5 years",
     bio: "Priya is known for her detailed hand-painted nail art and is a lead trainer at Afeem Beauty School.",
-    branch: "Afeem — Shastri Nagar",
+    branch: "Afeem — Pal Road",
   },
   {
     slug: "meher-vyas",

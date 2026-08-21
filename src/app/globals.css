@@ -6,9 +6,9 @@
   --color-cream-soft: #f6ecd9;  /* secondary section background */
   --color-yellow-warm: #f0dfa8; /* warm light-yellow accent / tint */
   --color-yellow-soft: #f8edc9; /* softer yellow wash */
-  --color-gold: #c6993f;        /* primary gold accent */
-  --color-gold-light: #e0bd72;  /* lighter gold for hovers/highlights */
-  --color-gold-dark: #a2782c;   /* deep gold for text-on-light */
+  --color-gold: #d09030;        /* primary brand gold accent */
+  --color-gold-light: #e3ac5c;  /* lighter gold for hovers/highlights */
+  --color-gold-dark: #a8701e;   /* deep gold for text-on-light */
   --color-brown: #3a2818;       /* espresso brown — headings, dark sections */
   --color-brown-soft: #6b4e35;  /* secondary brown text */
   --color-brown-mute: #8a715a;  /* muted brown for captions/meta */
@@ -42,6 +42,28 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-inter), Arial, Helvetica, sans-serif;
+}
+
+/* Native smooth anchor scrolling, offset for the sticky header so section
+   targets never land underneath it. scroll-padding-top applies to every
+   in-page anchor jump site-wide, so individual sections don't each need
+   their own scroll-margin. */
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 7rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+/* Consistent, on-brand keyboard focus indication across every interactive element. */
+:focus-visible {
+  outline: 2px solid var(--color-gold);
+  outline-offset: 2px;
+  border-radius: 2px;
 }
 
 h1, h2, h3, h4,

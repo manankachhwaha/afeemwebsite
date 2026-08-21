@@ -10,6 +10,8 @@ import SmoothScroll from "@/components/motion/SmoothScroll";
 import ScrollProgress from "@/components/motion/ScrollProgress";
 import PageTransition from "@/components/motion/PageTransition";
 import IntroSplash from "@/components/motion/IntroSplash";
+import { BranchProvider } from "@/lib/BranchContext";
+import BranchPickerModal from "@/components/branch/BranchPickerModal";
 import { site } from "@/data/site";
 
 const playfair = Playfair_Display({
@@ -78,18 +80,21 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }}
         />
-        <SmoothScroll>
-          <IntroSplash />
-          <ScrollProgress />
-          <Header />
-          <main className="flex-1 pb-16 md:pb-0">
-            <PageTransition>{children}</PageTransition>
-          </main>
-          <Footer />
-          <WhatsAppButton />
-          <InstagramButton />
-          <StickyBookBar />
-        </SmoothScroll>
+        <BranchProvider>
+          <SmoothScroll>
+            <IntroSplash />
+            <ScrollProgress />
+            <Header />
+            <main className="flex-1 pb-16 md:pb-0">
+              <PageTransition>{children}</PageTransition>
+            </main>
+            <Footer />
+            <WhatsAppButton />
+            <InstagramButton />
+            <StickyBookBar />
+            <BranchPickerModal />
+          </SmoothScroll>
+        </BranchProvider>
       </body>
     </html>
   );
