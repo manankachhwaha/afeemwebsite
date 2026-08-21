@@ -4,8 +4,13 @@
  * each feature reads its own flag and renders nothing (or falls back to the
  * plain/static behaviour) when disabled.
  *
- * All motion-driven features additionally self-disable under
- * `prefers-reduced-motion: reduce`, regardless of these flags.
+ * Motion-driven features show by default for every visitor — they no longer
+ * key off the OS-level `prefers-reduced-motion` setting, since that can be
+ * on for reasons unrelated to an actual preference (managed devices, phone
+ * battery-saver modes) and was silently hiding the whole animation layer.
+ * A visitor can still explicitly opt out via the "Reduce motion" control in
+ * the footer (see src/lib/motionPreference.ts) — that's the only thing that
+ * disables motion now.
  */
 export const FEATURES = {
   /** Full-screen logo entrance on first visit per session. */

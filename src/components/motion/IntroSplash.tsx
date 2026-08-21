@@ -4,6 +4,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
 import Image from "next/image";
 import { FEATURES } from "@/config/features";
+import { isMotionEnabled } from "@/lib/motionPreference";
 
 const STORAGE_KEY = "afeem-intro-seen";
 const AUTO_ENTER_MS = 4500;
@@ -24,13 +25,12 @@ export default function IntroSplash() {
   }, []);
 
   useEffect(() => {
-    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     const seen = sessionStorage.getItem(STORAGE_KEY);
     // One-time client-only check (needs `window`/`sessionStorage`, unavailable
     // during static generation) — can't be computed in a lazy useState initializer.
     // eslint-disable-next-line react-hooks/set-state-in-effect
     setMounted(true);
-    if (!FEATURES.introSplash || seen || reduced) return;
+    if (!FEATURES.introSplash || seen || !isMotionEnabled()) return;
     setVisible(true);
     sessionStorage.setItem(STORAGE_KEY, "1");
     const autoTimer = setTimeout(handleEnter, AUTO_ENTER_MS);

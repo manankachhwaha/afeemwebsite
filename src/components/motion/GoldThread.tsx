@@ -3,6 +3,7 @@
 import { useEffect, useRef } from "react";
 import { usePathname } from "next/navigation";
 import { FEATURES } from "@/config/features";
+import { isMotionEnabled } from "@/lib/motionPreference";
 
 /**
  * A slim gold thread along the left edge that grows with scroll depth —
@@ -16,7 +17,7 @@ export default function GoldThread() {
   const pathname = usePathname();
 
   useEffect(() => {
-    if (!FEATURES.goldThread || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    if (!FEATURES.goldThread || !isMotionEnabled()) return;
 
     function update() {
       const doc = document.documentElement;
@@ -44,7 +45,7 @@ export default function GoldThread() {
   return (
     <div
       aria-hidden
-      className="fixed top-16 bottom-16 left-4 z-30 hidden w-px pointer-events-none sm:block motion-reduce:hidden"
+      className="fixed top-16 bottom-16 left-4 z-30 hidden w-px pointer-events-none sm:block"
     >
       <div className="h-full w-full bg-brown/10" />
       <div

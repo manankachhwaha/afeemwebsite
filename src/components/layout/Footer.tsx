@@ -3,6 +3,7 @@ import Image from "next/image";
 import Container from "@/components/ui/Container";
 import { site } from "@/data/site";
 import { branches } from "@/data/branches";
+import MotionToggle from "@/components/motion/MotionToggle";
 
 const columns = [
   {
@@ -82,6 +83,7 @@ export default function Footer() {
           <div className="flex gap-6">
             <Link href="/contact" className="hover:text-gold-light">Contact</Link>
             <Link href="/locations" className="hover:text-gold-light">Locations</Link>
+            <MotionToggle />
           </div>
         </div>
       </Container>

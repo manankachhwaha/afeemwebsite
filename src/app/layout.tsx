@@ -14,6 +14,7 @@ import WindDown from "@/components/motion/WindDown";
 import TimeOfDayPalette from "@/components/motion/TimeOfDayPalette";
 import GoldThread from "@/components/motion/GoldThread";
 import { BranchProvider } from "@/lib/BranchContext";
+import { MOTION_INIT_SCRIPT } from "@/lib/motionPreference";
 import BranchPickerModal from "@/components/branch/BranchPickerModal";
 import ConciergeWidget from "@/components/concierge/ConciergeWidget";
 import { site } from "@/data/site";
@@ -80,6 +81,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       className={`${playfair.variable} ${inter.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-cream text-brown">
+        <script dangerouslySetInnerHTML={{ __html: MOTION_INIT_SCRIPT }} />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }}

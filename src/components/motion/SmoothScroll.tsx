@@ -3,6 +3,7 @@
 import { useEffect, useRef } from "react";
 import Lenis from "lenis";
 import { FEATURES } from "@/config/features";
+import { isMotionEnabled } from "@/lib/motionPreference";
 
 export default function SmoothScroll({ children }: { children: React.ReactNode }) {
   const lenisRef = useRef<Lenis | null>(null);
@@ -10,7 +11,7 @@ export default function SmoothScroll({ children }: { children: React.ReactNode }
   useEffect(() => {
     if (!FEATURES.smoothScroll) return;
 
-    const isReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const isReducedMotion = !isMotionEnabled();
     // Only smooth scroll for mouse/trackpad users. Touch devices already have
     // excellent native momentum scrolling — layering Lenis on top of it tends
     // to fight the browser's own physics and feel "floaty" rather than smooth,

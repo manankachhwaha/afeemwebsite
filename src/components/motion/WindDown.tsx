@@ -3,6 +3,7 @@
 import { useEffect, useRef } from "react";
 import { usePathname } from "next/navigation";
 import { FEATURES } from "@/config/features";
+import { isMotionEnabled } from "@/lib/motionPreference";
 
 /**
  * Tracks scroll depth (0 → 1 per page) and exposes it as the `--wind-down`
@@ -17,7 +18,7 @@ export default function WindDown() {
   useEffect(() => {
     const root = document.documentElement;
 
-    if (!FEATURES.windDownScroll || window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    if (!FEATURES.windDownScroll || !isMotionEnabled()) {
       root.style.setProperty("--wind-down", "0");
       return;
     }

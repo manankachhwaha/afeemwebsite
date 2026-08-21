@@ -53,10 +53,8 @@ html {
   scroll-padding-top: 7rem;
 }
 
-@media (prefers-reduced-motion: reduce) {
-  html {
-    scroll-behavior: auto;
-  }
+html.reduce-motion {
+  scroll-behavior: auto;
 }
 
 /* Consistent, on-brand keyboard focus indication across every interactive element. */
@@ -138,10 +136,8 @@ h1, h2, h3, h4,
   transition: opacity 0.6s ease-out;
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .wind-down-overlay {
-    display: none;
-  }
+html.reduce-motion .wind-down-overlay {
+  display: none;
 }
 
 /* Time-of-day ambient tint (set via data-time-of-day on <html> in
@@ -187,11 +183,9 @@ html {
   background: var(--color-gold-dark);
 }
 
-@media (prefers-reduced-motion: reduce) {
-  * {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
-  }
+html.reduce-motion * {
+  animation-duration: 0.01ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.01ms !important;
+  scroll-behavior: auto !important;
 }
