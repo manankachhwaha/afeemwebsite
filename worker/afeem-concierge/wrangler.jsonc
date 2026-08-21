@@ -1,0 +1,14 @@
+{
+  "$schema": "https://unpkg.com/wrangler/config-schema.json",
+  "name": "afeem-concierge",
+  "main": "src/index.ts",
+  "compatibility_date": "2026-08-20",
+  "observability": {
+    "enabled": true
+  },
+  "vars": {
+    // Comma-separated list of origins allowed to call this Worker.
+    // Update if you add a custom domain (e.g. www.afeem.in).
+    "ALLOWED_ORIGINS": "https://afeem-website.pages.dev,http://localhost:3000"
+  }
+}

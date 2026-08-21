@@ -7,6 +7,7 @@ import Container from "@/components/ui/Container";
 export default function Hero() {
   return (
     <section className="relative overflow-hidden warm-placeholder-dark min-h-[92vh] sm:min-h-[85vh] flex items-end">
+      <div className="ambient-tint" />
       <div className="absolute inset-0 bg-gradient-to-t from-brown via-brown/45 to-transparent" />
       <Container className="relative pb-16 sm:pb-20 pt-36 sm:pt-40">
         <motion.div

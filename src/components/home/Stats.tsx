@@ -2,6 +2,9 @@ import Container from "@/components/ui/Container";
 import Counter from "@/components/motion/Counter";
 import { Reveal } from "@/components/motion";
 
+// "Jodhpur Locations" is real (2 branches: Ratanada, Pal Road). The other
+// three are placeholder figures from initial site-build — not sourced from
+// real business data. Replace with confirmed numbers before launch.
 const stats = [
   { to: 10, suffix: "+", label: "Years of Craft" },
   { to: 5000, suffix: "+", label: "Transformations" },

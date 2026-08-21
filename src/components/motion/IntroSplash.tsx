@@ -3,13 +3,11 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
 import Image from "next/image";
+import { FEATURES } from "@/config/features";
 
 const STORAGE_KEY = "afeem-intro-seen";
 const AUTO_ENTER_MS = 4500;
 const EXIT_DURATION = 0.9;
-
-// Flip to false to disable the intro splash site-wide without removing the code.
-const INTRO_ENABLED = true;
 
 export default function IntroSplash() {
   const [mounted, setMounted] = useState(false);
@@ -32,7 +30,7 @@ export default function IntroSplash() {
     // during static generation) — can't be computed in a lazy useState initializer.
     // eslint-disable-next-line react-hooks/set-state-in-effect
     setMounted(true);
-    if (!INTRO_ENABLED || seen || reduced) return;
+    if (!FEATURES.introSplash || seen || reduced) return;
     setVisible(true);
     sessionStorage.setItem(STORAGE_KEY, "1");
     const autoTimer = setTimeout(handleEnter, AUTO_ENTER_MS);
@@ -91,9 +89,31 @@ export default function IntroSplash() {
                 delay: exiting ? 0 : 0.45,
                 ease: [0.16, 1, 0.3, 1],
               }}
-              className="mt-4"
+              className="relative mt-4"
             >
               <Image src="/afeem-wordmark.png" alt="Afeem" width={300} height={63} priority className="h-9 w-auto sm:h-11" />
+              {/* One-time gold shimmer sweep, masked to the wordmark's own letterforms. */}
+              {!exiting && (
+                <motion.div
+                  aria-hidden
+                  className="pointer-events-none absolute inset-0"
+                  style={{
+                    maskImage: "url(/afeem-wordmark.png)",
+                    WebkitMaskImage: "url(/afeem-wordmark.png)",
+                    maskSize: "contain",
+                    WebkitMaskSize: "contain",
+                    maskRepeat: "no-repeat",
+                    WebkitMaskRepeat: "no-repeat",
+                    maskPosition: "center",
+                    WebkitMaskPosition: "center",
+                    background:
+                      "linear-gradient(100deg, transparent 35%, rgba(255,244,214,0.95) 50%, transparent 65%)",
+                  }}
+                  initial={{ x: "-120%" }}
+                  animate={{ x: "120%" }}
+                  transition={{ duration: 1, delay: 1.15, ease: [0.65, 0, 0.35, 1] }}
+                />
+              )}
             </motion.div>
 
             <motion.div

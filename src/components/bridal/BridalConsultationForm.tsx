@@ -11,7 +11,8 @@ const budgetOptions = ["Under ₹25,000", "₹25,000 – ₹50,000", "₹50,000 
 
 export default function BridalConsultationForm() {
   const [services, setServices] = useState<string[]>([]);
-  const [submitted, setSubmitted] = useState(false);
+  const [status, setStatus] = useState<"idle" | "sent" | "blocked">("idle");
+  const [fallbackLink, setFallbackLink] = useState<string | null>(null);
   const { selectedBranch } = useBranch();
 
   function toggleService(s: string) {
@@ -42,11 +43,16 @@ export default function BridalConsultationForm() {
     const target = branch
       ? branchWhatsappLink(branch, message)
       : `https://wa.me/${site.whatsappNumber}?text=${encodeURIComponent(message)}`;
-    window.open(target, "_blank", "noopener,noreferrer");
-    setSubmitted(true);
+    const win = window.open(target, "_blank", "noopener,noreferrer");
+    if (!win) {
+      setFallbackLink(target);
+      setStatus("blocked");
+      return;
+    }
+    setStatus("sent");
   }
 
-  if (submitted) {
+  if (status === "sent") {
     return (
       <div className="bg-white border border-brown/10 p-10 text-center flex flex-col gap-3">
         <h3 className="font-display text-2xl text-brown">Thank you.</h3>
@@ -54,6 +60,20 @@ export default function BridalConsultationForm() {
           Your consultation request has been sent to our team on WhatsApp. We&rsquo;ll be in touch shortly
           to plan your Afeem Bridal journey.
         </p>
+      </div>
+    );
+  }
+
+  if (status === "blocked" && fallbackLink) {
+    return (
+      <div className="bg-white border border-brown/10 p-10 text-center flex flex-col gap-4">
+        <h3 className="font-display text-2xl text-brown">Almost there.</h3>
+        <p className="text-brown-soft">
+          Your browser blocked the WhatsApp pop-up. Tap below to send your consultation request — it&rsquo;s already filled in.
+        </p>
+        <Button href={fallbackLink} variant="primary" className="self-center">
+          Open WhatsApp
+        </Button>
       </div>
     );
   }

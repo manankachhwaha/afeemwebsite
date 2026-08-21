@@ -12,7 +12,9 @@ export default function WhatsAppButton({ message = defaultWhatsappMessage }: { m
       type="button"
       onClick={() =>
         requestBranch((branch) => {
-          window.open(branchWhatsappLink(branch, message), "_blank", "noopener,noreferrer");
+          const link = branchWhatsappLink(branch, message);
+          const win = window.open(link, "_blank", "noopener,noreferrer");
+          if (!win) window.location.href = link;
         })
       }
       aria-label="Chat with Afeem on WhatsApp"

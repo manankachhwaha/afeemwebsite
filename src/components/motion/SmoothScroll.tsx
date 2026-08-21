@@ -2,16 +2,13 @@
 
 import { useEffect, useRef } from "react";
 import Lenis from "lenis";
-
-// Flip to false to disable momentum-smoothed scroll entirely (falls back to
-// native scrolling everywhere) without removing the code.
-const SMOOTH_SCROLL_ENABLED = true;
+import { FEATURES } from "@/config/features";
 
 export default function SmoothScroll({ children }: { children: React.ReactNode }) {
   const lenisRef = useRef<Lenis | null>(null);
 
   useEffect(() => {
-    if (!SMOOTH_SCROLL_ENABLED) return;
+    if (!FEATURES.smoothScroll) return;
 
     const isReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     // Only smooth scroll for mouse/trackpad users. Touch devices already have

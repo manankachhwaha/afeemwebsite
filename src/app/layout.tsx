@@ -10,8 +10,12 @@ import SmoothScroll from "@/components/motion/SmoothScroll";
 import ScrollProgress from "@/components/motion/ScrollProgress";
 import PageTransition from "@/components/motion/PageTransition";
 import IntroSplash from "@/components/motion/IntroSplash";
+import WindDown from "@/components/motion/WindDown";
+import TimeOfDayPalette from "@/components/motion/TimeOfDayPalette";
+import GoldThread from "@/components/motion/GoldThread";
 import { BranchProvider } from "@/lib/BranchContext";
 import BranchPickerModal from "@/components/branch/BranchPickerModal";
+import ConciergeWidget from "@/components/concierge/ConciergeWidget";
 import { site } from "@/data/site";
 
 const playfair = Playfair_Display({
@@ -83,6 +87,9 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <BranchProvider>
           <SmoothScroll>
             <IntroSplash />
+            <WindDown />
+            <TimeOfDayPalette />
+            <GoldThread />
             <ScrollProgress />
             <Header />
             <main className="flex-1 pb-16 md:pb-0">
@@ -93,6 +100,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
             <InstagramButton />
             <StickyBookBar />
             <BranchPickerModal />
+            <ConciergeWidget />
           </SmoothScroll>
         </BranchProvider>
       </body>

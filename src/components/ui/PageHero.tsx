@@ -13,8 +13,9 @@ export default function PageHero({
   description?: string;
 }) {
   return (
-    <section className="warm-placeholder-dark py-24 md:py-32 overflow-hidden">
-      <Container>
+    <section className="relative warm-placeholder-dark py-24 md:py-32 overflow-hidden">
+      <div className="ambient-tint" />
+      <Container className="relative">
         <div className="max-w-2xl flex flex-col gap-4">
           <motion.span
             initial={{ opacity: 0, y: 10 }}

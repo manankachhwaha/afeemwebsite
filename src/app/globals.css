@@ -123,6 +123,46 @@ h1, h2, h3, h4,
   color: var(--color-brown);
 }
 
+/* Wind-down: a page-wide warmth wash that fades in as the visitor scrolls
+   deeper (driven by --wind-down, 0 → 1, set in WindDown.tsx). Opacity +
+   background only — no layout impact, no per-frame React re-renders.
+   soft-light keeps it a gentle mood shift rather than an obvious filter. */
+.wind-down-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 5;
+  pointer-events: none;
+  background: radial-gradient(ellipse at 50% 20%, rgba(208, 144, 48, 0.22), transparent 65%);
+  mix-blend-mode: soft-light;
+  opacity: var(--wind-down, 0);
+  transition: opacity 0.6s ease-out;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .wind-down-overlay {
+    display: none;
+  }
+}
+
+/* Time-of-day ambient tint (set via data-time-of-day on <html> in
+   TimeOfDayPalette.tsx). Only ever used as a decorative background wash —
+   never applied to text colour — so contrast stays exactly as designed. */
+:root {
+  --ambient-color: rgba(208, 144, 48, 0.2); /* afternoon — warm gold (default) */
+}
+:root[data-time-of-day="morning"] { --ambient-color: rgba(240, 223, 168, 0.24); }
+:root[data-time-of-day="afternoon"] { --ambient-color: rgba(208, 144, 48, 0.2); }
+:root[data-time-of-day="evening"] { --ambient-color: rgba(168, 112, 30, 0.28); }
+:root[data-time-of-day="night"] { --ambient-color: rgba(20, 13, 8, 0.4); }
+
+.ambient-tint {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(ellipse at 30% 15%, var(--ambient-color), transparent 65%);
+  transition: background 1.2s ease;
+}
+
 /* Thin gold scrollbar for a considered, premium feel */
 html {
   scrollbar-width: thin;

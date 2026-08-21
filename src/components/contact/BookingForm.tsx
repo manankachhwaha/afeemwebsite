@@ -8,7 +8,8 @@ import { site } from "@/data/site";
 import { useBranch } from "@/lib/BranchContext";
 
 export default function BookingForm() {
-  const [submitted, setSubmitted] = useState(false);
+  const [status, setStatus] = useState<"idle" | "sent" | "blocked">("idle");
+  const [fallbackLink, setFallbackLink] = useState<string | null>(null);
   const { selectedBranch } = useBranch();
 
   function handleSubmit(e: FormEvent<HTMLFormElement>) {
@@ -33,17 +34,37 @@ export default function BookingForm() {
     const target = branch
       ? branchWhatsappLink(branch, message)
       : `https://wa.me/${site.whatsappNumber}?text=${encodeURIComponent(message)}`;
-    window.open(target, "_blank", "noopener,noreferrer");
-    setSubmitted(true);
+    const win = window.open(target, "_blank", "noopener,noreferrer");
+    if (!win) {
+      // Popup blocked — don't claim success, give the visitor a real link to finish.
+      setFallbackLink(target);
+      setStatus("blocked");
+      return;
+    }
+    setStatus("sent");
   }
 
-  if (submitted) {
+  if (status === "sent") {
     return (
       <div className="bg-white border border-brown/10 p-10 text-center flex flex-col gap-3">
         <h3 className="font-display text-2xl text-brown">Request sent.</h3>
         <p className="text-brown-soft">
           Your booking request has been sent to our team on WhatsApp — we&rsquo;ll confirm your slot shortly.
         </p>
+      </div>
+    );
+  }
+
+  if (status === "blocked" && fallbackLink) {
+    return (
+      <div className="bg-white border border-brown/10 p-10 text-center flex flex-col gap-4">
+        <h3 className="font-display text-2xl text-brown">Almost there.</h3>
+        <p className="text-brown-soft">
+          Your browser blocked the WhatsApp pop-up. Tap below to send your request — it&rsquo;s already filled in.
+        </p>
+        <Button href={fallbackLink} variant="primary" className="self-center">
+          Open WhatsApp
+        </Button>
       </div>
     );
   }
@@ -64,6 +85,7 @@ export default function BookingForm() {
           <select
             id="branch"
             name="branch"
+            required
             key={selectedBranch?.slug ?? "none"}
             defaultValue={selectedBranch?.slug ?? ""}
             className="w-full border border-brown/20 bg-cream px-4 py-3 text-sm focus:outline-none focus:border-gold"
@@ -76,7 +98,7 @@ export default function BookingForm() {
         </div>
         <div>
           <label htmlFor="service" className="text-sm font-medium text-brown mb-2 block">Service</label>
-          <select id="service" name="service" defaultValue="" className="w-full border border-brown/20 bg-cream px-4 py-3 text-sm focus:outline-none focus:border-gold">
+          <select id="service" name="service" required defaultValue="" className="w-full border border-brown/20 bg-cream px-4 py-3 text-sm focus:outline-none focus:border-gold">
             <option value="" disabled>Select service</option>
             {serviceCategories.map((c) => (
               <option key={c.slug} value={c.name}>{c.name}</option>
