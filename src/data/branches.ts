@@ -8,8 +8,7 @@ export type Branch = {
   phoneHref: string;
   /** Full digits incl. country code, no symbols — e.g. "916378986584". */
   whatsappNumber: string;
-  /** True until the real WhatsApp Business number is confirmed (currently assumed same as phone). */
-  whatsappIsPlaceholder: boolean;
+  email: string;
   hours: string;
   hoursIsPlaceholder: boolean;
   googleRating: number;
@@ -17,7 +16,6 @@ export type Branch = {
   googleMapsSearchUrl: string;
   mapEmbedQuery: string;
   instagram: string;
-  instagramIsPlaceholder: boolean;
   services: string[];
   hasSchool: boolean;
 };
@@ -27,12 +25,12 @@ export const branches: Branch[] = [
     slug: "ratanada",
     name: "Afeem — Ratanada",
     shortName: "Ratanada",
-    area: "Ratanada / Hanwant Nagar",
+    area: "Ratanada / Hanwant Nagar (Circuit House)",
     address: "Circuit House Rd, opposite LIC, near Petrol Pumps, Hanwant Nagar, Ratanada, Jodhpur, Rajasthan 342001",
     phone: "063789 86584",
     phoneHref: "tel:+916378986584",
     whatsappNumber: "916378986584",
-    whatsappIsPlaceholder: true,
+    email: "afeem.jodhpur@gmail.com",
     hours: "Open until 9:00 PM",
     hoursIsPlaceholder: true,
     googleRating: 4.7,
@@ -41,8 +39,7 @@ export const branches: Branch[] = [
       "https://www.google.com/maps/search/?api=1&query=" +
       encodeURIComponent("Afeem Ratanada Jodhpur"),
     mapEmbedQuery: "Circuit House Rd, opposite LIC, Hanwant Nagar, Ratanada, Jodhpur",
-    instagram: "https://instagram.com/afeem",
-    instagramIsPlaceholder: true,
+    instagram: "https://www.instagram.com/afeemspaandsalon",
     services: ["Hair", "Skin", "Spa & Wellness", "Makeup", "Nails", "Bridal"],
     hasSchool: false,
   },
@@ -55,7 +52,7 @@ export const branches: Branch[] = [
     phone: "070146 32226",
     phoneHref: "tel:+917014632226",
     whatsappNumber: "917014632226",
-    whatsappIsPlaceholder: true,
+    email: "afeemspaandsaloon@gmail.com",
     hours: "Open until 9:00 PM",
     hoursIsPlaceholder: true,
     googleRating: 4.7,
@@ -64,8 +61,7 @@ export const branches: Branch[] = [
       "https://www.google.com/maps/search/?api=1&query=" +
       encodeURIComponent("Afeem Pal Road Jodhpur"),
     mapEmbedQuery: "Main Pal Rd, near N S Garden, Jodhpur",
-    instagram: "https://instagram.com/afeem",
-    instagramIsPlaceholder: true,
+    instagram: "https://www.instagram.com/afeemspaandsalon",
     services: ["Hair", "Skin", "Spa & Wellness", "Makeup", "Nails", "Bridal"],
     hasSchool: false,
   },

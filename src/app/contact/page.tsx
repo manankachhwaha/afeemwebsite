@@ -61,7 +61,7 @@ export default function ContactPage() {
             </RevealItem>
             <RevealItem>
               <p className="text-xs uppercase tracking-wide text-brown-mute mb-1">Instagram</p>
-              <a href={site.instagram} target="_blank" rel="noreferrer" className="text-gold-dark font-medium">@afeem</a>
+              <a href={site.instagram} target="_blank" rel="noreferrer" className="text-gold-dark font-medium">@afeemspaandsalon</a>
             </RevealItem>
           </RevealGroup>
         </Container>

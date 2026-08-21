@@ -50,6 +50,7 @@ export default async function BranchPage({
       addressCountry: "IN",
     },
     telephone: b.phone,
+    email: b.email,
     aggregateRating: {
       "@type": "AggregateRating",
       ratingValue: b.googleRating,
@@ -99,6 +100,10 @@ export default async function BranchPage({
                   {b.hoursIsPlaceholder && <span className="text-brown-mute"> (opening time to be confirmed)</span>}
                 </p>
               </div>
+              <div>
+                <p className="text-xs uppercase tracking-wide text-brown-mute">Email</p>
+                <a href={`mailto:${b.email}`} className="text-gold-dark font-medium text-sm">{b.email}</a>
+              </div>
             </div>
 
             <div>
@@ -120,7 +125,7 @@ export default async function BranchPage({
               </Button>
             </div>
             <a href={b.instagram} target="_blank" rel="noreferrer" className="text-sm text-gold-dark hover:underline">
-              @afeem on Instagram{b.instagramIsPlaceholder ? " (branch handle to be confirmed)" : ""}
+              @afeemspaandsalon on Instagram
             </a>
           </Reveal>
         </Container>

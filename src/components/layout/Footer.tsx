@@ -58,12 +58,12 @@ export default function Footer() {
                 <div key={b.slug} className="text-sm text-white/70 flex flex-col gap-0.5">
                   <span className="text-yellow-warm text-xs uppercase tracking-wide">{b.shortName}</span>
                   <a href={b.phoneHref} className="hover:text-gold-light">{b.phone}</a>
-                  <a href={b.instagram} target="_blank" rel="noreferrer" className="hover:text-gold-light">
-                    Instagram{b.instagramIsPlaceholder ? " (TBC)" : ""}
-                  </a>
+                  <a href={`mailto:${b.email}`} className="hover:text-gold-light">{b.email}</a>
                 </div>
               ))}
-              <a href={`mailto:${site.email}`} className="text-sm text-white/70 hover:text-gold-light">{site.email}</a>
+              <a href={site.instagram} target="_blank" rel="noreferrer" className="text-sm text-white/70 hover:text-gold-light">
+                @afeemspaandsalon on Instagram
+              </a>
             </div>
           </div>
           {columns.map((col) => (

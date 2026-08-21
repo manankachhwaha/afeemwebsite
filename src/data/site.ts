@@ -11,8 +11,9 @@ export const site = {
   phone: "063789 86584",
   phoneHref: "tel:+916378986584",
   whatsappNumber: "916378986584",
-  email: "hello@afeem.in",
-  instagram: "https://instagram.com/afeem",
+  // Defaults to the Ratanada branch inbox until a shared front-desk address exists.
+  email: "afeem.jodhpur@gmail.com",
+  instagram: "https://www.instagram.com/afeemspaandsalon",
   url: "https://afeem-website.pages.dev",
 };
 

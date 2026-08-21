@@ -10,7 +10,7 @@ export default function InstagramFeed() {
         <Reveal className="flex items-end justify-between">
           <div className="flex flex-col gap-2">
             <span className="text-xs uppercase tracking-[0.25em] text-gold-dark">Follow Along</span>
-            <h2 className="font-display text-2xl sm:text-3xl text-brown">@afeem on Instagram</h2>
+            <h2 className="font-display text-2xl sm:text-3xl text-brown">@afeemspaandsalon on Instagram</h2>
           </div>
           <a href={site.instagram} target="_blank" rel="noreferrer" className="text-sm text-gold-dark hover:underline hidden sm:block">
             Follow us
