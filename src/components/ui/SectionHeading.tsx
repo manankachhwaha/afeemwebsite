@@ -1,3 +1,8 @@
+"use client";
+
+import { motion } from "motion/react";
+import SplitReveal from "@/components/motion/SplitReveal";
+
 export default function SectionHeading({
   eyebrow,
   title,
@@ -28,14 +33,20 @@ export default function SectionHeading({
           light ? "text-white" : "text-brown"
         }`}
       >
-        {title}
+        <SplitReveal text={title} />
       </h2>
       {description && (
         <p className={`text-base sm:text-lg leading-relaxed ${light ? "text-white/80" : "text-brown-soft"}`}>
           {description}
         </p>
       )}
-      <div className="gold-rule" />
+      <motion.div
+        className={`gold-rule ${align === "center" ? "origin-center" : "origin-left"}`}
+        initial={{ scaleX: 0 }}
+        whileInView={{ scaleX: 1 }}
+        viewport={{ once: true, margin: "-80px" }}
+        transition={{ duration: 0.7, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
+      />
     </div>
   );
 }

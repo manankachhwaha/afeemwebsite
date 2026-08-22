@@ -7,6 +7,7 @@ import Visual from "@/components/ui/Visual";
 import Button from "@/components/ui/Button";
 import { serviceCategories, packages } from "@/data/services";
 import { Reveal, RevealGroup, RevealItem, ImageReveal } from "@/components/motion";
+import TiltCard from "@/components/motion/TiltCard";
 
 export const metadata: Metadata = {
   title: "Salon & Spa in Jodhpur",
@@ -65,26 +66,25 @@ export default function SalonSpaPage() {
           </Reveal>
           <RevealGroup className="grid sm:grid-cols-3 gap-6" stagger={0.1}>
             {packages.map((p) => (
-              <RevealItem
-                key={p.slug}
-                className="bg-white p-8 flex flex-col gap-4 border border-brown/10 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_24px_50px_-28px_rgba(58,40,24,0.35)] hover:border-gold/40"
-              >
-                <h3 className="font-display text-xl text-brown">{p.name}</h3>
-                <p className="text-sm text-brown-soft leading-relaxed">{p.description}</p>
-                <ul className="text-sm text-brown-soft flex flex-col gap-1">
-                  {p.includes.map((i) => (
-                    <li key={i} className="flex gap-2">
-                      <span className="text-gold-dark">·</span>{i}
-                    </li>
-                  ))}
-                </ul>
-                <div className="flex items-center justify-between mt-auto pt-3 border-t border-brown/10">
-                  <span className="text-gold-dark font-medium">{p.price}</span>
-                  <span className="text-xs text-brown-mute">{p.duration}</span>
-                </div>
-                <Button href="/contact#book" variant="secondary" className="mt-2">
-                  Book Package
-                </Button>
+              <RevealItem key={p.slug}>
+                <TiltCard className="bg-white p-8 flex flex-col gap-4 border border-brown/10 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_24px_50px_-28px_rgba(58,40,24,0.35)] hover:border-gold/40">
+                  <h3 className="font-display text-xl text-brown">{p.name}</h3>
+                  <p className="text-sm text-brown-soft leading-relaxed">{p.description}</p>
+                  <ul className="text-sm text-brown-soft flex flex-col gap-1">
+                    {p.includes.map((i) => (
+                      <li key={i} className="flex gap-2">
+                        <span className="text-gold-dark">·</span>{i}
+                      </li>
+                    ))}
+                  </ul>
+                  <div className="flex items-center justify-between mt-auto pt-3 border-t border-brown/10">
+                    <span className="text-gold-dark font-medium">{p.price}</span>
+                    <span className="text-xs text-brown-mute">{p.duration}</span>
+                  </div>
+                  <Button href="/contact#book" variant="secondary" className="mt-2">
+                    Book Package
+                  </Button>
+                </TiltCard>
               </RevealItem>
             ))}
           </RevealGroup>

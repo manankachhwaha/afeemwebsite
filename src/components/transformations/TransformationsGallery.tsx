@@ -4,6 +4,7 @@ import { useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
 import Visual from "@/components/ui/Visual";
 import Button from "@/components/ui/Button";
+import TiltCard from "@/components/motion/TiltCard";
 import { transformations, transformationFilters } from "@/data/transformations";
 import { whatsappLink } from "@/data/site";
 
@@ -45,23 +46,24 @@ export default function TransformationsGallery() {
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.94 }}
               transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-              className="group flex flex-col gap-3"
             >
-              <div className="grid grid-cols-2 gap-1">
-                <Visual label="Before" ratio="aspect-[3/4]" className="transition-transform duration-500 ease-out group-hover:scale-105" />
-                <Visual label="After" ratio="aspect-[3/4]" className="transition-transform duration-500 ease-out group-hover:scale-105" />
-              </div>
-              <div>
-                <h3 className="font-display text-lg text-brown">{t.title}</h3>
-                <p className="text-sm text-brown-soft">{t.service} · {t.expert} · Afeem {t.branch}</p>
-              </div>
-              <Button
-                href={whatsappLink(`Hi Afeem, I'd like to book a look similar to "${t.title}".`)}
-                variant="secondary"
-                className="self-start"
-              >
-                Book This Look
-              </Button>
+              <TiltCard className="group flex flex-col gap-3">
+                <div className="grid grid-cols-2 gap-1">
+                  <Visual label="Before" ratio="aspect-[3/4]" className="transition-transform duration-500 ease-out group-hover:scale-105" />
+                  <Visual label="After" ratio="aspect-[3/4]" className="transition-transform duration-500 ease-out group-hover:scale-105" />
+                </div>
+                <div>
+                  <h3 className="font-display text-lg text-brown">{t.title}</h3>
+                  <p className="text-sm text-brown-soft">{t.service} · {t.expert} · Afeem {t.branch}</p>
+                </div>
+                <Button
+                  href={whatsappLink(`Hi Afeem, I'd like to book a look similar to "${t.title}".`)}
+                  variant="secondary"
+                  className="self-start"
+                >
+                  Book This Look
+                </Button>
+              </TiltCard>
             </motion.div>
           ))}
         </AnimatePresence>

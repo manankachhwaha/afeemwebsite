@@ -4,6 +4,7 @@ import { motion } from "motion/react";
 import Button from "@/components/ui/Button";
 import Container from "@/components/ui/Container";
 import GoldParticles from "@/components/motion/GoldParticles";
+import SplitReveal from "@/components/motion/SplitReveal";
 
 export default function Hero() {
   return (
@@ -22,7 +23,7 @@ export default function Hero() {
             Afeem · Jodhpur
           </span>
           <h1 className="font-display text-white text-[2.5rem] leading-[1.08] sm:text-5xl md:text-6xl sm:leading-[1.1]">
-            Where Beauty Becomes an Experience.
+            <SplitReveal text="Where Beauty Becomes an Experience." delay={0.15} />
           </h1>
           <p className="text-white/80 text-base sm:text-lg max-w-lg leading-relaxed">
             Step into Afeem — a destination for beauty, wellness and professional beauty education.
