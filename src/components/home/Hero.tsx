@@ -10,7 +10,7 @@ export default function Hero() {
     <section className="relative overflow-hidden warm-placeholder-dark min-h-[92vh] sm:min-h-[85vh] flex items-end">
       <div className="ambient-tint" />
       <GoldParticles />
-      <div className="absolute inset-0 bg-gradient-to-t from-brown via-brown/45 to-transparent" />
+      <div className="absolute inset-0 bg-gradient-to-t from-brown via-brown/45 to-transparent pointer-events-none" />
       <Container className="relative pb-16 sm:pb-20 pt-36 sm:pt-40">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
