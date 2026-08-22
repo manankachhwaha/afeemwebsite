@@ -9,6 +9,10 @@ import { isMotionEnabled } from "@/lib/motionPreference";
 const STORAGE_KEY = "afeem-intro-seen";
 const AUTO_ENTER_MS = 4500;
 const EXIT_DURATION = 0.9;
+// Hard fallback: forces the splash gone even if the normal exit chain
+// (handleEnter -> setExiting -> setTimeout -> setVisible) never completes
+// for some unforeseen reason. The homepage must always become reachable.
+const FAILSAFE_MS = AUTO_ENTER_MS + EXIT_DURATION * 1000 + 3000;
 
 export default function IntroSplash() {
   const [mounted, setMounted] = useState(false);
@@ -25,17 +29,38 @@ export default function IntroSplash() {
   }, []);
 
   useEffect(() => {
-    const seen = sessionStorage.getItem(STORAGE_KEY);
     // One-time client-only check (needs `window`/`sessionStorage`, unavailable
     // during static generation) — can't be computed in a lazy useState initializer.
     // eslint-disable-next-line react-hooks/set-state-in-effect
     setMounted(true);
-    if (!FEATURES.introSplash || seen || !isMotionEnabled()) return;
+
+    // Any failure here (sessionStorage blocked in a locked-down privacy mode,
+    // an unexpected exception, etc.) must never leave the homepage
+    // unreachable — treat it the same as "skip the splash".
+    let seen: string | null = null;
+    let motionOn = true;
+    try {
+      seen = sessionStorage.getItem(STORAGE_KEY);
+      motionOn = isMotionEnabled();
+    } catch {
+      return;
+    }
+    if (!FEATURES.introSplash || seen || !motionOn) return;
+
     setVisible(true);
-    sessionStorage.setItem(STORAGE_KEY, "1");
+    try {
+      sessionStorage.setItem(STORAGE_KEY, "1");
+    } catch {
+      // Non-fatal: worst case the splash can show again on the next
+      // in-session navigation, which is harmless.
+    }
     const autoTimer = setTimeout(handleEnter, AUTO_ENTER_MS);
+    // Independent hard fallback — fires regardless of whether handleEnter's
+    // own exit chain ran, so the splash can never get stuck on screen.
+    const failsafeTimer = setTimeout(() => setVisible(false), FAILSAFE_MS);
     return () => {
       clearTimeout(autoTimer);
+      clearTimeout(failsafeTimer);
       if (exitTimerRef.current) clearTimeout(exitTimerRef.current);
     };
   }, [handleEnter]);
@@ -54,6 +79,7 @@ export default function IntroSplash() {
       {visible && (
         <motion.div
           className="fixed inset-0 z-[100] flex flex-col items-center justify-center warm-placeholder-dark"
+          style={{ pointerEvents: exiting ? "none" : "auto" }}
           initial={{ opacity: 1 }}
           animate={{ opacity: exiting ? 0 : 1 }}
           transition={{ duration: EXIT_DURATION, ease: [0.65, 0, 0.35, 1], delay: exiting ? 0.15 : 0 }}
@@ -89,7 +115,7 @@ export default function IntroSplash() {
                 delay: exiting ? 0 : 0.45,
                 ease: [0.16, 1, 0.3, 1],
               }}
-              className="relative mt-4"
+              className="relative mt-4 overflow-hidden"
             >
               <Image src="/afeem-wordmark.png" alt="Afeem" width={300} height={63} priority className="h-9 w-auto sm:h-11" />
               {/* One-time gold shimmer sweep, masked to the wordmark's own letterforms. */}
