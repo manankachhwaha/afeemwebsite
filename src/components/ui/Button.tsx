@@ -31,6 +31,17 @@ export default function Button({
   const classes = `inline-flex items-center justify-center gap-2 px-7 py-3 text-sm font-medium tracking-wide uppercase transition-[color,background-color,border-color,transform] duration-200 active:scale-[0.97] ${variants[variant]} ${className}`;
 
   if (href) {
+    // External destinations (WhatsApp, etc.) should open in a new tab so a
+    // click doesn't navigate the visitor away from the site entirely.
+    // Internal routes/anchors go through Link for client-side navigation.
+    const isExternal = /^https?:\/\//.test(href);
+    if (isExternal) {
+      return (
+        <a href={href} onClick={onClick} target="_blank" rel="noopener noreferrer" className={classes}>
+          {children}
+        </a>
+      );
+    }
     return (
       <Link href={href} onClick={onClick} className={classes}>
         {children}
