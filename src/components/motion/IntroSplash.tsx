@@ -5,6 +5,8 @@ import { AnimatePresence, motion } from "motion/react";
 import Image from "next/image";
 import { FEATURES } from "@/config/features";
 import { isMotionEnabled } from "@/lib/motionPreference";
+import AmbientGradient from "@/components/motion/AmbientGradient";
+import GoldParticles from "@/components/motion/GoldParticles";
 
 const STORAGE_KEY = "afeem-intro-seen";
 const AUTO_ENTER_MS = 4500;
@@ -78,18 +80,26 @@ export default function IntroSplash() {
     <AnimatePresence>
       {visible && (
         <motion.div
-          className="fixed inset-0 z-[100] flex flex-col items-center justify-center warm-placeholder-dark"
+          className="fixed inset-0 z-[100] flex flex-col items-center justify-center bg-brown overflow-hidden"
           style={{ pointerEvents: exiting ? "none" : "auto" }}
           initial={{ opacity: 1 }}
           animate={{ opacity: exiting ? 0 : 1 }}
           transition={{ duration: EXIT_DURATION, ease: [0.65, 0, 0.35, 1], delay: exiting ? 0.15 : 0 }}
           exit={{ opacity: 0, transition: { duration: 0.2 } }}
         >
+          {/* Ambient atmosphere behind the logo — reuses the site's own
+              background layers (scoped to the splash's own bounds) rather
+              than duplicating the gradient/particle effect. Tune drift
+              speed in globals.css (.ambient-gradient) and dust density in
+              GoldParticles.tsx's tuning constants at the top of that file. */}
+          <AmbientGradient fixed={false} />
+          <GoldParticles />
+
           <button
             type="button"
             onClick={handleEnter}
             aria-label="Enter Afeem"
-            className="flex flex-col items-center focus:outline-none focus-visible:opacity-80"
+            className="relative flex flex-col items-center focus:outline-none focus-visible:opacity-80"
           >
             <motion.div
               initial={{ opacity: 0, scale: 0.75, rotate: -6 }}

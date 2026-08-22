@@ -34,7 +34,12 @@ export default async function CategoryPage({
 
   return (
     <>
-      <PageHero eyebrow="Afeem Spa & Salon" title={cat.name} description={cat.intro} />
+      <PageHero
+        eyebrow="Afeem Spa & Salon"
+        title={cat.name}
+        description={cat.intro}
+        particles={cat.slug === "spa-wellness"}
+      />
       <section className="py-16 md:py-24">
         <Container className="flex flex-col gap-10">
           <RevealGroup className="grid sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-12" stagger={0.08}>

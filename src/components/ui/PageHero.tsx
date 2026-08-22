@@ -2,19 +2,24 @@
 
 import { motion } from "motion/react";
 import Container from "@/components/ui/Container";
+import GoldParticles from "@/components/motion/GoldParticles";
 
 export default function PageHero({
   eyebrow,
   title,
   description,
+  particles = false,
 }: {
   eyebrow: string;
   title: string;
   description?: string;
+  /** Gold dust layer — only meant for the spa & wellness page per the brand's atmospheric background spec. */
+  particles?: boolean;
 }) {
   return (
     <section className="relative warm-placeholder-dark py-24 md:py-32 overflow-hidden">
       <div className="ambient-tint" />
+      {particles && <GoldParticles />}
       <Container className="relative">
         <div className="max-w-2xl flex flex-col gap-4">
           <motion.span

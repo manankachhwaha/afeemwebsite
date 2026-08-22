@@ -13,6 +13,8 @@ import IntroSplash from "@/components/motion/IntroSplash";
 import WindDown from "@/components/motion/WindDown";
 import TimeOfDayPalette from "@/components/motion/TimeOfDayPalette";
 import GoldThread from "@/components/motion/GoldThread";
+import AmbientGradient from "@/components/motion/AmbientGradient";
+import FilmGrain from "@/components/motion/FilmGrain";
 import { BranchProvider } from "@/lib/BranchContext";
 import { MOTION_INIT_SCRIPT } from "@/lib/motionPreference";
 import BranchPickerModal from "@/components/branch/BranchPickerModal";
@@ -88,6 +90,8 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         />
         <BranchProvider>
           <SmoothScroll>
+            <AmbientGradient />
+            <FilmGrain />
             <IntroSplash />
             <WindDown />
             <TimeOfDayPalette />

@@ -159,6 +159,120 @@ html.reduce-motion .wind-down-overlay {
   transition: background 1.2s ease;
 }
 
+/* ------------------------------------------------------------------ */
+/* Atmospheric background system: three independent, toggleable layers */
+/* ------------------------------------------------------------------ */
+
+/* Layer 1 — slow warm gradient. Site-wide base (AmbientGradient.tsx,
+   fixed) and reused, scoped, inside the intro splash (fixed={false} ->
+   absolute within the splash's own bounds) rather than duplicating the
+   effect. Colour stops swap per data-time-of-day bucket; the drift speed
+   itself eases (~35s slower) as --wind-down climbs toward 1, so the
+   whole page settles further the deeper a visitor scrolls. Pure
+   background-position animation — GPU-composited, no layout cost — and
+   it freezes for free under the html.reduce-motion kill switch below
+   (background-position simply holds at its resting 50% 50%).
+   Tune drift speed here: the two `70s` / `35s` numbers in
+   animation-duration below. */
+:root {
+  --grad-a: #241608;
+  --grad-b: #4a3320;
+  --grad-c: #a8701e;
+}
+:root[data-time-of-day="morning"] { --grad-a: #4a3d28; --grad-b: #8a6a3a; --grad-c: #e3ac5c; }
+:root[data-time-of-day="afternoon"] { --grad-a: #2e2010; --grad-b: #6b4a24; --grad-c: #d09030; }
+:root[data-time-of-day="evening"] { --grad-a: #26160a; --grad-b: #5c3c1e; --grad-c: #a8701e; }
+:root[data-time-of-day="night"] { --grad-a: #140d06; --grad-b: #2a1c10; --grad-c: #55391f; }
+
+.ambient-gradient {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(
+    120deg,
+    var(--grad-a) 0%,
+    var(--grad-b) 35%,
+    var(--grad-c) 60%,
+    var(--grad-b) 85%,
+    var(--grad-a) 100%
+  );
+  background-size: 260% 260%;
+  background-position: 50% 50%;
+  animation: ambient-drift calc(70s - var(--wind-down, 0) * 35s) ease-in-out infinite alternate;
+  transition: background 1.2s ease;
+}
+
+.ambient-gradient--fixed {
+  position: fixed;
+  /* Negative z-index (not 0) is deliberate: it keeps this layer in the
+     painting step that runs *before* ordinary in-flow content, so it
+     stays behind every section regardless of whether that section itself
+     happens to be positioned — it can't accidentally paint over content
+     the way a z-index:0 fixed layer could for any non-positioned section. */
+  z-index: -1;
+  /* Most sections on this site are plain cream with dark text and have no
+     background of their own — they rely on body's cream showing through.
+     A fully-opaque gradient here would replace that cream everywhere and
+     cut text contrast. Low opacity keeps it a faint warm wash on top of
+     the cream base instead: felt, not obvious. (The splash reuses this
+     same class via fixed={false} at full opacity — it's a dark full-bleed
+     surface designed for it, so it doesn't get this override.) */
+  opacity: 0.16;
+}
+
+@keyframes ambient-drift {
+  0% { background-position: 15% 25%; }
+  50% { background-position: 85% 70%; }
+  100% { background-position: 30% 85%; }
+}
+
+/* Layer 2 — faint site-wide film-grain texture. isolation: isolate is
+   required here — without it this blend-mode layer can bleed through
+   later fixed/full-screen elements (this happened once with the intro
+   splash; same fix pattern as .warm-placeholder above). */
+.film-grain {
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  isolation: isolate;
+  opacity: 0.05;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='120' height='120'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix type='saturate' values='0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)' opacity='0.4'/></svg>");
+  background-size: 160px 160px;
+}
+
+/* Layer 3 — slow gold dust. Dropped into any `relative`-positioned
+   section (GoldParticles.tsx generates the actual particle count/timing
+   in JS — that's the one place to tune density; see the constants at the
+   top of that file). Pure transform/opacity keyframe, GPU-composited. */
+.gold-particles {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.gold-particle {
+  position: absolute;
+  border-radius: 999px;
+  background: radial-gradient(circle, rgba(255, 224, 158, 0.95), rgba(208, 144, 48, 0.55) 60%, transparent 75%);
+  box-shadow: 0 0 6px rgba(208, 144, 48, 0.5);
+  animation: gold-particle-drift linear infinite;
+  will-change: transform, opacity;
+}
+
+@keyframes gold-particle-drift {
+  0% { transform: translate3d(0, 0, 0) scale(0.8); opacity: 0; }
+  12% { opacity: var(--particle-opacity, 0.5); }
+  88% { opacity: var(--particle-opacity, 0.5); }
+  100% { transform: translate3d(var(--drift-x, 12px), -140px, 0) scale(1); opacity: 0; }
+}
+
+html.reduce-motion .gold-particles {
+  display: none;
+}
+
 /* Thin gold scrollbar for a considered, premium feel */
 html {
   scrollbar-width: thin;

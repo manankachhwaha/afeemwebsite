@@ -25,4 +25,10 @@ export const FEATURES = {
   concierge: true,
   /** Mouse/trackpad momentum smooth-scroll (Lenis). Touch always uses native scroll. */
   smoothScroll: true,
+  /** Slow drifting warm gradient — site-wide ambient base (also reused, scoped, inside the intro splash). */
+  ambientGradient: true,
+  /** Faint site-wide film-grain texture. */
+  filmGrain: true,
+  /** Slow floating gold dust — hero, spa & wellness, and the intro splash only. */
+  goldParticles: true,
 } as const;
