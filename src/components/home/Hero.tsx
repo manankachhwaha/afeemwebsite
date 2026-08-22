@@ -31,7 +31,7 @@ export default function Hero() {
             <Button href="/contact#book" variant="outline-light">
               Book an Experience
             </Button>
-            <Button href="/about" variant="ghost" className="text-white hover:text-yellow-warm">
+            <Button href="#start-here" variant="ghost" className="text-white hover:text-yellow-warm">
               Explore Afeem
             </Button>
           </div>

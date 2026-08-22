@@ -15,7 +15,7 @@ const tiles = [
 
 export default function WhatBringsYou() {
   return (
-    <section className="py-16 md:py-24">
+    <section id="start-here" className="py-16 md:py-24 scroll-mt-20">
       <Container>
         <Reveal className="flex flex-col gap-2 mb-10 md:mb-14">
           <span className="text-xs uppercase tracking-[0.25em] text-gold-dark">Start here</span>
