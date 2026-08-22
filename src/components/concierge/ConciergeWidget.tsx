@@ -80,7 +80,7 @@ export default function ConciergeWidget() {
         onClick={() => setOpen((v) => !v)}
         aria-label={open ? "Close Ask Afeem" : "Open Ask Afeem concierge"}
         whileTap={{ scale: 0.95 }}
-        className="fixed bottom-24 left-5 md:bottom-6 md:left-6 z-40 flex h-14 items-center gap-2 rounded-full bg-brown text-white shadow-lg px-4 hover:bg-gold hover:text-brown transition-colors"
+        className="fixed bottom-24 right-5 md:bottom-6 md:right-6 z-40 flex h-14 items-center gap-2 rounded-full bg-gold text-brown shadow-lg shadow-brown/30 px-4 hover:bg-gold-dark hover:text-white transition-colors"
       >
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" className="h-6 w-6 shrink-0">
           <path d="M4 5h16v10H8l-4 4V5Z" strokeLinejoin="round" />
@@ -100,7 +100,7 @@ export default function ConciergeWidget() {
             transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
             className="fixed z-40 bg-cream border border-gold/30 shadow-2xl flex flex-col
                        inset-x-4 bottom-24 top-24
-                       sm:inset-x-auto sm:top-auto sm:left-5 sm:bottom-40 sm:w-[22rem] sm:h-[30rem] md:left-6"
+                       sm:inset-x-auto sm:top-auto sm:right-5 sm:bottom-40 sm:w-[22rem] sm:h-[30rem] md:right-6"
           >
             <div className="flex items-center justify-between px-5 py-4 border-b border-brown/10 bg-brown text-white">
               <div>

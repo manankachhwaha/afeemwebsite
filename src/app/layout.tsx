@@ -3,8 +3,6 @@ import { Playfair_Display, Inter } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
-import WhatsAppButton from "@/components/layout/WhatsAppButton";
-import InstagramButton from "@/components/layout/InstagramButton";
 import StickyBookBar from "@/components/layout/StickyBookBar";
 import SmoothScroll from "@/components/motion/SmoothScroll";
 import ScrollProgress from "@/components/motion/ScrollProgress";
@@ -102,8 +100,6 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
               <PageTransition>{children}</PageTransition>
             </main>
             <Footer />
-            <WhatsAppButton />
-            <InstagramButton />
             <StickyBookBar />
             <BranchPickerModal />
             <ConciergeWidget />

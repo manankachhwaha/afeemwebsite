@@ -7,8 +7,6 @@ import { motion, useMotionValueEvent, useScroll } from "motion/react";
 import Container from "@/components/ui/Container";
 import Button from "@/components/ui/Button";
 import { whatsappLink } from "@/data/site";
-import { branches } from "@/data/branches";
-import { useBranch } from "@/lib/BranchContext";
 
 const salonLinks = [
   { href: "/salon-spa/hair", label: "Hair" },
@@ -44,34 +42,6 @@ const navItems = [
 ];
 
 const mobileNavItems = [{ href: "/", label: "Home" }, ...navItems];
-
-function BranchSwitcher({ size = "sm" }: { size?: "sm" | "lg" }) {
-  const { selectedBranch, choose } = useBranch();
-  return (
-    <div className="flex items-center gap-1.5">
-      {branches.map((b) => {
-        const active = selectedBranch?.slug === b.slug;
-        return (
-          <button
-            key={b.slug}
-            type="button"
-            onClick={() => choose(b.slug)}
-            aria-pressed={active}
-            className={`uppercase tracking-wide border transition-colors active:scale-[0.97] ${
-              size === "sm" ? "px-2.5 py-1 text-[10px]" : "px-4 py-2 text-xs flex-1 text-center"
-            } ${
-              active
-                ? "bg-gold text-brown border-gold"
-                : "border-gold/40 text-gold-dark hover:border-gold"
-            }`}
-          >
-            {b.shortName}
-          </button>
-        );
-      })}
-    </div>
-  );
-}
 
 export default function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -193,7 +163,6 @@ export default function Header() {
         </nav>
 
         <div className="hidden lg:flex items-center gap-3 shrink-0">
-          <BranchSwitcher />
           <Button href="/contact#book" variant="primary" className="text-xs px-5 py-2.5">
             Book Now
           </Button>
@@ -239,10 +208,6 @@ export default function Header() {
                 )}
               </div>
             ))}
-            <div className="pt-4 flex flex-col gap-2">
-              <span className="text-xs uppercase tracking-[0.15em] text-brown-mute">Your Branch</span>
-              <BranchSwitcher size="lg" />
-            </div>
             <div className="flex flex-col gap-3 pt-4">
               <Button href={whatsappLink("Hi Afeem, I'd like to enquire.")} variant="secondary">
                 Enquire on WhatsApp
