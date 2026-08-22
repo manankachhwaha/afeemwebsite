@@ -14,6 +14,10 @@ export const site = {
   // Defaults to the Ratanada branch inbox until a shared front-desk address exists.
   email: "afeem.jodhpur@gmail.com",
   instagram: "https://www.instagram.com/afeemspaandsalon",
+  // Not live yet — set the real URL here the moment the account exists and
+  // the footer's social row picks it up automatically, no other changes needed.
+  linkedin: null as string | null,
+  youtube: null as string | null,
   url: "https://afeem-website.pages.dev",
 };
 

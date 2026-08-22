@@ -4,6 +4,7 @@ import Container from "@/components/ui/Container";
 import { site } from "@/data/site";
 import { branches } from "@/data/branches";
 import MotionToggle from "@/components/motion/MotionToggle";
+import SocialLinks from "@/components/layout/SocialLinks";
 
 const columns = [
   {
@@ -62,10 +63,8 @@ export default function Footer() {
                   <a href={`mailto:${b.email}`} className="hover:text-gold-light">{b.email}</a>
                 </div>
               ))}
-              <a href={site.instagram} target="_blank" rel="noreferrer" className="text-sm text-white/70 hover:text-gold-light">
-                @afeemspaandsalon on Instagram
-              </a>
             </div>
+            <SocialLinks />
           </div>
           {columns.map((col) => (
             <div key={col.title} className="flex flex-col gap-3">
