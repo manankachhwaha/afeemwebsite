@@ -5,15 +5,15 @@ import { FEATURES } from "@/config/features";
 import { isMotionEnabled } from "@/lib/motionPreference";
 
 // --- Tuning knobs: the one place to make the dust subtler/denser/faster. ---
-const PARTICLE_COUNT_DESKTOP = 14;
-const PARTICLE_COUNT_MOBILE = 6;
+const PARTICLE_COUNT_DESKTOP = 32;
+const PARTICLE_COUNT_MOBILE = 16;
 const MOBILE_BREAKPOINT_PX = 640;
 const DURATION_MIN_S = 14;
 const DURATION_MAX_S = 24;
 const SIZE_MIN_PX = 2;
-const SIZE_MAX_PX = 5;
-const OPACITY_MIN = 0.3;
-const OPACITY_MAX = 0.65;
+const SIZE_MAX_PX = 6;
+const OPACITY_MIN = 0.4;
+const OPACITY_MAX = 0.85;
 // ---------------------------------------------------------------------
 
 type Particle = {
