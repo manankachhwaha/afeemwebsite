@@ -259,16 +259,18 @@ html.reduce-motion .wind-down-overlay {
 }
 
 /* Liquid gold — three large, softly blurred blobs drifting on independent,
-   very-long loops. Same negative-z-index reasoning as .ambient-gradient
-   (stays behind every section regardless of that section's own
-   positioning); each blob's own gradient alpha is kept low since, again,
-   most sections here have no background of their own and rely on the
-   cream base for text contrast. mix-blend-mode: soft-light keeps it a
-   gentle warmth rather than a visible shape. */
+   very-long loops. Unlike .ambient-gradient this sits ABOVE content (z:6,
+   same tier as .wind-down-overlay) rather than behind it — a negative
+   z-index would put it behind every section that has its own solid
+   background (white cards, bg-cream-soft, brown sections, etc.), which is
+   most of the site, making it invisible almost everywhere. mix-blend-mode
+   keeps it a warmth wash rather than an opaque shape, so text underneath
+   stays fully legible — the same technique already proven safe by
+   .wind-down-overlay, which also sits above text. */
 .liquid-gold {
   position: fixed;
   inset: 0;
-  z-index: -1;
+  z-index: 6;
   overflow: hidden;
   pointer-events: none;
 }
@@ -276,7 +278,7 @@ html.reduce-motion .wind-down-overlay {
 .liquid-blob {
   position: absolute;
   border-radius: 50%;
-  filter: blur(90px);
+  filter: blur(80px);
   mix-blend-mode: soft-light;
   will-change: transform;
 }
@@ -286,7 +288,7 @@ html.reduce-motion .wind-down-overlay {
   height: 55vw;
   top: -15%;
   left: -12%;
-  background: radial-gradient(circle, rgba(208, 144, 48, 0.32), transparent 70%);
+  background: radial-gradient(circle, rgba(208, 144, 48, 0.55), transparent 70%);
   animation: liquid-float-1 34s ease-in-out infinite;
 }
 
@@ -295,7 +297,7 @@ html.reduce-motion .wind-down-overlay {
   height: 48vw;
   bottom: -18%;
   right: -8%;
-  background: radial-gradient(circle, rgba(227, 172, 92, 0.28), transparent 70%);
+  background: radial-gradient(circle, rgba(227, 172, 92, 0.5), transparent 70%);
   animation: liquid-float-2 40s ease-in-out infinite;
 }
 
@@ -304,7 +306,7 @@ html.reduce-motion .wind-down-overlay {
   height: 38vw;
   top: 32%;
   left: 52%;
-  background: radial-gradient(circle, rgba(168, 112, 30, 0.26), transparent 70%);
+  background: radial-gradient(circle, rgba(168, 112, 30, 0.48), transparent 70%);
   animation: liquid-float-3 27s ease-in-out infinite;
   transform: translateX(-50%);
 }
