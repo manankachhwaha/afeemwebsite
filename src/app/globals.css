@@ -64,6 +64,22 @@ html.reduce-motion {
   border-radius: 2px;
 }
 
+/* iOS Safari force-zooms the whole page when a focused form field's
+   font-size is under 16px — a genuine, common annoyance, not a style
+   choice. Every text input/select/textarea site-wide gets bumped to 16px
+   on small screens regardless of its own text-size utility class. */
+@media (max-width: 640px) {
+  input, select, textarea {
+    font-size: 16px !important;
+  }
+}
+
+/* A tidier tap flash than the OS default grey box — every interactive
+   element here already has its own hover/active state. */
+a, button {
+  -webkit-tap-highlight-color: transparent;
+}
+
 h1, h2, h3, h4,
 .font-display {
   font-family: var(--font-playfair), Georgia, serif;

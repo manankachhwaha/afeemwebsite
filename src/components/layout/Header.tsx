@@ -181,7 +181,7 @@ export default function Header() {
       </Container>
 
       {mobileOpen && (
-        <div className="lg:hidden border-t border-brown/10 bg-cream max-h-[75vh] overflow-y-auto">
+        <div className="lg:hidden border-t border-brown/10 bg-cream max-h-[75svh] overflow-y-auto">
           <Container className="py-4 flex flex-col gap-1">
             {mobileNavItems.map((item) => (
               <div key={item.href} className="border-b border-brown/5 py-2">

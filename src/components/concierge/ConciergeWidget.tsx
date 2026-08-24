@@ -217,7 +217,7 @@ export default function ConciergeWidget() {
         onClick={() => setOpen((v) => !v)}
         aria-label={open ? "Close Ask Afeem" : "Open Ask Afeem concierge"}
         whileTap={{ scale: 0.95 }}
-        className="fixed bottom-24 right-5 md:bottom-6 md:right-6 z-40 flex h-14 items-center gap-2 rounded-full bg-gold text-brown shadow-lg shadow-brown/30 px-4 hover:bg-gold-dark hover:text-white transition-colors"
+        className="fixed bottom-[calc(6rem+env(safe-area-inset-bottom))] right-[calc(1.25rem+env(safe-area-inset-right))] md:bottom-[calc(1.5rem+env(safe-area-inset-bottom))] md:right-6 z-40 flex h-14 items-center gap-2 rounded-full bg-gold text-brown shadow-lg shadow-brown/30 px-4 hover:bg-gold-dark hover:text-white transition-colors"
       >
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" className="h-6 w-6 shrink-0">
           <path d="M4 5h16v10H8l-4 4V5Z" strokeLinejoin="round" />
@@ -244,7 +244,7 @@ export default function ConciergeWidget() {
                 <p className="font-display text-lg leading-tight">Ask Afeem</p>
                 <p className="text-[10px] uppercase tracking-[0.2em] text-yellow-warm">Your Beauty Concierge</p>
               </div>
-              <button type="button" onClick={() => setOpen(false)} aria-label="Close" className="text-white/70 hover:text-white p-1">
+              <button type="button" onClick={() => setOpen(false)} aria-label="Close" className="flex h-11 w-11 items-center justify-center -mr-2 text-white/70 hover:text-white">
                 ✕
               </button>
             </div>

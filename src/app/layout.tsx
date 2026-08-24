@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Playfair_Display, Inter } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/layout/Header";
@@ -30,6 +30,17 @@ const inter = Inter({
   subsets: ["latin"],
   weight: ["300", "400", "500", "600"],
 });
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  // Lets the background extend under the iPhone notch/Dynamic Island and
+  // home-indicator area for an edge-to-edge feel; fixed UI (StickyBookBar,
+  // Ask Afeem, the concierge panel) adds env(safe-area-inset-*) padding so
+  // nothing tappable ends up under those unsafe zones.
+  viewportFit: "cover",
+  themeColor: "#3a2818",
+};
 
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),

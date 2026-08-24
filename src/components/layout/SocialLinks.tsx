@@ -76,7 +76,7 @@ export default function SocialLinks() {
           target="_blank"
           rel="noreferrer"
           aria-label={label}
-          className="flex h-9 w-9 items-center justify-center rounded-full border border-white/20 text-white/70 transition-colors hover:border-gold hover:text-gold-light"
+          className="flex h-11 w-11 items-center justify-center rounded-full border border-white/20 text-white/70 transition-colors hover:border-gold hover:text-gold-light"
         >
           <Icon />
         </a>

@@ -6,6 +6,7 @@ export default function StickyBookBar() {
       <Link
         href="/contact#book"
         className="flex h-14 items-center justify-center text-sm font-medium uppercase tracking-wide text-white bg-brown"
+        style={{ paddingBottom: "env(safe-area-inset-bottom)" }}
       >
         Book Now
       </Link>
