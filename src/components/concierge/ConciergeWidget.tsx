@@ -31,6 +31,7 @@ const NODES: Record<string, Node> = {
       { label: "Book a Salon or Spa Service", action: { type: "goto", target: "salon" } },
       { label: "Bridal Enquiry", action: { type: "goto", target: "bridal" } },
       { label: "Beauty School & Courses", action: { type: "goto", target: "school" } },
+      { label: "Request a Callback", action: { type: "link", href: "/contact#callback" } },
       { label: "Hours, Location & Pricing", action: { type: "goto", target: "info" } },
       { label: "Something Else", action: { type: "goto", target: "other" } },
     ],

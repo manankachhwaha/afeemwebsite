@@ -35,6 +35,7 @@ const columns = [
       { href: "/journal", label: "Journal" },
       { href: "/locations", label: "Locations" },
       { href: "/contact", label: "Contact" },
+      { href: "/contact#callback", label: "Request a Callback" },
     ],
   },
 ];

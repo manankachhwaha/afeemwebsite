@@ -3,6 +3,7 @@ import Container from "@/components/ui/Container";
 import PageHero from "@/components/ui/PageHero";
 import SectionHeading from "@/components/ui/SectionHeading";
 import BookingForm from "@/components/contact/BookingForm";
+import CallbackForm from "@/components/contact/CallbackForm";
 import Button from "@/components/ui/Button";
 import { branches, branchWhatsappLink } from "@/data/branches";
 import { site } from "@/data/site";
@@ -46,7 +47,22 @@ export default function ContactPage() {
         </Container>
       </section>
 
-      <section className="py-16 bg-cream-soft">
+      <section id="callback" className="py-16 md:py-24 bg-cream-soft scroll-mt-20">
+        <Container className="grid lg:grid-cols-2 gap-12 items-start">
+          <Reveal className="flex flex-col gap-5">
+            <SectionHeading
+              eyebrow="Prefer a Call?"
+              title="Request a Callback"
+              description="Short on time to fill out the full booking form? Leave your number and a good time to call — our team will ring you directly."
+            />
+          </Reveal>
+          <Reveal delay={0.15}>
+            <CallbackForm />
+          </Reveal>
+        </Container>
+      </section>
+
+      <section className="py-16">
         <Container>
           <RevealGroup className="grid sm:grid-cols-3 gap-8 text-center sm:text-left items-start" stagger={0.1}>
             <RevealItem className="flex flex-col items-center sm:items-start gap-1">
