@@ -6,6 +6,7 @@ import { FEATURES } from "@/config/features";
 import { beautySchoolWhatsappLink } from "@/data/site";
 import { branches, branchWhatsappLink } from "@/data/branches";
 import { useBranch } from "@/lib/BranchContext";
+import { getGreeting, getTimeBucket } from "@/lib/timeOfDay";
 
 type Message = { role: "user" | "assistant"; content: string };
 
@@ -149,6 +150,16 @@ const NODES: Record<string, Node> = {
   },
 };
 
+// Root's greeting is time-aware ("Good morning", "Good afternoon"...) — every
+// other node's message is static and just read straight from NODES.
+function nodeMessage(key: string): string {
+  if (key === "root") {
+    const greeting = getGreeting(getTimeBucket(new Date().getHours()));
+    return `${greeting}! I'm Ask Afeem. What brings you here today?`;
+  }
+  return NODES[key].message;
+}
+
 export default function ConciergeWidget() {
   const [open, setOpen] = useState(false);
   const [currentKey, setCurrentKey] = useState("root");
@@ -159,6 +170,16 @@ export default function ConciergeWidget() {
   useEffect(() => {
     listRef.current?.scrollTo({ top: listRef.current.scrollHeight, behavior: "smooth" });
   }, [messages]);
+
+  useEffect(() => {
+    // The real local-time greeting can only be computed client-side (build
+    // time != visitor's time), so the initial state above uses the static
+    // NODES.root.message and this swaps in the time-aware version right
+    // after mount — well before the visitor ever opens the (closed by
+    // default) panel, so there's no visible flash.
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    setMessages([{ role: "assistant", content: nodeMessage("root") }]);
+  }, []);
 
   if (!FEATURES.concierge) return null;
 
@@ -172,9 +193,8 @@ export default function ConciergeWidget() {
     const { action } = option;
 
     if (action.type === "goto") {
-      const node = NODES[action.target];
       setCurrentKey(action.target);
-      setMessages((prev) => [...prev, { role: "assistant", content: node.message }]);
+      setMessages((prev) => [...prev, { role: "assistant", content: nodeMessage(action.target) }]);
       return;
     }
 

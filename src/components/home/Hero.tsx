@@ -1,12 +1,23 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import { motion } from "motion/react";
 import Button from "@/components/ui/Button";
 import Container from "@/components/ui/Container";
 import GoldParticles from "@/components/motion/GoldParticles";
 import SplitReveal from "@/components/motion/SplitReveal";
+import { getGreeting, getTimeBucket } from "@/lib/timeOfDay";
 
 export default function Hero() {
+  const [greeting, setGreeting] = useState<string | null>(null);
+
+  useEffect(() => {
+    // Depends on the visitor's local clock — client-only, unavailable
+    // during static generation, so it can't be a lazy useState initializer.
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    setGreeting(getGreeting(getTimeBucket(new Date().getHours())));
+  }, []);
+
   return (
     <section className="relative overflow-hidden warm-placeholder-dark min-h-[92svh] sm:min-h-[85svh] flex items-end">
       <div className="ambient-tint" />
@@ -20,7 +31,7 @@ export default function Hero() {
           className="max-w-2xl flex flex-col gap-5 sm:gap-6"
         >
           <span className="text-xs uppercase tracking-[0.3em] text-yellow-warm">
-            Afeem · Jodhpur
+            {greeting ? `${greeting} · Afeem · Jodhpur` : "Afeem · Jodhpur"}
           </span>
           <h1 className="font-display text-white text-[2.5rem] leading-[1.08] sm:text-5xl md:text-6xl sm:leading-[1.1]">
             <SplitReveal text="Where Beauty Becomes an Experience." delay={0.15} />

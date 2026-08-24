@@ -2,13 +2,7 @@
 
 import { useEffect } from "react";
 import { FEATURES } from "@/config/features";
-
-function getBucket(hour: number): "morning" | "afternoon" | "evening" | "night" {
-  if (hour >= 5 && hour < 11) return "morning";
-  if (hour >= 11 && hour < 17) return "afternoon";
-  if (hour >= 17 && hour < 20) return "evening";
-  return "night";
-}
+import { getTimeBucket } from "@/lib/timeOfDay";
 
 /**
  * Sets data-time-of-day on <html> from the visitor's local clock. Pure CSS
@@ -18,7 +12,7 @@ function getBucket(hour: number): "morning" | "afternoon" | "evening" | "night" 
 export default function TimeOfDayPalette() {
   useEffect(() => {
     if (!FEATURES.timeOfDayPalette) return;
-    document.documentElement.setAttribute("data-time-of-day", getBucket(new Date().getHours()));
+    document.documentElement.setAttribute("data-time-of-day", getTimeBucket(new Date().getHours()));
     return () => document.documentElement.removeAttribute("data-time-of-day");
   }, []);
 
