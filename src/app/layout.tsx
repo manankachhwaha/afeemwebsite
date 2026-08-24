@@ -7,6 +7,7 @@ import StickyBookBar from "@/components/layout/StickyBookBar";
 import SmoothScroll from "@/components/motion/SmoothScroll";
 import ScrollProgress from "@/components/motion/ScrollProgress";
 import PageTransition from "@/components/motion/PageTransition";
+import GoldFlash from "@/components/motion/GoldFlash";
 import IntroSplash from "@/components/motion/IntroSplash";
 import WindDown from "@/components/motion/WindDown";
 import TimeOfDayPalette from "@/components/motion/TimeOfDayPalette";
@@ -18,6 +19,7 @@ import { MOTION_INIT_SCRIPT } from "@/lib/motionPreference";
 import BranchPickerModal from "@/components/branch/BranchPickerModal";
 import ConciergeWidget from "@/components/concierge/ConciergeWidget";
 import { site } from "@/data/site";
+import { FEATURES } from "@/config/features";
 
 const playfair = Playfair_Display({
   variable: "--font-playfair",
@@ -89,7 +91,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="en"
-      className={`${playfair.variable} ${inter.variable} h-full antialiased`}
+      className={`${playfair.variable} ${inter.variable} h-full antialiased${FEATURES.heavyMode ? " heavy-mode" : ""}`}
     >
       <body className="min-h-full flex flex-col bg-cream text-brown">
         <script dangerouslySetInnerHTML={{ __html: MOTION_INIT_SCRIPT }} />
@@ -105,6 +107,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
             <WindDown />
             <TimeOfDayPalette />
             <GoldThread />
+            <GoldFlash />
             <ScrollProgress />
             <Header />
             <main className="flex-1 pb-16 md:pb-0">

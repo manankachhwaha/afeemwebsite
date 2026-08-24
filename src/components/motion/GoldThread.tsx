@@ -42,16 +42,21 @@ export default function GoldThread() {
 
   if (!FEATURES.goldThread) return null;
 
+  const heavy = FEATURES.heavyMode;
+
   return (
     <div
       aria-hidden
-      className="fixed top-16 bottom-16 left-4 z-30 hidden w-px pointer-events-none sm:block"
+      className={`fixed top-16 bottom-16 left-4 z-30 hidden pointer-events-none sm:block ${heavy ? "w-0.5" : "w-px"}`}
     >
       <div className="h-full w-full bg-brown/10" />
       <div
         ref={barRef}
         className="absolute inset-0 origin-top bg-gradient-to-b from-gold via-gold-light to-gold/30 will-change-transform"
-        style={{ transform: "scaleY(0)", boxShadow: "0 0 8px rgba(208,144,48,0.55)" }}
+        style={{
+          transform: "scaleY(0)",
+          boxShadow: heavy ? "0 0 16px rgba(208,144,48,0.75)" : "0 0 8px rgba(208,144,48,0.55)",
+        }}
       />
     </div>
   );

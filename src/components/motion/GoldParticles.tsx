@@ -5,8 +5,8 @@ import { FEATURES } from "@/config/features";
 import { isMotionEnabled } from "@/lib/motionPreference";
 
 // --- Tuning knobs: the one place to make the dust subtler/denser/faster. ---
-const PARTICLE_COUNT_DESKTOP = 32;
-const PARTICLE_COUNT_MOBILE = 16;
+const PARTICLE_COUNT_DESKTOP = FEATURES.heavyMode ? 46 : 32;
+const PARTICLE_COUNT_MOBILE = FEATURES.heavyMode ? 22 : 16;
 const MOBILE_BREAKPOINT_PX = 640;
 const DURATION_MIN_S = 14;
 const DURATION_MAX_S = 24;

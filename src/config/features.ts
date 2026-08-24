@@ -31,4 +31,14 @@ export const FEATURES = {
   filmGrain: true,
   /** Slow floating gold dust — hero, spa & wellness, and the intro splash only. */
   goldParticles: true,
+  /**
+   * Master switch for the "high level" animation pass — parallax hero,
+   * gold-flash page transitions, bigger image reveals, and amplified
+   * gold-thread/particle/tilt intensity. Everything it touches is written
+   * to fall back EXACTLY to the site's calmer default the moment this is
+   * false, so flipping it is a complete, instant revert — no other
+   * changes needed, no git surgery required. If it ever feels like too
+   * much, this is the one line to flip.
+   */
+  heavyMode: true,
 } as const;

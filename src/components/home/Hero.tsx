@@ -1,28 +1,42 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { motion } from "motion/react";
+import { useEffect, useRef, useState } from "react";
+import { motion, useScroll, useTransform } from "motion/react";
 import Button from "@/components/ui/Button";
 import Container from "@/components/ui/Container";
 import GoldParticles from "@/components/motion/GoldParticles";
 import SplitReveal from "@/components/motion/SplitReveal";
 import { getGreeting, getTimeBucket } from "@/lib/timeOfDay";
+import { FEATURES } from "@/config/features";
+import { isMotionEnabled } from "@/lib/motionPreference";
 
 export default function Hero() {
+  const heroRef = useRef<HTMLElement>(null);
   const [greeting, setGreeting] = useState<string | null>(null);
+  const [parallaxOn, setParallaxOn] = useState(false);
 
   useEffect(() => {
-    // Depends on the visitor's local clock — client-only, unavailable
-    // during static generation, so it can't be a lazy useState initializer.
+    // Both depend on client-only state (the visitor's clock; whether
+    // heavy-mode parallax should run) — unavailable during static
+    // generation, so neither can be a lazy useState initializer.
     // eslint-disable-next-line react-hooks/set-state-in-effect
     setGreeting(getGreeting(getTimeBucket(new Date().getHours())));
+    setParallaxOn(FEATURES.heavyMode && isMotionEnabled());
   }, []);
 
+  // Background layers drift slower than the foreground as the hero scrolls
+  // out of view — part of "heavy mode". bgY stays pinned at 0% whenever
+  // parallax is off, so this is a no-op transform in that case.
+  const { scrollYProgress } = useScroll({ target: heroRef, offset: ["start start", "end start"] });
+  const bgY = useTransform(scrollYProgress, [0, 1], parallaxOn ? ["0%", "35%"] : ["0%", "0%"]);
+
   return (
-    <section className="relative overflow-hidden warm-placeholder-dark min-h-[92svh] sm:min-h-[85svh] flex items-end">
-      <div className="ambient-tint" />
-      <GoldParticles />
-      <div className="absolute inset-0 bg-gradient-to-t from-brown via-brown/45 to-transparent pointer-events-none" />
+    <section ref={heroRef} className="relative overflow-hidden warm-placeholder-dark min-h-[92svh] sm:min-h-[85svh] flex items-end">
+      <motion.div style={{ y: bgY }} className="absolute inset-0">
+        <div className="ambient-tint" />
+        <GoldParticles />
+        <div className="absolute inset-0 bg-gradient-to-t from-brown via-brown/45 to-transparent pointer-events-none" />
+      </motion.div>
       <Container className="relative pb-16 sm:pb-20 pt-36 sm:pt-40">
         <motion.div
           initial={{ opacity: 0, y: 20 }}

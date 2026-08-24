@@ -3,8 +3,11 @@
 import { useEffect, useRef, useState } from "react";
 import { motion, useMotionValue, useMotionTemplate, useSpring, useTransform } from "motion/react";
 import { isMotionEnabled } from "@/lib/motionPreference";
+import { FEATURES } from "@/config/features";
 
-const TILT_DEGREES = 5;
+const TILT_DEGREES = FEATURES.heavyMode ? 8 : 5;
+const GLOW_RADIUS = FEATURES.heavyMode ? 380 : 280;
+const GLOW_OPACITY = FEATURES.heavyMode ? 0.5 : 0.35;
 
 /**
  * A gentle 3D tilt + soft gold sheen that follows the cursor, for cards
@@ -46,7 +49,7 @@ export default function TiltCard({
   });
   const glowX = useTransform(mx, [0, 1], ["0%", "100%"]);
   const glowY = useTransform(my, [0, 1], ["0%", "100%"]);
-  const glow = useMotionTemplate`radial-gradient(280px circle at ${glowX} ${glowY}, rgba(227, 172, 92, 0.35), transparent 70%)`;
+  const glow = useMotionTemplate`radial-gradient(${GLOW_RADIUS}px circle at ${glowX} ${glowY}, rgba(227, 172, 92, ${GLOW_OPACITY}), transparent 70%)`;
 
   function handleMove(e: React.MouseEvent) {
     if (!ref.current) return;
@@ -72,6 +75,8 @@ export default function TiltCard({
       onMouseEnter={() => setHovering(true)}
       onMouseLeave={handleLeave}
       style={{ rotateX, rotateY, transformPerspective: 900 }}
+      whileHover={FEATURES.heavyMode ? { scale: 1.02 } : undefined}
+      transition={{ scale: { duration: 0.3, ease: [0.16, 1, 0.3, 1] } }}
       className={`relative ${className}`}
     >
       {children}
