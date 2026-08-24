@@ -13,6 +13,10 @@ export const site = {
   whatsappNumber: "916378986584",
   // Defaults to the Ratanada branch inbox until a shared front-desk address exists.
   email: "afeem.jodhpur@gmail.com",
+  // Dedicated Afeem Beauty School enquiry line (separate from the two salon branches).
+  beautySchoolWhatsapp: "918107663836",
+  beautySchoolPhone: "081076 63836",
+  beautySchoolPhoneHref: "tel:+918107663836",
   instagram: "https://www.instagram.com/afeemspaandsalon",
   // Not live yet — set the real URL here the moment the account exists and
   // the footer's social row picks it up automatically, no other changes needed.
@@ -23,6 +27,10 @@ export const site = {
 
 export function whatsappLink(message: string) {
   return `https://wa.me/${site.whatsappNumber}?text=${encodeURIComponent(message)}`;
+}
+
+export function beautySchoolWhatsappLink(message: string) {
+  return `https://wa.me/${site.beautySchoolWhatsapp}?text=${encodeURIComponent(message)}`;
 }
 
 export const defaultWhatsappMessage = "Hi Afeem, I'd like to know more.";

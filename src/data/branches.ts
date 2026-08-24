@@ -31,8 +31,8 @@ export const branches: Branch[] = [
     phoneHref: "tel:+916378986584",
     whatsappNumber: "916378986584",
     email: "afeem.jodhpur@gmail.com",
-    hours: "Open until 9:00 PM",
-    hoursIsPlaceholder: true,
+    hours: "10:30 AM – 9:00 PM, daily (no weekly off)",
+    hoursIsPlaceholder: false,
     googleRating: 4.7,
     googleReviewCount: 1046,
     googleMapsSearchUrl:
@@ -53,8 +53,8 @@ export const branches: Branch[] = [
     phoneHref: "tel:+917014632226",
     whatsappNumber: "917014632226",
     email: "afeemspaandsaloon@gmail.com",
-    hours: "Open until 9:00 PM",
-    hoursIsPlaceholder: true,
+    hours: "10:30 AM – 9:00 PM, daily (no weekly off)",
+    hoursIsPlaceholder: false,
     googleRating: 4.7,
     googleReviewCount: 671,
     googleMapsSearchUrl:

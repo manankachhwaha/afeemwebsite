@@ -177,21 +177,32 @@ Afeem has **two real branches** in Jodhpur. This is the source of truth for bran
 - **Phone / WhatsApp:** 063789 86584
 - **Email:** afeem.jodhpur@gmail.com
 - **Google:** 4.7★, 1,046 reviews
-- **Hours:** Open until 9:00 PM (opening time & weekly off — *placeholder, confirm*)
+- **Hours:** 10:30 AM – 9:00 PM, daily (no weekly off)
 
 ### Pal Road
 - **Address:** Opp Passport Office, Main Pal Rd, near N S Garden, Jodhpur, Rajasthan 342008
 - **Phone / WhatsApp:** 070146 32226
 - **Email:** afeemspaandsaloon@gmail.com
 - **Google:** 4.7★, 671 reviews
-- **Hours:** Open until 9:00 PM (opening time & weekly off — *placeholder, confirm*)
+- **Hours:** 10:30 AM – 9:00 PM, daily (no weekly off)
 
 ### Shared
 - **Instagram (both branches):** https://www.instagram.com/afeemspaandsalon
+- **Beauty School enquiries (separate from the two salon branches):** 081076 63836
 
 One page per branch: **AFEEM — [Branch]** with address · phone (click-to-call) · branch WhatsApp · Google Maps embed · opening hours · branch Instagram · Google rating/reviews link · available services · photos. CTA: Book at This Branch.
 
-A header branch switcher lets visitors pick their nearest branch; the choice persists in `localStorage` and drives branch-aware Call/WhatsApp/booking CTAs site-wide (prompting a picker if no branch is chosen yet).
+Branch selection is prompted on demand (a picker modal) the first time a visitor triggers a branch-aware Call/WhatsApp/booking action, and persists in `localStorage` from then on; there's no longer a persistent header switcher control (removed for being low-signal — see `BranchPickerModal`).
+
+### Confirmed operational details
+- **Walk-ins:** welcome, but appointments are recommended, especially for bridal, makeup, specialised hair, and spa services.
+- **Bridal booking lead time:** ideally 4–8 weeks in advance; earlier for peak wedding dates.
+- **Booking channels:** WhatsApp, phone, or walk-in.
+- **Payment:** Cash, UPI, Card.
+- **Cancellation / rescheduling:** available.
+- **Gift cards / vouchers:** available.
+- **Offers / memberships:** available (details not yet itemised on the site).
+- **Not yet confirmed — do not guess:** individual service prices, bridal makeup/trial pricing and deposit, groom/guest makeup pricing, exact bridal & pre-bridal package contents, home service availability, parking at either branch, and Beauty School course eligibility/placement/portfolio-assistance/batch-schedule details.
 
 ---
 

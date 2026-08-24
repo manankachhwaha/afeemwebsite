@@ -5,7 +5,7 @@ import Container from "@/components/ui/Container";
 import Visual from "@/components/ui/Visual";
 import Button from "@/components/ui/Button";
 import { courses, getCourse } from "@/data/courses";
-import { whatsappLink, site } from "@/data/site";
+import { beautySchoolWhatsappLink, site } from "@/data/site";
 import { Reveal, RevealGroup, RevealItem, ImageReveal } from "@/components/motion";
 
 export function generateStaticParams() {
@@ -74,7 +74,7 @@ export default async function CoursePage({
 
             <div className="flex flex-wrap gap-4">
               <Button href="/contact#book" variant="primary">Apply Now</Button>
-              <Button href={whatsappLink(`Hi Afeem, I'd like to book a counselling session for ${c.name}.`)} variant="secondary">
+              <Button href={beautySchoolWhatsappLink(`Hi Afeem, I'd like to book a counselling session for ${c.name}.`)} variant="secondary">
                 Book a Counselling Session
               </Button>
             </div>

@@ -7,7 +7,7 @@ import Button from "@/components/ui/Button";
 import { courses } from "@/data/courses";
 import { experts } from "@/data/experts";
 import { testimonials } from "@/data/testimonials";
-import { whatsappLink } from "@/data/site";
+import { beautySchoolWhatsappLink } from "@/data/site";
 import { Reveal, RevealGroup, RevealItem, ImageReveal } from "@/components/motion";
 
 export const metadata: Metadata = {
@@ -177,7 +177,7 @@ export default function BeautySchoolPage() {
             <SectionHeading eyebrow="Admissions" title="Start Your Beauty Career" align="center" description="Book a free counselling session to find the right course for your goals." />
           </Reveal>
           <Reveal delay={0.15} className="flex flex-wrap justify-center gap-4">
-            <Button href={whatsappLink("Hi Afeem, I'd like to book a Beauty School counselling session.")} variant="primary">
+            <Button href={beautySchoolWhatsappLink("Hi Afeem, I'd like to book a Beauty School counselling session.")} variant="primary">
               Book a Counselling Session
             </Button>
             <Button href="/contact#book" variant="secondary">Apply Now</Button>
