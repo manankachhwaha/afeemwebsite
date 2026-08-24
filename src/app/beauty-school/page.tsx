@@ -23,25 +23,25 @@ const schoolReviews = testimonials.filter((t) => t.type === "school");
 export default function BeautySchoolPage() {
   return (
     <>
-      <section className="warm-placeholder-dark py-24 md:py-36 overflow-hidden">
+      <section className="warm-placeholder py-24 md:py-36 overflow-hidden">
         <Container>
           <div className="max-w-2xl flex flex-col gap-6">
             <Reveal>
-              <span className="text-xs uppercase tracking-[0.3em] text-yellow-warm">Afeem Beauty School</span>
+              <span className="text-xs uppercase tracking-[0.3em] text-gold-dark">Afeem Beauty School</span>
             </Reveal>
             <Reveal delay={0.1}>
-              <h1 className="font-display text-4xl sm:text-5xl text-white leading-tight">
+              <h1 className="font-display text-fluid-pagehero text-brown">
                 Learn the Art of Beauty.
               </h1>
             </Reveal>
             <Reveal delay={0.2}>
-              <p className="text-white/80 text-lg leading-relaxed">
+              <p className="text-brown-soft text-lg leading-relaxed">
                 Build your skills. Create your portfolio. Build your career.
               </p>
             </Reveal>
             <Reveal delay={0.3} className="flex flex-wrap gap-4 pt-2">
-              <Button href="#courses" variant="outline-light">Explore Courses</Button>
-              <Button href="#admissions" variant="ghost" className="text-white hover:text-yellow-warm">Book Counselling</Button>
+              <Button href="#courses" variant="primary">Explore Courses</Button>
+              <Button href="#admissions" variant="secondary">Book Counselling</Button>
             </Reveal>
           </div>
         </Container>
@@ -153,12 +153,12 @@ export default function BeautySchoolPage() {
         </Container>
       </section>
 
-      <section id="careers" className="py-16 md:py-24 bg-brown scroll-mt-20">
+      <section id="careers" className="py-16 md:py-24 bg-cream-soft scroll-mt-20">
         <Container className="grid md:grid-cols-2 gap-12 items-center">
           <Reveal className="flex flex-col gap-4">
-            <span className="text-xs uppercase tracking-[0.25em] text-yellow-warm">Career Opportunities</span>
-            <h2 className="font-display text-3xl text-white leading-tight">Where Afeem graduates go</h2>
-            <ul className="text-white/80 text-sm flex flex-col gap-2 mt-2">
+            <span className="text-xs uppercase tracking-[0.25em] text-gold-dark">Career Opportunities</span>
+            <h2 className="font-display text-3xl text-brown leading-tight">Where Afeem graduates go</h2>
+            <ul className="text-brown-soft text-sm flex flex-col gap-2 mt-2">
               <li>· Placement within the Afeem Salon network</li>
               <li>· Freelance and independent artistry</li>
               <li>· Bridal specialist teams</li>
@@ -166,7 +166,7 @@ export default function BeautySchoolPage() {
             </ul>
           </Reveal>
           <ImageReveal delay={0.15}>
-            <Visual dark label="Career Opportunities" ratio="aspect-[4/3]" />
+            <Visual label="Career Opportunities" ratio="aspect-[4/3]" />
           </ImageReveal>
         </Container>
       </section>

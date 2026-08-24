@@ -7,6 +7,7 @@ import Button from "@/components/ui/Button";
 import TiltCard from "@/components/motion/TiltCard";
 import { transformations, transformationFilters } from "@/data/transformations";
 import { whatsappLink } from "@/data/site";
+import { getCategoryIcon } from "@/data/categoryIcons";
 
 export default function TransformationsGallery() {
   const [active, setActive] = useState<(typeof transformationFilters)[number]>("All");
@@ -49,8 +50,8 @@ export default function TransformationsGallery() {
             >
               <TiltCard className="group flex flex-col gap-3">
                 <div className="grid grid-cols-2 gap-1">
-                  <Visual label="Before" ratio="aspect-[3/4]" className="transition-transform duration-500 ease-out group-hover:scale-105" />
-                  <Visual label="After" ratio="aspect-[3/4]" className="transition-transform duration-500 ease-out group-hover:scale-105" />
+                  <Visual label="Before" icon={getCategoryIcon(t.category)} ratio="aspect-[3/4]" className="transition-transform duration-500 ease-out group-hover:scale-105" />
+                  <Visual label="After" icon={getCategoryIcon(t.category)} ratio="aspect-[3/4]" className="transition-transform duration-500 ease-out group-hover:scale-105" />
                 </div>
                 <div>
                   <h3 className="font-display text-lg text-brown">{t.title}</h3>

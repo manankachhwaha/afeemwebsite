@@ -78,3 +78,40 @@ export function EducationIcon({ className }: IconProps) {
     </svg>
   );
 }
+
+export function PersonIcon({ className }: IconProps) {
+  return (
+    <svg {...base} className={className}>
+      <circle cx="12" cy="8" r="3.6" />
+      <path d="M5 20c0-3.9 3.1-6.5 7-6.5s7 2.6 7 6.5" />
+    </svg>
+  );
+}
+
+export function SparkleIcon({ className }: IconProps) {
+  return (
+    <svg {...base} className={className}>
+      <path d="M12 3.5c.5 3.6 1.9 5 5.5 5.5-3.6.5-5 1.9-5.5 5.5-.5-3.6-1.9-5-5.5-5.5 3.6-.5 5-1.9 5.5-5.5Z" />
+      <path d="M18.5 16c.25 1.6.9 2.25 2.5 2.5-1.6.25-2.25.9-2.5 2.5-.25-1.6-.9-2.25-2.5-2.5 1.6-.25 2.25-.9 2.5-2.5Z" />
+    </svg>
+  );
+}
+
+export function LocationIcon({ className }: IconProps) {
+  return (
+    <svg {...base} className={className}>
+      <path d="M12 21s7-6.4 7-11.5A7 7 0 0 0 5 9.5C5 14.6 12 21 12 21Z" />
+      <circle cx="12" cy="9.5" r="2.4" />
+    </svg>
+  );
+}
+
+export function JournalIcon({ className }: IconProps) {
+  return (
+    <svg {...base} className={className}>
+      <path d="M5 4.5h11a2 2 0 0 1 2 2V19a2 2 0 0 0-2-2H5Z" />
+      <path d="M5 4.5V17a2 2 0 0 0 2 2h9" />
+      <path d="M8.5 9h6M8.5 12.5h4" />
+    </svg>
+  );
+}

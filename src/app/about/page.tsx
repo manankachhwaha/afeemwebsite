@@ -100,13 +100,13 @@ export default function AboutPage() {
         </Container>
       </section>
 
-      <section className="py-16 md:py-24 bg-brown">
+      <section className="py-16 md:py-24 bg-cream-soft">
         <Container className="flex flex-col items-center text-center gap-6 max-w-xl mx-auto">
           <Reveal>
-            <SectionHeading eyebrow="Visit Us" title="Find an Afeem Near You" align="center" light />
+            <SectionHeading eyebrow="Visit Us" title="Find an Afeem Near You" align="center" />
           </Reveal>
           <Reveal delay={0.15}>
-            <Button href="/locations" variant="outline-light">View Locations</Button>
+            <Button href="/locations" variant="primary">View Locations</Button>
           </Reveal>
         </Container>
       </section>

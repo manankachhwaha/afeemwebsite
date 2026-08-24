@@ -61,21 +61,20 @@ export default function BridalPage() {
         </Container>
       </section>
 
-      <section className="py-16 md:py-24 bg-brown">
+      <section className="py-16 md:py-24 bg-cream-soft">
         <Container className="flex flex-col gap-10">
           <Reveal>
             <SectionHeading
               eyebrow="The Journey"
               title="How Afeem Bridal Works"
-              light
             />
           </Reveal>
           <RevealGroup className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6" stagger={0.08}>
             {journey.map((j, i) => (
               <RevealItem key={j.step} className="flex flex-col gap-2">
-                <span className="text-yellow-warm text-sm font-medium">{String(i + 1).padStart(2, "0")}</span>
-                <h3 className="text-white font-display text-lg">{j.step}</h3>
-                <p className="text-white/70 text-sm leading-relaxed">{j.desc}</p>
+                <span className="text-gold-dark text-sm font-medium">{String(i + 1).padStart(2, "0")}</span>
+                <h3 className="text-brown font-display text-lg">{j.step}</h3>
+                <p className="text-brown-soft text-sm leading-relaxed">{j.desc}</p>
               </RevealItem>
             ))}
           </RevealGroup>

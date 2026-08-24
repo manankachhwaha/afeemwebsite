@@ -3,6 +3,7 @@ import Visual from "@/components/ui/Visual";
 import { ImageReveal } from "@/components/motion";
 import TiltCard from "@/components/motion/TiltCard";
 import { Service } from "@/data/services";
+import { getCategoryIcon } from "@/data/categoryIcons";
 
 export default function ServiceCard({
   categorySlug,
@@ -20,6 +21,7 @@ export default function ServiceCard({
         <ImageReveal className="transition-all duration-300 group-hover:shadow-[0_20px_45px_-24px_rgba(58,40,24,0.4)] group-hover:-translate-y-1">
           <Visual
             label={service.name}
+            icon={getCategoryIcon(categorySlug)}
             ratio="aspect-[4/5]"
             className="transition-transform duration-500 ease-out group-hover:scale-105"
           />

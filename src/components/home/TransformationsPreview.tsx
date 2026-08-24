@@ -3,6 +3,7 @@ import SectionHeading from "@/components/ui/SectionHeading";
 import Button from "@/components/ui/Button";
 import Visual from "@/components/ui/Visual";
 import { transformations } from "@/data/transformations";
+import { getCategoryIcon } from "@/data/categoryIcons";
 import { Reveal, RevealGroup, RevealItem, ImageReveal } from "@/components/motion";
 
 export default function TransformationsPreview() {
@@ -26,6 +27,7 @@ export default function TransformationsPreview() {
                   dark
                   ratio="aspect-[4/5]"
                   label={`${t.category} · ${t.title}`}
+                  icon={getCategoryIcon(t.category)}
                   className="transition-transform duration-500 ease-out group-hover:scale-105"
                 />
               </ImageReveal>

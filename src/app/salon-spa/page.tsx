@@ -8,6 +8,8 @@ import Button from "@/components/ui/Button";
 import { serviceCategories, packages } from "@/data/services";
 import { Reveal, RevealGroup, RevealItem, ImageReveal } from "@/components/motion";
 import TiltCard from "@/components/motion/TiltCard";
+import { getCategoryIcon } from "@/data/categoryIcons";
+import { BridalIcon, SparkleIcon } from "@/components/ui/icons";
 
 export const metadata: Metadata = {
   title: "Salon & Spa in Jodhpur",
@@ -31,7 +33,7 @@ export default function SalonSpaPage() {
               <RevealItem key={cat.slug}>
                 <Link href={`/salon-spa/${cat.slug}`} className="group flex flex-col gap-4">
                   <ImageReveal>
-                    <Visual label={cat.name} ratio="aspect-[4/3]" className="transition-transform duration-500 ease-out group-hover:scale-105" />
+                    <Visual label={cat.name} icon={getCategoryIcon(cat.slug)} ratio="aspect-[4/3]" className="transition-transform duration-500 ease-out group-hover:scale-105" />
                   </ImageReveal>
                   <div>
                     <h2 className="font-display text-xl text-brown">{cat.name}</h2>
@@ -43,7 +45,7 @@ export default function SalonSpaPage() {
             <RevealItem>
               <Link href="/bridal" className="group flex flex-col gap-4">
                 <ImageReveal>
-                  <Visual label="Afeem Bridal" dark ratio="aspect-[4/3]" className="transition-transform duration-500 ease-out group-hover:scale-105" />
+                  <Visual label="Afeem Bridal" dark icon={BridalIcon} ratio="aspect-[4/3]" className="transition-transform duration-500 ease-out group-hover:scale-105" />
                 </ImageReveal>
                 <div>
                   <h2 className="font-display text-xl text-brown">Bridal</h2>
@@ -108,7 +110,7 @@ export default function SalonSpaPage() {
             </div>
           </Reveal>
           <ImageReveal delay={0.15}>
-            <Visual label="Find Your Afeem Experience" ratio="aspect-[4/3]" />
+            <Visual label="Find Your Afeem Experience" icon={SparkleIcon} ratio="aspect-[4/3]" />
           </ImageReveal>
         </Container>
       </section>

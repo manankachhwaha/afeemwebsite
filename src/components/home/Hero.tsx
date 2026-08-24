@@ -39,7 +39,7 @@ export default function Hero() {
   // untouched throughout). Desktop/fine-pointer + heavy mode only.
   const mx = useMotionValue(0.5);
   const my = useMotionValue(0.5);
-  const spotlight = useMotionTemplate`radial-gradient(500px circle at ${useTransform(mx, [0, 1], ["0%", "100%"])} ${useTransform(my, [0, 1], ["0%", "100%"])}, rgba(227, 172, 92, 0.16), transparent 70%)`;
+  const spotlight = useMotionTemplate`radial-gradient(500px circle at ${useTransform(mx, [0, 1], ["0%", "100%"])} ${useTransform(my, [0, 1], ["0%", "100%"])}, rgba(208, 144, 48, 0.12), transparent 70%)`;
 
   function handleHeroMove(e: React.MouseEvent<HTMLElement>) {
     if (!spotlightOn || !heroRef.current) return;
@@ -52,12 +52,12 @@ export default function Hero() {
     <section
       ref={heroRef}
       onMouseMove={handleHeroMove}
-      className="relative overflow-hidden warm-placeholder-dark min-h-[92svh] sm:min-h-[85svh] flex items-end"
+      className="relative overflow-hidden warm-placeholder min-h-[92svh] sm:min-h-[85svh] flex items-end"
     >
       <motion.div style={{ y: bgY }} className="absolute inset-0">
         <div className="ambient-tint" />
-        <GoldParticles />
-        <div className="absolute inset-0 bg-gradient-to-t from-brown via-brown/45 to-transparent pointer-events-none" />
+        <GoldParticles tone="light" />
+        <div className="absolute inset-0 bg-gradient-to-t from-cream/95 via-cream/45 to-transparent pointer-events-none" />
       </motion.div>
       {spotlightOn && <motion.div aria-hidden className="absolute inset-0 pointer-events-none" style={{ background: spotlight }} />}
       <Container className="relative pb-16 sm:pb-20 pt-36 sm:pt-40">
@@ -67,7 +67,7 @@ export default function Hero() {
           transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
           className="max-w-2xl flex flex-col gap-5 sm:gap-6"
         >
-          <span className="text-xs uppercase tracking-[0.3em] text-yellow-warm">
+          <span className="text-xs uppercase tracking-[0.3em] text-gold-dark">
             {greeting ? (
               FEATURES.heavyMode ? (
                 <TextScramble text={`${greeting} · Afeem · Jodhpur`} />
@@ -78,17 +78,17 @@ export default function Hero() {
               "Afeem · Jodhpur"
             )}
           </span>
-          <h1 className="font-display text-white text-[2.5rem] leading-[1.08] sm:text-5xl md:text-6xl sm:leading-[1.1]">
+          <h1 className="font-display text-fluid-hero text-brown">
             <SplitReveal text="Where Beauty Becomes an Experience." delay={0.15} />
           </h1>
-          <p className="text-white/80 text-base sm:text-lg max-w-lg leading-relaxed">
+          <p className="text-brown-soft text-base sm:text-lg max-w-lg leading-relaxed">
             Step into Afeem — a destination for beauty, wellness and professional beauty education.
           </p>
           <div className="flex flex-wrap gap-4 pt-2">
-            <Button href="/contact#book" variant="outline-light">
+            <Button href="/contact#book" variant="primary">
               Book an Experience
             </Button>
-            <Button href="#start-here" variant="ghost" className="text-white hover:text-yellow-warm">
+            <Button href="#start-here" variant="secondary">
               Explore Afeem
             </Button>
           </div>

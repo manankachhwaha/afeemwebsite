@@ -1,6 +1,7 @@
 import Container from "@/components/ui/Container";
 import Button from "@/components/ui/Button";
 import Visual from "@/components/ui/Visual";
+import { EducationIcon } from "@/components/ui/icons";
 import { Reveal, ImageReveal } from "@/components/motion";
 
 const journeySteps = ["Learn", "Hands-on Practice", "Live Salon Exposure", "Build Portfolio", "Career Opportunities"];
@@ -37,7 +38,7 @@ export default function SchoolTeaser() {
           </div>
         </Reveal>
         <ImageReveal delay={0.15} className="order-1 md:order-2">
-          <Visual label="Afeem Beauty School" ratio="aspect-[4/3]" />
+          <Visual label="Afeem Beauty School" icon={EducationIcon} ratio="aspect-[4/3]" />
         </ImageReveal>
       </Container>
     </section>

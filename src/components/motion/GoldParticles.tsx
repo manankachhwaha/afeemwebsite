@@ -45,7 +45,7 @@ function makeParticles(count: number): Particle[] {
  * nothing under reduced motion or when its flag is off, so it's always
  * safe to include.
  */
-export default function GoldParticles() {
+export default function GoldParticles({ tone = "dark" }: { tone?: "dark" | "light" }) {
   const [particles, setParticles] = useState<Particle[] | null>(null);
 
   useEffect(() => {
@@ -64,7 +64,7 @@ export default function GoldParticles() {
       {particles.map((p, i) => (
         <span
           key={i}
-          className="gold-particle"
+          className={`gold-particle${tone === "light" ? " gold-particle--onlight" : ""}`}
           style={
             {
               left: `${p.left}%`,
