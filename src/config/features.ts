@@ -31,6 +31,8 @@ export const FEATURES = {
   filmGrain: true,
   /** Slow floating gold dust — hero, spa & wellness, and the intro splash only. */
   goldParticles: true,
+  /** Soft, blurred gold blobs drifting slowly site-wide — a liquid/flowing texture layered under everything. */
+  liquidGold: true,
   /**
    * Master switch for the "high level" animation pass — parallax hero,
    * gold-flash page transitions, bigger image reveals, and amplified

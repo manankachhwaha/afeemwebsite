@@ -13,6 +13,7 @@ import WindDown from "@/components/motion/WindDown";
 import TimeOfDayPalette from "@/components/motion/TimeOfDayPalette";
 import GoldThread from "@/components/motion/GoldThread";
 import AmbientGradient from "@/components/motion/AmbientGradient";
+import LiquidGold from "@/components/motion/LiquidGold";
 import FilmGrain from "@/components/motion/FilmGrain";
 import { BranchProvider } from "@/lib/BranchContext";
 import { MOTION_INIT_SCRIPT } from "@/lib/motionPreference";
@@ -102,6 +103,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <BranchProvider>
           <SmoothScroll>
             <AmbientGradient />
+            <LiquidGold />
             <FilmGrain />
             <IntroSplash />
             <WindDown />

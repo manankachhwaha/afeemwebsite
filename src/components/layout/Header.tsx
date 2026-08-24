@@ -7,6 +7,7 @@ import { motion, useMotionValueEvent, useScroll } from "motion/react";
 import Container from "@/components/ui/Container";
 import Button from "@/components/ui/Button";
 import { whatsappLink } from "@/data/site";
+import { FEATURES } from "@/config/features";
 
 const salonLinks = [
   { href: "/salon-spa/hair", label: "Hair" },
@@ -46,6 +47,7 @@ const mobileNavItems = [{ href: "/", label: "Home" }, ...navItems];
 export default function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
+  const [hoveredNav, setHoveredNav] = useState<string | null>(null);
   const [hidden, setHidden] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const { scrollY } = useScroll();
@@ -105,16 +107,29 @@ export default function Header() {
             <div
               key={item.href}
               className="relative"
-              onMouseEnter={() => item.children && setOpenDropdown(item.label)}
-              onMouseLeave={() => item.children && setOpenDropdown(null)}
+              onMouseEnter={() => {
+                if (item.children) setOpenDropdown(item.label);
+                setHoveredNav(item.label);
+              }}
+              onMouseLeave={() => {
+                if (item.children) setOpenDropdown(null);
+                setHoveredNav((cur) => (cur === item.label ? null : cur));
+              }}
             >
               <div className="flex items-center gap-1">
                 <Link
                   href={item.href}
                   onClick={() => setOpenDropdown(null)}
-                  className="whitespace-nowrap text-xs font-medium uppercase tracking-[0.08em] text-brown-soft hover:text-gold-dark focus-visible:text-gold-dark transition-colors py-2"
+                  className="relative whitespace-nowrap text-xs font-medium uppercase tracking-[0.08em] text-brown-soft hover:text-gold-dark focus-visible:text-gold-dark transition-colors py-2"
                 >
                   {item.label}
+                  {FEATURES.heavyMode && hoveredNav === item.label && (
+                    <motion.span
+                      layoutId="nav-underline"
+                      className="absolute -bottom-0.5 left-0 right-0 h-[1.5px] bg-gold"
+                      transition={{ type: "spring", stiffness: 420, damping: 34 }}
+                    />
+                  )}
                 </Link>
                 {item.children && (
                   <button

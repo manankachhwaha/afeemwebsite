@@ -1,7 +1,8 @@
 import Link from "next/link";
 import Container from "@/components/ui/Container";
 import { HairIcon, SkinIcon, SpaIcon, MakeupIcon, NailsIcon, BridalIcon, EducationIcon } from "@/components/ui/icons";
-import { Reveal, RevealGroup, RevealItem } from "@/components/motion";
+import { Reveal, RevealGroup } from "@/components/motion";
+import FlipReveal from "@/components/motion/FlipReveal";
 
 const tiles = [
   { label: "Hair", href: "/salon-spa/hair", Icon: HairIcon },
@@ -23,7 +24,7 @@ export default function WhatBringsYou() {
         </Reveal>
         <RevealGroup className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-7 gap-4 md:gap-3" stagger={0.06}>
           {tiles.map(({ label, href, Icon }) => (
-            <RevealItem key={label}>
+            <FlipReveal key={label}>
               <Link
                 href={href}
                 className="group flex flex-col items-center justify-center gap-4 aspect-square border border-brown/10 bg-white px-3 text-center transition-all duration-300 hover:border-gold hover:shadow-[0_18px_40px_-20px_rgba(58,40,24,0.35)] hover:-translate-y-1"
@@ -33,7 +34,7 @@ export default function WhatBringsYou() {
                 </span>
                 <span className="text-sm font-medium text-brown">{label}</span>
               </Link>
-            </RevealItem>
+            </FlipReveal>
           ))}
         </RevealGroup>
       </Container>

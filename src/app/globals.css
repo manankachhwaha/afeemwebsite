@@ -258,6 +258,74 @@ html.reduce-motion .wind-down-overlay {
   100% { background-position: 30% 85%; }
 }
 
+/* Liquid gold — three large, softly blurred blobs drifting on independent,
+   very-long loops. Same negative-z-index reasoning as .ambient-gradient
+   (stays behind every section regardless of that section's own
+   positioning); each blob's own gradient alpha is kept low since, again,
+   most sections here have no background of their own and rely on the
+   cream base for text contrast. mix-blend-mode: soft-light keeps it a
+   gentle warmth rather than a visible shape. */
+.liquid-gold {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.liquid-blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(90px);
+  mix-blend-mode: soft-light;
+  will-change: transform;
+}
+
+.liquid-blob-1 {
+  width: 55vw;
+  height: 55vw;
+  top: -15%;
+  left: -12%;
+  background: radial-gradient(circle, rgba(208, 144, 48, 0.32), transparent 70%);
+  animation: liquid-float-1 34s ease-in-out infinite;
+}
+
+.liquid-blob-2 {
+  width: 48vw;
+  height: 48vw;
+  bottom: -18%;
+  right: -8%;
+  background: radial-gradient(circle, rgba(227, 172, 92, 0.28), transparent 70%);
+  animation: liquid-float-2 40s ease-in-out infinite;
+}
+
+.liquid-blob-3 {
+  width: 38vw;
+  height: 38vw;
+  top: 32%;
+  left: 52%;
+  background: radial-gradient(circle, rgba(168, 112, 30, 0.26), transparent 70%);
+  animation: liquid-float-3 27s ease-in-out infinite;
+  transform: translateX(-50%);
+}
+
+@keyframes liquid-float-1 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(9vw, 7vh) scale(1.12); }
+  66% { transform: translate(-5vw, 11vh) scale(0.94); }
+}
+
+@keyframes liquid-float-2 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(-11vw, -9vh) scale(1.15); }
+}
+
+@keyframes liquid-float-3 {
+  0%, 100% { transform: translate(-50%, 0) scale(1); }
+  40% { transform: translate(-35%, 8vh) scale(1.2); }
+  70% { transform: translate(-65%, -5vh) scale(0.9); }
+}
+
 /* Layer 2 — faint site-wide film-grain texture. isolation: isolate is
    required here — without it this blend-mode layer can bleed through
    later fixed/full-screen elements (this happened once with the intro
