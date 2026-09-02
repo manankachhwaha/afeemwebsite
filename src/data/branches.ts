@@ -1,3 +1,7 @@
+function numberedImages(folder: string, count: number): string[] {
+  return Array.from({ length: count }, (_, i) => `/images/${folder}/${String(i + 1).padStart(2, "0")}.jpg`);
+}
+
 export type Branch = {
   slug: string;
   name: string;
@@ -14,10 +18,15 @@ export type Branch = {
   googleRating: number;
   googleReviewCount: number;
   googleMapsSearchUrl: string;
-  mapEmbedQuery: string;
+  appleMapsUrl: string;
+  /** Exact pin coordinates for this branch's Google Business listing — used for the map embed so it points at the actual door, not just a geocoded address. */
+  lat: number;
+  lng: number;
   instagram: string;
   services: string[];
   hasSchool: boolean;
+  heroImage?: string;
+  galleryImages?: string[];
 };
 
 export const branches: Branch[] = [
@@ -35,13 +44,15 @@ export const branches: Branch[] = [
     hoursIsPlaceholder: false,
     googleRating: 4.7,
     googleReviewCount: 1046,
-    googleMapsSearchUrl:
-      "https://www.google.com/maps/search/?api=1&query=" +
-      encodeURIComponent("Afeem Ratanada Jodhpur"),
-    mapEmbedQuery: "Circuit House Rd, opposite LIC, Hanwant Nagar, Ratanada, Jodhpur",
+    googleMapsSearchUrl: "https://maps.app.goo.gl/rRCJgRYJrWeVkNzT7",
+    appleMapsUrl: "https://maps.apple.com/?ll=26.2780457,73.0369323&q=" + encodeURIComponent("Afeem — Ratanada"),
+    lat: 26.2780457,
+    lng: 73.0369323,
     instagram: "https://www.instagram.com/afeemspaandsalon",
     services: ["Hair", "Skin", "Spa & Wellness", "Makeup", "Nails", "Bridal"],
     hasSchool: false,
+    heroImage: "/images/ratanada/06.jpg",
+    galleryImages: numberedImages("ratanada", 13),
   },
   {
     slug: "pal-road",
@@ -57,13 +68,15 @@ export const branches: Branch[] = [
     hoursIsPlaceholder: false,
     googleRating: 4.7,
     googleReviewCount: 671,
-    googleMapsSearchUrl:
-      "https://www.google.com/maps/search/?api=1&query=" +
-      encodeURIComponent("Afeem Pal Road Jodhpur"),
-    mapEmbedQuery: "Main Pal Rd, near N S Garden, Jodhpur",
+    googleMapsSearchUrl: "https://maps.app.goo.gl/uc5fwFaio3HisdTP8",
+    appleMapsUrl: "https://maps.apple.com/?ll=26.2608782,72.9880298&q=" + encodeURIComponent("Afeem — Pal Road"),
+    lat: 26.2608782,
+    lng: 72.9880298,
     instagram: "https://www.instagram.com/afeemspaandsalon",
     services: ["Hair", "Skin", "Spa & Wellness", "Makeup", "Nails", "Bridal"],
     hasSchool: false,
+    heroImage: "/images/pal-road/01.jpg",
+    galleryImages: numberedImages("pal-road", 12),
   },
 ];
 

@@ -33,7 +33,7 @@ export default function TransformationsPreview() {
               </ImageReveal>
               <div className="text-sm text-white/70">
                 <p className="text-white">{t.title}</p>
-                <p>{t.service} · {t.expert}</p>
+                <p>{t.service}</p>
               </div>
             </RevealItem>
           ))}

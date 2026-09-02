@@ -23,6 +23,7 @@ export default function ServiceCard({
             label={service.name}
             icon={getCategoryIcon(categorySlug)}
             ratio="aspect-[4/5]"
+            src={service.image}
             className="transition-transform duration-500 ease-out group-hover:scale-105"
           />
         </ImageReveal>
@@ -32,7 +33,6 @@ export default function ServiceCard({
             <span className="text-sm text-gold-dark whitespace-nowrap">{service.startingPrice}</span>
           </div>
           <p className="text-sm text-brown-soft leading-relaxed line-clamp-2">{service.description}</p>
-          <span className="text-xs uppercase tracking-[0.15em] text-brown-mute mt-1">{service.duration}</span>
         </div>
       </Link>
     </TiltCard>

@@ -96,7 +96,7 @@ export default function BridalPage() {
         </section>
       )}
 
-      <section id="book" className="py-16 md:py-24 bg-cream-soft scroll-mt-20">
+      <section id="book" className="py-16 md:py-24 bg-cream-soft scroll-mt-32">
         <Container className="grid lg:grid-cols-2 gap-12 items-start">
           <Reveal className="flex flex-col gap-5">
             <SectionHeading

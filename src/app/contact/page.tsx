@@ -20,7 +20,7 @@ export default function ContactPage() {
     <>
       <PageHero eyebrow="Contact" title="Get in Touch" description="Book an appointment, ask a question, or plan your visit to Afeem." />
 
-      <section id="book" className="py-16 md:py-24 scroll-mt-20">
+      <section id="book" className="py-16 md:py-24 scroll-mt-32">
         <Container className="grid lg:grid-cols-2 gap-12 items-start">
           <Reveal className="flex flex-col gap-5">
             <SectionHeading eyebrow="Book Now" title="Book an Appointment" description="Tell us your preferred branch, service, date and time — we'll confirm on WhatsApp." />
@@ -47,7 +47,7 @@ export default function ContactPage() {
         </Container>
       </section>
 
-      <section id="callback" className="py-16 md:py-24 bg-cream-soft scroll-mt-20">
+      <section id="callback" className="py-16 md:py-24 bg-cream-soft scroll-mt-32">
         <Container className="grid lg:grid-cols-2 gap-12 items-start">
           <Reveal className="flex flex-col gap-5">
             <SectionHeading

@@ -9,7 +9,7 @@ export default function ExperienceIntro() {
     <section className="py-16 md:py-24 bg-cream-soft">
       <Container className="grid md:grid-cols-2 gap-12 items-center">
         <ImageReveal>
-          <Visual label="The Afeem Experience" icon={SparkleIcon} ratio="aspect-[4/3]" />
+          <Visual label="The Afeem Experience" icon={SparkleIcon} ratio="aspect-[4/3]" src="/images/ratanada/06.jpg" />
         </ImageReveal>
         <Reveal delay={0.15} className="flex flex-col gap-5">
           <span className="text-xs uppercase tracking-[0.25em] text-gold-dark">The Afeem Experience</span>

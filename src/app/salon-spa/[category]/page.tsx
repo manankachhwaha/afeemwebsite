@@ -39,6 +39,7 @@ export default async function CategoryPage({
         title={cat.name}
         description={cat.intro}
         particles={cat.slug === "spa-wellness"}
+        image={cat.image}
       />
       <section className="py-16 md:py-24">
         <Container className="flex flex-col gap-10">

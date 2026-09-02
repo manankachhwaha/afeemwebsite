@@ -6,18 +6,9 @@ import Visual from "@/components/ui/Visual";
 import Button from "@/components/ui/Button";
 import ServiceCard from "@/components/salon/ServiceCard";
 import { serviceCategories, getService } from "@/data/services";
-import { getExpert } from "@/data/experts";
 import { testimonials } from "@/data/testimonials";
 import { whatsappLink, site } from "@/data/site";
 import { Reveal, RevealGroup, RevealItem, ImageReveal } from "@/components/motion";
-
-const categoryExpert: Record<string, string> = {
-  hair: "riya-mehta",
-  skin: "sneha-rathore",
-  "spa-wellness": "kabir-oswal",
-  makeup: "aarav-singh",
-  nails: "priya-choudhary",
-};
 
 export function generateStaticParams() {
   return serviceCategories.flatMap((c) => c.services.map((s) => ({ category: c.slug, service: s.slug })));
@@ -33,7 +24,7 @@ export async function generateMetadata({
   if (!found) return {};
   return {
     title: `${found.service.name} in Jodhpur`,
-    description: `${found.service.description} Starting at ${found.service.startingPrice} at Afeem in ${site.city}.`,
+    description: `${found.service.description} Enquire for pricing at Afeem in ${site.city}.`,
   };
 }
 
@@ -47,7 +38,6 @@ export default async function ServiceDetailPage({
   if (!found) notFound();
   const { category: cat, service: s } = found;
 
-  const expert = getExpert(categoryExpert[cat.slug]);
   const related = cat.services.filter((r) => r.slug !== s.slug).slice(0, 3);
   const relevantReviews = testimonials.filter((t) => t.type === "salon" || t.type === "bridal").slice(0, 2);
 
@@ -56,7 +46,7 @@ export default async function ServiceDetailPage({
       <section className="py-12 md:py-16">
         <Container className="grid md:grid-cols-2 gap-12">
           <ImageReveal>
-            <Visual label={s.name} ratio="aspect-[4/5]" />
+            <Visual label={s.name} ratio="aspect-[4/5]" src={s.image} priority />
           </ImageReveal>
           <Reveal delay={0.15} className="flex flex-col gap-5">
             <nav className="text-xs text-brown-mute uppercase tracking-wide">
@@ -67,15 +57,9 @@ export default async function ServiceDetailPage({
             <h1 className="font-display text-3xl sm:text-4xl text-brown">{s.name}</h1>
             <p className="text-brown-soft leading-relaxed">{s.description}</p>
 
-            <div className="flex gap-8 py-2">
-              <div>
-                <p className="text-xs uppercase tracking-wide text-brown-mute">Duration</p>
-                <p className="text-brown font-medium">{s.duration}</p>
-              </div>
-              <div>
-                <p className="text-xs uppercase tracking-wide text-brown-mute">Starting Price</p>
-                <p className="text-gold-dark font-medium">{s.startingPrice}</p>
-              </div>
+            <div className="py-2">
+              <p className="text-xs uppercase tracking-wide text-brown-mute">Pricing</p>
+              <p className="text-gold-dark font-medium">{s.startingPrice}</p>
             </div>
 
             <div className="flex flex-wrap gap-4">
@@ -129,24 +113,6 @@ export default async function ServiceDetailPage({
           </Reveal>
         </Container>
       </section>
-
-      {expert && (
-        <section className="py-12">
-          <Container>
-            <Reveal className="flex flex-col sm:flex-row gap-6 sm:items-center bg-white border border-brown/10 p-8">
-              <Visual ratio="aspect-square" className="w-24 h-24 shrink-0" />
-              <div className="flex-1">
-                <p className="text-xs uppercase tracking-wide text-gold-dark">Your Expert</p>
-                <h3 className="font-display text-xl text-brown">{expert.name}</h3>
-                <p className="text-sm text-brown-soft">{expert.designation} · {expert.experience} experience</p>
-              </div>
-              <Button href={whatsappLink(`Hi Afeem, I'd like to book ${s.name} with ${expert.name}.`)} variant="secondary">
-                Book with {expert.name.split(" ")[0]}
-              </Button>
-            </Reveal>
-          </Container>
-        </section>
-      )}
 
       {s.faqs.length > 0 && (
         <section className="py-12 bg-cream-soft">

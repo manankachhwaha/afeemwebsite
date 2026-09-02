@@ -105,7 +105,7 @@ const NODES: Record<string, Node> = {
     ],
   },
   school: {
-    message: "Afeem Beauty School currently offers two courses: Certificate in Basic Makeup (45 days, ₹38,000) and Hair Styling (30 days, ₹25,000) — both leading to NSDC-linked certification.",
+    message: "Afeem Beauty School currently offers two courses: Certificate in Basic Makeup (45 days) and Hair Styling (30 days) — both leading to NSDC-linked certification. Enquire for fees.",
     options: [
       { label: "Book a Counselling Session", action: { type: "beauty-school", message: "Hi Afeem, I'd like to book a Beauty School counselling session." } },
       { label: "View Courses", action: { type: "link", href: "/beauty-school" } },

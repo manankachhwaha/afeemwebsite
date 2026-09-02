@@ -4,9 +4,15 @@ import PageHero from "@/components/ui/PageHero";
 import SectionHeading from "@/components/ui/SectionHeading";
 import Visual from "@/components/ui/Visual";
 import Button from "@/components/ui/Button";
-import { experts } from "@/data/experts";
-import { whatsappLink } from "@/data/site";
 import { Reveal, RevealGroup, RevealItem, ImageReveal } from "@/components/motion";
+
+const departments = [
+  { name: "Hair", blurb: "Cuts, colour, treatments and hair spa." },
+  { name: "Skin", blurb: "Facials and skin therapy, chosen for your skin type." },
+  { name: "Spa & Wellness", blurb: "Massage and body rituals for genuine rest." },
+  { name: "Makeup", blurb: "Everyday polish through to full bridal glam." },
+  { name: "Nails", blurb: "Manicures, pedicures and nail art." },
+];
 
 export const metadata: Metadata = {
   title: "About Afeem",
@@ -25,7 +31,7 @@ export default function AboutPage() {
       <section className="py-16 md:py-24">
         <Container className="grid md:grid-cols-2 gap-12 items-center">
           <ImageReveal>
-            <Visual label="The Afeem Story" ratio="aspect-[4/3]" />
+            <Visual label="The Afeem Story" ratio="aspect-[4/3]" src="/images/ratanada/01.jpg" />
           </ImageReveal>
           <Reveal delay={0.15} className="flex flex-col gap-5">
             <span className="text-xs uppercase tracking-[0.25em] text-gold-dark">Our Story</span>
@@ -68,35 +74,23 @@ export default function AboutPage() {
       <section className="py-16 md:py-24">
         <Container className="flex flex-col gap-10">
           <Reveal>
-            <SectionHeading eyebrow="Meet the Team" title="Meet the Afeem Experts" description="The people behind every cut, colour, facial and bridal look." />
+            <SectionHeading
+              eyebrow="Meet the Team"
+              title="Trained Specialists, Every Time"
+              description="Every Afeem stylist, therapist and artist is trained to the same standard — so the quality of your visit never depends on who's on shift."
+            />
           </Reveal>
-          <RevealGroup className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8" stagger={0.08}>
-            {experts.map((e) => (
-              <RevealItem key={e.slug} className="flex flex-col gap-3">
-                <ImageReveal>
-                  <Visual ratio="aspect-[4/5]" />
-                </ImageReveal>
-                <div>
-                  <h3 className="font-display text-lg text-brown">{e.name}</h3>
-                  <p className="text-sm text-gold-dark">{e.designation}</p>
-                  <p className="text-xs text-brown-mute mt-1">{e.experience} · {e.branch}</p>
-                  <p className="text-sm text-brown-soft mt-2 leading-relaxed">{e.bio}</p>
-                  <div className="flex flex-wrap gap-1.5 mt-2">
-                    {e.specialisation.map((s) => (
-                      <span key={s} className="text-xs bg-yellow-soft text-brown-soft px-2 py-1">{s}</span>
-                    ))}
-                  </div>
-                  <Button
-                    href={whatsappLink(`Hi Afeem, I'd like to book with ${e.name}.`)}
-                    variant="ghost"
-                    className="mt-3 px-0"
-                  >
-                    Book with {e.name.split(" ")[0]}
-                  </Button>
-                </div>
+          <RevealGroup className="grid sm:grid-cols-2 lg:grid-cols-5 gap-6" stagger={0.08}>
+            {departments.map((d) => (
+              <RevealItem key={d.name} className="bg-white border border-brown/10 p-6 flex flex-col gap-2">
+                <h3 className="font-display text-lg text-brown">{d.name}</h3>
+                <p className="text-sm text-brown-soft leading-relaxed">{d.blurb}</p>
               </RevealItem>
             ))}
           </RevealGroup>
+          <Reveal>
+            <Button href="/contact#book" variant="secondary" className="self-start">Book an Appointment</Button>
+          </Reveal>
         </Container>
       </section>
 

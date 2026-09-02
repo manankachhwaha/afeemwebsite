@@ -33,7 +33,7 @@ export default function SalonSpaPage() {
               <RevealItem key={cat.slug}>
                 <Link href={`/salon-spa/${cat.slug}`} className="group flex flex-col gap-4">
                   <ImageReveal>
-                    <Visual label={cat.name} icon={getCategoryIcon(cat.slug)} ratio="aspect-[4/3]" className="transition-transform duration-500 ease-out group-hover:scale-105" />
+                    <Visual label={cat.name} icon={getCategoryIcon(cat.slug)} ratio="aspect-[4/3]" src={cat.image} className="transition-transform duration-500 ease-out group-hover:scale-105" />
                   </ImageReveal>
                   <div>
                     <h2 className="font-display text-xl text-brown">{cat.name}</h2>
@@ -57,7 +57,7 @@ export default function SalonSpaPage() {
         </Container>
       </section>
 
-      <section id="packages" className="py-16 md:py-24 bg-cream-soft scroll-mt-20">
+      <section id="packages" className="py-16 md:py-24 bg-cream-soft scroll-mt-32">
         <Container className="flex flex-col gap-10">
           <Reveal>
             <SectionHeading
@@ -79,9 +79,8 @@ export default function SalonSpaPage() {
                       </li>
                     ))}
                   </ul>
-                  <div className="flex items-center justify-between mt-auto pt-3 border-t border-brown/10">
+                  <div className="mt-auto pt-3 border-t border-brown/10">
                     <span className="text-gold-dark font-medium">{p.price}</span>
-                    <span className="text-xs text-brown-mute">{p.duration}</span>
                   </div>
                   <Button href="/contact#book" variant="secondary" className="mt-2">
                     Book Package

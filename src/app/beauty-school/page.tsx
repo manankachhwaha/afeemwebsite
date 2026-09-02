@@ -1,14 +1,15 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import Container from "@/components/ui/Container";
 import SectionHeading from "@/components/ui/SectionHeading";
 import Visual from "@/components/ui/Visual";
 import Button from "@/components/ui/Button";
 import { courses } from "@/data/courses";
-import { experts } from "@/data/experts";
 import { testimonials } from "@/data/testimonials";
 import { beautySchoolWhatsappLink } from "@/data/site";
 import { Reveal, RevealGroup, RevealItem, ImageReveal } from "@/components/motion";
+import ScrollCarousel from "@/components/motion/ScrollCarousel";
 
 export const metadata: Metadata = {
   title: "Beauty School in Jodhpur | Makeup & Beauty Courses",
@@ -17,14 +18,15 @@ export const metadata: Metadata = {
 };
 
 const journey = ["Learn", "Hands-on Practice", "Live Salon Exposure", "Build Portfolio", "Career Opportunities"];
-const trainers = experts.filter((e) => ["meher-vyas", "aarav-singh", "riya-mehta"].includes(e.slug));
 const schoolReviews = testimonials.filter((t) => t.type === "school");
 
 export default function BeautySchoolPage() {
   return (
     <>
-      <section className="warm-placeholder py-24 md:py-36 overflow-hidden">
-        <Container>
+      <section className="relative py-24 md:py-36 overflow-hidden">
+        <Image src="/images/beauty-school/01.jpg" alt="" fill priority sizes="100vw" className="object-cover" />
+        <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-cream via-cream/75 to-black/25" />
+        <Container className="relative">
           <div className="max-w-2xl flex flex-col gap-6">
             <Reveal>
               <span className="text-xs uppercase tracking-[0.3em] text-gold-dark">Afeem Beauty School</span>
@@ -66,7 +68,7 @@ export default function BeautySchoolPage() {
         </Container>
       </section>
 
-      <section id="courses" className="py-16 md:py-24 bg-cream-soft scroll-mt-20">
+      <section id="courses" className="py-16 md:py-24 bg-cream-soft scroll-mt-32">
         <Container className="flex flex-col gap-10">
           <Reveal>
             <SectionHeading eyebrow="Courses" title="Find Your Course" />
@@ -91,10 +93,10 @@ export default function BeautySchoolPage() {
         </Container>
       </section>
 
-      <section id="curriculum" className="py-16 md:py-24 scroll-mt-20">
+      <section id="curriculum" className="py-16 md:py-24 scroll-mt-32">
         <Container className="grid md:grid-cols-2 gap-12 items-center">
           <ImageReveal>
-            <Visual label="Curriculum & Practical Training" ratio="aspect-[4/3]" />
+            <Visual label="Curriculum & Practical Training" ratio="aspect-[4/3]" src="/images/beauty-school/04.jpg" />
           </ImageReveal>
           <Reveal delay={0.15} className="flex flex-col gap-5">
             <span className="text-xs uppercase tracking-[0.25em] text-gold-dark">Curriculum</span>
@@ -108,29 +110,33 @@ export default function BeautySchoolPage() {
         </Container>
       </section>
 
-      <section id="trainers" className="py-16 md:py-24 bg-cream-soft scroll-mt-20">
-        <Container className="flex flex-col gap-10">
+      <section className="py-16 md:py-24 overflow-hidden">
+        <Container className="mb-10">
           <Reveal>
-            <SectionHeading eyebrow="Trainers" title="Learn From Working Professionals" />
+            <SectionHeading eyebrow="The Campus" title="Inside Afeem Beauty School" />
           </Reveal>
-          <RevealGroup className="grid sm:grid-cols-3 gap-8" stagger={0.1}>
-            {trainers.map((t) => (
-              <RevealItem key={t.slug} className="flex flex-col gap-3">
-                <ImageReveal>
-                  <Visual ratio="aspect-square" />
-                </ImageReveal>
-                <div>
-                  <h3 className="font-display text-lg text-brown">{t.name}</h3>
-                  <p className="text-sm text-gold-dark">{t.designation}</p>
-                  <p className="text-sm text-brown-soft mt-1">{t.experience} experience</p>
-                </div>
-              </RevealItem>
-            ))}
-          </RevealGroup>
+        </Container>
+        <ScrollCarousel
+          images={Array.from({ length: 8 }, (_, i) => ({
+            src: `/images/beauty-school/${String(i + 1).padStart(2, "0")}.jpg`,
+            label: "Afeem Beauty School",
+          }))}
+        />
+      </section>
+
+      <section id="trainers" className="py-16 md:py-24 bg-cream-soft scroll-mt-32">
+        <Container className="max-w-2xl">
+          <Reveal>
+            <SectionHeading
+              eyebrow="Trainers"
+              title="Learn From Working Professionals"
+              description="Every course is led by working Afeem stylists and artists, actively practicing on the salon floor — not lecturing from theory alone."
+            />
+          </Reveal>
         </Container>
       </section>
 
-      <section id="student-work" className="py-16 md:py-24 scroll-mt-20">
+      <section id="student-work" className="py-16 md:py-24 scroll-mt-32">
         <Container className="flex flex-col gap-10">
           <Reveal>
             <SectionHeading eyebrow="Afeem Talent" title="Student Showcase" description="Real work from real students — across hair, makeup, nails and skin." />
@@ -153,7 +159,7 @@ export default function BeautySchoolPage() {
         </Container>
       </section>
 
-      <section id="careers" className="py-16 md:py-24 bg-cream-soft scroll-mt-20">
+      <section id="careers" className="py-16 md:py-24 bg-cream-soft scroll-mt-32">
         <Container className="grid md:grid-cols-2 gap-12 items-center">
           <Reveal className="flex flex-col gap-4">
             <span className="text-xs uppercase tracking-[0.25em] text-gold-dark">Career Opportunities</span>
@@ -171,7 +177,7 @@ export default function BeautySchoolPage() {
         </Container>
       </section>
 
-      <section id="admissions" className="py-16 md:py-24 bg-cream-soft scroll-mt-20">
+      <section id="admissions" className="py-16 md:py-24 bg-cream-soft scroll-mt-32">
         <Container className="flex flex-col items-center text-center gap-6 max-w-xl mx-auto">
           <Reveal>
             <SectionHeading eyebrow="Admissions" title="Start Your Beauty Career" align="center" description="Book a free counselling session to find the right course for your goals." />

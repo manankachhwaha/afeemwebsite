@@ -24,7 +24,7 @@ export default function LocationsPage() {
                 className="border border-brown/10 bg-white flex flex-col transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_24px_50px_-28px_rgba(58,40,24,0.35)]"
               >
                 <ImageReveal>
-                  <Visual label={b.name} ratio="aspect-[16/9]" />
+                  <Visual label={b.name} ratio="aspect-[16/9]" src={b.heroImage} />
                 </ImageReveal>
                 <div className="p-8 flex flex-col gap-3">
                   <div className="flex items-baseline justify-between gap-3">

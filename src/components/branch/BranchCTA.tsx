@@ -33,6 +33,32 @@ export function BranchCallButton({
   );
 }
 
+/** Opens the selected branch's Google Business listing (reviews), prompting for a branch first if none is chosen. */
+export function BranchGoogleReviewsButton({
+  children,
+  variant = "secondary",
+  className = "",
+}: {
+  children: ReactNode;
+  variant?: Variant;
+  className?: string;
+}) {
+  const { requestBranch } = useBranch();
+  return (
+    <Button
+      variant={variant}
+      className={className}
+      onClick={() =>
+        requestBranch((branch) => {
+          window.open(branch.googleMapsSearchUrl, "_blank", "noopener,noreferrer");
+        })
+      }
+    >
+      {children}
+    </Button>
+  );
+}
+
 /** Opens WhatsApp for the selected branch, prompting for a branch first if none is chosen. */
 export function BranchWhatsAppButton({
   children,

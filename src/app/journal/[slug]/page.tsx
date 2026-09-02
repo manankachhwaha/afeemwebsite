@@ -49,9 +49,39 @@ export default async function JournalPostPage({
             <Visual ratio="aspect-[16/9]" />
           </ImageReveal>
           <Reveal delay={0.2} className="flex flex-col gap-4 pt-4">
-            {post.content.map((para, i) => (
-              <p key={i} className="text-brown-soft leading-relaxed">{para}</p>
-            ))}
+            {post.content.map((block, i) => {
+              if (block.type === "h2") {
+                return (
+                  <h2 key={i} className="font-display text-xl sm:text-2xl text-brown mt-4">
+                    {block.text}
+                  </h2>
+                );
+              }
+              if (block.type === "list") {
+                return (
+                  <ul key={i} className="list-disc pl-5 flex flex-col gap-1.5 text-brown-soft leading-relaxed">
+                    {block.items.map((item, j) => (
+                      <li key={j}>{item}</li>
+                    ))}
+                  </ul>
+                );
+              }
+              if (block.type === "faq") {
+                return (
+                  <div key={i} className="flex flex-col gap-5 pt-2">
+                    {block.items.map((faq, j) => (
+                      <div key={j}>
+                        <p className="font-display text-brown">{faq.q}</p>
+                        <p className="text-brown-soft leading-relaxed mt-1">{faq.a}</p>
+                      </div>
+                    ))}
+                  </div>
+                );
+              }
+              return (
+                <p key={i} className="text-brown-soft leading-relaxed">{block.text}</p>
+              );
+            })}
           </Reveal>
         </Container>
       </section>

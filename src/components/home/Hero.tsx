@@ -4,9 +4,11 @@ import { useEffect, useRef, useState } from "react";
 import { motion, useMotionTemplate, useMotionValue, useScroll, useTransform } from "motion/react";
 import Button from "@/components/ui/Button";
 import Container from "@/components/ui/Container";
+import Visual from "@/components/ui/Visual";
 import GoldParticles from "@/components/motion/GoldParticles";
 import SplitReveal from "@/components/motion/SplitReveal";
 import TextScramble from "@/components/motion/TextScramble";
+import { SparkleIcon } from "@/components/ui/icons";
 import { getGreeting, getTimeBucket } from "@/lib/timeOfDay";
 import { FEATURES } from "@/config/features";
 import { isMotionEnabled } from "@/lib/motionPreference";
@@ -52,20 +54,19 @@ export default function Hero() {
     <section
       ref={heroRef}
       onMouseMove={handleHeroMove}
-      className="relative overflow-hidden warm-placeholder min-h-[92svh] sm:min-h-[85svh] flex items-end"
+      className="relative overflow-hidden bg-cream flex items-center py-28 sm:py-32 lg:min-h-[85svh]"
     >
       <motion.div style={{ y: bgY }} className="absolute inset-0">
         <div className="ambient-tint" />
         <GoldParticles tone="light" />
-        <div className="absolute inset-0 bg-gradient-to-t from-cream/95 via-cream/45 to-transparent pointer-events-none" />
       </motion.div>
       {spotlightOn && <motion.div aria-hidden className="absolute inset-0 pointer-events-none" style={{ background: spotlight }} />}
-      <Container className="relative pb-16 sm:pb-20 pt-36 sm:pt-40">
+      <Container className="relative grid lg:grid-cols-[1.05fr_0.95fr] gap-12 lg:gap-16 items-center">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-          className="max-w-2xl flex flex-col gap-5 sm:gap-6"
+          className="flex flex-col gap-5 sm:gap-6"
         >
           <span className="text-xs uppercase tracking-[0.3em] text-gold-dark">
             {greeting ? (
@@ -92,6 +93,28 @@ export default function Hero() {
               Explore Afeem
             </Button>
           </div>
+        </motion.div>
+
+        {/* Editorial gallery-label frame — a deliberately composed placeholder
+            rather than a full-bleed texture, so the hero reads as "space held
+            for one considered photo" and a real one can drop straight in. */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.96 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.9, delay: 0.25, ease: [0.16, 1, 0.3, 1] }}
+          className="relative"
+        >
+          <Visual
+            icon={SparkleIcon}
+            label="Afeem — Jodhpur"
+            ratio="aspect-[4/3] sm:aspect-[3/4]"
+            src="/images/hair-color/05.jpg"
+            priority
+          />
+          <span aria-hidden className="pointer-events-none absolute -top-2 -left-2 sm:-top-3 sm:-left-3 h-5 w-5 sm:h-7 sm:w-7 border-t-2 border-l-2 border-gold" />
+          <span aria-hidden className="pointer-events-none absolute -top-2 -right-2 sm:-top-3 sm:-right-3 h-5 w-5 sm:h-7 sm:w-7 border-t-2 border-r-2 border-gold" />
+          <span aria-hidden className="pointer-events-none absolute -bottom-2 -left-2 sm:-bottom-3 sm:-left-3 h-5 w-5 sm:h-7 sm:w-7 border-b-2 border-l-2 border-gold" />
+          <span aria-hidden className="pointer-events-none absolute -bottom-2 -right-2 sm:-bottom-3 sm:-right-3 h-5 w-5 sm:h-7 sm:w-7 border-b-2 border-r-2 border-gold" />
         </motion.div>
       </Container>
     </section>

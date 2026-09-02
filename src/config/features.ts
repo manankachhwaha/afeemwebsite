@@ -33,6 +33,8 @@ export const FEATURES = {
   goldParticles: true,
   /** Soft, blurred gold blobs drifting slowly site-wide — a liquid/flowing texture layered under everything. */
   liquidGold: true,
+  /** Reactive gold-dust layer on ScrollCarousel that drifts with drag/autoplay motion and settles at rest. Per-instance `dust` prop can still override this off. */
+  carouselGoldDust: true,
   /**
    * Master switch for the "high level" animation pass — parallax hero,
    * gold-flash page transitions, bigger image reveals, and amplified

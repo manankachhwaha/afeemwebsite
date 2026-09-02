@@ -1,20 +1,18 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { motion, useMotionValue, useMotionTemplate, useSpring, useTransform } from "motion/react";
+import { motion, useSpring, useTransform, useMotionValue } from "motion/react";
 import { isMotionEnabled } from "@/lib/motionPreference";
 import { FEATURES } from "@/config/features";
 
 const TILT_DEGREES = FEATURES.heavyMode ? 8 : 5;
-const GLOW_RADIUS = FEATURES.heavyMode ? 380 : 280;
-const GLOW_OPACITY = FEATURES.heavyMode ? 0.5 : 0.35;
 
 /**
- * A gentle 3D tilt + soft gold sheen that follows the cursor, for cards
- * (service, transformation, package). Wraps around any card without
- * touching its own markup. Fine-pointer devices only (same gating as
- * SmoothScroll.tsx) and off entirely under reduced motion — on touch
- * devices and when disabled it's a plain, unstyled wrapper.
+ * A gentle 3D tilt that follows the cursor, for cards (service,
+ * transformation, package). Wraps around any card without touching its own
+ * markup. Fine-pointer devices only (same gating as SmoothScroll.tsx) and
+ * off entirely under reduced motion — on touch devices and when disabled
+ * it's a plain, unstyled wrapper.
  */
 export default function TiltCard({
   children,
@@ -25,7 +23,6 @@ export default function TiltCard({
 }) {
   const ref = useRef<HTMLDivElement>(null);
   const [enabled, setEnabled] = useState(false);
-  const [hovering, setHovering] = useState(false);
 
   useEffect(() => {
     const fine = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
@@ -47,9 +44,6 @@ export default function TiltCard({
     damping: 28,
     mass: 0.5,
   });
-  const glowX = useTransform(mx, [0, 1], ["0%", "100%"]);
-  const glowY = useTransform(my, [0, 1], ["0%", "100%"]);
-  const glow = useMotionTemplate`radial-gradient(${GLOW_RADIUS}px circle at ${glowX} ${glowY}, rgba(227, 172, 92, ${GLOW_OPACITY}), transparent 70%)`;
 
   function handleMove(e: React.MouseEvent) {
     if (!ref.current) return;
@@ -61,7 +55,6 @@ export default function TiltCard({
   function handleLeave() {
     mx.set(0.5);
     my.set(0.5);
-    setHovering(false);
   }
 
   if (!enabled) {
@@ -72,7 +65,6 @@ export default function TiltCard({
     <motion.div
       ref={ref}
       onMouseMove={handleMove}
-      onMouseEnter={() => setHovering(true)}
       onMouseLeave={handleLeave}
       style={{ rotateX, rotateY, transformPerspective: 900 }}
       whileHover={FEATURES.heavyMode ? { scale: 1.02 } : undefined}
@@ -80,13 +72,6 @@ export default function TiltCard({
       className={`relative ${className}`}
     >
       {children}
-      <motion.div
-        aria-hidden
-        animate={{ opacity: hovering ? 1 : 0 }}
-        transition={{ duration: 0.3 }}
-        className="pointer-events-none absolute inset-0"
-        style={{ background: glow }}
-      />
     </motion.div>
   );
 }

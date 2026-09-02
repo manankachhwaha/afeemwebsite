@@ -3,7 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
-import { motion, useMotionValueEvent, useScroll } from "motion/react";
+import { AnimatePresence, motion, useMotionValueEvent, useScroll } from "motion/react";
 import Container from "@/components/ui/Container";
 import Button from "@/components/ui/Button";
 import { whatsappLink } from "@/data/site";
@@ -155,7 +155,7 @@ export default function Header() {
               </div>
               {item.children && (
                 <div
-                  className={`absolute left-1/2 -translate-x-1/2 top-full w-56 transition-[opacity,transform] duration-150 ${
+                  className={`absolute left-1/2 -translate-x-1/2 top-full w-56 transition-[opacity,transform] duration-200 ease-[cubic-bezier(0.16,1,0.3,1)] ${
                     openDropdown === item.label ? "opacity-100 translate-y-0 pointer-events-auto" : "opacity-0 -translate-y-1 pointer-events-none"
                   }`}
                 >
@@ -195,45 +195,53 @@ export default function Header() {
         </button>
       </Container>
 
-      {mobileOpen && (
-        <div className="lg:hidden border-t border-brown/10 bg-cream max-h-[75svh] overflow-y-auto">
-          <Container className="py-4 flex flex-col gap-1">
-            {mobileNavItems.map((item) => (
-              <div key={item.href} className="border-b border-brown/5 py-2">
-                <Link
-                  href={item.href}
-                  onClick={() => setMobileOpen(false)}
-                  className="block py-2 text-base font-medium text-brown"
-                >
-                  {item.label}
-                </Link>
-                {"children" in item && item.children && (
-                  <div className="pl-4 flex flex-col gap-1 pb-2">
-                    {item.children.map((child) => (
-                      <Link
-                        key={child.href}
-                        href={child.href}
-                        onClick={() => setMobileOpen(false)}
-                        className="py-1.5 text-sm text-brown-soft hover:text-gold-dark"
-                      >
-                        {child.label}
-                      </Link>
-                    ))}
-                  </div>
-                )}
+      <AnimatePresence>
+        {mobileOpen && (
+          <motion.div
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -10 }}
+            transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+            className="lg:hidden border-t border-brown/10 bg-cream max-h-[75svh] overflow-y-auto"
+          >
+            <Container className="py-4 flex flex-col gap-1">
+              {mobileNavItems.map((item) => (
+                <div key={item.href} className="border-b border-brown/5 py-2">
+                  <Link
+                    href={item.href}
+                    onClick={() => setMobileOpen(false)}
+                    className="block py-2 text-base font-medium text-brown"
+                  >
+                    {item.label}
+                  </Link>
+                  {"children" in item && item.children && (
+                    <div className="pl-4 flex flex-col gap-1 pb-2">
+                      {item.children.map((child) => (
+                        <Link
+                          key={child.href}
+                          href={child.href}
+                          onClick={() => setMobileOpen(false)}
+                          className="py-1.5 text-sm text-brown-soft hover:text-gold-dark"
+                        >
+                          {child.label}
+                        </Link>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              ))}
+              <div className="flex flex-col gap-3 pt-4">
+                <Button href={whatsappLink("Hi Afeem, I'd like to enquire.")} variant="secondary">
+                  Enquire on WhatsApp
+                </Button>
+                <Button href="/contact#book" variant="primary">
+                  Book Now
+                </Button>
               </div>
-            ))}
-            <div className="flex flex-col gap-3 pt-4">
-              <Button href={whatsappLink("Hi Afeem, I'd like to enquire.")} variant="secondary">
-                Enquire on WhatsApp
-              </Button>
-              <Button href="/contact#book" variant="primary">
-                Book Now
-              </Button>
-            </div>
-          </Container>
-        </div>
-      )}
+            </Container>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </motion.header>
   );
 }

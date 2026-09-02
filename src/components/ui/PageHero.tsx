@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "motion/react";
+import Image from "next/image";
 import Container from "@/components/ui/Container";
 import GoldParticles from "@/components/motion/GoldParticles";
 
@@ -9,15 +10,24 @@ export default function PageHero({
   title,
   description,
   particles = false,
+  image,
 }: {
   eyebrow: string;
   title: string;
   description?: string;
   /** Gold dust layer — only meant for the spa & wellness page per the brand's atmospheric background spec. */
   particles?: boolean;
+  /** Real photo for the hero background, once available — falls back to the warm gradient placeholder when omitted. */
+  image?: string;
 }) {
   return (
-    <section className="relative warm-placeholder py-24 md:py-32 overflow-hidden">
+    <section className={`relative py-24 md:py-32 overflow-hidden ${image ? "" : "warm-placeholder"}`}>
+      {image && (
+        <>
+          <Image src={image} alt="" fill priority sizes="100vw" className="object-cover" />
+          <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-cream via-cream/70 to-black/25" />
+        </>
+      )}
       <div className="ambient-tint" />
       {particles && <GoldParticles tone="light" />}
       <Container className="relative">

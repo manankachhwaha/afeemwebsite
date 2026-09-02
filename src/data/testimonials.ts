@@ -11,7 +11,7 @@ export const testimonials: Testimonial[] = [
     name: "Ananya S.",
     service: "Bridal Makeup",
     quote:
-      "Aarav and the team understood exactly what I wanted from the very first consultation. My makeup lasted the entire wedding, through tears and dancing.",
+      "The team understood exactly what I wanted from the very first consultation. My makeup lasted the entire wedding, through tears and dancing.",
     rating: 5,
     type: "bridal",
   },
@@ -32,7 +32,7 @@ export const testimonials: Testimonial[] = [
   {
     name: "Ritu J.",
     service: "Signature Facial",
-    quote: "Sneha takes the time to actually understand your skin instead of running through a fixed menu. My skin has never looked better.",
+    quote: "The team takes the time to actually understand your skin instead of running through a fixed menu. My skin has never looked better.",
     rating: 5,
     type: "salon",
   },

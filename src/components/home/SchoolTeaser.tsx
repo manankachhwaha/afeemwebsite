@@ -38,7 +38,7 @@ export default function SchoolTeaser() {
           </div>
         </Reveal>
         <ImageReveal delay={0.15} className="order-1 md:order-2">
-          <Visual label="Afeem Beauty School" icon={EducationIcon} ratio="aspect-[4/3]" />
+          <Visual label="Afeem Beauty School" icon={EducationIcon} ratio="aspect-[4/3]" src="/images/beauty-school/01.jpg" />
         </ImageReveal>
       </Container>
     </section>

@@ -6,7 +6,8 @@ import Visual from "@/components/ui/Visual";
 import Button from "@/components/ui/Button";
 import { branches, getBranch, branchWhatsappLink } from "@/data/branches";
 import { site } from "@/data/site";
-import { Reveal, RevealGroup, RevealItem, ImageReveal } from "@/components/motion";
+import { Reveal, ImageReveal } from "@/components/motion";
+import ScrollCarousel from "@/components/motion/ScrollCarousel";
 import BranchBookButton from "@/components/branch/BranchBookButton";
 
 export function generateStaticParams() {
@@ -66,7 +67,7 @@ export default async function BranchPage({
       <section className="py-12 md:py-16">
         <Container className="grid md:grid-cols-2 gap-12">
           <ImageReveal>
-            <Visual label={b.name} ratio="aspect-[4/5]" />
+            <Visual label={b.name} ratio="aspect-[4/5]" src={b.heroImage} priority />
           </ImageReveal>
           <Reveal delay={0.15} className="flex flex-col gap-5">
             <nav className="text-xs text-brown-mute uppercase tracking-wide">
@@ -131,31 +132,44 @@ export default async function BranchPage({
         </Container>
       </section>
 
-      <section className="py-12">
-        <Container className="flex flex-col gap-6">
+      <section className="py-12 overflow-hidden">
+        <Container className="mb-6">
           <h2 className="font-display text-2xl text-brown">Photos from {b.shortName}</h2>
-          <RevealGroup className="grid grid-cols-2 sm:grid-cols-4 gap-4" stagger={0.06}>
-            {Array.from({ length: 4 }).map((_, i) => (
-              <RevealItem key={i}>
-                <ImageReveal>
-                  <Visual label={b.shortName} ratio="aspect-square" />
-                </ImageReveal>
-              </RevealItem>
-            ))}
-          </RevealGroup>
         </Container>
+        <ScrollCarousel
+          images={(b.galleryImages ?? []).map((src) => ({ src, label: b.shortName }))}
+          aspectClassName="aspect-square"
+        />
       </section>
 
       <section className="py-12 bg-cream-soft">
-        <Container>
+        <Container className="flex flex-col gap-4">
           <div className="aspect-[16/9] w-full">
             <iframe
               title={`${b.name} map`}
-              src={`https://www.google.com/maps?q=${encodeURIComponent(b.mapEmbedQuery)}&output=embed`}
+              src={`https://www.google.com/maps?q=${b.lat},${b.lng}&z=17&output=embed`}
               className="w-full h-full border-0"
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
             />
+          </div>
+          <div className="flex flex-wrap gap-4">
+            <a
+              href={b.googleMapsSearchUrl}
+              target="_blank"
+              rel="noreferrer"
+              className="text-sm text-gold-dark hover:underline underline-offset-2"
+            >
+              Open in Google Maps →
+            </a>
+            <a
+              href={b.appleMapsUrl}
+              target="_blank"
+              rel="noreferrer"
+              className="text-sm text-gold-dark hover:underline underline-offset-2"
+            >
+              Open in Apple Maps →
+            </a>
           </div>
         </Container>
       </section>

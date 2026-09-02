@@ -55,7 +55,7 @@ export default function TransformationsGallery() {
                 </div>
                 <div>
                   <h3 className="font-display text-lg text-brown">{t.title}</h3>
-                  <p className="text-sm text-brown-soft">{t.service} · {t.expert} · Afeem {t.branch}</p>
+                  <p className="text-sm text-brown-soft">{t.service} · Afeem {t.branch}</p>
                 </div>
                 <Button
                   href={whatsappLink(`Hi Afeem, I'd like to book a look similar to "${t.title}".`)}
