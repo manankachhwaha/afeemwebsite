@@ -8,7 +8,8 @@ import { isMotionEnabled } from "@/lib/motionPreference";
 import AmbientGradient from "@/components/motion/AmbientGradient";
 import GoldParticles from "@/components/motion/GoldParticles";
 
-const STORAGE_KEY = "afeem-intro-seen";
+export const INTRO_STORAGE_KEY = "afeem-intro-seen";
+const STORAGE_KEY = INTRO_STORAGE_KEY;
 const AUTO_ENTER_MS = 4500;
 const EXIT_DURATION = 0.9;
 // Hard fallback: forces the splash gone even if the normal exit chain
@@ -17,8 +18,10 @@ const EXIT_DURATION = 0.9;
 const FAILSAFE_MS = AUTO_ENTER_MS + EXIT_DURATION * 1000 + 3000;
 
 export default function IntroSplash() {
-  const [mounted, setMounted] = useState(false);
-  const [visible, setVisible] = useState(false);
+  // Starts visible so the splash is part of the server-rendered HTML and covers
+  // the page from the very first paint. The effect below hides it again when
+  // it should not play (already seen this session, motion off, feature off).
+  const [visible, setVisible] = useState<boolean>(FEATURES.introSplash);
   const [exiting, setExiting] = useState(false);
   const exitTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
@@ -31,11 +34,6 @@ export default function IntroSplash() {
   }, []);
 
   useEffect(() => {
-    // One-time client-only check (needs `window`/`sessionStorage`, unavailable
-    // during static generation) — can't be computed in a lazy useState initializer.
-    // eslint-disable-next-line react-hooks/set-state-in-effect
-    setMounted(true);
-
     // Any failure here (sessionStorage blocked in a locked-down privacy mode,
     // an unexpected exception, etc.) must never leave the homepage
     // unreachable — treat it the same as "skip the splash".
@@ -45,11 +43,15 @@ export default function IntroSplash() {
       seen = sessionStorage.getItem(STORAGE_KEY);
       motionOn = isMotionEnabled();
     } catch {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
+      setVisible(false);
       return;
     }
-    if (!FEATURES.introSplash || seen || !motionOn) return;
+    if (!FEATURES.introSplash || seen || !motionOn) {
+      setVisible(false);
+      return;
+    }
 
-    setVisible(true);
     try {
       sessionStorage.setItem(STORAGE_KEY, "1");
     } catch {
@@ -74,12 +76,11 @@ export default function IntroSplash() {
     };
   }, [visible]);
 
-  if (!mounted) return null;
-
   return (
     <AnimatePresence>
       {visible && (
         <motion.div
+          data-intro-splash
           className="fixed inset-0 z-[100] flex flex-col items-center justify-center bg-brown overflow-hidden"
           style={{ pointerEvents: exiting ? "none" : "auto" }}
           initial={{ opacity: 1 }}

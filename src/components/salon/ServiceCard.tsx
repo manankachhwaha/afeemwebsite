@@ -28,9 +28,9 @@ export default function ServiceCard({
           />
         </ImageReveal>
         <div className="flex flex-col gap-1">
-          <div className="flex items-baseline justify-between gap-3">
-            <h3 className="font-display text-lg text-brown group-hover:text-gold-dark transition-colors">{service.name}</h3>
-            <span className="text-sm text-gold-dark whitespace-nowrap">{service.startingPrice}</span>
+          <div className="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-0.5 sm:gap-3">
+            <h3 className="min-w-0 font-display text-lg text-brown group-hover:text-gold-dark transition-colors">{service.name}</h3>
+            <span className="text-sm text-gold-dark sm:whitespace-nowrap">{service.startingPrice}</span>
           </div>
           <p className="text-sm text-brown-soft leading-relaxed line-clamp-2">{service.description}</p>
         </div>

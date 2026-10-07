@@ -241,6 +241,7 @@ export const serviceCategories: ServiceCategory[] = [
     seoTitle: "Makeup Artist in Jodhpur | Party & Bridal Makeup — Afeem",
     seoDescription:
       "Professional makeup in Jodhpur — party, occasion and bridal makeup with hair styling at Afeem. Book your artist today.",
+    image: "/images/bridal/03.jpg",
     services: [
       {
         slug: "party-makeup",
@@ -263,6 +264,7 @@ export const serviceCategories: ServiceCategory[] = [
         whoFor: "Brides — see the Afeem Bridal page for the complete journey.",
         addOns: ["Family & guest makeup", "Additional function looks"],
         faqs: [],
+        image: "/images/bridal/04.jpg",
       },
       {
         slug: "hair-styling-for-makeup",

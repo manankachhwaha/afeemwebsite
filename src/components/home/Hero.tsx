@@ -50,11 +50,18 @@ export default function Hero() {
     my.set((e.clientY - rect.top) / rect.height);
   }
 
+  // py-28 on mobile pushed the hero's own CTA row down far enough to
+  // collide with the fixed StickyBookBar + Ask Afeem chat bubble at the
+  // very bottom of small phone viewports — confirmed via real Chrome device
+  // emulation (410x884 and smaller): "Explore Afeem" ended up rendered
+  // *underneath* the sticky bar, and "Book an Experience" partly behind the
+  // chat button, at scroll position 0. Tightened for phones specifically;
+  // sm/lg (tablet/desktop, no fixed bottom bar) unchanged.
   return (
     <section
       ref={heroRef}
       onMouseMove={handleHeroMove}
-      className="relative overflow-hidden bg-cream flex items-center py-28 sm:py-32 lg:min-h-[85svh]"
+      className="relative overflow-hidden bg-cream flex items-center py-12 sm:py-32 lg:min-h-[85svh]"
     >
       <motion.div style={{ y: bgY }} className="absolute inset-0">
         <div className="ambient-tint" />

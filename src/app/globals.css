@@ -14,6 +14,15 @@
   --color-brown-mute: #8a715a;  /* muted brown for captions/meta */
   --color-white: #fffaf0;
 
+  /* Bridal accent — a deep bordeaux red, used only within the Bridal
+     section (hero, book-consultation, bridal-flavoured cards) so the rest
+     of the site stays on the warm gold/brown palette. Paired with gold,
+     never used alone, so it still reads as "Afeem" rather than a
+     different brand. */
+  --color-bridal-red: #7a1425;
+  --color-bridal-red-light: #a3243a;
+  --color-bridal-red-dark: #430a13;
+
   --background: var(--color-cream);
   --foreground: var(--color-brown);
 }
@@ -30,6 +39,9 @@
   --color-brown-soft: var(--color-brown-soft);
   --color-brown-mute: var(--color-brown-mute);
   --color-afeem-white: var(--color-white);
+  --color-bridal-red: var(--color-bridal-red);
+  --color-bridal-red-light: var(--color-bridal-red-light);
+  --color-bridal-red-dark: var(--color-bridal-red-dark);
 
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -415,6 +427,13 @@ html.reduce-motion .gold-particles {
   display: none;
 }
 
+/* Bridal hero's looping background video — the poster image underneath
+   (always rendered) takes over the moment motion is switched off, same
+   kill-switch pattern as .gold-particles above. */
+html.reduce-motion .bridal-bg-video {
+  display: none;
+}
+
 /* Thin gold scrollbar for a considered, premium feel */
 html {
   scrollbar-width: thin;
@@ -439,9 +458,41 @@ html {
   background: var(--color-gold-dark);
 }
 
+/* Full-bleed photo marquee (Marquee.tsx) — two rows drifting opposite
+   directions at different speeds, pure CSS transform/opacity so it stays
+   cheap no matter how many photos are in a row. Each row's image list is
+   rendered twice back-to-back in the JSX; animating exactly -50% of the
+   track's own width is what makes the loop seamless regardless of image
+   count or size. Pausing on hover is a small "you're in control of this"
+   courtesy, not a necessity. html.reduce-motion's blanket
+   animation-duration override (below) already freezes it correctly for
+   that preference — no separate rule needed here. */
+.marquee-track {
+  display: flex;
+  width: max-content;
+  will-change: transform;
+  animation: marquee-scroll linear infinite;
+}
+
+.marquee-track:hover {
+  animation-play-state: paused;
+}
+
+.marquee-track--reverse {
+  animation-direction: reverse;
+}
+
+@keyframes marquee-scroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
 html.reduce-motion * {
   animation-duration: 0.01ms !important;
   animation-iteration-count: 1 !important;
   transition-duration: 0.01ms !important;
   scroll-behavior: auto !important;
 }
+
+/* Intro splash is server-rendered; hide it when this session already saw it. */
+html.intro-seen [data-intro-splash] { display: none !important; }

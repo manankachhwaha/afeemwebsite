@@ -1,5 +1,8 @@
+"use client";
+
 import Link from "next/link";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 import Container from "@/components/ui/Container";
 import { site } from "@/data/site";
 import { branches } from "@/data/branches";
@@ -41,8 +44,15 @@ const columns = [
 ];
 
 export default function Footer() {
+  const pathname = usePathname();
+  const isBridal = pathname?.startsWith("/bridal") ?? false;
+
   return (
-    <footer className="bg-brown text-white mt-24">
+    // mt-24 relies on the body's own background showing through the gap —
+    // invisible on every cream page, but a stray band of cream right above
+    // a red footer on this one. pt-24 instead fills that space with the
+    // footer's own background.
+    <footer className={`text-white ${isBridal ? "bg-bridal-red-dark pt-24" : "bg-brown mt-24"}`}>
       <Container className="py-16">
         <div className="grid grid-cols-1 md:grid-cols-5 gap-12">
           <div className="md:col-span-2 flex flex-col gap-4">

@@ -28,6 +28,7 @@ export default function TransformationsPreview() {
                   ratio="aspect-[4/5]"
                   label={`${t.category} · ${t.title}`}
                   icon={getCategoryIcon(t.category)}
+                  src={t.image}
                   className="transition-transform duration-500 ease-out group-hover:scale-105"
                 />
               </ImageReveal>

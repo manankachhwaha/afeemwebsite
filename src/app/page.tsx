@@ -1,4 +1,5 @@
 import Hero from "@/components/home/Hero";
+import PhotoMarquee from "@/components/home/PhotoMarquee";
 import WhatBringsYou from "@/components/home/WhatBringsYou";
 import ExperienceIntro from "@/components/home/ExperienceIntro";
 import Stats from "@/components/home/Stats";
@@ -13,6 +14,7 @@ export default function Home() {
   return (
     <>
       <Hero />
+      <PhotoMarquee />
       <WhatBringsYou />
       <ExperienceIntro />
       <Stats />

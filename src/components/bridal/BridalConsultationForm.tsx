@@ -54,7 +54,7 @@ export default function BridalConsultationForm() {
 
   if (status === "sent") {
     return (
-      <div className="bg-white border border-brown/10 p-10 text-center flex flex-col gap-3">
+      <div className="bg-white/40 backdrop-blur-2xl border border-white/40 shadow-[0_20px_60px_-25px_rgba(67,10,19,0.5)] p-10 text-center flex flex-col gap-3">
         <h3 className="font-display text-2xl text-brown">Thank you.</h3>
         <p className="text-brown-soft">
           Your consultation request has been sent to our team on WhatsApp. We&rsquo;ll be in touch shortly
@@ -66,12 +66,12 @@ export default function BridalConsultationForm() {
 
   if (status === "blocked" && fallbackLink) {
     return (
-      <div className="bg-white border border-brown/10 p-10 text-center flex flex-col gap-4">
+      <div className="bg-white/40 backdrop-blur-2xl border border-white/40 shadow-[0_20px_60px_-25px_rgba(67,10,19,0.5)] p-10 text-center flex flex-col gap-4">
         <h3 className="font-display text-2xl text-brown">Almost there.</h3>
         <p className="text-brown-soft">
           Your browser blocked the WhatsApp pop-up. Tap below to send your consultation request — it&rsquo;s already filled in.
         </p>
-        <Button href={fallbackLink} variant="primary" className="self-center">
+        <Button href={fallbackLink} variant="bridal" className="self-center">
           Open WhatsApp
         </Button>
       </div>
@@ -79,7 +79,7 @@ export default function BridalConsultationForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="bg-white border border-brown/10 p-6 sm:p-10 flex flex-col gap-6">
+    <form onSubmit={handleSubmit} className="bg-white/40 backdrop-blur-2xl border border-white/40 shadow-[0_20px_60px_-25px_rgba(67,10,19,0.5)] p-6 sm:p-10 flex flex-col gap-6">
       <div className="grid sm:grid-cols-2 gap-6">
         <Field label="Full Name" name="name" required />
         <Field label="Phone Number" name="phone" type="tel" required />
@@ -99,8 +99,8 @@ export default function BridalConsultationForm() {
               onClick={() => toggleService(s)}
               className={`px-4 py-2 text-sm border transition-colors active:scale-[0.97] ${
                 services.includes(s)
-                  ? "bg-brown text-white border-brown"
-                  : "border-brown/20 text-brown-soft hover:border-gold"
+                  ? "bg-bridal-red text-white border-bridal-red"
+                  : "border-brown/20 text-brown-soft bg-white/30 backdrop-blur-sm hover:border-bridal-red"
               }`}
             >
               {s}
@@ -120,7 +120,7 @@ export default function BridalConsultationForm() {
             name="branch"
             key={selectedBranch?.slug ?? "none"}
             defaultValue={selectedBranch?.slug ?? ""}
-            className="w-full border border-brown/20 bg-cream px-4 py-3 text-sm text-brown focus:outline-none focus:border-gold"
+            className="w-full border border-brown/20 bg-cream/60 backdrop-blur-sm px-4 py-3 text-sm text-brown focus:outline-none focus:border-bridal-red"
           >
             <option value="">No preference</option>
             {branches.map((b) => (
@@ -137,11 +137,11 @@ export default function BridalConsultationForm() {
         <textarea
           name="notes"
           rows={4}
-          className="w-full border border-brown/20 bg-cream px-4 py-3 text-sm text-brown focus:outline-none focus:border-gold"
+          className="w-full border border-brown/20 bg-cream/60 backdrop-blur-sm px-4 py-3 text-sm text-brown focus:outline-none focus:border-bridal-red"
         />
       </div>
 
-      <Button type="submit" variant="primary" className="self-start">
+      <Button type="submit" variant="bridal" className="self-start">
         Book Bridal Consultation
       </Button>
     </form>
@@ -175,7 +175,7 @@ function Field({
         required={required}
         placeholder={placeholder}
         min={min}
-        className="w-full border border-brown/20 bg-cream px-4 py-3 text-sm text-brown focus:outline-none focus:border-gold"
+        className="w-full border border-brown/20 bg-cream/60 backdrop-blur-sm px-4 py-3 text-sm text-brown focus:outline-none focus:border-bridal-red"
       />
     </div>
   );
@@ -190,7 +190,7 @@ function SelectField({ label, name, options }: { label: string; name: string; op
       <select
         id={name}
         name={name}
-        className="w-full border border-brown/20 bg-cream px-4 py-3 text-sm text-brown focus:outline-none focus:border-gold"
+        className="w-full border border-brown/20 bg-cream/60 backdrop-blur-sm px-4 py-3 text-sm text-brown focus:outline-none focus:border-bridal-red"
         defaultValue=""
       >
         <option value="" disabled>Select</option>

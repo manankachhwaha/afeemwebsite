@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { ReactNode } from "react";
 
-type Variant = "primary" | "secondary" | "ghost" | "outline-light";
+type Variant = "primary" | "secondary" | "ghost" | "outline-light" | "bridal";
 
 const variants: Record<Variant, string> = {
   primary:
@@ -11,6 +11,9 @@ const variants: Record<Variant, string> = {
   ghost: "bg-transparent text-brown hover:text-gold-dark underline underline-offset-4 decoration-brown/30 hover:decoration-gold-dark",
   "outline-light":
     "bg-transparent text-white border border-white/70 hover:bg-white hover:text-brown",
+  /** Afeem Bridal only — the bordeaux accent, paired with gold on hover so it still reads as Afeem. */
+  bridal:
+    "bg-bridal-red text-white hover:bg-gold hover:text-brown border border-bridal-red hover:border-gold",
 };
 
 export default function Button({

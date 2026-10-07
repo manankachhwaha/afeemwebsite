@@ -117,7 +117,7 @@ export default function BeautySchoolPage() {
           </Reveal>
         </Container>
         <ScrollCarousel
-          images={Array.from({ length: 8 }, (_, i) => ({
+          images={Array.from({ length: 13 }, (_, i) => ({
             src: `/images/beauty-school/${String(i + 1).padStart(2, "0")}.jpg`,
             label: "Afeem Beauty School",
           }))}

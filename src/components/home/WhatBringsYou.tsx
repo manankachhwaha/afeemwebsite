@@ -3,6 +3,7 @@ import Container from "@/components/ui/Container";
 import { HairIcon, SkinIcon, SpaIcon, MakeupIcon, NailsIcon, BridalIcon, EducationIcon } from "@/components/ui/icons";
 import { Reveal, RevealGroup } from "@/components/motion";
 import FlipReveal from "@/components/motion/FlipReveal";
+import TiltCard from "@/components/motion/TiltCard";
 
 const tiles = [
   { label: "Hair", href: "/salon-spa/hair", Icon: HairIcon },
@@ -25,15 +26,17 @@ export default function WhatBringsYou() {
         <RevealGroup className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-7 gap-4 md:gap-3" stagger={0.06}>
           {tiles.map(({ label, href, Icon }) => (
             <FlipReveal key={label}>
-              <Link
-                href={href}
-                className="group flex flex-col items-center justify-center gap-4 aspect-square border border-brown/10 bg-white px-3 text-center transition-all duration-300 hover:border-gold hover:shadow-[0_18px_40px_-20px_rgba(58,40,24,0.35)] hover:-translate-y-1"
-              >
-                <span className="flex h-12 w-12 items-center justify-center rounded-full border border-gold/40 text-gold-dark transition-all duration-300 group-hover:bg-brown group-hover:border-brown group-hover:text-yellow-warm group-hover:scale-110">
-                  <Icon className="h-5 w-5" />
-                </span>
-                <span className="text-sm font-medium text-brown">{label}</span>
-              </Link>
+              <TiltCard>
+                <Link
+                  href={href}
+                  className="group flex flex-col items-center justify-center gap-4 aspect-square border border-brown/10 bg-white px-3 text-center transition-all duration-300 hover:border-gold hover:shadow-[0_18px_40px_-20px_rgba(58,40,24,0.35)] hover:-translate-y-1"
+                >
+                  <span className="flex h-12 w-12 items-center justify-center rounded-full border border-gold/40 text-gold-dark transition-all duration-300 group-hover:bg-brown group-hover:border-brown group-hover:text-yellow-warm group-hover:scale-110">
+                    <Icon className="h-5 w-5" />
+                  </span>
+                  <span className="text-sm font-medium text-brown">{label}</span>
+                </Link>
+              </TiltCard>
             </FlipReveal>
           ))}
         </RevealGroup>

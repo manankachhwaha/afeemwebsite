@@ -1,11 +1,13 @@
 import type { Metadata } from "next";
 import Container from "@/components/ui/Container";
-import PageHero from "@/components/ui/PageHero";
 import SectionHeading from "@/components/ui/SectionHeading";
-import Visual from "@/components/ui/Visual";
+import BridalHero from "@/components/bridal/BridalHero";
+import BridalGallery from "@/components/bridal/BridalGallery";
+import BridalVideoBand from "@/components/bridal/BridalVideoBand";
 import BridalConsultationForm from "@/components/bridal/BridalConsultationForm";
 import { testimonials } from "@/data/testimonials";
-import { Reveal, RevealGroup, RevealItem, ImageReveal } from "@/components/motion";
+import { Reveal, RevealGroup, RevealItem } from "@/components/motion";
+import TiltCard from "@/components/motion/TiltCard";
 
 export const metadata: Metadata = {
   title: "Bridal Makeup & Beauty in Jodhpur",
@@ -36,59 +38,65 @@ export default function BridalPage() {
 
   return (
     <>
-      <PageHero
-        eyebrow="Afeem Bridal"
-        title="Your wedding beauty journey, thoughtfully planned."
-        description="From the first consultation to your final function, Afeem Bridal plans every detail of your beauty timeline."
-      />
+      <BridalHero />
 
-      <section className="py-16 md:py-24">
+      <section className="py-16 md:py-24 bg-bridal-red-dark">
         <Container className="flex flex-col gap-10">
           <Reveal>
-            <SectionHeading eyebrow="What We Cover" title="Everything for Your Celebration" />
+            <SectionHeading eyebrow="What We Cover" title="Everything for Your Celebration" light />
           </Reveal>
           <RevealGroup className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6" stagger={0.06}>
             {coverage.map((c) => (
-              <RevealItem
-                key={c.title}
-                className="border border-brown/10 p-6 bg-white flex flex-col gap-2 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_20px_45px_-26px_rgba(58,40,24,0.35)] hover:border-gold/40"
-              >
-                <h3 className="font-display text-lg text-brown">{c.title}</h3>
-                <p className="text-sm text-brown-soft leading-relaxed">{c.desc}</p>
+              <RevealItem key={c.title}>
+                <TiltCard className="h-full border border-white/15 p-6 bg-white/10 backdrop-blur-md flex flex-col gap-2 transition-colors duration-300 hover:bg-white/15 hover:border-yellow-warm/30">
+                  <h3 className="font-display text-lg text-white">{c.title}</h3>
+                  <p className="text-sm text-white/75 leading-relaxed">{c.desc}</p>
+                </TiltCard>
               </RevealItem>
             ))}
           </RevealGroup>
         </Container>
       </section>
 
-      <section className="py-16 md:py-24 bg-cream-soft">
+      <BridalVideoBand
+        src="/videos/bridal/detail-1.mp4"
+        poster="/images/bridal/poster-detail-1.jpg"
+        overlayClassName="bg-gradient-to-b from-bridal-red-dark/90 via-bridal-red-dark/80 to-bridal-red-dark/90"
+        className="py-16 md:py-24"
+      >
         <Container className="flex flex-col gap-10">
           <Reveal>
-            <SectionHeading
-              eyebrow="The Journey"
-              title="How Afeem Bridal Works"
-            />
+            <SectionHeading eyebrow="The Journey" title="How Afeem Bridal Works" light />
           </Reveal>
           <RevealGroup className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6" stagger={0.08}>
             {journey.map((j, i) => (
-              <RevealItem key={j.step} className="flex flex-col gap-2">
-                <span className="text-gold-dark text-sm font-medium">{String(i + 1).padStart(2, "0")}</span>
-                <h3 className="text-brown font-display text-lg">{j.step}</h3>
-                <p className="text-brown-soft text-sm leading-relaxed">{j.desc}</p>
+              <RevealItem key={j.step}>
+                <TiltCard className="h-full flex flex-col gap-2 bg-white/10 backdrop-blur-md border border-white/15 p-5 transition-colors duration-300 hover:bg-white/15 hover:border-yellow-warm/30">
+                  <span className="text-yellow-warm text-sm font-medium">{String(i + 1).padStart(2, "0")}</span>
+                  <h3 className="text-white font-display text-lg">{j.step}</h3>
+                  <p className="text-white/75 text-sm leading-relaxed">{j.desc}</p>
+                </TiltCard>
               </RevealItem>
             ))}
           </RevealGroup>
         </Container>
-      </section>
+      </BridalVideoBand>
+
+      <BridalGallery />
 
       {bridalReviews.length > 0 && (
-        <section className="py-16 md:py-24">
-          <Container>
+        <section className="py-16 md:py-24 bg-bridal-red-dark">
+          <Container className="flex flex-col gap-10">
+            <Reveal>
+              <SectionHeading eyebrow="Loved By Our Brides" title="What They're Saying" light />
+            </Reveal>
             <RevealGroup className="grid md:grid-cols-2 gap-8" stagger={0.1}>
               {bridalReviews.map((r) => (
-                <RevealItem key={r.name} className="border border-brown/10 p-8">
-                  <p className="text-brown-soft leading-relaxed">&ldquo;{r.quote}&rdquo;</p>
-                  <p className="text-brown font-medium mt-4">{r.name} · <span className="text-brown-mute font-normal">{r.service}</span></p>
+                <RevealItem key={r.name}>
+                  <TiltCard className="h-full border border-white/15 bg-white/10 backdrop-blur-md p-8 border-l-2 border-l-yellow-warm/60">
+                    <p className="text-white/80 leading-relaxed">&ldquo;{r.quote}&rdquo;</p>
+                    <p className="text-white font-medium mt-4">{r.name} · <span className="text-white/60 font-normal">{r.service}</span></p>
+                  </TiltCard>
                 </RevealItem>
               ))}
             </RevealGroup>
@@ -96,23 +104,27 @@ export default function BridalPage() {
         </section>
       )}
 
-      <section id="book" className="py-16 md:py-24 bg-cream-soft scroll-mt-32">
+      <BridalVideoBand
+        id="book"
+        src="/videos/bridal/hero-3.mp4"
+        poster="/images/bridal/poster-hero-3.jpg"
+        overlayClassName="bg-gradient-to-r from-bridal-red-dark/92 via-bridal-red-dark/70 to-bridal-red-dark/40"
+        className="py-16 md:py-24 scroll-mt-32"
+      >
         <Container className="grid lg:grid-cols-2 gap-12 items-start">
-          <Reveal className="flex flex-col gap-5">
+          <Reveal className="flex flex-col gap-5 bg-white/10 backdrop-blur-md border border-white/15 p-8">
             <SectionHeading
               eyebrow="Get Started"
               title="Book Your Bridal Consultation"
               description="Tell us about your wedding and we'll build a plan around your dates, functions and budget."
+              light
             />
-            <ImageReveal>
-              <Visual label="Afeem Bridal" ratio="aspect-[4/3]" />
-            </ImageReveal>
           </Reveal>
           <Reveal delay={0.15}>
             <BridalConsultationForm />
           </Reveal>
         </Container>
-      </section>
+      </BridalVideoBand>
     </>
   );
 }

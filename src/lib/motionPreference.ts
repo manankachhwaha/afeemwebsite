@@ -32,3 +32,7 @@ export function syncMotionClass(): boolean {
 // Inline, blocking script (stringified into <head>) so the class is applied
 // before first paint — no flash of animation for a visitor who opted out.
 export const MOTION_INIT_SCRIPT = `(function(){try{var v=localStorage.getItem("${KEY}");if(v==="off"){document.documentElement.classList.add("reduce-motion");}}catch(e){}})();`;
+
+// Marks the session as "intro already seen" (or motion off) before first paint so
+// the server-rendered splash is hidden by CSS instead of flashing on reloads.
+export const INTRO_INIT_SCRIPT = `(function(){try{if(sessionStorage.getItem("afeem-intro-seen")||localStorage.getItem("${KEY}")==="off"){document.documentElement.classList.add("intro-seen");}}catch(e){document.documentElement.classList.add("intro-seen");}})();`;

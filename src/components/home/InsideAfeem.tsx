@@ -18,11 +18,11 @@ function interleave(groups: ScrollCarouselImage[][]): ScrollCarouselImage[] {
 }
 
 const images = interleave([
-  numbered("hair-cut", "Hair", [2, 3, 4, 5, 6, 7, 8, 9, 10, 12]),
-  numbered("hair-color", "Hair Colour", [1, 2, 3, 4, 6]),
-  numbered("hair-spa", "Hair Spa", [2, 4, 5, 6, 7, 8]),
-  numbered("nail-art", "Nails", [2, 3, 4, 5, 7, 8]),
-  numbered("pedicure", "Nails", [2, 3, 4]),
+  numbered("hair-cut", "Hair", [2, 3, 4, 5, 6, 7, 8, 9, 10, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22]),
+  numbered("hair-color", "Hair Colour", [1, 2, 3, 4, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22]),
+  numbered("hair-spa", "Hair Spa", [2, 4, 5, 6, 7, 8, 9, 10, 11, 12]),
+  numbered("nail-art", "Nails", [2, 3, 4, 5, 7, 8, 9, 10, 11, 12, 13]),
+  numbered("pedicure", "Nails", [2, 3, 4, 5, 6]),
 ]);
 
 export default function InsideAfeem() {

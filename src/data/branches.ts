@@ -52,7 +52,7 @@ export const branches: Branch[] = [
     services: ["Hair", "Skin", "Spa & Wellness", "Makeup", "Nails", "Bridal"],
     hasSchool: false,
     heroImage: "/images/ratanada/06.jpg",
-    galleryImages: numberedImages("ratanada", 13),
+    galleryImages: numberedImages("ratanada", 25),
   },
   {
     slug: "pal-road",
@@ -76,7 +76,7 @@ export const branches: Branch[] = [
     services: ["Hair", "Skin", "Spa & Wellness", "Makeup", "Nails", "Bridal"],
     hasSchool: false,
     heroImage: "/images/pal-road/01.jpg",
-    galleryImages: numberedImages("pal-road", 12),
+    galleryImages: numberedImages("pal-road", 22),
   },
 ];
 

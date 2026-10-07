@@ -51,7 +51,7 @@ export default function TransformationsGallery() {
               <TiltCard className="group flex flex-col gap-3">
                 <div className="grid grid-cols-2 gap-1">
                   <Visual label="Before" icon={getCategoryIcon(t.category)} ratio="aspect-[3/4]" className="transition-transform duration-500 ease-out group-hover:scale-105" />
-                  <Visual label="After" icon={getCategoryIcon(t.category)} ratio="aspect-[3/4]" className="transition-transform duration-500 ease-out group-hover:scale-105" />
+                  <Visual label="After" icon={getCategoryIcon(t.category)} ratio="aspect-[3/4]" src={t.image} className="transition-transform duration-500 ease-out group-hover:scale-105" />
                 </div>
                 <div>
                   <h3 className="font-display text-lg text-brown">{t.title}</h3>

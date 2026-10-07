@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion, useMotionValueEvent, useScroll } from "motion/react";
 import Container from "@/components/ui/Container";
@@ -52,6 +53,12 @@ export default function Header() {
   const [scrolled, setScrolled] = useState(false);
   const { scrollY } = useScroll();
   const navRef = useRef<HTMLElement>(null);
+  // Afeem Bridal runs its own bordeaux + gold theme (see --color-bridal-red*
+  // in globals.css) — the header rides on top of that page's video hero, so
+  // it goes translucent-red-on-glass instead of the site-wide cream, rather
+  // than sitting on it as a mismatched cream bar.
+  const pathname = usePathname();
+  const isBridal = pathname?.startsWith("/bridal") ?? false;
 
   // Close an open dropdown on outside click/tap so touch users aren't stuck with it open.
   useEffect(() => {
@@ -84,7 +91,17 @@ export default function Header() {
       transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
       style={{ willChange: "transform" }}
       className={`sticky top-0 z-50 border-b transition-colors duration-300 ${
-        scrolled ? "border-brown/10 bg-cream/95 backdrop-blur shadow-[0_8px_30px_-20px_rgba(58,40,24,0.4)]" : "border-transparent bg-cream/60 backdrop-blur-sm"
+        isBridal
+          ? // Solid, not translucent: the header sits in normal document flow
+            // above the page content (it doesn't overlap the hero video), so a
+            // glassy header here was letting the site's cream body background
+            // bleed through as a yellow strip rather than blending with red.
+            scrolled
+            ? "border-white/10 bg-bridal-red-dark shadow-[0_8px_30px_-20px_rgba(67,10,19,0.6)]"
+            : "border-white/10 bg-bridal-red-dark"
+          : scrolled
+            ? "border-brown/10 bg-cream/95 backdrop-blur shadow-[0_8px_30px_-20px_rgba(58,40,24,0.4)]"
+            : "border-transparent bg-cream/60 backdrop-blur-sm"
       }`}
     >
       <Container className="flex items-center justify-between gap-4 py-2.5">
@@ -97,7 +114,7 @@ export default function Header() {
             priority
             className="h-14 sm:h-16 lg:h-[4.5rem] w-auto object-contain"
           />
-          <span className="text-[8px] sm:text-[9px] tracking-[0.28em] sm:tracking-[0.32em] uppercase text-gold-dark font-sans font-normal mt-1">
+          <span className={`text-[8px] sm:text-[9px] tracking-[0.28em] sm:tracking-[0.32em] uppercase font-sans font-normal mt-1 ${isBridal ? "text-yellow-warm" : "text-gold-dark"}`}>
             {"Beauty · Wellness · Education"}
           </span>
         </Link>
@@ -120,13 +137,15 @@ export default function Header() {
                 <Link
                   href={item.href}
                   onClick={() => setOpenDropdown(null)}
-                  className="relative whitespace-nowrap text-xs font-medium uppercase tracking-[0.08em] text-brown-soft hover:text-gold-dark focus-visible:text-gold-dark transition-colors py-2"
+                  className={`relative whitespace-nowrap text-xs font-medium uppercase tracking-[0.08em] transition-colors py-2 ${
+                    isBridal ? "text-white/80 hover:text-yellow-warm focus-visible:text-yellow-warm" : "text-brown-soft hover:text-gold-dark focus-visible:text-gold-dark"
+                  }`}
                 >
                   {item.label}
                   {FEATURES.heavyMode && hoveredNav === item.label && (
                     <motion.span
                       layoutId="nav-underline"
-                      className="absolute -bottom-0.5 left-0 right-0 h-[1.5px] bg-gold"
+                      className={`absolute -bottom-0.5 left-0 right-0 h-[1.5px] ${isBridal ? "bg-yellow-warm" : "bg-gold"}`}
                       transition={{ type: "spring", stiffness: 420, damping: 34 }}
                     />
                   )}
@@ -137,7 +156,7 @@ export default function Header() {
                     aria-label={`${openDropdown === item.label ? "Close" : "Open"} ${item.label} menu`}
                     aria-expanded={openDropdown === item.label}
                     onClick={() => setOpenDropdown((cur) => (cur === item.label ? null : item.label))}
-                    className="p-1 -ml-1 text-brown-soft hover:text-gold-dark transition-colors"
+                    className={`p-1 -ml-1 transition-colors ${isBridal ? "text-white/80 hover:text-yellow-warm" : "text-brown-soft hover:text-gold-dark"}`}
                   >
                     <svg
                       viewBox="0 0 12 8"
@@ -178,7 +197,7 @@ export default function Header() {
         </nav>
 
         <div className="hidden lg:flex items-center gap-3 shrink-0">
-          <Button href="/contact#book" variant="primary" className="text-xs px-5 py-2.5">
+          <Button href="/contact#book" variant={isBridal ? "bridal" : "primary"} className="text-xs px-5 py-2.5">
             Book Now
           </Button>
         </div>
@@ -189,9 +208,9 @@ export default function Header() {
           onClick={() => setMobileOpen((v) => !v)}
           onMouseDown={() => setHidden(false)}
         >
-          <span className={`block h-px w-6 bg-brown transition-transform ${mobileOpen ? "translate-y-1.5 rotate-45" : ""}`} />
-          <span className={`block h-px w-6 bg-brown transition-opacity ${mobileOpen ? "opacity-0" : ""}`} />
-          <span className={`block h-px w-6 bg-brown transition-transform ${mobileOpen ? "-translate-y-1.5 -rotate-45" : ""}`} />
+          <span className={`block h-px w-6 transition-transform ${isBridal ? "bg-white" : "bg-brown"} ${mobileOpen ? "translate-y-1.5 rotate-45" : ""}`} />
+          <span className={`block h-px w-6 transition-opacity ${isBridal ? "bg-white" : "bg-brown"} ${mobileOpen ? "opacity-0" : ""}`} />
+          <span className={`block h-px w-6 transition-transform ${isBridal ? "bg-white" : "bg-brown"} ${mobileOpen ? "-translate-y-1.5 -rotate-45" : ""}`} />
         </button>
       </Container>
 
@@ -202,15 +221,17 @@ export default function Header() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
             transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
-            className="lg:hidden border-t border-brown/10 bg-cream max-h-[75svh] overflow-y-auto"
+            className={`lg:hidden border-t max-h-[75svh] overflow-y-auto ${
+              isBridal ? "border-white/10 bg-bridal-red-dark backdrop-blur-md" : "border-brown/10 bg-cream"
+            }`}
           >
             <Container className="py-4 flex flex-col gap-1">
               {mobileNavItems.map((item) => (
-                <div key={item.href} className="border-b border-brown/5 py-2">
+                <div key={item.href} className={`border-b py-2 ${isBridal ? "border-white/10" : "border-brown/5"}`}>
                   <Link
                     href={item.href}
                     onClick={() => setMobileOpen(false)}
-                    className="block py-2 text-base font-medium text-brown"
+                    className={`block py-2 text-base font-medium ${isBridal ? "text-white" : "text-brown"}`}
                   >
                     {item.label}
                   </Link>
@@ -221,7 +242,7 @@ export default function Header() {
                           key={child.href}
                           href={child.href}
                           onClick={() => setMobileOpen(false)}
-                          className="py-1.5 text-sm text-brown-soft hover:text-gold-dark"
+                          className={`py-1.5 text-sm ${isBridal ? "text-white/70 hover:text-yellow-warm" : "text-brown-soft hover:text-gold-dark"}`}
                         >
                           {child.label}
                         </Link>
@@ -231,10 +252,10 @@ export default function Header() {
                 </div>
               ))}
               <div className="flex flex-col gap-3 pt-4">
-                <Button href={whatsappLink("Hi Afeem, I'd like to enquire.")} variant="secondary">
+                <Button href={whatsappLink("Hi Afeem, I'd like to enquire.")} variant={isBridal ? "outline-light" : "secondary"}>
                   Enquire on WhatsApp
                 </Button>
-                <Button href="/contact#book" variant="primary">
+                <Button href="/contact#book" variant={isBridal ? "bridal" : "primary"}>
                   Book Now
                 </Button>
               </div>

@@ -3,6 +3,16 @@ import Visual from "@/components/ui/Visual";
 import { site } from "@/data/site";
 import { Reveal, RevealGroup, RevealItem, ImageReveal } from "@/components/motion";
 
+/** A stand-in for the live feed until the Instagram Graph API is wired up — real Afeem photography, not stock. */
+const feedImages = [
+  "/images/bridal/07.jpg",
+  "/images/hair-color/04.jpg",
+  "/images/nail-art/06.jpg",
+  "/images/bridal/13.jpg",
+  "/images/hair-spa/03.jpg",
+  "/images/beauty-school/02.jpg",
+];
+
 export default function InstagramFeed() {
   return (
     <section className="py-16 md:py-24">
@@ -17,11 +27,11 @@ export default function InstagramFeed() {
           </a>
         </Reveal>
         <RevealGroup className="grid grid-cols-3 md:grid-cols-6 gap-2" stagger={0.05}>
-          {Array.from({ length: 6 }).map((_, i) => (
-            <RevealItem key={i} className="group">
+          {feedImages.map((src, i) => (
+            <RevealItem key={src} className="group">
               <a href={site.instagram} target="_blank" rel="noreferrer">
                 <ImageReveal delay={i * 0.03}>
-                  <Visual ratio="aspect-square" className="transition-transform duration-500 ease-out group-hover:scale-105" />
+                  <Visual src={src} ratio="aspect-square" className="transition-transform duration-500 ease-out group-hover:scale-105" />
                 </ImageReveal>
               </a>
             </RevealItem>
