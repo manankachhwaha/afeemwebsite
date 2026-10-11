@@ -17,12 +17,13 @@ function interleave(groups: ScrollCarouselImage[][]): ScrollCarouselImage[] {
   return out;
 }
 
+// A short, varied set — enough for the carousel to feel full without loading dozens of photos.
 const images = interleave([
-  numbered("hair-cut", "Hair", [2, 3, 4, 5, 6, 7, 8, 9, 10, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22]),
-  numbered("hair-color", "Hair Colour", [1, 2, 3, 4, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22]),
-  numbered("hair-spa", "Hair Spa", [2, 4, 5, 6, 7, 8, 9, 10, 11, 12]),
-  numbered("nail-art", "Nails", [2, 3, 4, 5, 7, 8, 9, 10, 11, 12, 13]),
-  numbered("pedicure", "Nails", [2, 3, 4, 5, 6]),
+  numbered("hair-cut", "Hair", [3, 8, 14]),
+  numbered("hair-color", "Hair Colour", [2, 10, 17]),
+  numbered("hair-spa", "Hair Spa", [4, 9]),
+  numbered("nail-art", "Nails", [3, 9]),
+  numbered("pedicure", "Nails", [3, 5]),
 ]);
 
 export default function InsideAfeem() {

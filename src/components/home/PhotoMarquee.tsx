@@ -9,19 +9,18 @@ function numbered(folder: string, label: string, nums: number[]): MarqueeImage[]
 
 // Energetic mix — the services people book most.
 const rowTop: MarqueeImage[] = [
-  ...numbered("bridal", "Bridal", [1, 3, 4, 5, 9, 10, 14, 16]),
-  ...numbered("hair-color", "Hair Colour", [1, 3, 5, 2, 9, 14, 18]),
-  ...numbered("nail-art", "Nail Art", [1, 3, 5, 7]),
-  ...numbered("hair-cut", "Hair", [2, 6, 9, 11, 15, 19]),
+  ...numbered("bridal", "Bridal", [1, 5, 14]),
+  ...numbered("hair-color", "Hair Colour", [3, 9]),
+  ...numbered("nail-art", "Nail Art", [1, 5]),
+  ...numbered("hair-cut", "Hair", [6, 15]),
 ];
 
 // Calmer mix — the spaces and the studio itself.
 const rowBottom: MarqueeImage[] = [
-  ...numbered("ratanada", "Afeem Ratanada", [1, 4, 7, 10, 13, 17, 21, 25]),
-  ...numbered("pal-road", "Afeem Pal Road", [1, 4, 8, 11, 15, 19, 22]),
-  ...numbered("beauty-school", "Afeem Beauty School", [1, 3, 5, 7, 10, 13]),
-  ...numbered("hair-spa", "Hair Spa", [2, 5, 7, 11]),
-  ...numbered("bridal", "Bridal", [18, 19]),
+  ...numbered("ratanada", "Afeem Ratanada", [4, 13, 21]),
+  ...numbered("pal-road", "Afeem Pal Road", [4, 15]),
+  ...numbered("beauty-school", "Afeem Beauty School", [3, 10]),
+  ...numbered("hair-spa", "Hair Spa", [5, 11]),
 ];
 
 export default function PhotoMarquee() {
