@@ -6,13 +6,13 @@ import FlipReveal from "@/components/motion/FlipReveal";
 import TiltCard from "@/components/motion/TiltCard";
 
 const tiles = [
-  { label: "Hair", href: "/salon-spa/hair", Icon: HairIcon },
-  { label: "Skin", href: "/salon-spa/skin", Icon: SkinIcon },
-  { label: "Spa & Wellness", href: "/salon-spa/spa-wellness", Icon: SpaIcon },
-  { label: "Makeup", href: "/salon-spa/makeup", Icon: MakeupIcon },
-  { label: "Nails", href: "/salon-spa/nails", Icon: NailsIcon },
-  { label: "Bridal", href: "/bridal", Icon: BridalIcon },
-  { label: "Beauty Education", href: "/beauty-school", Icon: EducationIcon },
+  { label: "Hair", hint: "Cuts, colour, treatments", href: "/salon-spa/hair", Icon: HairIcon },
+  { label: "Skin", hint: "Facials & glow", href: "/salon-spa/skin", Icon: SkinIcon },
+  { label: "Spa & Wellness", hint: "Unwind & recharge", href: "/salon-spa/spa-wellness", Icon: SpaIcon },
+  { label: "Makeup", hint: "Party & occasion looks", href: "/salon-spa/makeup", Icon: MakeupIcon },
+  { label: "Nails", hint: "Manicure, pedicure, art", href: "/salon-spa/nails", Icon: NailsIcon },
+  { label: "Bridal", hint: "Your big day, planned", href: "/bridal", Icon: BridalIcon },
+  { label: "Beauty Education", hint: "Start a beauty career", href: "/beauty-school", Icon: EducationIcon },
 ];
 
 export default function WhatBringsYou() {
@@ -22,9 +22,10 @@ export default function WhatBringsYou() {
         <Reveal className="flex flex-col gap-2 mb-10 md:mb-14">
           <span className="text-xs uppercase tracking-[0.25em] text-gold-dark">Start here</span>
           <h2 className="font-display text-2xl sm:text-3xl text-brown">What brings you to Afeem?</h2>
+          <p className="text-sm text-brown-soft">Tap what you are here for — we will take you straight there.</p>
         </Reveal>
         <RevealGroup className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-7 gap-4 md:gap-3" stagger={0.06}>
-          {tiles.map(({ label, href, Icon }) => (
+          {tiles.map(({ label, hint, href, Icon }) => (
             <FlipReveal key={label}>
               <TiltCard>
                 <Link
@@ -34,7 +35,10 @@ export default function WhatBringsYou() {
                   <span className="flex h-12 w-12 items-center justify-center rounded-full border border-gold/40 text-gold-dark transition-all duration-300 group-hover:bg-brown group-hover:border-brown group-hover:text-yellow-warm group-hover:scale-110">
                     <Icon className="h-5 w-5" />
                   </span>
-                  <span className="text-sm font-medium text-brown">{label}</span>
+                  <span className="flex flex-col items-center gap-1">
+                    <span className="text-sm font-medium text-brown">{label}</span>
+                    <span className="text-[11px] leading-tight text-brown-mute">{hint}</span>
+                  </span>
                 </Link>
               </TiltCard>
             </FlipReveal>

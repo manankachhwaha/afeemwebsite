@@ -3,6 +3,7 @@ import { Playfair_Display, Inter } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
+import BridalBar from "@/components/layout/BridalBar";
 import StickyBookBar from "@/components/layout/StickyBookBar";
 import SmoothScroll from "@/components/motion/SmoothScroll";
 import ScrollProgress from "@/components/motion/ScrollProgress";
@@ -115,6 +116,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
             <GoldThread />
             <GoldFlash />
             <ScrollProgress />
+            <BridalBar />
             <Header />
             <main className="flex-1 pb-16 md:pb-0">
               <PageTransition>{children}</PageTransition>

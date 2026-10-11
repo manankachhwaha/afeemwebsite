@@ -1,4 +1,5 @@
 import Hero from "@/components/home/Hero";
+import BridalTeaser from "@/components/home/BridalTeaser";
 import PhotoMarquee from "@/components/home/PhotoMarquee";
 import WhatBringsYou from "@/components/home/WhatBringsYou";
 import ExperienceIntro from "@/components/home/ExperienceIntro";
@@ -14,8 +15,9 @@ export default function Home() {
   return (
     <>
       <Hero />
-      <PhotoMarquee />
       <WhatBringsYou />
+      <BridalTeaser />
+      <PhotoMarquee />
       <ExperienceIntro />
       <Stats />
       <FeaturedServices />
