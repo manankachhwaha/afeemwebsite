@@ -90,7 +90,7 @@ export default function Hero() {
             <SplitReveal text="Where Beauty Becomes an Experience." delay={0.15} />
           </h1>
           <p className="text-brown-soft text-base sm:text-lg max-w-lg leading-relaxed">
-            Step into Afeem — a destination for beauty, wellness and professional beauty education.
+            Hair, skin, spa, makeup, bridal and a beauty school — all under the Afeem name, in the heart of Jodhpur.
           </p>
           <div className="flex flex-wrap gap-4 pt-2">
             <Button href="/contact#book" variant="primary">
@@ -100,6 +100,9 @@ export default function Hero() {
               Explore Afeem
             </Button>
           </div>
+          <p className="text-xs sm:text-sm text-brown-soft">
+            <span className="text-gold-dark">★ 4.7</span> on Google · 1,700+ reviews · Open daily 10:30 – 9:00
+          </p>
         </motion.div>
 
         {/* Editorial gallery-label frame — a deliberately composed placeholder
