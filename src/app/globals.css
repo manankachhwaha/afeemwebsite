@@ -496,3 +496,33 @@ html.reduce-motion * {
 
 /* Intro splash is server-rendered; hide it when this session already saw it. */
 html.intro-seen [data-intro-splash] { display: none !important; }
+
+/* ------------------------------------------------------------------ */
+/* Lite mode (html.lite, set pre-paint by LITE_INIT_SCRIPT): phones,    */
+/* touch devices, low-memory/low-core devices and Save-Data. Drops the  */
+/* effects that force full-screen blended/blurred compositing every     */
+/* frame, which is what made the site laggy on phones. Layout, content, */
+/* reveals and the cheap marquee are untouched.                         */
+/* ------------------------------------------------------------------ */
+html.lite .liquid-gold,
+html.lite .film-grain,
+html.lite .wind-down-overlay,
+html.lite .gold-particles,
+html.lite .bridal-bg-video {
+  display: none !important;
+}
+
+html.lite .ambient-gradient {
+  animation: none;
+}
+
+html.lite .warm-placeholder::before,
+html.lite .warm-placeholder-dark::before {
+  display: none;
+}
+
+/* Don't hold a permanent GPU layer for the marquee on phones. */
+html.lite .marquee-track {
+  will-change: auto;
+}
+

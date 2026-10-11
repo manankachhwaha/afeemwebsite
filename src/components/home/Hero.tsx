@@ -11,7 +11,7 @@ import TextScramble from "@/components/motion/TextScramble";
 import { SparkleIcon } from "@/components/ui/icons";
 import { getGreeting, getTimeBucket } from "@/lib/timeOfDay";
 import { FEATURES } from "@/config/features";
-import { isMotionEnabled } from "@/lib/motionPreference";
+import { isLiteMode, isMotionEnabled } from "@/lib/motionPreference";
 
 export default function Hero() {
   const heroRef = useRef<HTMLElement>(null);
@@ -25,7 +25,7 @@ export default function Hero() {
     // generation, so none can be a lazy useState initializer.
     // eslint-disable-next-line react-hooks/set-state-in-effect
     setGreeting(getGreeting(getTimeBucket(new Date().getHours())));
-    const heavy = FEATURES.heavyMode && isMotionEnabled();
+    const heavy = FEATURES.heavyMode && isMotionEnabled() && !isLiteMode();
     setParallaxOn(heavy);
     setSpotlightOn(heavy && window.matchMedia("(hover: hover) and (pointer: fine)").matches);
   }, []);

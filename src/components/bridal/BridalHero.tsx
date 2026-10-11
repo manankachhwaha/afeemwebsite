@@ -1,11 +1,12 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { motion, useInView } from "motion/react";
 import Image from "next/image";
 import Container from "@/components/ui/Container";
 import Button from "@/components/ui/Button";
 import GoldParticles from "@/components/motion/GoldParticles";
+import { isLiteMode } from "@/lib/motionPreference";
 
 /**
  * Full-bleed cinematic hero for /bridal — a looping clip from real Afeem
@@ -25,6 +26,12 @@ export default function BridalHero() {
   // (and resuming it if the visitor scrolls back up) keeps at most one
   // clip decoding at a time.
   const inView = useInView(sectionRef, { amount: 0 });
+  // Phones / low-power devices keep the poster image only — no 3.6MB clip download or decode.
+  const [showVideo, setShowVideo] = useState(false);
+  useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    setShowVideo(!isLiteMode());
+  }, []);
 
   useEffect(() => {
     const video = videoRef.current;
@@ -53,6 +60,7 @@ export default function BridalHero() {
           sizes="100vw"
           className="object-cover"
         />
+        {showVideo && (
         <video
           ref={videoRef}
           className="bridal-bg-video absolute inset-0 h-full w-full object-cover"
@@ -61,9 +69,11 @@ export default function BridalHero() {
           loop
           playsInline
           poster="/images/bridal/01.jpg"
+          preload="metadata"
         >
           <source src="/videos/bridal/hero-1.mp4" type="video/mp4" />
         </video>
+        )}
       </div>
 
       {/* Bordeaux wash + legibility gradient — the video reads warm and rich,

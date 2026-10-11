@@ -16,7 +16,7 @@ import AmbientGradient from "@/components/motion/AmbientGradient";
 import LiquidGold from "@/components/motion/LiquidGold";
 import FilmGrain from "@/components/motion/FilmGrain";
 import { BranchProvider } from "@/lib/BranchContext";
-import { MOTION_INIT_SCRIPT, INTRO_INIT_SCRIPT } from "@/lib/motionPreference";
+import { MOTION_INIT_SCRIPT, INTRO_INIT_SCRIPT, LITE_INIT_SCRIPT } from "@/lib/motionPreference";
 import BranchPickerModal from "@/components/branch/BranchPickerModal";
 import ConciergeWidget from "@/components/concierge/ConciergeWidget";
 import { site } from "@/data/site";
@@ -97,6 +97,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       className={`${playfair.variable} ${inter.variable} h-full antialiased${FEATURES.heavyMode ? " heavy-mode" : ""}`}
     >
       <body className="min-h-full flex flex-col bg-cream text-brown">
+        <script dangerouslySetInnerHTML={{ __html: LITE_INIT_SCRIPT }} />
         <script dangerouslySetInnerHTML={{ __html: MOTION_INIT_SCRIPT }} />
         <script dangerouslySetInnerHTML={{ __html: INTRO_INIT_SCRIPT }} />
         <script

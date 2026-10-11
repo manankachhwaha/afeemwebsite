@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { FEATURES } from "@/config/features";
-import { isMotionEnabled } from "@/lib/motionPreference";
+import { isLiteMode, isMotionEnabled } from "@/lib/motionPreference";
 
 // --- Tuning knobs: the one place to make the dust subtler/denser/faster. ---
 const PARTICLE_COUNT_DESKTOP = FEATURES.heavyMode ? 46 : 32;
@@ -49,7 +49,7 @@ export default function GoldParticles({ tone = "dark" }: { tone?: "dark" | "ligh
   const [particles, setParticles] = useState<Particle[] | null>(null);
 
   useEffect(() => {
-    if (!FEATURES.goldParticles || !isMotionEnabled()) return;
+    if (!FEATURES.goldParticles || !isMotionEnabled() || isLiteMode()) return;
     const isSmallScreen = window.matchMedia(`(max-width: ${MOBILE_BREAKPOINT_PX}px)`).matches;
     // One-time client-only randomization (needs `window`, unavailable during
     // static generation) — can't be computed in a lazy useState initializer.

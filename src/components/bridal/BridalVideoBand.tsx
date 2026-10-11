@@ -1,8 +1,9 @@
 "use client";
 
-import { ReactNode, useEffect, useRef } from "react";
+import { ReactNode, useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { useInView } from "motion/react";
+import { isLiteMode } from "@/lib/motionPreference";
 
 /**
  * A section-width band with a looping bridal video as its backdrop —
@@ -38,6 +39,11 @@ export default function BridalVideoBand({
   const videoRef = useRef<HTMLVideoElement>(null);
   const everNear = useInView(ref, { once: true, margin: "200px 0px" });
   const visible = useInView(ref, { amount: 0 });
+  const [lite, setLite] = useState(true);
+  useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    setLite(isLiteMode());
+  }, []);
 
   useEffect(() => {
     const video = videoRef.current;
@@ -50,7 +56,7 @@ export default function BridalVideoBand({
     <section id={id} ref={ref} className={`relative isolate overflow-hidden ${className}`}>
       <div className="absolute inset-0">
         <Image src={poster} alt="" fill sizes="100vw" className="object-cover" />
-        {everNear && (
+        {everNear && !lite && (
           <video
             ref={videoRef}
             className="bridal-bg-video absolute inset-0 h-full w-full object-cover"
@@ -58,6 +64,7 @@ export default function BridalVideoBand({
             muted
             loop
             playsInline
+            preload="metadata"
             poster={poster}
           >
             <source src={src} type="video/mp4" />

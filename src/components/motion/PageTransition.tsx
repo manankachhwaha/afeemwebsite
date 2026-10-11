@@ -4,7 +4,7 @@ import { AnimatePresence, motion } from "motion/react";
 import { usePathname } from "next/navigation";
 import { ReactNode, useEffect, useState } from "react";
 import { FEATURES } from "@/config/features";
-import { isMotionEnabled } from "@/lib/motionPreference";
+import { isLiteMode, isMotionEnabled } from "@/lib/motionPreference";
 
 const calm = {
   initial: { opacity: 0, y: 16 },
@@ -35,15 +35,17 @@ const reduced = {
 export default function PageTransition({ children }: { children: ReactNode }) {
   const pathname = usePathname();
   const [motionOn, setMotionOn] = useState(true);
+  const [lite, setLite] = useState(false);
 
   useEffect(() => {
     // Client-only read of the visitor's motion preference — unavailable
     // during static generation.
     // eslint-disable-next-line react-hooks/set-state-in-effect
     setMotionOn(isMotionEnabled());
+    setLite(isLiteMode());
   }, []);
 
-  const variant = !motionOn ? reduced : FEATURES.heavyMode ? heavy : calm;
+  const variant = !motionOn || lite ? reduced : FEATURES.heavyMode ? heavy : calm;
 
   return (
     <AnimatePresence mode="wait" initial={false}>

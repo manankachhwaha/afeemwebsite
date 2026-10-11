@@ -11,7 +11,7 @@ import {
   type PanInfo,
 } from "motion/react";
 import Image from "next/image";
-import { isMotionEnabled } from "@/lib/motionPreference";
+import { isLiteMode, isMotionEnabled } from "@/lib/motionPreference";
 import { FEATURES } from "@/config/features";
 
 export type ScrollCarouselImage = { src: string; alt?: string; label?: string };
@@ -127,6 +127,7 @@ export default function ScrollCarousel({
   const trackRef = useRef<HTMLDivElement>(null);
   const [index, setIndex] = useState(0);
   const [motionOn, setMotionOn] = useState(true);
+  const [lite, setLite] = useState(false);
   const [slideStep, setSlideStep] = useState(0);
   const [paused, setPaused] = useState(false);
   const trackX = useMotionValue(0);
@@ -136,6 +137,7 @@ export default function ScrollCarousel({
     // during static generation.
     // eslint-disable-next-line react-hooks/set-state-in-effect
     setMotionOn(isMotionEnabled());
+    setLite(isLiteMode());
   }, []);
 
   // Measure the pixel distance between slides (width + gap) — used only for
@@ -183,7 +185,7 @@ export default function ScrollCarousel({
     { stiffness: 70, damping: 22 }
   );
 
-  const showDust = dust && FEATURES.carouselGoldDust && motionOn;
+  const showDust = dust && FEATURES.carouselGoldDust && motionOn && !lite;
 
   if (images.length === 0) return null;
 

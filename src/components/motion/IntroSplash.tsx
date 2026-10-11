@@ -4,7 +4,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
 import Image from "next/image";
 import { FEATURES } from "@/config/features";
-import { isMotionEnabled } from "@/lib/motionPreference";
+import { isLiteMode, isMotionEnabled } from "@/lib/motionPreference";
 import AmbientGradient from "@/components/motion/AmbientGradient";
 import GoldParticles from "@/components/motion/GoldParticles";
 
@@ -47,7 +47,7 @@ export default function IntroSplash() {
       setVisible(false);
       return;
     }
-    if (!FEATURES.introSplash || seen || !motionOn) {
+    if (!FEATURES.introSplash || seen || !motionOn || isLiteMode()) {
       setVisible(false);
       return;
     }

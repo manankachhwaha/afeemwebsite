@@ -3,7 +3,7 @@
 import { useEffect, useRef } from "react";
 import Lenis from "lenis";
 import { FEATURES } from "@/config/features";
-import { isMotionEnabled } from "@/lib/motionPreference";
+import { isLiteMode, isMotionEnabled } from "@/lib/motionPreference";
 
 export default function SmoothScroll({ children }: { children: React.ReactNode }) {
   const lenisRef = useRef<Lenis | null>(null);
@@ -12,7 +12,8 @@ export default function SmoothScroll({ children }: { children: React.ReactNode }
     if (!FEATURES.smoothScroll) return;
 
     const isReducedMotion = !isMotionEnabled();
-    if (isReducedMotion) return;
+    // Lenis on touch devices fights native momentum scrolling and is a big source of phone lag.
+    if (isReducedMotion || isLiteMode()) return;
 
     const lenis = new Lenis({
       duration: 1.1,

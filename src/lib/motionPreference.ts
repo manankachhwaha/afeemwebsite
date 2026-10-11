@@ -33,6 +33,16 @@ export function syncMotionClass(): boolean {
 // before first paint — no flash of animation for a visitor who opted out.
 export const MOTION_INIT_SCRIPT = `(function(){try{var v=localStorage.getItem("${KEY}");if(v==="off"){document.documentElement.classList.add("reduce-motion");}}catch(e){}})();`;
 
+/** True on phones/tablets and low-power devices: heavy decorative layers are skipped there. */
+export function isLiteMode(): boolean {
+  if (typeof document === "undefined") return false;
+  return document.documentElement.classList.contains("lite");
+}
+
+// Sets html.lite before first paint on touch devices, small screens, low-memory/low-core
+// devices and Save-Data connections, so CSS can drop the costly effects with no flash.
+export const LITE_INIT_SCRIPT = `(function(){try{var n=navigator,c=n.connection||{};if(matchMedia("(pointer:coarse)").matches||innerWidth<=900||(n.deviceMemory&&n.deviceMemory<=4)||(n.hardwareConcurrency&&n.hardwareConcurrency<=4)||c.saveData){document.documentElement.classList.add("lite");}}catch(e){}})();`;
+
 // Marks the session as "intro already seen" (or motion off) before first paint so
 // the server-rendered splash is hidden by CSS instead of flashing on reloads.
-export const INTRO_INIT_SCRIPT = `(function(){try{if(sessionStorage.getItem("afeem-intro-seen")||localStorage.getItem("${KEY}")==="off"){document.documentElement.classList.add("intro-seen");}}catch(e){document.documentElement.classList.add("intro-seen");}})();`;
+export const INTRO_INIT_SCRIPT = `(function(){try{if(sessionStorage.getItem("afeem-intro-seen")||document.documentElement.classList.contains("lite")||localStorage.getItem("${KEY}")==="off"){document.documentElement.classList.add("intro-seen");}}catch(e){document.documentElement.classList.add("intro-seen");}})();`;
