@@ -546,3 +546,33 @@ html.lite .page-enter {
   from { opacity: 0; }
   to { opacity: 1; }
 }
+
+/* Stats band (Stats.tsx): gold numerals with a slow light sweep, and a
+   turning tick dial around each ring. Both transform/background-position
+   only, and both switch off on phones / when motion is reduced. */
+.stat-shimmer {
+  background: linear-gradient(110deg, #e6c274 0%, #dc9d4a 35%, #fff3c9 50%, #dc9d4a 65%, #c8801f 100%);
+  background-size: 250% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: stat-shimmer 5s ease-in-out infinite;
+}
+
+@keyframes stat-shimmer {
+  0%, 100% { background-position: 100% 0; }
+  50% { background-position: 0% 0; }
+}
+
+.stat-dial {
+  animation: stat-dial-spin 90s linear infinite;
+}
+
+@keyframes stat-dial-spin {
+  to { transform: rotate(360deg); }
+}
+
+html.lite .stat-shimmer,
+html.lite .stat-dial {
+  animation: none;
+}
