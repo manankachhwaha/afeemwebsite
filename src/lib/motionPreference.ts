@@ -39,6 +39,12 @@ export function isLiteMode(): boolean {
   return document.documentElement.classList.contains("lite");
 }
 
+/** True when the visitor asked the browser to save data — videos are skipped. */
+export function isSaveData(): boolean {
+  if (typeof navigator === "undefined") return false;
+  return !!(navigator as Navigator & { connection?: { saveData?: boolean } }).connection?.saveData;
+}
+
 // Sets html.lite before first paint on touch devices, small screens, low-memory/low-core
 // devices and Save-Data connections, so CSS can drop the costly effects with no flash.
 export const LITE_INIT_SCRIPT = `(function(){try{var n=navigator,c=n.connection||{};if(matchMedia("(pointer:coarse)").matches||innerWidth<=900||(n.deviceMemory&&n.deviceMemory<=4)||(n.hardwareConcurrency&&n.hardwareConcurrency<=4)||c.saveData){document.documentElement.classList.add("lite");}}catch(e){}})();`;

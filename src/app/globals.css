@@ -507,8 +507,7 @@ html.intro-seen [data-intro-splash] { display: none !important; }
 html.lite .liquid-gold,
 html.lite .film-grain,
 html.lite .wind-down-overlay,
-html.lite .gold-particles,
-html.lite .bridal-bg-video {
+html.lite .gold-particles {
   display: none !important;
 }
 

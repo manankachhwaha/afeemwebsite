@@ -6,7 +6,7 @@ import Image from "next/image";
 import Container from "@/components/ui/Container";
 import Button from "@/components/ui/Button";
 import GoldParticles from "@/components/motion/GoldParticles";
-import { isLiteMode } from "@/lib/motionPreference";
+import { isSaveData } from "@/lib/motionPreference";
 
 /**
  * Full-bleed cinematic hero for /bridal — a looping clip from real Afeem
@@ -26,11 +26,11 @@ export default function BridalHero() {
   // (and resuming it if the visitor scrolls back up) keeps at most one
   // clip decoding at a time.
   const inView = useInView(sectionRef, { amount: 0 });
-  // Phones / low-power devices keep the poster image only — no 3.6MB clip download or decode.
+  // Save-Data connections keep the poster image only; everyone else gets the clip.
   const [showVideo, setShowVideo] = useState(false);
   useEffect(() => {
     // eslint-disable-next-line react-hooks/set-state-in-effect
-    setShowVideo(!isLiteMode());
+    setShowVideo(!isSaveData());
   }, []);
 
   useEffect(() => {

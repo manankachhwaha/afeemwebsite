@@ -52,3 +52,6 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# generated responsive image variants (scripts/make-variants.mjs)
+public/images/**/*-[0-9]*.webp

@@ -3,7 +3,7 @@
 import { ReactNode, useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { useInView } from "motion/react";
-import { isLiteMode } from "@/lib/motionPreference";
+import { isSaveData } from "@/lib/motionPreference";
 
 /**
  * A section-width band with a looping bridal video as its backdrop —
@@ -42,7 +42,7 @@ export default function BridalVideoBand({
   const [lite, setLite] = useState(true);
   useEffect(() => {
     // eslint-disable-next-line react-hooks/set-state-in-effect
-    setLite(isLiteMode());
+    setLite(isSaveData());
   }, []);
 
   useEffect(() => {

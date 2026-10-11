@@ -4,7 +4,8 @@ import path from "path";
 const nextConfig: NextConfig = {
   output: "export",
   images: {
-    unoptimized: true,
+    loader: "custom",
+    loaderFile: "./src/lib/imageLoader.ts",
   },
   turbopack: {
     root: path.join(__dirname),
