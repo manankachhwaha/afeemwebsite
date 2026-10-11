@@ -25,8 +25,8 @@ export default function WhatBringsYou() {
           <p className="text-sm text-brown-soft">Tap what you are here for — we will take you straight there.</p>
         </Reveal>
         <RevealGroup className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-7 gap-4 md:gap-3" stagger={0.06}>
-          {tiles.map(({ label, hint, href, Icon }) => (
-            <FlipReveal key={label}>
+          {tiles.map(({ label, hint, href, Icon }, i) => (
+            <FlipReveal key={label} className={i === tiles.length - 1 ? "col-span-2 sm:col-span-1" : ""}>
               <TiltCard>
                 <Link
                   href={href}

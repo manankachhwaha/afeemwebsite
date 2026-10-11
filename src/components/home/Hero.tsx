@@ -101,7 +101,9 @@ export default function Hero() {
             </Button>
           </div>
           <p className="text-xs sm:text-sm text-brown-soft">
-            <span className="text-gold-dark">★ 4.7</span> on Google · 1,700+ reviews · Open daily 10:30 – 9:00
+            <span className="whitespace-nowrap"><span className="text-gold-dark">★ 4.7</span> on Google · 1,700+ reviews</span>
+            <span className="hidden sm:inline"> · </span>
+            <span className="block whitespace-nowrap sm:inline">Open daily 10:30 – 9:00</span>
           </p>
         </motion.div>
 
