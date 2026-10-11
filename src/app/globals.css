@@ -576,3 +576,73 @@ html.lite .stat-shimmer,
 html.lite .stat-dial {
   animation: none;
 }
+
+/* ------------------------------------------------------------------ */
+/* Forms on phones: every field fills its column exactly, never wider  */
+/* ------------------------------------------------------------------ */
+/* Grid/flex children default to min-width:auto, so a date/time/select's  */
+/* built-in width pushed fields past the card edge on narrow screens.     */
+form,
+form .grid > *,
+form > div {
+  min-width: 0;
+}
+
+form input:not([type="checkbox"]):not([type="radio"]),
+form select,
+form textarea {
+  box-sizing: border-box;
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  min-height: 3rem;
+  margin: 0;
+  border-radius: 0;
+  text-align: left;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+/* iOS renders date/time as an inline-flex control that ignores width:100%;
+   re-flowing its inner value keeps it left-aligned and inside the box. */
+form input[type="date"],
+form input[type="time"] {
+  line-height: 1.5;
+}
+form input[type="date"]::-webkit-date-and-time-value,
+form input[type="time"]::-webkit-date-and-time-value {
+  text-align: left;
+  min-height: 1.5em;
+}
+form input[type="date"]::-webkit-calendar-picker-indicator,
+form input[type="time"]::-webkit-calendar-picker-indicator {
+  margin-left: auto;
+}
+
+/* appearance:none removes the native arrow — draw a matching one back. */
+form select {
+  padding-right: 2.5rem;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'><path d='M1 1l5 5 5-5' fill='none' stroke='%2396631a' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'/></svg>");
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  background-size: 12px 8px;
+  text-overflow: ellipsis;
+}
+
+form textarea {
+  min-height: 6rem;
+  resize: vertical;
+}
+
+/* Full-card backdrop blur is expensive on phones and gains nothing there. */
+html.lite form {
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+}
+html.lite form input,
+html.lite form select,
+html.lite form textarea {
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+}
