@@ -525,3 +525,24 @@ html.lite .marquee-track {
   will-change: auto;
 }
 
+
+/* Route fade-in (PageTransition.tsx). Opacity only: no blur/scale on the
+   whole page, which was expensive and could strand the next route at 0. */
+.page-enter {
+  animation: page-enter 0.35s ease-out both;
+}
+
+@keyframes page-enter {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: none; }
+}
+
+html.lite .page-enter {
+  animation-duration: 0.2s;
+  animation-name: page-enter-fade;
+}
+
+@keyframes page-enter-fade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}

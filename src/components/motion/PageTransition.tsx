@@ -1,63 +1,22 @@
 "use client";
 
-import { AnimatePresence, motion } from "motion/react";
 import { usePathname } from "next/navigation";
-import { ReactNode, useEffect, useState } from "react";
-import { FEATURES } from "@/config/features";
-import { isLiteMode, isMotionEnabled } from "@/lib/motionPreference";
+import { ReactNode } from "react";
 
-const calm = {
-  initial: { opacity: 0, y: 16 },
-  animate: { opacity: 1, y: 0 },
-  exit: { opacity: 0, y: -12 },
-  transition: { duration: 0.45, ease: [0.16, 1, 0.3, 1] as const },
-};
-
-// Paired with GoldFlash.tsx's full-screen wipe — the content itself blurs
-// and scales in behind the flash rather than a plain fade.
-const heavy = {
-  initial: { opacity: 0, y: 28, scale: 0.98, filter: "blur(8px)" },
-  animate: { opacity: 1, y: 0, scale: 1, filter: "blur(0px)" },
-  exit: { opacity: 0, y: -20, scale: 1.01, filter: "blur(8px)" },
-  transition: { duration: 0.7, ease: [0.16, 1, 0.3, 1] as const },
-};
-
-// A visitor who has explicitly turned motion off still gets *some* signal
-// that the route changed — just an instant, plain fade, never the blur/scale
-// choreography above.
-const reduced = {
-  initial: { opacity: 0 },
-  animate: { opacity: 1 },
-  exit: { opacity: 0 },
-  transition: { duration: 0.15 } as const,
-};
-
+/**
+ * Fades each route in with a pure-CSS animation (see .page-enter in
+ * globals.css). Deliberately no exit animation / AnimatePresence "wait":
+ * waiting on the old page's exit before mounting the new one could stall on
+ * heavy pages and leave the next route blank. Keying on the pathname
+ * re-mounts the wrapper so the fade replays on every navigation, and the
+ * animation can never leave content hidden — it ends at opacity 1 on its own.
+ * GoldFlash.tsx still supplies the decorative route-change flourish.
+ */
 export default function PageTransition({ children }: { children: ReactNode }) {
   const pathname = usePathname();
-  const [motionOn, setMotionOn] = useState(true);
-  const [lite, setLite] = useState(false);
-
-  useEffect(() => {
-    // Client-only read of the visitor's motion preference — unavailable
-    // during static generation.
-    // eslint-disable-next-line react-hooks/set-state-in-effect
-    setMotionOn(isMotionEnabled());
-    setLite(isLiteMode());
-  }, []);
-
-  const variant = !motionOn || lite ? reduced : FEATURES.heavyMode ? heavy : calm;
-
   return (
-    <AnimatePresence mode="wait" initial={false}>
-      <motion.div
-        key={pathname}
-        initial={variant.initial}
-        animate={variant.animate}
-        exit={variant.exit}
-        transition={variant.transition}
-      >
-        {children}
-      </motion.div>
-    </AnimatePresence>
+    <div key={pathname} className="page-enter">
+      {children}
+    </div>
   );
 }
