@@ -13,7 +13,7 @@
   },
   "kv_namespaces": [
     // Run `npx wrangler kv namespace create CMS_KV` and paste the id here.
-    { "binding": "CMS_KV", "id": "REPLACE_WITH_KV_NAMESPACE_ID" }
+    { "binding": "CMS_KV", "id": "f1b53799b5584f02b39c2099089dd643" }
   ],
   "vars": {
     // Origins allowed to POST website leads to this Worker (the public site).
