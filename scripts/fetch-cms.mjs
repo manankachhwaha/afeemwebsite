@@ -21,7 +21,8 @@ import { fileURLToPath } from "node:url";
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const cmsDir = path.join(root, "src/content/cms");
 const imgDir = path.join(root, "public/images/cms");
-const base = (process.env.CMS_URL || "").replace(/\/+$/, "");
+// Defaults to the live Afeem Studio; set CMS_URL="" to build from the built-in content instead.
+const base = (process.env.CMS_URL ?? "https://afeem-cms.manankachhwaha.workers.dev").replace(/\/+$/, "");
 
 if (!base) {
   console.log("[cms] CMS_URL not set — using built-in content.");

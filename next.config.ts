@@ -4,7 +4,7 @@ import path from "path";
 const nextConfig: NextConfig = {
   output: "export",
   // Lets the public forms post enquiries to the CMS inbox (set CMS_URL in the Cloudflare Pages build env).
-  env: { NEXT_PUBLIC_CMS_URL: process.env.CMS_URL ?? "" },
+  env: { NEXT_PUBLIC_CMS_URL: process.env.CMS_URL ?? "https://afeem-cms.manankachhwaha.workers.dev" },
   images: {
     loader: "custom",
     loaderFile: "./src/lib/imageLoader.ts",
