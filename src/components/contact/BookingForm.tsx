@@ -1,6 +1,7 @@
 "use client";
 
 import { FormEvent, useState } from "react";
+import { submitLead, linesToFields } from "@/lib/leads";
 import Button from "@/components/ui/Button";
 import { serviceCategories } from "@/data/services";
 import { branches, branchWhatsappLink, getBranch } from "@/data/branches";
@@ -29,6 +30,7 @@ export default function BookingForm() {
       `Notes: ${form.get("notes") || "—"}`,
     ];
     const message = lines.join("\n");
+    submitLead("booking", linesToFields(lines));
     // Route the request to that specific branch's WhatsApp so leads never get
     // mixed up between locations; fall back to the general line if somehow unset.
     const target = branch

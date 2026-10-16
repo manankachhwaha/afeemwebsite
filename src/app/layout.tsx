@@ -21,6 +21,8 @@ import { MOTION_INIT_SCRIPT, INTRO_INIT_SCRIPT, LITE_INIT_SCRIPT } from "@/lib/m
 import BranchPickerModal from "@/components/branch/BranchPickerModal";
 import ConciergeWidget from "@/components/concierge/ConciergeWidget";
 import { site } from "@/data/site";
+import { pageSeo } from "@/data/extras";
+import Analytics from "@/components/layout/Analytics";
 import { FEATURES } from "@/config/features";
 
 const playfair = Playfair_Display({
@@ -46,13 +48,19 @@ export const viewport: Viewport = {
   themeColor: "#3a2818",
 };
 
+const homeSeo = pageSeo("home", {
+  title: `${site.name} — Premium Beauty, Wellness & Education in ${site.city}`,
+  description: site.description,
+});
+
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
   title: {
-    default: `${site.name} — Premium Beauty, Wellness & Education in ${site.city}`,
+    default: homeSeo.title,
     template: `%s | ${site.name}`,
   },
-  description: site.description,
+  description: homeSeo.description,
+  ...(site.searchConsoleVerification ? { verification: { google: site.searchConsoleVerification } } : {}),
   keywords: [
     "best salon in Jodhpur",
     "hair salon Jodhpur",
@@ -69,7 +77,9 @@ export const metadata: Metadata = {
     siteName: site.name,
     locale: "en_IN",
     type: "website",
+    ...(site.ogImage ? { images: [{ url: site.ogImage }] } : {}),
   },
+  ...(site.ogImage ? { twitter: { card: "summary_large_image" as const, images: [site.ogImage] } } : {}),
 };
 
 const localBusinessSchema = {
@@ -86,7 +96,7 @@ const localBusinessSchema = {
     addressRegion: "Rajasthan",
     addressCountry: "IN",
   },
-  sameAs: [site.instagram],
+  sameAs: [site.instagram, site.facebook, site.youtube, site.linkedin].filter(Boolean),
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
@@ -98,6 +108,12 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       className={`${playfair.variable} ${inter.variable} h-full antialiased${FEATURES.heavyMode ? " heavy-mode" : ""}`}
     >
       <body className="min-h-full flex flex-col bg-cream text-brown">
+        {site.analytics.gtmId && (
+          <noscript>
+            <iframe src={`https://www.googletagmanager.com/ns.html?id=${site.analytics.gtmId}`} height="0" width="0" style={{ display: "none", visibility: "hidden" }} />
+          </noscript>
+        )}
+        <Analytics />
         <script dangerouslySetInnerHTML={{ __html: LITE_INIT_SCRIPT }} />
         <script dangerouslySetInnerHTML={{ __html: MOTION_INIT_SCRIPT }} />
         <script dangerouslySetInnerHTML={{ __html: INTRO_INIT_SCRIPT }} />

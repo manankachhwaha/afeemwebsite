@@ -1,3 +1,6 @@
+import { cmsOr } from "@/lib/cms";
+import branchesJson from "@/content/cms/branches.json";
+
 function numberedImages(folder: string, count: number): string[] {
   return Array.from({ length: count }, (_, i) => `/images/${folder}/${String(i + 1).padStart(2, "0")}.jpg`);
 }
@@ -29,7 +32,7 @@ export type Branch = {
   galleryImages?: string[];
 };
 
-export const branches: Branch[] = [
+const defaultBranches: Branch[] = [
   {
     slug: "ratanada",
     name: "Afeem — Ratanada",
@@ -79,6 +82,40 @@ export const branches: Branch[] = [
     galleryImages: numberedImages("pal-road", 22),
   },
 ];
+
+/** CMS stores the editable fields only; link/derived fields are rebuilt here so they can never drift out of sync. */
+type CmsBranch = Partial<Branch> & { slug: string; name: string };
+function fromCms(c: CmsBranch): Branch {
+  const wa = String(c.whatsappNumber ?? "").replace(/D/g, "");
+  const shortName = c.shortName || c.name;
+  return {
+    slug: c.slug,
+    name: c.name,
+    shortName,
+    area: c.area ?? "",
+    address: c.address ?? "",
+    phone: c.phone ?? "",
+    phoneHref: `tel:+${wa}`,
+    whatsappNumber: wa,
+    email: c.email ?? "",
+    hours: c.hours ?? "",
+    hoursIsPlaceholder: false,
+    googleRating: Number(c.googleRating) || 4.7,
+    googleReviewCount: Number(c.googleReviewCount) || 0,
+    googleMapsSearchUrl: c.googleMapsSearchUrl ?? "",
+    appleMapsUrl: `https://maps.apple.com/?ll=${c.lat},${c.lng}&q=` + encodeURIComponent(c.name),
+    lat: Number(c.lat) || 0,
+    lng: Number(c.lng) || 0,
+    instagram: c.instagram ?? "",
+    services: c.services ?? [],
+    hasSchool: !!c.hasSchool,
+    heroImage: c.heroImage || undefined,
+    galleryImages: c.galleryImages ?? [],
+  };
+}
+
+const cmsBranches = cmsOr<CmsBranch[] | null>(branchesJson, null);
+export const branches: Branch[] = cmsBranches && cmsBranches.length ? cmsBranches.map(fromCms) : defaultBranches;
 
 export function getBranch(slug: string) {
   return branches.find((b) => b.slug === slug);

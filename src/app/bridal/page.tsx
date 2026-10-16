@@ -8,30 +8,17 @@ import BridalConsultationForm from "@/components/bridal/BridalConsultationForm";
 import { testimonials } from "@/data/testimonials";
 import { Reveal, RevealGroup, RevealItem } from "@/components/motion";
 import TiltCard from "@/components/motion/TiltCard";
+import { t } from "@/lib/cms";
+import { lists, pageSeo } from "@/data/extras";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageSeo("bridal", {
   title: "Bridal Makeup & Beauty in Jodhpur",
   description:
     "Afeem Bridal — bridal makeup, pre-bridal skin prep, hair, nails and groom services in Jodhpur. Book your bridal consultation today.",
-};
+});
 
-const coverage = [
-  { title: "Bridal Makeup", desc: "HD & airbrush makeup with a trial session included." },
-  { title: "Pre-Bridal", desc: "Skin, hair and body prep timed to your wedding date." },
-  { title: "Hair", desc: "Bridal hairstyling, trials, and hair health treatments." },
-  { title: "Skin Preparation", desc: "A facial series designed to peak your skin on the day." },
-  { title: "Nails", desc: "Bridal manicure, pedicure and hand-painted nail art." },
-  { title: "Groom", desc: "Grooming, skin and hair services for the groom." },
-  { title: "Wedding Guest", desc: "Makeup and styling for your wedding party and guests." },
-  { title: "Bridal Packages", desc: "Bundled multi-function packages for the full celebration." },
-];
-
-const journey = [
-  { step: "Consultation", desc: "Share your date, vision and functions with our bridal team." },
-  { step: "Trial", desc: "Makeup and hair trial, timed 3–4 weeks before your wedding." },
-  { step: "Prep Timeline", desc: "A custom skin, hair and nail plan across your countdown." },
-  { step: "The Big Day", desc: "Your artist and stylist on-site, with a touch-up kit included." },
-];
+const coverage = lists.bridalCoverage;
+const journey = lists.bridalJourney;
 
 export default function BridalPage() {
   const bridalReviews = testimonials.filter((t) => t.type === "bridal");
@@ -43,7 +30,7 @@ export default function BridalPage() {
       <section className="py-16 md:py-24 bg-bridal-red-dark">
         <Container className="flex flex-col gap-10">
           <Reveal>
-            <SectionHeading eyebrow="What We Cover" title="Everything for Your Celebration" light />
+            <SectionHeading eyebrow={t("bridal.coverEyebrow")} title={t("bridal.coverTitle")} light />
           </Reveal>
           <RevealGroup className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6" stagger={0.06}>
             {coverage.map((c) => (
@@ -66,7 +53,7 @@ export default function BridalPage() {
       >
         <Container className="flex flex-col gap-10">
           <Reveal>
-            <SectionHeading eyebrow="The Journey" title="How Afeem Bridal Works" light />
+            <SectionHeading eyebrow={t("bridal.journeyEyebrow")} title={t("bridal.journeyTitle")} light />
           </Reveal>
           <RevealGroup className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6" stagger={0.08}>
             {journey.map((j, i) => (
@@ -88,7 +75,7 @@ export default function BridalPage() {
         <section className="py-16 md:py-24 bg-bridal-red-dark">
           <Container className="flex flex-col gap-10">
             <Reveal>
-              <SectionHeading eyebrow="Loved By Our Brides" title="What They're Saying" light />
+              <SectionHeading eyebrow={t("bridal.reviewsEyebrow")} title={t("bridal.reviewsTitle")} light />
             </Reveal>
             <RevealGroup className="grid md:grid-cols-2 gap-8" stagger={0.1}>
               {bridalReviews.map((r) => (
@@ -114,9 +101,9 @@ export default function BridalPage() {
         <Container className="grid lg:grid-cols-2 gap-12 items-start">
           <Reveal className="flex flex-col gap-5 bg-white/10 backdrop-blur-md border border-white/15 p-8">
             <SectionHeading
-              eyebrow="Get Started"
-              title="Book Your Bridal Consultation"
-              description="Tell us about your wedding and we'll build a plan around your dates, functions and budget."
+              eyebrow={t("bridal.bookEyebrow")}
+              title={t("bridal.bookTitle")}
+              description={t("bridal.bookSub")}
               light
             />
           </Reveal>

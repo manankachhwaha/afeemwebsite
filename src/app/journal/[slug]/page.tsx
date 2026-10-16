@@ -19,7 +19,11 @@ export async function generateMetadata({
   const { slug } = await params;
   const post = getPost(slug);
   if (!post) return {};
-  return { title: post.title, description: post.excerpt };
+  return {
+    title: post.title,
+    description: post.excerpt,
+    ...(post.coverImage ? { openGraph: { title: post.title, description: post.excerpt, images: [{ url: post.coverImage }] } } : {}),
+  };
 }
 
 export default async function JournalPostPage({
@@ -46,7 +50,7 @@ export default async function JournalPostPage({
             <p className="text-sm text-brown-mute">{new Date(post.date).toLocaleDateString("en-IN", { year: "numeric", month: "long", day: "numeric" })} · {post.readTime}</p>
           </Reveal>
           <ImageReveal delay={0.1}>
-            <Visual ratio="aspect-[16/9]" />
+            <Visual ratio="aspect-[16/9]" src={post.coverImage || undefined} alt={post.title} />
           </ImageReveal>
           <Reveal delay={0.2} className="flex flex-col gap-4 pt-4">
             {post.content.map((block, i) => {

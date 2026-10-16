@@ -1,3 +1,6 @@
+import { cmsOr } from "@/lib/cms";
+import journalJson from "@/content/cms/journalPosts.json";
+
 export type ContentBlock =
   | { type: "p"; text: string }
   | { type: "h2"; text: string }
@@ -12,9 +15,10 @@ export type JournalPost = {
   content: ContentBlock[];
   date: string;
   readTime: string;
+  coverImage?: string;
 };
 
-export const journalPosts: JournalPost[] = [
+const defaultJournalPosts: JournalPost[] = [
   {
     slug: "best-spa-in-jodhpur-guide",
     title: "Best Spa in Jodhpur: A Complete Guide to Relaxation, Beauty and Self-Care",
@@ -150,3 +154,5 @@ export function getPost(slug: string) {
 }
 
 export const journalBuckets = ["All", "Hair", "Skin", "Spa", "Bridal", "Beauty Education"] as const;
+
+export const journalPosts: JournalPost[] = cmsOr(journalJson, defaultJournalPosts);

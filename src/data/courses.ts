@@ -1,3 +1,6 @@
+import { cmsOr } from "@/lib/cms";
+import coursesJson from "@/content/cms/courses.json";
+
 export type Course = {
   slug: string;
   name: string;
@@ -12,9 +15,10 @@ export type Course = {
   nextBatch: string;
   careerOutcomes: string[];
   faqs: { q: string; a: string }[];
+  image?: string;
 };
 
-export const courses: Course[] = [
+const defaultCourses: Course[] = [
   {
     slug: "professional-makeup-artistry",
     name: "Professional Makeup Artistry",
@@ -127,6 +131,8 @@ export const courses: Course[] = [
     faqs: [],
   },
 ];
+
+export const courses: Course[] = cmsOr(coursesJson, defaultCourses);
 
 export function getCourse(slug: string) {
   return courses.find((c) => c.slug === slug);

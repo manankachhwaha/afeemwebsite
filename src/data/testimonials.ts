@@ -1,3 +1,6 @@
+import { cmsOr } from "@/lib/cms";
+import testimonialsJson from "@/content/cms/testimonials.json";
+
 export type Testimonial = {
   name: string;
   service: string;
@@ -6,7 +9,7 @@ export type Testimonial = {
   type: "salon" | "bridal" | "school";
 };
 
-export const testimonials: Testimonial[] = [
+const defaultTestimonials: Testimonial[] = [
   {
     name: "Ananya S.",
     service: "Bridal Makeup",
@@ -44,3 +47,5 @@ export const testimonials: Testimonial[] = [
     type: "bridal",
   },
 ];
+
+export const testimonials: Testimonial[] = cmsOr(testimonialsJson, defaultTestimonials);

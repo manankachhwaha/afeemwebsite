@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { t } from "@/lib/cms";
 
 export default function StickyBookBar() {
   return (
@@ -8,7 +9,7 @@ export default function StickyBookBar() {
         className="flex h-14 items-center justify-center text-sm font-medium uppercase tracking-wide text-white bg-brown"
         style={{ paddingBottom: "env(safe-area-inset-bottom)" }}
       >
-        Book Now
+        {t("global.stickyBook")}
       </Link>
     </div>
   );

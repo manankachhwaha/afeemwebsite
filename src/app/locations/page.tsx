@@ -5,16 +5,18 @@ import Visual from "@/components/ui/Visual";
 import Button from "@/components/ui/Button";
 import { branches } from "@/data/branches";
 import { RevealGroup, RevealItem, ImageReveal } from "@/components/motion";
+import { t } from "@/lib/cms";
+import { pageSeo } from "@/data/extras";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageSeo("locations", {
   title: "Locations in Jodhpur",
   description: "Find Afeem Spa & Salon in Ratanada or Pal Road, Jodhpur — pick the branch nearest you.",
-};
+});
 
 export default function LocationsPage() {
   return (
     <>
-      <PageHero eyebrow="Locations" title="Find Afeem in Jodhpur" description="Two branches, one standard of care — Ratanada and Pal Road." />
+      <PageHero eyebrow="Locations" title={t("locations.heroTitle")} description={t("locations.heroSub")} />
       <section className="py-16 md:py-24">
         <Container>
           <RevealGroup className="grid sm:grid-cols-2 gap-8" stagger={0.12}>

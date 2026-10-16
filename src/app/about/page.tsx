@@ -5,42 +5,36 @@ import SectionHeading from "@/components/ui/SectionHeading";
 import Visual from "@/components/ui/Visual";
 import Button from "@/components/ui/Button";
 import { Reveal, RevealGroup, RevealItem, ImageReveal } from "@/components/motion";
+import { t } from "@/lib/cms";
+import { experts, galleries, lists, pageSeo } from "@/data/extras";
+import TeamGrid from "@/components/cms/TeamGrid";
 
-const departments = [
-  { name: "Hair", blurb: "Cuts, colour, treatments and hair spa." },
-  { name: "Skin", blurb: "Facials and skin therapy, chosen for your skin type." },
-  { name: "Spa & Wellness", blurb: "Massage and body rituals for genuine rest." },
-  { name: "Makeup", blurb: "Everyday polish through to full bridal glam." },
-  { name: "Nails", blurb: "Manicures, pedicures and nail art." },
-];
+const departments = lists.aboutDepartments;
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageSeo("about", {
   title: "About Afeem",
   description: "Afeem is a premium beauty, wellness and education brand in Jodhpur — home to Afeem Spa & Salon and Afeem Beauty School.",
-};
+});
 
 export default function AboutPage() {
   return (
     <>
       <PageHero
         eyebrow="About Afeem"
-        title="Beauty, wellness and education — under one roof."
-        description="Afeem was built on a simple idea: the same standard of care should run through every service we offer, and every student we train."
+        title={t("about.heroTitle")}
+        description={t("about.heroSub")}
       />
 
       <section className="py-16 md:py-24">
         <Container className="grid md:grid-cols-2 gap-12 items-center">
           <ImageReveal>
-            <Visual label="The Afeem Story" ratio="aspect-[4/3]" src="/images/ratanada/01.jpg" />
+            <Visual label="The Afeem Story" ratio="aspect-[4/3]" src={galleries.aboutImage} />
           </ImageReveal>
           <Reveal delay={0.15} className="flex flex-col gap-5">
             <span className="text-xs uppercase tracking-[0.25em] text-gold-dark">Our Story</span>
-            <h2 className="font-display text-3xl text-brown leading-tight">Two verticals, one standard.</h2>
+            <h2 className="font-display text-3xl text-brown leading-tight">{t("about.storyTitle")}</h2>
             <p className="text-brown-soft leading-relaxed">
-              Afeem Spa & Salon and Afeem Beauty School share a floor, a philosophy and a name. Our
-              students train under working professionals and gain real, supervised salon exposure —
-              so by the time they graduate, they&rsquo;ve already worked with real clients. It&rsquo;s
-              this connection between learning and doing that sets Afeem apart in Jodhpur.
+              {t("about.storyBody")}
             </p>
           </Reveal>
         </Container>
@@ -53,8 +47,7 @@ export default function AboutPage() {
               <h3 className="font-display text-xl text-brown">Afeem Spa & Salon</h3>
               <p className="text-sm text-brown-soft italic">Experience the art of beauty.</p>
               <p className="text-sm text-brown-soft leading-relaxed">
-                Hair, skin, spa, makeup and nails — delivered with an editorial eye and genuine care,
-                across our Jodhpur locations.
+                {t("about.salonBody")}
               </p>
               <Button href="/salon-spa" variant="secondary" className="self-start mt-2">Explore Salon & Spa</Button>
             </RevealItem>
@@ -62,8 +55,7 @@ export default function AboutPage() {
               <h3 className="font-display text-xl text-brown">Afeem Beauty School</h3>
               <p className="text-sm text-brown-soft italic">Learn the art of beauty.</p>
               <p className="text-sm text-brown-soft leading-relaxed">
-                Structured courses in makeup, hair, skin and nails — with real, live salon exposure
-                built into every programme.
+                {t("about.schoolBody")}
               </p>
               <Button href="/beauty-school" variant="secondary" className="self-start mt-2">Explore Beauty School</Button>
             </RevealItem>
@@ -76,8 +68,8 @@ export default function AboutPage() {
           <Reveal>
             <SectionHeading
               eyebrow="Meet the Team"
-              title="Trained Specialists, Every Time"
-              description="Every Afeem stylist, therapist and artist is trained to the same standard — so the quality of your visit never depends on who's on shift."
+              title={t("about.teamTitle")}
+              description={t("about.teamSub")}
             />
           </Reveal>
           <RevealGroup className="grid sm:grid-cols-2 lg:grid-cols-5 gap-6" stagger={0.08}>
@@ -93,6 +85,8 @@ export default function AboutPage() {
           </Reveal>
         </Container>
       </section>
+
+      <TeamGrid members={experts} eyebrow="Meet the Experts" title="The people behind your look" />
 
       <section className="py-16 md:py-24 bg-cream-soft">
         <Container className="flex flex-col items-center text-center gap-6 max-w-xl mx-auto">

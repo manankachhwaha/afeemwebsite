@@ -5,19 +5,21 @@ import PageHero from "@/components/ui/PageHero";
 import Visual from "@/components/ui/Visual";
 import { journalPosts } from "@/data/journal";
 import { RevealGroup, RevealItem, ImageReveal } from "@/components/motion";
+import { t } from "@/lib/cms";
+import { pageSeo } from "@/data/extras";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageSeo("journal", {
   title: "Afeem Journal",
   description: "Beauty, bridal and beauty-education guides from the Afeem team in Jodhpur.",
-};
+});
 
 export default function JournalPage() {
   return (
     <>
       <PageHero
         eyebrow="Afeem Journal"
-        title="Stories, guides and expertise."
-        description="Practical advice from our stylists, artists and trainers — hair, skin, bridal and beauty education."
+        title={t("journal.heroTitle")}
+        description={t("journal.heroSub")}
       />
       <section className="py-16 md:py-24">
         <Container>
@@ -26,7 +28,7 @@ export default function JournalPage() {
               <RevealItem key={p.slug}>
                 <Link href={`/journal/${p.slug}`} className="group flex flex-col gap-4">
                   <ImageReveal>
-                    <Visual label={p.bucket} ratio="aspect-[4/3]" className="transition-transform duration-500 ease-out group-hover:scale-105" />
+                    <Visual label={p.bucket} ratio="aspect-[4/3]" src={p.coverImage || undefined} className="transition-transform duration-500 ease-out group-hover:scale-105" />
                   </ImageReveal>
                   <div>
                     <span className="text-xs uppercase tracking-wide text-gold-dark">{p.bucket}</span>

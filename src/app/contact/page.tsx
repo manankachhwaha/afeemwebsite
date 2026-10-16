@@ -9,21 +9,23 @@ import { branches, branchWhatsappLink } from "@/data/branches";
 import { site } from "@/data/site";
 import { Reveal, RevealGroup, RevealItem } from "@/components/motion";
 import { BranchCallButton } from "@/components/branch/BranchCTA";
+import { t } from "@/lib/cms";
+import { pageSeo } from "@/data/extras";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageSeo("contact", {
   title: "Contact & Book",
   description: "Book an appointment or get in touch with Afeem Spa & Salon and Afeem Beauty School in Jodhpur.",
-};
+});
 
 export default function ContactPage() {
   return (
     <>
-      <PageHero eyebrow="Contact" title="Get in Touch" description="Book an appointment, ask a question, or plan your visit to Afeem." />
+      <PageHero eyebrow="Contact" title={t("contact.heroTitle")} description={t("contact.heroSub")} />
 
       <section id="book" className="py-16 md:py-24 scroll-mt-32">
         <Container className="grid lg:grid-cols-2 gap-12 items-start">
           <Reveal className="flex flex-col gap-5">
-            <SectionHeading eyebrow="Book Now" title="Book an Appointment" description="Tell us your preferred branch, service, date and time — we'll confirm on WhatsApp." />
+            <SectionHeading eyebrow="Book Now" title={t("contact.bookTitle")} description={t("contact.bookSub")} />
             <div className="flex flex-col gap-6 mt-2">
               {branches.map((b) => (
                 <div key={b.slug} className="text-sm text-brown-soft flex flex-col gap-2">
@@ -52,8 +54,8 @@ export default function ContactPage() {
           <Reveal className="flex flex-col gap-5">
             <SectionHeading
               eyebrow="Prefer a Call?"
-              title="Request a Callback"
-              description="Short on time to fill out the full booking form? Leave your number and a good time to call — our team will ring you directly."
+              title={t("contact.callbackTitle")}
+              description={t("contact.callbackSub")}
             />
           </Reveal>
           <Reveal delay={0.15}>

@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
+import { site } from "@/data/site";
 
 const KEY = "afeem-bridal-bar-closed";
 
@@ -24,17 +25,18 @@ export default function BridalBar() {
     }
   }, []);
 
-  if (closed || pathname.startsWith("/bridal")) return null;
+  const bar = site.announcement;
+  if (closed || !bar.enabled || !(bar.text || bar.linkText) || pathname.startsWith("/bridal")) return null;
 
   return (
     <div className="relative bg-bridal-red-dark text-white">
       <Link
-        href="/bridal"
+        href={bar.href}
         className="flex items-center justify-center gap-2 px-10 py-2 text-center text-[11px] leading-snug tracking-wide sm:text-xs"
       >
         <span className="text-yellow-warm">✦</span>
         <span>
-          Getting married? <span className="text-yellow-warm underline underline-offset-4">See how Afeem brides look →</span>
+          {bar.text} <span className="text-yellow-warm underline underline-offset-4">{bar.linkText}</span>
         </span>
       </Link>
       <button

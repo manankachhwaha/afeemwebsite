@@ -10,40 +10,44 @@ import { testimonials } from "@/data/testimonials";
 import { beautySchoolWhatsappLink } from "@/data/site";
 import { Reveal, RevealGroup, RevealItem, ImageReveal } from "@/components/motion";
 import ScrollCarousel from "@/components/motion/ScrollCarousel";
+import { t, lines } from "@/lib/cms";
+import { galleries, lists, pageSeo, studentWork, trainers } from "@/data/extras";
+import TeamGrid from "@/components/cms/TeamGrid";
+import EventsBand from "@/components/cms/EventsBand";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageSeo("beautySchool", {
   title: "Beauty School in Jodhpur | Makeup & Beauty Courses",
   description:
     "Afeem Beauty School in Jodhpur — makeup, hair, skin and nail courses with real live salon exposure. Explore courses and book a counselling session.",
-};
+});
 
-const journey = ["Learn", "Hands-on Practice", "Live Salon Exposure", "Build Portfolio", "Career Opportunities"];
+const journey = lists.schoolJourney;
 const schoolReviews = testimonials.filter((t) => t.type === "school");
 
 export default function BeautySchoolPage() {
   return (
     <>
       <section className="relative py-24 md:py-36 overflow-hidden">
-        <Image src="/images/beauty-school/01.jpg" alt="" fill priority sizes="100vw" className="object-cover" />
+        <Image src={galleries.schoolHeroImage} alt="" fill priority sizes="100vw" className="object-cover" />
         <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-cream via-cream/75 to-black/25" />
         <Container className="relative">
           <div className="max-w-2xl flex flex-col gap-6">
             <Reveal>
-              <span className="text-xs uppercase tracking-[0.3em] text-gold-dark">Afeem Beauty School</span>
+              <span className="text-xs uppercase tracking-[0.3em] text-gold-dark">{t("school.heroEyebrow")}</span>
             </Reveal>
             <Reveal delay={0.1}>
               <h1 className="font-display text-fluid-pagehero text-brown">
-                Learn the Art of Beauty.
+                {t("school.heroTitle")}
               </h1>
             </Reveal>
             <Reveal delay={0.2}>
               <p className="text-brown-soft text-lg leading-relaxed">
-                Build your skills. Create your portfolio. Build your career.
+                {t("school.heroSub")}
               </p>
             </Reveal>
             <Reveal delay={0.3} className="flex flex-wrap gap-4 pt-2">
-              <Button href="#courses" variant="primary">Explore Courses</Button>
-              <Button href="#admissions" variant="secondary">Book Counselling</Button>
+              <Button href="#courses" variant="primary">{t("school.heroBtn1")}</Button>
+              <Button href="#admissions" variant="secondary">{t("school.heroBtn2")}</Button>
             </Reveal>
           </div>
         </Container>
@@ -52,7 +56,7 @@ export default function BeautySchoolPage() {
       <section className="py-16 md:py-24">
         <Container className="flex flex-col gap-8">
           <Reveal>
-            <SectionHeading eyebrow="The Difference" title="Learn Where You'll Work" description="Afeem students train on the same floor as our salon guests — the connection between school and salon is the whole point." />
+            <SectionHeading eyebrow="The Difference" title={t("school.diffTitle")} description={t("school.diffSub")} />
           </Reveal>
           <RevealGroup className="flex flex-wrap gap-x-3 gap-y-4" stagger={0.08}>
             {journey.map((step, i) => (
@@ -71,14 +75,14 @@ export default function BeautySchoolPage() {
       <section id="courses" className="py-16 md:py-24 bg-cream-soft scroll-mt-32">
         <Container className="flex flex-col gap-10">
           <Reveal>
-            <SectionHeading eyebrow="Courses" title="Find Your Course" />
+            <SectionHeading eyebrow="Courses" title={t("school.coursesTitle")} />
           </Reveal>
           <RevealGroup className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8" stagger={0.08}>
             {courses.map((c) => (
               <RevealItem key={c.slug}>
                 <Link href={`/beauty-school/${c.slug}`} className="group flex flex-col gap-4 bg-white border border-brown/10">
                   <ImageReveal>
-                    <Visual label={c.name} ratio="aspect-[4/3]" className="transition-transform duration-500 ease-out group-hover:scale-105" />
+                    <Visual label={c.name} ratio="aspect-[4/3]" src={c.image || undefined} className="transition-transform duration-500 ease-out group-hover:scale-105" />
                   </ImageReveal>
                   <div className="p-6 pt-0 flex flex-col gap-2">
                     <span className="text-xs uppercase tracking-wide text-gold-dark">{c.category}</span>
@@ -96,15 +100,13 @@ export default function BeautySchoolPage() {
       <section id="curriculum" className="py-16 md:py-24 scroll-mt-32">
         <Container className="grid md:grid-cols-2 gap-12 items-center">
           <ImageReveal>
-            <Visual label="Curriculum & Practical Training" ratio="aspect-[4/3]" src="/images/beauty-school/04.jpg" />
+            <Visual label="Curriculum & Practical Training" ratio="aspect-[4/3]" src={galleries.schoolCurriculumImage} />
           </ImageReveal>
           <Reveal delay={0.15} className="flex flex-col gap-5">
             <span className="text-xs uppercase tracking-[0.25em] text-gold-dark">Curriculum</span>
-            <h2 className="font-display text-3xl text-brown leading-tight">Theory, technique, and real practice.</h2>
+            <h2 className="font-display text-3xl text-brown leading-tight">{t("school.currTitle")}</h2>
             <p className="text-brown-soft leading-relaxed">
-              Every Afeem course pairs structured theory with hands-on studio time — colour theory
-              before colour application, skin science before facials. Each course page details the
-              full module breakdown, certification and career outcomes.
+              {t("school.currBody")}
             </p>
           </Reveal>
         </Container>
@@ -113,42 +115,51 @@ export default function BeautySchoolPage() {
       <section className="py-16 md:py-24 overflow-hidden">
         <Container className="mb-10">
           <Reveal>
-            <SectionHeading eyebrow="The Campus" title="Inside Afeem Beauty School" />
+            <SectionHeading eyebrow="The Campus" title={t("school.campusTitle")} />
           </Reveal>
         </Container>
         <ScrollCarousel
-          images={Array.from({ length: 13 }, (_, i) => ({
-            src: `/images/beauty-school/${String(i + 1).padStart(2, "0")}.jpg`,
-            label: "Afeem Beauty School",
-          }))}
+          images={galleries.schoolGallery.map((src) => ({ src, label: "Afeem Beauty School" }))}
         />
       </section>
 
+      {trainers.length > 0 ? (
+        <TeamGrid id="trainers" members={trainers} eyebrow="Trainers" title={t("school.trainersTitle")} description={t("school.trainersSub")} />
+      ) : (
       <section id="trainers" className="py-16 md:py-24 bg-cream-soft scroll-mt-32">
         <Container className="max-w-2xl">
           <Reveal>
             <SectionHeading
               eyebrow="Trainers"
-              title="Learn From Working Professionals"
-              description="Every course is led by working Afeem stylists and artists, actively practicing on the salon floor — not lecturing from theory alone."
+              title={t("school.trainersTitle")}
+              description={t("school.trainersSub")}
             />
           </Reveal>
         </Container>
       </section>
+      )}
 
       <section id="student-work" className="py-16 md:py-24 scroll-mt-32">
         <Container className="flex flex-col gap-10">
           <Reveal>
-            <SectionHeading eyebrow="Afeem Talent" title="Student Showcase" description="Real work from real students — across hair, makeup, nails and skin." />
+            <SectionHeading eyebrow="Afeem Talent" title={t("school.talentTitle")} description={t("school.talentSub")} />
           </Reveal>
           <RevealGroup className="grid grid-cols-2 sm:grid-cols-4 gap-4" stagger={0.06}>
-            {["Hair", "Makeup", "Nails", "Skin"].map((cat) => (
-              <RevealItem key={cat}>
-                <ImageReveal>
-                  <Visual label={`Student Work · ${cat}`} ratio="aspect-[3/4]" />
-                </ImageReveal>
-              </RevealItem>
-            ))}
+            {studentWork.length > 0
+              ? studentWork.map((s) => (
+                  <RevealItem key={s.id}>
+                    <ImageReveal>
+                      <Visual label={`${s.studentName}${s.course ? " · " + s.course : ""}`} ratio="aspect-[3/4]" src={s.image} alt={`Work by ${s.studentName}`} />
+                    </ImageReveal>
+                  </RevealItem>
+                ))
+              : ["Hair", "Makeup", "Nails", "Skin"].map((cat) => (
+                  <RevealItem key={cat}>
+                    <ImageReveal>
+                      <Visual label={`Student Work · ${cat}`} ratio="aspect-[3/4]" />
+                    </ImageReveal>
+                  </RevealItem>
+                ))}
           </RevealGroup>
           {schoolReviews.map((r) => (
             <Reveal key={r.name} className="border border-brown/10 p-6 max-w-xl">
@@ -163,12 +174,11 @@ export default function BeautySchoolPage() {
         <Container className="grid md:grid-cols-2 gap-12 items-center">
           <Reveal className="flex flex-col gap-4">
             <span className="text-xs uppercase tracking-[0.25em] text-gold-dark">Career Opportunities</span>
-            <h2 className="font-display text-3xl text-brown leading-tight">Where Afeem graduates go</h2>
+            <h2 className="font-display text-3xl text-brown leading-tight">{t("school.careersTitle")}</h2>
             <ul className="text-brown-soft text-sm flex flex-col gap-2 mt-2">
-              <li>· Placement within the Afeem Salon network</li>
-              <li>· Freelance and independent artistry</li>
-              <li>· Bridal specialist teams</li>
-              <li>· Salon ownership & entrepreneurship</li>
+              {lines("school.careersList").map((l) => (
+                <li key={l}>· {l}</li>
+              ))}
             </ul>
           </Reveal>
           <ImageReveal delay={0.15}>
@@ -177,10 +187,12 @@ export default function BeautySchoolPage() {
         </Container>
       </section>
 
+      <EventsBand title="Workshops & open days" />
+
       <section id="admissions" className="py-16 md:py-24 bg-cream-soft scroll-mt-32">
         <Container className="flex flex-col items-center text-center gap-6 max-w-xl mx-auto">
           <Reveal>
-            <SectionHeading eyebrow="Admissions" title="Start Your Beauty Career" align="center" description="Book a free counselling session to find the right course for your goals." />
+            <SectionHeading eyebrow="Admissions" title={t("school.admissionsTitle")} align="center" description={t("school.admissionsSub")} />
           </Reveal>
           <Reveal delay={0.15} className="flex flex-wrap justify-center gap-4">
             <Button href={beautySchoolWhatsappLink("Hi Afeem, I'd like to book a Beauty School counselling session.")} variant="primary">

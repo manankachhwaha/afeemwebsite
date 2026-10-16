@@ -4,16 +4,14 @@ import { motion } from "motion/react";
 import Container from "@/components/ui/Container";
 import Counter from "@/components/motion/Counter";
 import { Reveal } from "@/components/motion";
+import { homeStats } from "@/data/extras";
 
 // Figures supplied by the Afeem team. The Google line underneath is
 // confirmed business data (see CLAUDE.md §15). `fill` is purely visual —
 // how far the gold ring sweeps — and does not represent a percentage.
-const stats = [
-  { to: 10, suffix: "+", label: "Years of Craft", note: "A decade of getting it right", fill: 0.82 },
-  { to: 5000, suffix: "+", label: "Transformations", note: "Looks, locks & moments reborn", fill: 0.95 },
-  { to: 2, suffix: "", label: "Jodhpur Studios", note: "Ratanada & Pal Road", fill: 0.62 },
-  { to: 500, suffix: "+", label: "Students Trained", note: "Beauty careers launched", fill: 0.88 },
-];
+// Figures come from the CMS ("Homepage numbers"). `fill` is purely visual — how far the gold ring sweeps.
+const FILLS = [0.82, 0.95, 0.62, 0.88, 0.75, 0.7, 0.8, 0.9];
+const stats = homeStats.map((s, i) => ({ ...s, fill: FILLS[i % FILLS.length] }));
 
 const EASE = [0.16, 1, 0.3, 1] as const;
 

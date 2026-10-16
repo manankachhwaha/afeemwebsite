@@ -11,6 +11,8 @@ import TextScramble from "@/components/motion/TextScramble";
 import { SparkleIcon } from "@/components/ui/icons";
 import { getGreeting, getTimeBucket } from "@/lib/timeOfDay";
 import { FEATURES } from "@/config/features";
+import { t } from "@/lib/cms";
+import { galleries } from "@/data/extras";
 import { isLiteMode, isMotionEnabled } from "@/lib/motionPreference";
 
 export default function Hero() {
@@ -78,32 +80,32 @@ export default function Hero() {
           <span className="text-xs uppercase tracking-[0.3em] text-gold-dark">
             {greeting ? (
               FEATURES.heavyMode ? (
-                <TextScramble text={`${greeting} · Afeem · Jodhpur`} />
+                <TextScramble text={`${greeting} · ${t("home.heroEyebrow")}`} />
               ) : (
-                `${greeting} · Afeem · Jodhpur`
+                `${greeting} · ${t("home.heroEyebrow")}`
               )
             ) : (
-              "Afeem · Jodhpur"
+              t("home.heroEyebrow")
             )}
           </span>
           <h1 className="font-display text-fluid-hero text-brown">
-            <SplitReveal text="Where Beauty Becomes an Experience." delay={0.15} />
+            <SplitReveal text={t("home.heroTitle")} delay={0.15} />
           </h1>
           <p className="text-brown-soft text-base sm:text-lg max-w-lg leading-relaxed">
-            Hair, skin, spa, makeup, bridal and a beauty school — all under the Afeem name, in the heart of Jodhpur.
+            {t("home.heroSub")}
           </p>
           <div className="flex flex-wrap gap-4 pt-2">
             <Button href="/contact#book" variant="primary">
-              Book an Experience
+              {t("home.heroBtn1")}
             </Button>
             <Button href="#start-here" variant="secondary">
-              Explore Afeem
+              {t("home.heroBtn2")}
             </Button>
           </div>
           <p className="text-xs sm:text-sm text-brown-soft">
-            <span className="whitespace-nowrap"><span className="text-gold-dark">★ 4.7</span> on Google · 1,700+ reviews</span>
+            <span className="whitespace-nowrap">{t("home.heroTrust1")}</span>
             <span className="hidden sm:inline"> · </span>
-            <span className="block whitespace-nowrap sm:inline">Open daily 10:30 – 9:00</span>
+            <span className="block whitespace-nowrap sm:inline">{t("home.heroTrust2")}</span>
           </p>
         </motion.div>
 
@@ -120,7 +122,7 @@ export default function Hero() {
             icon={SparkleIcon}
             label="Afeem — Jodhpur"
             ratio="aspect-[4/3] sm:aspect-[3/4]"
-            src="/images/hair-color/05.jpg"
+            src={galleries.heroImage}
             priority
           />
           <span aria-hidden className="pointer-events-none absolute -top-2 -left-2 sm:-top-3 sm:-left-3 h-5 w-5 sm:h-7 sm:w-7 border-t-2 border-l-2 border-gold" />

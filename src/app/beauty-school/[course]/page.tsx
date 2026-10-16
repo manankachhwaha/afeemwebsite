@@ -42,7 +42,7 @@ export default async function CoursePage({
       <section className="py-12 md:py-16">
         <Container className="grid md:grid-cols-2 gap-12">
           <ImageReveal>
-            <Visual label={c.name} ratio="aspect-[4/5]" />
+            <Visual label={c.name} ratio="aspect-[4/5]" src={c.image || undefined} />
           </ImageReveal>
           <Reveal delay={0.15} className="flex flex-col gap-5">
             <nav className="text-xs text-brown-mute uppercase tracking-wide">

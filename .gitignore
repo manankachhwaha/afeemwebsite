@@ -55,3 +55,7 @@ next-env.d.ts
 
 # generated responsive image variants (scripts/make-variants.mjs)
 public/images/**/*-[0-9]*.webp
+
+# CMS build outputs (scripts/fetch-cms.mjs) — never commit the pulled content
+public/images/cms/
+public/_redirects

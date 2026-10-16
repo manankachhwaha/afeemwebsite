@@ -4,6 +4,7 @@ import { HairIcon, SkinIcon, SpaIcon, MakeupIcon, NailsIcon, BridalIcon, Educati
 import { Reveal, RevealGroup } from "@/components/motion";
 import FlipReveal from "@/components/motion/FlipReveal";
 import TiltCard from "@/components/motion/TiltCard";
+import { t } from "@/lib/cms";
 
 const tiles = [
   { label: "Hair", hint: "Cuts, colour, treatments", href: "/salon-spa/hair", Icon: HairIcon },
@@ -20,9 +21,9 @@ export default function WhatBringsYou() {
     <section id="start-here" className="py-16 md:py-24 scroll-mt-32">
       <Container>
         <Reveal className="flex flex-col gap-2 mb-10 md:mb-14">
-          <span className="text-xs uppercase tracking-[0.25em] text-gold-dark">Start here</span>
-          <h2 className="font-display text-2xl sm:text-3xl text-brown">What brings you to Afeem?</h2>
-          <p className="text-sm text-brown-soft">Tap what you are here for — we will take you straight there.</p>
+          <span className="text-xs uppercase tracking-[0.25em] text-gold-dark">{t("home.startEyebrow")}</span>
+          <h2 className="font-display text-2xl sm:text-3xl text-brown">{t("home.startTitle")}</h2>
+          <p className="text-sm text-brown-soft">{t("home.startSub")}</p>
         </Reveal>
         <RevealGroup className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-7 gap-4 md:gap-3" stagger={0.06}>
           {tiles.map(({ label, hint, href, Icon }, i) => (

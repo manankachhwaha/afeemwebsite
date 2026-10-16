@@ -1,3 +1,7 @@
+import { cmsOr } from "@/lib/cms";
+import categoriesJson from "@/content/cms/serviceCategories.json";
+import packagesJson from "@/content/cms/packages.json";
+
 export type Faq = { q: string; a: string };
 
 export type Service = {
@@ -25,7 +29,7 @@ export type ServiceCategory = {
   image?: string;
 };
 
-export const serviceCategories: ServiceCategory[] = [
+const defaultServiceCategories: ServiceCategory[] = [
   {
     slug: "hair",
     name: "Hair",
@@ -329,6 +333,8 @@ export const serviceCategories: ServiceCategory[] = [
   },
 ];
 
+export const serviceCategories: ServiceCategory[] = cmsOr(categoriesJson, defaultServiceCategories);
+
 export function getCategory(slug: string) {
   return serviceCategories.find((c) => c.slug === slug);
 }
@@ -339,7 +345,7 @@ export function getService(categorySlug: string, serviceSlug: string) {
   return category && service ? { category, service } : undefined;
 }
 
-export const packages = [
+const defaultPackages = [
   {
     slug: "signature-glow",
     name: "Signature Glow Package",
@@ -362,3 +368,6 @@ export const packages = [
     includes: ["Party Makeup", "Hair Styling", "Manicure"],
   },
 ];
+
+export type ServicePackage = { slug: string; name: string; description: string; price: string; includes: string[] };
+export const packages: ServicePackage[] = cmsOr(packagesJson, defaultPackages);

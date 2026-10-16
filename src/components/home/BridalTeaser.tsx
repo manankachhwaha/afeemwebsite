@@ -3,14 +3,17 @@ import Image from "next/image";
 import Container from "@/components/ui/Container";
 import Button from "@/components/ui/Button";
 import { Reveal } from "@/components/motion";
+import { t } from "@/lib/cms";
+import { galleries } from "@/data/extras";
 
 // Three portrait frames, fanned. Static CSS rotation only — no JS or blend
 // effects — so it stays smooth on phones.
-const frames = [
-  { src: "/images/bridal/07.jpg", rotate: "-rotate-6", offset: "translate-y-4" },
-  { src: "/images/bridal/13.jpg", rotate: "rotate-0", offset: "-translate-y-2" },
-  { src: "/images/bridal/03.jpg", rotate: "rotate-6", offset: "translate-y-4" },
+const frameStyles = [
+  { rotate: "-rotate-6", offset: "translate-y-4" },
+  { rotate: "rotate-0", offset: "-translate-y-2" },
+  { rotate: "rotate-6", offset: "translate-y-4" },
 ];
+const frames = galleries.bridalTeaser.slice(0, 3).map((src, i) => ({ src, ...frameStyles[i] }));
 
 /**
  * Homepage doorway to /bridal for everyone who never opens the nav — a bold
@@ -25,25 +28,24 @@ export default function BridalTeaser() {
         <Reveal className="flex flex-col gap-5">
           <span className="flex items-center gap-2 text-xs uppercase tracking-[0.3em] text-yellow-warm">
             <span className="h-px w-6 bg-yellow-warm/80" />
-            Afeem Brides
+            {t("home.bridalEyebrow")}
           </span>
           <h2 className="font-display text-3xl leading-tight sm:text-4xl lg:text-5xl">
-            Curious how an Afeem bride looks on her big day?
+            {t("home.bridalTitle")}
           </h2>
           <p className="max-w-lg leading-relaxed text-white/80">
-            Real brides, real looks, from our own studio — peek at the gallery, then plan yours
-            with a free consultation. Whether the wedding is next month or next year, start here.
+            {t("home.bridalBody")}
           </p>
           <div className="flex flex-wrap gap-4 pt-1">
             <Button href="/bridal#gallery" variant="bridal">
-              See the Brides
+              {t("home.bridalBtn1")}
             </Button>
             <Button href="/bridal#book" variant="outline-light">
-              Plan My Bridal Look
+              {t("home.bridalBtn2")}
             </Button>
           </div>
           <Link href="/bridal" className="w-fit text-sm text-yellow-warm underline underline-offset-4 decoration-yellow-warm/40 hover:decoration-yellow-warm">
-            Explore Afeem Bridal →
+            {t("home.bridalLink")}
           </Link>
         </Reveal>
 

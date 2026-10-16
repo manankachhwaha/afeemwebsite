@@ -1,6 +1,7 @@
 "use client";
 
 import { FormEvent, useState } from "react";
+import { submitLead, linesToFields } from "@/lib/leads";
 import Button from "@/components/ui/Button";
 import { branches, branchWhatsappLink, getBranch } from "@/data/branches";
 import { site } from "@/data/site";
@@ -33,6 +34,7 @@ export default function CallbackForm() {
       `Note: ${form.get("note") || "—"}`,
     ];
     const message = lines.join("\n");
+    submitLead("callback", linesToFields(lines));
     const target = branch
       ? branchWhatsappLink(branch, message)
       : `https://wa.me/${site.whatsappNumber}?text=${encodeURIComponent(message)}`;

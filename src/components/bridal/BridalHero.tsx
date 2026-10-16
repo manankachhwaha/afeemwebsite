@@ -7,6 +7,8 @@ import Container from "@/components/ui/Container";
 import Button from "@/components/ui/Button";
 import GoldParticles from "@/components/motion/GoldParticles";
 import { isSaveData } from "@/lib/motionPreference";
+import { t } from "@/lib/cms";
+import { galleries } from "@/data/extras";
 
 /**
  * Full-bleed cinematic hero for /bridal — a looping clip from real Afeem
@@ -53,7 +55,7 @@ export default function BridalHero() {
     <section ref={sectionRef} className="relative isolate flex items-center overflow-hidden bg-bridal-red-dark py-20 sm:py-0 sm:min-h-[88svh]">
       <div className="absolute inset-0">
         <Image
-          src="/images/bridal/01.jpg"
+          src={galleries.bridalHeroImage}
           alt=""
           fill
           priority
@@ -68,7 +70,7 @@ export default function BridalHero() {
           muted
           loop
           playsInline
-          poster="/images/bridal/01.jpg"
+          poster={galleries.bridalHeroImage}
           preload="metadata"
         >
           <source src="/videos/bridal/hero-1.mp4" type="video/mp4" />
@@ -92,7 +94,7 @@ export default function BridalHero() {
             className="flex items-center gap-2 text-xs uppercase tracking-[0.3em] text-yellow-warm"
           >
             <span className="h-px w-6 bg-yellow-warm/80" />
-            Afeem Bridal
+            {t("bridal.heroEyebrow")}
           </motion.span>
           <motion.h1
             initial={{ opacity: 0, y: 24 }}
@@ -100,7 +102,7 @@ export default function BridalHero() {
             transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
             className="font-display text-fluid-pagehero text-white"
           >
-            Your wedding beauty journey, thoughtfully planned.
+            {t("bridal.heroTitle")}
           </motion.h1>
           <motion.p
             initial={{ opacity: 0, y: 16 }}
@@ -108,8 +110,7 @@ export default function BridalHero() {
             transition={{ duration: 0.8, delay: 0.25, ease: [0.16, 1, 0.3, 1] }}
             className="text-white/80 leading-relaxed max-w-xl"
           >
-            From the first consultation to your final function, Afeem Bridal plans every detail of
-            your beauty timeline — real brides, real looks, from our own studio.
+            {t("bridal.heroSub")}
           </motion.p>
           <motion.div
             initial={{ opacity: 0, y: 16 }}
@@ -118,10 +119,10 @@ export default function BridalHero() {
             className="flex flex-wrap gap-4 pt-2"
           >
             <Button href="#book" variant="bridal">
-              Book Bridal Consultation
+              {t("bridal.heroBtn1")}
             </Button>
             <Button href="#gallery" variant="outline-light">
-              View the Gallery
+              {t("bridal.heroBtn2")}
             </Button>
           </motion.div>
         </div>

@@ -10,20 +10,22 @@ import { Reveal, RevealGroup, RevealItem, ImageReveal } from "@/components/motio
 import TiltCard from "@/components/motion/TiltCard";
 import { getCategoryIcon } from "@/data/categoryIcons";
 import { BridalIcon, SparkleIcon } from "@/components/ui/icons";
+import { t } from "@/lib/cms";
+import { pageSeo } from "@/data/extras";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageSeo("salonSpa", {
   title: "Salon & Spa in Jodhpur",
   description:
     "Afeem Spa & Salon in Jodhpur — Hair, Skin, Makeup, Nails and Spa & Wellness. Premium salon services, bridal beauty and curated packages.",
-};
+});
 
 export default function SalonSpaPage() {
   return (
     <>
       <PageHero
-        eyebrow="Afeem Spa & Salon"
-        title="Experience the Art of Beauty."
-        description="Five studios, one standard of care — Hair, Skin, Spa & Wellness, Makeup and Nails, all under one roof in Jodhpur."
+        eyebrow={t("salon.heroEyebrow")}
+        title={t("salon.heroTitle")}
+        description={t("salon.heroSub")}
       />
 
       <section className="py-16 md:py-24">

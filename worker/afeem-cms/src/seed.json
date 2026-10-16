@@ -1,0 +1,2317 @@
+{
+ "settings": {
+  "name": "Afeem",
+  "tagline": "Beauty · Wellness · Education",
+  "city": "Jodhpur",
+  "description": "Afeem is a premium beauty, wellness and education destination in Jodhpur — home to Afeem Spa & Salon and Afeem Beauty School.",
+  "phone": "063789 86584",
+  "whatsappNumber": "916378986584",
+  "email": "afeem.jodhpur@gmail.com",
+  "beautySchoolPhone": "081076 63836",
+  "beautySchoolWhatsapp": "918107663836",
+  "instagram": "https://www.instagram.com/afeemspaandsalon",
+  "facebook": "",
+  "youtube": "",
+  "linkedin": "",
+  "announcement": {
+   "enabled": true,
+   "text": "Getting married?",
+   "linkText": "See how Afeem brides look →",
+   "href": "/bridal"
+  },
+  "analytics": {
+   "ga4Id": "",
+   "gtmId": "",
+   "metaPixelId": ""
+  },
+  "ogImage": "",
+  "searchConsoleVerification": ""
+ },
+ "home": {
+  "stats": [
+   {
+    "to": 10,
+    "suffix": "+",
+    "label": "Years of Craft",
+    "note": "A decade of getting it right"
+   },
+   {
+    "to": 5000,
+    "suffix": "+",
+    "label": "Transformations",
+    "note": "Looks, locks & moments reborn"
+   },
+   {
+    "to": 2,
+    "suffix": "",
+    "label": "Jodhpur Studios",
+    "note": "Ratanada & Pal Road"
+   },
+   {
+    "to": 500,
+    "suffix": "+",
+    "label": "Students Trained",
+    "note": "Beauty careers launched"
+   }
+  ],
+  "featured": [
+   {
+    "category": "hair",
+    "service": "hair-colour"
+   },
+   {
+    "category": "makeup",
+    "service": "bridal-makeup"
+   },
+   {
+    "category": "skin",
+    "service": "signature-facial"
+   },
+   {
+    "category": "spa-wellness",
+    "service": "full-body-spa"
+   }
+  ]
+ },
+ "seo": {},
+ "branches": [
+  {
+   "slug": "ratanada",
+   "name": "Afeem — Ratanada",
+   "shortName": "Ratanada",
+   "area": "Ratanada / Hanwant Nagar (Circuit House)",
+   "address": "Circuit House Rd, opposite LIC, near Petrol Pumps, Hanwant Nagar, Ratanada, Jodhpur, Rajasthan 342001",
+   "phone": "063789 86584",
+   "whatsappNumber": "916378986584",
+   "email": "afeem.jodhpur@gmail.com",
+   "hours": "10:30 AM – 9:00 PM, daily (no weekly off)",
+   "googleRating": 4.7,
+   "googleReviewCount": 1046,
+   "googleMapsSearchUrl": "https://maps.app.goo.gl/rRCJgRYJrWeVkNzT7",
+   "lat": 26.2780457,
+   "lng": 73.0369323,
+   "instagram": "https://www.instagram.com/afeemspaandsalon",
+   "services": [
+    "Hair",
+    "Skin",
+    "Spa & Wellness",
+    "Makeup",
+    "Nails",
+    "Bridal"
+   ],
+   "hasSchool": false,
+   "heroImage": "/images/ratanada/06.jpg",
+   "galleryImages": [
+    "/images/ratanada/01.jpg",
+    "/images/ratanada/02.jpg",
+    "/images/ratanada/03.jpg",
+    "/images/ratanada/04.jpg",
+    "/images/ratanada/05.jpg",
+    "/images/ratanada/06.jpg",
+    "/images/ratanada/07.jpg",
+    "/images/ratanada/08.jpg",
+    "/images/ratanada/09.jpg",
+    "/images/ratanada/10.jpg",
+    "/images/ratanada/11.jpg",
+    "/images/ratanada/12.jpg",
+    "/images/ratanada/13.jpg",
+    "/images/ratanada/14.jpg",
+    "/images/ratanada/15.jpg",
+    "/images/ratanada/16.jpg",
+    "/images/ratanada/17.jpg",
+    "/images/ratanada/18.jpg",
+    "/images/ratanada/19.jpg",
+    "/images/ratanada/20.jpg",
+    "/images/ratanada/21.jpg",
+    "/images/ratanada/22.jpg",
+    "/images/ratanada/23.jpg",
+    "/images/ratanada/24.jpg",
+    "/images/ratanada/25.jpg"
+   ]
+  },
+  {
+   "slug": "pal-road",
+   "name": "Afeem — Pal Road",
+   "shortName": "Pal Road",
+   "area": "Pal Road / N S Garden",
+   "address": "Opp Passport Office, Main Pal Rd, near N S Garden, Jodhpur, Rajasthan 342008",
+   "phone": "070146 32226",
+   "whatsappNumber": "917014632226",
+   "email": "afeemspaandsaloon@gmail.com",
+   "hours": "10:30 AM – 9:00 PM, daily (no weekly off)",
+   "googleRating": 4.7,
+   "googleReviewCount": 671,
+   "googleMapsSearchUrl": "https://maps.app.goo.gl/uc5fwFaio3HisdTP8",
+   "lat": 26.2608782,
+   "lng": 72.9880298,
+   "instagram": "https://www.instagram.com/afeemspaandsalon",
+   "services": [
+    "Hair",
+    "Skin",
+    "Spa & Wellness",
+    "Makeup",
+    "Nails",
+    "Bridal"
+   ],
+   "hasSchool": false,
+   "heroImage": "/images/pal-road/01.jpg",
+   "galleryImages": [
+    "/images/pal-road/01.jpg",
+    "/images/pal-road/02.jpg",
+    "/images/pal-road/03.jpg",
+    "/images/pal-road/04.jpg",
+    "/images/pal-road/05.jpg",
+    "/images/pal-road/06.jpg",
+    "/images/pal-road/07.jpg",
+    "/images/pal-road/08.jpg",
+    "/images/pal-road/09.jpg",
+    "/images/pal-road/10.jpg",
+    "/images/pal-road/11.jpg",
+    "/images/pal-road/12.jpg",
+    "/images/pal-road/13.jpg",
+    "/images/pal-road/14.jpg",
+    "/images/pal-road/15.jpg",
+    "/images/pal-road/16.jpg",
+    "/images/pal-road/17.jpg",
+    "/images/pal-road/18.jpg",
+    "/images/pal-road/19.jpg",
+    "/images/pal-road/20.jpg",
+    "/images/pal-road/21.jpg",
+    "/images/pal-road/22.jpg"
+   ]
+  }
+ ],
+ "serviceCategories": [
+  {
+   "slug": "hair",
+   "name": "Hair",
+   "shortName": "Hair",
+   "tagline": "Cut, colour and care — crafted for you.",
+   "intro": "From precision cuts to considered colour, the Afeem hair studio blends technical skill with an editorial eye, so every result feels like you, only more so.",
+   "seoTitle": "Hair Salon in Jodhpur | Haircut, Colour & Styling — Afeem",
+   "seoDescription": "Premium hair salon in Jodhpur. Haircuts, styling, colour, treatments and hair spa at Afeem — book your appointment today.",
+   "image": "/images/hair-cut/11.jpg",
+   "services": [
+    {
+     "slug": "haircut-styling",
+     "name": "Haircut & Styling",
+     "description": "A considered cut, shaped to your face and the way you actually wear your hair — finished with a blow-dry styled for the day ahead.",
+     "benefits": [
+      "Face-framing precision cut",
+      "Consultation before every cut",
+      "Styled finish included"
+     ],
+     "startingPrice": "Enquire for pricing",
+     "includes": [
+      "Consultation",
+      "Wash",
+      "Cut",
+      "Blow-dry styling"
+     ],
+     "whoFor": "Anyone due for a fresh shape, a trim, or a full change of style.",
+     "addOns": [
+      "Deep conditioning",
+      "Scalp massage",
+      "Keratin finish"
+     ],
+     "faqs": [
+      {
+       "q": "How often should I get a haircut?",
+       "a": "Every 6–8 weeks keeps the shape sharp; longer styles can stretch to 10–12 weeks."
+      },
+      {
+       "q": "Can I bring reference photos?",
+       "a": "Yes — reference images help our stylists understand exactly what you're picturing."
+      }
+     ],
+     "image": "/images/hair-cut/11.jpg"
+    },
+    {
+     "slug": "hair-colour",
+     "name": "Hair Colour",
+     "description": "Global colour, balayage, highlights or a full transformation — formulated in-studio to suit your skin tone and hair health.",
+     "benefits": [
+      "Custom colour formulation",
+      "Ammonia-light options available",
+      "Includes post-colour care"
+     ],
+     "startingPrice": "Enquire for pricing",
+     "includes": [
+      "Consultation & strand test",
+      "Colour application",
+      "Toning",
+      "Wash & blow-dry"
+     ],
+     "whoFor": "First-time colour clients to seasoned balayage regulars.",
+     "addOns": [
+      "Gloss treatment",
+      "Olaplex bond builder",
+      "Root touch-up"
+     ],
+     "faqs": [
+      {
+       "q": "Is a patch test required?",
+       "a": "Yes, for first-time colour clients we recommend a patch test 48 hours prior."
+      },
+      {
+       "q": "How long does colour last?",
+       "a": "4–8 weeks depending on technique, with balayage lasting longer than global colour."
+      }
+     ],
+     "image": "/images/hair-color/05.jpg"
+    },
+    {
+     "slug": "hair-treatments",
+     "name": "Hair Treatments",
+     "description": "Keratin smoothening, Olaplex repair and deep-conditioning rituals that restore strength, shine and softness.",
+     "benefits": [
+      "Repairs heat & chemical damage",
+      "Visible shine from the first session",
+      "Tailored to your hair type"
+     ],
+     "startingPrice": "Enquire for pricing",
+     "includes": [
+      "Hair & scalp analysis",
+      "Treatment application",
+      "Steam therapy",
+      "Finishing style"
+     ],
+     "whoFor": "Damaged, frizzy or chemically treated hair in need of recovery.",
+     "addOns": [
+      "Scalp detox",
+      "Hair spa combo"
+     ],
+     "faqs": [
+      {
+       "q": "How many sessions will I need?",
+       "a": "Most concerns show visible improvement in 1–3 sessions depending on damage level."
+      }
+     ],
+     "image": "/images/hair-spa/03.jpg"
+    },
+    {
+     "slug": "hair-spa",
+     "name": "Hair Spa",
+     "description": "A nourishing ritual of massage, masque and steam that leaves hair soft, calm and genuinely relaxed.",
+     "benefits": [
+      "Deep hydration",
+      "Stress-relieving scalp massage",
+      "Improves scalp health"
+     ],
+     "startingPrice": "Enquire for pricing",
+     "includes": [
+      "Scalp massage",
+      "Nourishing masque",
+      "Steam",
+      "Rinse & style"
+     ],
+     "whoFor": "Dry, dull or stressed hair — and anyone who wants an hour to unwind.",
+     "addOns": [
+      "Hair fall control add-on",
+      "Aroma oil upgrade"
+     ],
+     "faqs": [],
+     "image": "/images/hair-spa/01.jpg"
+    },
+    {
+     "slug": "hair-consultation",
+     "name": "Hair Consultation",
+     "description": "A one-on-one sit-down with an Afeem stylist to map out the right cut, colour or treatment path for your hair goals.",
+     "benefits": [
+      "Personalised hair plan",
+      "No-obligation advice",
+      "Product recommendations"
+     ],
+     "startingPrice": "Complimentary",
+     "includes": [
+      "Hair & scalp assessment",
+      "Style & colour guidance",
+      "Care plan"
+     ],
+     "whoFor": "Anyone unsure where to start, or planning a bigger change.",
+     "addOns": [],
+     "faqs": [],
+     "image": "/images/hair-cut/01.jpg"
+    }
+   ]
+  },
+  {
+   "slug": "skin",
+   "name": "Skin",
+   "shortName": "Skin",
+   "tagline": "Facials and skin therapy that earn their glow.",
+   "intro": "Clinical-grade facials and gentle skin prep rituals, chosen for your skin type — not a one-size-fits-all menu.",
+   "seoTitle": "Best Facial & Skin Treatments in Jodhpur — Afeem",
+   "seoDescription": "Facials, skin treatments and clean-ups in Jodhpur. Skin-type-specific care at Afeem Spa & Salon — book your consultation.",
+   "services": [
+    {
+     "slug": "signature-facial",
+     "name": "Signature Facial",
+     "description": "A multi-step facial with cleansing, exfoliation, extraction and mask — customised to your skin's exact needs that day.",
+     "benefits": [
+      "Deep cleanse & hydration",
+      "Improves texture & tone",
+      "Relaxing face & shoulder massage"
+     ],
+     "startingPrice": "Enquire for pricing",
+     "includes": [
+      "Skin analysis",
+      "Cleanse & exfoliate",
+      "Extraction (if needed)",
+      "Mask & massage"
+     ],
+     "whoFor": "All skin types looking for a reliable, glow-giving facial.",
+     "addOns": [
+      "LED therapy",
+      "Under-eye treatment"
+     ],
+     "faqs": [
+      {
+       "q": "How often should I get a facial?",
+       "a": "Every 3–4 weeks aligns with your skin's natural renewal cycle."
+      }
+     ]
+    },
+    {
+     "slug": "brightening-facial",
+     "name": "Brightening & Glow Facial",
+     "description": "Vitamin C and brightening actives to even out tone and lift dullness ahead of an event.",
+     "benefits": [
+      "Visible radiance",
+      "Evens skin tone",
+      "Great pre-event treatment"
+     ],
+     "startingPrice": "Enquire for pricing",
+     "includes": [
+      "Skin analysis",
+      "Brightening peel",
+      "Mask",
+      "SPF finish"
+     ],
+     "whoFor": "Dull, tired or uneven-toned skin — especially before a big day.",
+     "addOns": [
+      "Under-eye brightening"
+     ],
+     "faqs": []
+    },
+    {
+     "slug": "clean-up",
+     "name": "Clean-Up",
+     "description": "A quick, effective refresh — deep cleanse and extraction without the full facial ritual.",
+     "benefits": [
+      "Fast turnaround",
+      "Removes impurities",
+      "Instant fresh look"
+     ],
+     "startingPrice": "Enquire for pricing",
+     "includes": [
+      "Cleanse",
+      "Scrub",
+      "Extraction",
+      "Mask"
+     ],
+     "whoFor": "Regular upkeep between facials, or a same-day refresh.",
+     "addOns": [],
+     "faqs": []
+    },
+    {
+     "slug": "skin-prep",
+     "name": "Skin Prep Ritual",
+     "description": "A short course of sessions building toward an event — designed to peak your skin on the day.",
+     "benefits": [
+      "Progressive visible results",
+      "Event-timed plan",
+      "Personal skin coach"
+     ],
+     "startingPrice": "Enquire for pricing",
+     "includes": [
+      "Consultation",
+      "Session plan",
+      "Home-care guidance"
+     ],
+     "whoFor": "Brides, grooms and anyone prepping for a milestone event.",
+     "addOns": [
+      "Combine with Bridal Journey"
+     ],
+     "faqs": []
+    }
+   ]
+  },
+  {
+   "slug": "spa-wellness",
+   "name": "Spa & Wellness",
+   "shortName": "Spa",
+   "tagline": "Slow down. Let the day go.",
+   "intro": "Body therapies and massage rituals designed for genuine rest — quiet rooms, warm oils, unhurried hands.",
+   "seoTitle": "Best Spa in Jodhpur | Massage & Body Spa — Afeem",
+   "seoDescription": "Luxury spa in Jodhpur. Body spa, massage, head massage and relaxation therapies at Afeem — book your escape.",
+   "image": "/images/pal-road/01.jpg",
+   "services": [
+    {
+     "slug": "full-body-spa",
+     "name": "Full Body Spa",
+     "description": "A complete body ritual — scrub, wrap and massage — to soften skin and ease tension head to toe.",
+     "benefits": [
+      "Full-body relaxation",
+      "Softer, smoother skin",
+      "Improves circulation"
+     ],
+     "startingPrice": "Enquire for pricing",
+     "includes": [
+      "Body scrub",
+      "Wrap",
+      "Full body massage",
+      "Shower facility"
+     ],
+     "whoFor": "Anyone craving a complete reset.",
+     "addOns": [
+      "Aromatherapy oils",
+      "Extended massage time"
+     ],
+     "faqs": [],
+     "image": "/images/pal-road/01.jpg"
+    },
+    {
+     "slug": "therapeutic-massage",
+     "name": "Therapeutic Massage",
+     "description": "Deep-tissue and Swedish techniques to release tightness from long days and longer weeks.",
+     "benefits": [
+      "Relieves muscle tension",
+      "Reduces stress",
+      "Improves sleep quality"
+     ],
+     "startingPrice": "Enquire for pricing",
+     "includes": [
+      "Consultation",
+      "Full body massage",
+      "Warm towel finish"
+     ],
+     "whoFor": "Tension, stiffness, or simply needing to switch off.",
+     "addOns": [
+      "Hot stone upgrade"
+     ],
+     "faqs": [],
+     "image": "/images/pal-road/08.jpg"
+    },
+    {
+     "slug": "head-massage",
+     "name": "Head & Shoulder Massage",
+     "description": "A focused ritual for the head, neck and shoulders — where most of us hold our stress.",
+     "benefits": [
+      "Eases tension headaches",
+      "Improves scalp circulation",
+      "Deeply calming"
+     ],
+     "startingPrice": "Enquire for pricing",
+     "includes": [
+      "Warm oil massage",
+      "Neck & shoulder release"
+     ],
+     "whoFor": "Quick stress relief between errands or after work.",
+     "addOns": [],
+     "faqs": []
+    },
+    {
+     "slug": "relaxation-experience",
+     "name": "Afeem Relaxation Experience",
+     "description": "Our signature multi-therapy escape — massage, foot ritual and quiet time, paced over a full afternoon.",
+     "benefits": [
+      "Signature multi-step ritual",
+      "Best for special occasions",
+      "Fully guided by our therapist"
+     ],
+     "startingPrice": "Enquire for pricing",
+     "includes": [
+      "Welcome ritual",
+      "Body massage",
+      "Foot therapy",
+      "Herbal tea"
+     ],
+     "whoFor": "Birthdays, anniversaries, or a proper treat-yourself day.",
+     "addOns": [
+      "Add a facial",
+      "Add hair spa"
+     ],
+     "faqs": []
+    }
+   ]
+  },
+  {
+   "slug": "makeup",
+   "name": "Makeup",
+   "shortName": "Makeup",
+   "tagline": "Makeup that photographs as beautifully as it feels.",
+   "intro": "From everyday polish to full bridal glam, Afeem makeup artists work with your features — not against them.",
+   "seoTitle": "Makeup Artist in Jodhpur | Party & Bridal Makeup — Afeem",
+   "seoDescription": "Professional makeup in Jodhpur — party, occasion and bridal makeup with hair styling at Afeem. Book your artist today.",
+   "image": "/images/bridal/03.jpg",
+   "services": [
+    {
+     "slug": "party-makeup",
+     "name": "Party & Occasion Makeup",
+     "description": "Long-wear, photo-ready makeup for parties, functions and celebrations.",
+     "benefits": [
+      "12+ hour wear",
+      "HD & camera-ready finish",
+      "Customised to your outfit"
+     ],
+     "startingPrice": "Enquire for pricing",
+     "includes": [
+      "Skin prep",
+      "Full face makeup",
+      "False lashes",
+      "Setting spray"
+     ],
+     "whoFor": "Parties, sangeet, festive occasions, shoots.",
+     "addOns": [
+      "Hair styling combo",
+      "Draping assistance"
+     ],
+     "faqs": []
+    },
+    {
+     "slug": "bridal-makeup",
+     "name": "Bridal Makeup",
+     "description": "See our dedicated Bridal journey for the full pre-bridal-to-wedding-day makeup experience.",
+     "benefits": [
+      "Trial session included",
+      "Airbrush & HDMU options",
+      "Touch-up kit on the day"
+     ],
+     "startingPrice": "Enquire for pricing",
+     "includes": [
+      "Trial",
+      "Wedding-day makeup",
+      "Hair styling",
+      "Touch-up kit"
+     ],
+     "whoFor": "Brides — see the Afeem Bridal page for the complete journey.",
+     "addOns": [
+      "Family & guest makeup",
+      "Additional function looks"
+     ],
+     "faqs": [],
+     "image": "/images/bridal/04.jpg"
+    },
+    {
+     "slug": "hair-styling-for-makeup",
+     "name": "Hair Styling",
+     "description": "Updos, curls, braids and blow-outs styled to complement your makeup look.",
+     "benefits": [
+      "Event-ready hold",
+      "Complements your outfit & makeup",
+      "Add-on or standalone"
+     ],
+     "startingPrice": "Enquire for pricing",
+     "includes": [
+      "Consultation",
+      "Styling",
+      "Finishing spray"
+     ],
+     "whoFor": "Anyone booking makeup, or styling alone for an event.",
+     "addOns": [
+      "Hair accessories"
+     ],
+     "faqs": []
+    }
+   ]
+  },
+  {
+   "slug": "nails",
+   "name": "Nails",
+   "shortName": "Nails",
+   "tagline": "Considered nails, from clean to statement.",
+   "intro": "Manicures, pedicures and nail art — precise, hygienic and finished exactly how you like it.",
+   "seoTitle": "Manicure & Pedicure in Jodhpur | Nail Art — Afeem",
+   "seoDescription": "Manicure, pedicure and nail art in Jodhpur. Book a nail appointment at Afeem Spa & Salon.",
+   "image": "/images/nail-art/01.jpg",
+   "services": [
+    {
+     "slug": "manicure",
+     "name": "Manicure",
+     "description": "Shape, cuticle care, massage and polish — a clean, well-kept finish for your hands.",
+     "benefits": [
+      "Neat, long-lasting shape",
+      "Hand massage included",
+      "Gel or regular polish"
+     ],
+     "startingPrice": "Enquire for pricing",
+     "includes": [
+      "Soak",
+      "Shape & cuticle care",
+      "Massage",
+      "Polish"
+     ],
+     "whoFor": "Regular hand care and upkeep.",
+     "addOns": [
+      "Gel polish upgrade",
+      "Paraffin wax"
+     ],
+     "faqs": []
+    },
+    {
+     "slug": "pedicure",
+     "name": "Pedicure",
+     "description": "A thorough foot ritual — scrub, callus care, massage and polish.",
+     "benefits": [
+      "Softer, smoother feet",
+      "Relieves foot fatigue",
+      "Long-lasting finish"
+     ],
+     "startingPrice": "Enquire for pricing",
+     "includes": [
+      "Soak",
+      "Callus treatment",
+      "Massage",
+      "Polish"
+     ],
+     "whoFor": "Foot care and a genuine moment of relaxation.",
+     "addOns": [
+      "Gel polish upgrade",
+      "Extended massage"
+     ],
+     "faqs": [],
+     "image": "/images/pedicure/01.jpg"
+    },
+    {
+     "slug": "nail-art",
+     "name": "Nail Art",
+     "description": "From minimal line-work to statement design — nail art tailored to your style and occasion.",
+     "benefits": [
+      "Fully customisable designs",
+      "Long-wear gel finish",
+      "Great for events"
+     ],
+     "startingPrice": "Enquire for pricing",
+     "includes": [
+      "Design consultation",
+      "Application",
+      "Top coat seal"
+     ],
+     "whoFor": "Anyone wanting a personal, detailed finish.",
+     "addOns": [
+      "Extensions",
+      "3D embellishments"
+     ],
+     "faqs": [],
+     "image": "/images/nail-art/06.jpg"
+    }
+   ]
+  }
+ ],
+ "packages": [
+  {
+   "slug": "signature-glow",
+   "name": "Signature Glow Package",
+   "description": "Facial + hair spa + manicure — a complete refresh in one visit.",
+   "price": "Enquire for pricing",
+   "includes": [
+    "Signature Facial",
+    "Hair Spa",
+    "Manicure"
+   ]
+  },
+  {
+   "slug": "unwind",
+   "name": "Afeem Unwind Package",
+   "description": "Full body spa + head massage + relaxation ritual.",
+   "price": "Enquire for pricing",
+   "includes": [
+    "Full Body Spa",
+    "Head & Shoulder Massage",
+    "Herbal Tea Ritual"
+   ]
+  },
+  {
+   "slug": "event-ready",
+   "name": "Event-Ready Package",
+   "description": "Party makeup + hair styling + manicure for your next celebration.",
+   "price": "Enquire for pricing",
+   "includes": [
+    "Party Makeup",
+    "Hair Styling",
+    "Manicure"
+   ]
+  }
+ ],
+ "offers": [],
+ "courses": [
+  {
+   "slug": "professional-makeup-artistry",
+   "name": "Professional Makeup Artistry",
+   "category": "Makeup",
+   "duration": "3 months",
+   "eligibility": "Open to beginners — no prior experience required.",
+   "summary": "A complete grounding in makeup artistry — from skin prep and colour theory to bridal glam and editorial looks — taught by working Afeem artists.",
+   "curriculum": [
+    "Skin prep & colour theory",
+    "Day, party & HD makeup",
+    "Bridal & airbrush makeup",
+    "Editorial & photoshoot looks",
+    "Client handling & kit building"
+   ],
+   "practicalFocus": "Hands-on practice on live models every week, plus supervised salon floor exposure in the final month.",
+   "certification": "Afeem Certified Makeup Artist",
+   "fees": "Enquire for fees",
+   "nextBatch": "Batches start every month — enquire for the next start date.",
+   "careerOutcomes": [
+    "Freelance makeup artist",
+    "Salon makeup artist",
+    "Bridal makeup specialist",
+    "Assistant to senior artists"
+   ],
+   "faqs": [
+    {
+     "q": "Do I need my own kit?",
+     "a": "A starter kit list is shared before batch start; premium brand kits are available at partner pricing."
+    },
+    {
+     "q": "Will I get real client experience?",
+     "a": "Yes — in the final month, students assist on real Afeem Salon bookings under supervision."
+    }
+   ]
+  },
+  {
+   "slug": "hair-styling-diploma",
+   "name": "Hair Styling & Cutting Diploma",
+   "category": "Hair",
+   "duration": "4 months",
+   "eligibility": "Open to beginners and working stylists looking to upskill.",
+   "summary": "Master precision cutting, colour application and styling techniques used daily in a working salon.",
+   "curriculum": [
+    "Cutting fundamentals & face-shape analysis",
+    "Blow-dry & styling techniques",
+    "Global colour, balayage & highlights",
+    "Hair treatments & scalp care",
+    "Salon operations & client consultation"
+   ],
+   "practicalFocus": "Practice on training mannequins first, then live models, with live salon floor shadowing in later weeks.",
+   "certification": "Afeem Certified Hair Stylist",
+   "fees": "Enquire for fees",
+   "nextBatch": "Batches start every month — enquire for the next start date.",
+   "careerOutcomes": [
+    "Salon hair stylist",
+    "Colour specialist",
+    "Freelance stylist",
+    "Salon floor supervisor track"
+   ],
+   "faqs": [
+    {
+     "q": "Is this suitable for complete beginners?",
+     "a": "Yes, the course starts from fundamentals before progressing to advanced technique."
+    }
+   ]
+  },
+  {
+   "slug": "skin-care-facial-specialist",
+   "name": "Skin Care & Facial Specialist Course",
+   "category": "Skin",
+   "duration": "2.5 months",
+   "eligibility": "Open to beginners — no prior experience required.",
+   "summary": "Learn skin analysis, facial protocols and treatment planning for every skin type, grounded in real client practice.",
+   "curriculum": [
+    "Skin anatomy & analysis",
+    "Facial protocols by skin type",
+    "Clean-ups, peels & brightening treatments",
+    "Hygiene & sanitation standards",
+    "Client consultation & retailing"
+   ],
+   "practicalFocus": "Weekly hands-on facials on live models, plus supervised sessions on salon clients in the final weeks.",
+   "certification": "Afeem Certified Skin & Facial Specialist",
+   "fees": "Enquire for fees",
+   "nextBatch": "Batches start every month — enquire for the next start date.",
+   "careerOutcomes": [
+    "Salon facial specialist",
+    "Skin care consultant",
+    "Spa therapist track",
+    "Freelance skin specialist"
+   ],
+   "faqs": []
+  },
+  {
+   "slug": "nail-art-technician",
+   "name": "Nail Art & Technician Course",
+   "category": "Nails",
+   "duration": "6 weeks",
+   "eligibility": "Open to beginners — no prior experience required.",
+   "summary": "From manicure and pedicure fundamentals to advanced nail art and extensions.",
+   "curriculum": [
+    "Manicure & pedicure technique",
+    "Gel polish application",
+    "Nail art & hand-painted design",
+    "Extensions & 3D embellishment",
+    "Hygiene & tool care"
+   ],
+   "practicalFocus": "Daily hands-on practice, building toward live client sessions in the salon.",
+   "certification": "Afeem Certified Nail Technician",
+   "fees": "Enquire for fees",
+   "nextBatch": "Batches start every month — enquire for the next start date.",
+   "careerOutcomes": [
+    "Salon nail technician",
+    "Freelance nail artist",
+    "Nail studio owner track"
+   ],
+   "faqs": []
+  },
+  {
+   "slug": "bridal-makeup-masterclass",
+   "name": "Bridal Makeup Masterclass",
+   "category": "Makeup",
+   "duration": "3 weeks",
+   "eligibility": "For students or professionals with basic makeup experience.",
+   "summary": "An advanced, focused programme on bridal makeup — HD, airbrush, draping and the full wedding-day workflow.",
+   "curriculum": [
+    "Bridal skin prep & longevity techniques",
+    "HD & airbrush bridal makeup",
+    "Regional bridal looks & draping",
+    "Wedding-day workflow & client management"
+   ],
+   "practicalFocus": "Live bridal model practice each week, plus observation of real Afeem bridal bookings.",
+   "certification": "Afeem Certified Bridal Makeup Specialist",
+   "fees": "Enquire for fees",
+   "nextBatch": "Batches start every month — enquire for the next start date.",
+   "careerOutcomes": [
+    "Independent bridal makeup artist",
+    "Senior salon bridal artist",
+    "Bridal team lead"
+   ],
+   "faqs": []
+  }
+ ],
+ "journalPosts": [
+  {
+   "slug": "best-spa-in-jodhpur-guide",
+   "title": "Best Spa in Jodhpur: A Complete Guide to Relaxation, Beauty and Self-Care",
+   "bucket": "Spa",
+   "excerpt": "What actually makes a spa and salon experience good in Jodhpur — plus a full guide to Afeem's spa, hair, beauty and nail-care services.",
+   "date": "2026-08-26",
+   "readTime": "6 min read",
+   "content": [
+    {
+     "type": "p",
+     "text": "In today's busy lifestyle, finding time for yourself can sometimes feel difficult. Work, family responsibilities, travelling and everyday stress can leave you feeling tired both physically and mentally."
+    },
+    {
+     "type": "p",
+     "text": "Sometimes, a relaxing massage, a refreshing hair treatment, a manicure, or simply an hour away from your busy routine can make a noticeable difference. This is where a good spa and salon can become more than just a place for beauty treatments. It can be a comfortable space where you can slow down, relax, and take care of yourself."
+    },
+    {
+     "type": "p",
+     "text": "Everyone deserves a little time to relax and take care of themselves. At Afeem Spa & Salon, you can enjoy a range of spa services in Jodhpur, including spa and massage treatments, hair care, beauty services, manicures, and pedicures, all in one place. Whether you are planning a relaxing day or simply want to refresh your look, Afeem Spa & Salon can be a convenient option when looking for the best spa in Jodhpur."
+    },
+    {
+     "type": "h2",
+     "text": "Physical Benefits of Regular Spa Treatments"
+    },
+    {
+     "type": "p",
+     "text": "Professional spa treatments are designed to address muscle tension, skin health, and circulation."
+    },
+    {
+     "type": "list",
+     "items": [
+      "Take a break from your busy schedule",
+      "Reduce muscle tightness",
+      "Improve skin hydration",
+      "Enhance sleep quality",
+      "Enjoy some quiet personal time",
+      "Improve blood circulation"
+     ]
+    },
+    {
+     "type": "h2",
+     "text": "Why Is a Spa Visit Important in a Busy Lifestyle?"
+    },
+    {
+     "type": "p",
+     "text": "For many people, visiting a spa is not simply about luxury. It is about taking a little time for yourself."
+    },
+    {
+     "type": "p",
+     "text": "After spending long hours at work, travelling or managing daily responsibilities, your body and mind can feel tired. A relaxing treatment gives you an opportunity to slow down and step away from the usual routine for a while."
+    },
+    {
+     "type": "h2",
+     "text": "What Can You Expect at Afeem Spa & Salon?"
+    },
+    {
+     "type": "p",
+     "text": "A spa visit is not limited to massage. Today, people often look for a place where they can take care of several personal-care needs at the same time."
+    },
+    {
+     "type": "p",
+     "text": "Afeem Spa & Salon combines spa and salon services, making it convenient for customers who want relaxation."
+    },
+    {
+     "type": "h2",
+     "text": "Spa and Massage Services"
+    },
+    {
+     "type": "p",
+     "text": "Customers can explore different spa and massage options depending on their individual requirements. Those comparing massage services in Jodhpur may consider factors such as the treatment options, environment, cleanliness, and professional approach."
+    },
+    {
+     "type": "h2",
+     "text": "Hair Care Services"
+    },
+    {
+     "type": "p",
+     "text": "Haircuts, hair wash, styling, and hair spa treatments can be useful for people looking to maintain their regular grooming routine."
+    },
+    {
+     "type": "h2",
+     "text": "Facial and Beauty Services"
+    },
+    {
+     "type": "p",
+     "text": "Facials and other beauty treatments can be included as part of a personal-care routine, especially when you want to refresh and take some time for yourself."
+    },
+    {
+     "type": "h2",
+     "text": "Manicure and Pedicure"
+    },
+    {
+     "type": "p",
+     "text": "Manicure, pedicure, and nail-care services provide additional grooming options and can easily be combined with other salon treatments."
+    },
+    {
+     "type": "h2",
+     "text": "What Makes a Good Spa and Salon Experience?"
+    },
+    {
+     "type": "list",
+     "items": [
+      "Clean and hygienic environment",
+      "Professional staff",
+      "Good communication",
+      "Comfortable atmosphere",
+      "Variety of services"
+     ]
+    },
+    {
+     "type": "h2",
+     "text": "When Should You Book a Spa or Salon Appointment?"
+    },
+    {
+     "type": "p",
+     "text": "You do not need to wait until you are completely exhausted to take some time for yourself."
+    },
+    {
+     "type": "p",
+     "text": "A spa or salon appointment can fit into your routine whenever you feel that you need a little personal care."
+    },
+    {
+     "type": "h2",
+     "text": "Conclusion"
+    },
+    {
+     "type": "p",
+     "text": "The best spa in Jodhpur is not just about choosing a place with many services. It is about finding a spa and salon where you feel comfortable and well looked after. Look for things that genuinely matter — cleanliness, professional staff, comfortable surroundings, quality services and clear communication. With its combination of spa, massage, hair, beauty and nail-care services, Afeem Spa & Salon can be considered by people in Jodhpur who want relaxation."
+    },
+    {
+     "type": "h2",
+     "text": "Frequently Asked Questions"
+    },
+    {
+     "type": "faq",
+     "items": [
+      {
+       "q": "What services can I get at Afeem Spa & Salon?",
+       "a": "The salon is associated with spa, massage, hair, beauty and nail-care services. The available services may change, so it is recommended to check the current service menu before booking."
+      },
+      {
+       "q": "Is Afeem Spa & Salon suitable for men and women?",
+       "a": "It is presented as a unisex spa and salon offering personal-care and grooming services for men and women."
+      },
+      {
+       "q": "How do I choose the right spa treatment?",
+       "a": "Think about what you want from the visit — relaxation, massage, hair care, nail grooming or beauty care. If you are unsure, discuss your requirements with the professional before selecting a service."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "slug": "prepare-skin-before-wedding",
+   "title": "How to Prepare Your Skin Before Your Wedding",
+   "bucket": "Bridal",
+   "excerpt": "A realistic, month-by-month skin prep timeline so your skin peaks on the day — not just the trial.",
+   "date": "2026-06-02",
+   "readTime": "6 min read",
+   "content": [
+    {
+     "type": "p",
+     "text": "Most brides start skin prep far too close to the wedding date. The best results come from starting at least 8–10 weeks out, giving your skin time to respond to treatment without the risk of a reaction close to the big day."
+    },
+    {
+     "type": "p",
+     "text": "Weeks 8–6: Focus on hydration and gentle exfoliation. This is also the window to address any pigmentation or acne concerns with a facial series."
+    },
+    {
+     "type": "p",
+     "text": "Weeks 6–3: Brightening facials and targeted treatments. Avoid trying new products in this window — stick to what your skin already tolerates well."
+    },
+    {
+     "type": "p",
+     "text": "Final 2 weeks: Simplify. Gentle facials only, no new actives, no extractions within 5 days of the event. Sleep and hydration matter more than any treatment at this stage."
+    },
+    {
+     "type": "p",
+     "text": "Book a Skin Prep consultation with our team to build a timeline around your actual wedding date."
+    }
+   ]
+  },
+  {
+   "slug": "complete-pre-bridal-timeline",
+   "title": "The Complete Pre-Bridal Timeline",
+   "bucket": "Bridal",
+   "excerpt": "Hair, skin, nails and makeup trials — mapped against your wedding countdown.",
+   "date": "2026-05-18",
+   "readTime": "8 min read",
+   "content": [
+    {
+     "type": "p",
+     "text": "A wedding beauty timeline works backward from your first function, not just the main event. Here's how we plan it for Afeem Bridal clients."
+    },
+    {
+     "type": "p",
+     "text": "3 months out: Book your bridal consultation, lock your makeup artist and hair stylist, and start any hair treatments if you're growing out or restoring damage."
+    },
+    {
+     "type": "p",
+     "text": "6–8 weeks out: Begin skin prep sessions and any hair colour work — colour needs time to settle before a trial."
+    },
+    {
+     "type": "p",
+     "text": "3–4 weeks out: Makeup and hair trial. Bring your outfit or a photo of it, and your jewellery if possible."
+    },
+    {
+     "type": "p",
+     "text": "1 week out: Final touch-ups only — nails, brows, and a light facial. No new treatments."
+    }
+   ]
+  },
+  {
+   "slug": "how-to-choose-a-makeup-course",
+   "title": "How to Choose a Makeup Course",
+   "bucket": "Beauty Education",
+   "excerpt": "Duration, curriculum, live salon exposure — what actually matters when picking a makeup programme.",
+   "date": "2026-04-30",
+   "readTime": "5 min read",
+   "content": [
+    {
+     "type": "p",
+     "text": "Not all makeup courses are built the same. Here's what to actually check before enrolling anywhere — including with us."
+    },
+    {
+     "type": "p",
+     "text": "Live client exposure: Practising on classmates only gets you so far. Ask whether the course includes real client or salon-floor time."
+    },
+    {
+     "type": "p",
+     "text": "Curriculum depth: A good course covers skin prep and colour theory, not just application techniques."
+    },
+    {
+     "type": "p",
+     "text": "Certification & career support: Ask what happens after graduation — does the school help place students, or connect them to freelance work?"
+    },
+    {
+     "type": "p",
+     "text": "At Afeem Beauty School, every course builds toward supervised live salon exposure in its final weeks — see our Beauty School page for details."
+    }
+   ]
+  },
+  {
+   "slug": "hair-colour-aftercare-guide",
+   "title": "Hair Colour Aftercare: What to Do in the First 72 Hours",
+   "bucket": "Hair",
+   "excerpt": "Simple aftercare habits that make colour last significantly longer.",
+   "date": "2026-04-10",
+   "readTime": "4 min read",
+   "content": [
+    {
+     "type": "p",
+     "text": "The first 72 hours after a colour service matter more than people realise — the cuticle is still settling."
+    },
+    {
+     "type": "p",
+     "text": "Avoid washing your hair for at least 48 hours after colour to let the colour fully set."
+    },
+    {
+     "type": "p",
+     "text": "Use lukewarm, not hot, water for the first few washes — heat opens the cuticle and speeds up fade."
+    },
+    {
+     "type": "p",
+     "text": "Switch to a sulphate-free, colour-safe shampoo — ask your stylist for a recommendation suited to your specific shade."
+    }
+   ]
+  },
+  {
+   "slug": "understanding-your-skin-type",
+   "title": "Understanding Your Skin Type (And Why It Changes)",
+   "bucket": "Skin",
+   "excerpt": "Skin type isn't fixed — here's how to read what your skin actually needs right now.",
+   "date": "2026-03-22",
+   "readTime": "5 min read",
+   "content": [
+    {
+     "type": "p",
+     "text": "Your skin type can shift with season, stress, and hormones — which is why a one-time diagnosis rarely holds up for long."
+    },
+    {
+     "type": "p",
+     "text": "Jodhpur's dry heat for much of the year means many clients run drier than they expect, even with visible oiliness in the T-zone."
+    },
+    {
+     "type": "p",
+     "text": "A proper skin analysis at the start of any facial should always precede product recommendations — this is standard at every Afeem skin consultation."
+    }
+   ]
+  }
+ ],
+ "testimonials": [
+  {
+   "name": "Ananya S.",
+   "service": "Bridal Makeup",
+   "quote": "The team understood exactly what I wanted from the very first consultation. My makeup lasted the entire wedding, through tears and dancing.",
+   "rating": 5,
+   "type": "bridal"
+  },
+  {
+   "name": "Karan M.",
+   "service": "Hair Colour",
+   "quote": "Best balayage I've had in Jodhpur — natural, low-maintenance, and it's grown out beautifully.",
+   "rating": 5,
+   "type": "salon"
+  },
+  {
+   "name": "Priyanka D.",
+   "service": "Professional Makeup Artistry Course",
+   "quote": "The live salon exposure in the final month is what set this course apart. I had real client experience before I even graduated.",
+   "rating": 5,
+   "type": "school"
+  },
+  {
+   "name": "Ritu J.",
+   "service": "Signature Facial",
+   "quote": "The team takes the time to actually understand your skin instead of running through a fixed menu. My skin has never looked better.",
+   "rating": 5,
+   "type": "salon"
+  },
+  {
+   "name": "Vansh & Ishita",
+   "service": "Bridal Packages",
+   "quote": "From the first function to the wedding day, the whole Afeem team coordinated everything for both of us — it took so much stress off our plates.",
+   "rating": 5,
+   "type": "bridal"
+  }
+ ],
+ "transformations": [
+  {
+   "id": "t1",
+   "category": "Hair",
+   "title": "Balayage Transformation",
+   "service": "Hair Colour",
+   "branch": "Ratanada"
+  },
+  {
+   "id": "t2",
+   "category": "Bridal",
+   "title": "Traditional Rajasthani Bridal Look",
+   "service": "Bridal Makeup",
+   "branch": "Ratanada",
+   "image": "/images/bridal/05.jpg"
+  },
+  {
+   "id": "t3",
+   "category": "Skin",
+   "title": "6-Week Skin Prep Journey",
+   "service": "Skin Prep Ritual",
+   "branch": "Pal Road"
+  },
+  {
+   "id": "t4",
+   "category": "Makeup",
+   "title": "Editorial Glam",
+   "service": "Party Makeup",
+   "branch": "Ratanada"
+  },
+  {
+   "id": "t5",
+   "category": "Nails",
+   "title": "Hand-Painted Bridal Nail Art",
+   "service": "Nail Art",
+   "branch": "Pal Road"
+  },
+  {
+   "id": "t6",
+   "category": "Hair",
+   "title": "Short Crop Reinvention",
+   "service": "Haircut & Styling",
+   "branch": "Ratanada"
+  },
+  {
+   "id": "t7",
+   "category": "Bridal",
+   "title": "Pastel Engagement Makeup",
+   "service": "Bridal Makeup",
+   "branch": "Ratanada",
+   "image": "/images/bridal/06.jpg"
+  },
+  {
+   "id": "t8",
+   "category": "Skin",
+   "title": "Brightening Facial Series",
+   "service": "Brightening Facial",
+   "branch": "Pal Road"
+  },
+  {
+   "id": "t9",
+   "category": "Makeup",
+   "title": "Soft Glam Day Look",
+   "service": "Party Makeup",
+   "branch": "Pal Road"
+  }
+ ],
+ "team": [],
+ "events": [],
+ "studentWork": [],
+ "galleries": {
+  "heroImage": "/images/hair-color/05.jpg",
+  "aboutImage": "/images/ratanada/01.jpg",
+  "experienceImage": "/images/ratanada/06.jpg",
+  "schoolImage": "/images/beauty-school/01.jpg",
+  "schoolHeroImage": "/images/beauty-school/01.jpg",
+  "schoolCurriculumImage": "/images/beauty-school/04.jpg",
+  "bridalHeroImage": "/images/bridal/01.jpg",
+  "bridalGallery": [
+   "/images/bridal/01.jpg",
+   "/images/bridal/02.jpg",
+   "/images/bridal/03.jpg",
+   "/images/bridal/04.jpg",
+   "/images/bridal/05.jpg",
+   "/images/bridal/06.jpg",
+   "/images/bridal/07.jpg",
+   "/images/bridal/08.jpg",
+   "/images/bridal/09.jpg",
+   "/images/bridal/10.jpg",
+   "/images/bridal/11.jpg",
+   "/images/bridal/12.jpg",
+   "/images/bridal/13.jpg",
+   "/images/bridal/14.jpg",
+   "/images/bridal/15.jpg",
+   "/images/bridal/16.jpg",
+   "/images/bridal/17.jpg",
+   "/images/bridal/18.jpg",
+   "/images/bridal/19.jpg",
+   "/images/bridal/20.jpg",
+   "/images/bridal/21.jpg"
+  ],
+  "schoolGallery": [
+   "/images/beauty-school/01.jpg",
+   "/images/beauty-school/02.jpg",
+   "/images/beauty-school/03.jpg",
+   "/images/beauty-school/04.jpg",
+   "/images/beauty-school/05.jpg",
+   "/images/beauty-school/06.jpg",
+   "/images/beauty-school/07.jpg",
+   "/images/beauty-school/08.jpg",
+   "/images/beauty-school/09.jpg",
+   "/images/beauty-school/10.jpg",
+   "/images/beauty-school/11.jpg",
+   "/images/beauty-school/12.jpg",
+   "/images/beauty-school/13.jpg"
+  ],
+  "instagramGrid": [
+   "/images/bridal/07.jpg",
+   "/images/hair-color/04.jpg",
+   "/images/nail-art/06.jpg",
+   "/images/bridal/13.jpg",
+   "/images/hair-spa/03.jpg",
+   "/images/beauty-school/02.jpg"
+  ],
+  "bridalTeaser": [
+   "/images/bridal/07.jpg",
+   "/images/bridal/13.jpg",
+   "/images/bridal/03.jpg"
+  ],
+  "homeCarousel": [
+   "/images/hair-cut/03.jpg",
+   "/images/hair-cut/08.jpg",
+   "/images/hair-cut/14.jpg",
+   "/images/hair-color/02.jpg",
+   "/images/hair-color/10.jpg",
+   "/images/hair-color/17.jpg",
+   "/images/hair-spa/04.jpg",
+   "/images/hair-spa/09.jpg",
+   "/images/nail-art/03.jpg",
+   "/images/nail-art/09.jpg",
+   "/images/pedicure/03.jpg",
+   "/images/pedicure/05.jpg"
+  ]
+ },
+ "texts": {},
+ "redirects": [],
+ "lists": {
+  "bridalCoverage": [
+   {
+    "title": "Bridal Makeup",
+    "desc": "HD & airbrush makeup with a trial session included."
+   },
+   {
+    "title": "Pre-Bridal",
+    "desc": "Skin, hair and body prep timed to your wedding date."
+   },
+   {
+    "title": "Hair",
+    "desc": "Bridal hairstyling, trials, and hair health treatments."
+   },
+   {
+    "title": "Skin Preparation",
+    "desc": "A facial series designed to peak your skin on the day."
+   },
+   {
+    "title": "Nails",
+    "desc": "Bridal manicure, pedicure and hand-painted nail art."
+   },
+   {
+    "title": "Groom",
+    "desc": "Grooming, skin and hair services for the groom."
+   },
+   {
+    "title": "Wedding Guest",
+    "desc": "Makeup and styling for your wedding party and guests."
+   },
+   {
+    "title": "Bridal Packages",
+    "desc": "Bundled multi-function packages for the full celebration."
+   }
+  ],
+  "bridalJourney": [
+   {
+    "step": "Consultation",
+    "desc": "Share your date, vision and functions with our bridal team."
+   },
+   {
+    "step": "Trial",
+    "desc": "Makeup and hair trial, timed 3–4 weeks before your wedding."
+   },
+   {
+    "step": "Prep Timeline",
+    "desc": "A custom skin, hair and nail plan across your countdown."
+   },
+   {
+    "step": "The Big Day",
+    "desc": "Your artist and stylist on-site, with a touch-up kit included."
+   }
+  ],
+  "aboutDepartments": [
+   {
+    "name": "Hair",
+    "blurb": "Cuts, colour, treatments and hair spa."
+   },
+   {
+    "name": "Skin",
+    "blurb": "Facials and skin therapy, chosen for your skin type."
+   },
+   {
+    "name": "Spa & Wellness",
+    "blurb": "Massage and body rituals for genuine rest."
+   },
+   {
+    "name": "Makeup",
+    "blurb": "Everyday polish through to full bridal glam."
+   },
+   {
+    "name": "Nails",
+    "blurb": "Manicures, pedicures and nail art."
+   }
+  ],
+  "schoolJourney": [
+   "Learn",
+   "Hands-on Practice",
+   "Live Salon Exposure",
+   "Build Portfolio",
+   "Career Opportunities"
+  ]
+ },
+ "_textRegistry": [
+  {
+   "key": "home.heroEyebrow",
+   "group": "Home · Hero",
+   "label": "Small line above headline",
+   "v": "Afeem · Jodhpur",
+   "long": false
+  },
+  {
+   "key": "home.heroTitle",
+   "group": "Home · Hero",
+   "label": "Headline",
+   "v": "Where Beauty Becomes an Experience.",
+   "long": false
+  },
+  {
+   "key": "home.heroSub",
+   "group": "Home · Hero",
+   "label": "Sub-headline",
+   "v": "Hair, skin, spa, makeup, bridal and a beauty school — all under the Afeem name, in the heart of Jodhpur.",
+   "long": true
+  },
+  {
+   "key": "home.heroBtn1",
+   "group": "Home · Hero",
+   "label": "Main button label",
+   "v": "Book an Experience",
+   "long": false
+  },
+  {
+   "key": "home.heroBtn2",
+   "group": "Home · Hero",
+   "label": "Second button label",
+   "v": "Explore Afeem",
+   "long": false
+  },
+  {
+   "key": "home.heroTrust1",
+   "group": "Home · Hero",
+   "label": "Trust line (rating)",
+   "v": "★ 4.7 on Google · 1,700+ reviews",
+   "long": false
+  },
+  {
+   "key": "home.heroTrust2",
+   "group": "Home · Hero",
+   "label": "Trust line (hours)",
+   "v": "Open daily 10:30 – 9:00",
+   "long": false
+  },
+  {
+   "key": "home.startEyebrow",
+   "group": "Home · What brings you",
+   "label": "Small heading",
+   "v": "Start here",
+   "long": false
+  },
+  {
+   "key": "home.startTitle",
+   "group": "Home · What brings you",
+   "label": "Heading",
+   "v": "What brings you to Afeem?",
+   "long": false
+  },
+  {
+   "key": "home.startSub",
+   "group": "Home · What brings you",
+   "label": "Sub text",
+   "v": "Tap what you are here for — we will take you straight there.",
+   "long": false
+  },
+  {
+   "key": "home.bridalEyebrow",
+   "group": "Home · Bridal band",
+   "label": "Small heading",
+   "v": "Afeem Brides",
+   "long": false
+  },
+  {
+   "key": "home.bridalTitle",
+   "group": "Home · Bridal band",
+   "label": "Heading",
+   "v": "Curious how an Afeem bride looks on her big day?",
+   "long": false
+  },
+  {
+   "key": "home.bridalBody",
+   "group": "Home · Bridal band",
+   "label": "Paragraph",
+   "v": "Real brides, real looks, from our own studio — peek at the gallery, then plan yours with a free consultation. Whether the wedding is next month or next year, start here.",
+   "long": true
+  },
+  {
+   "key": "home.bridalBtn1",
+   "group": "Home · Bridal band",
+   "label": "Button 1",
+   "v": "See the Brides",
+   "long": false
+  },
+  {
+   "key": "home.bridalBtn2",
+   "group": "Home · Bridal band",
+   "label": "Button 2",
+   "v": "Plan My Bridal Look",
+   "long": false
+  },
+  {
+   "key": "home.bridalLink",
+   "group": "Home · Bridal band",
+   "label": "Text link",
+   "v": "Explore Afeem Bridal →",
+   "long": false
+  },
+  {
+   "key": "home.expEyebrow",
+   "group": "Home · Experience",
+   "label": "Small heading",
+   "v": "The Afeem Experience",
+   "long": false
+  },
+  {
+   "key": "home.expTitle",
+   "group": "Home · Experience",
+   "label": "Heading",
+   "v": "More than a salon. An experience designed around you.",
+   "long": false
+  },
+  {
+   "key": "home.expBody",
+   "group": "Home · Experience",
+   "label": "Paragraph",
+   "v": "Every visit to Afeem begins with listening — to your hair, your skin, your day. Our spaces are built for quiet, our experts trained to notice detail, and our Beauty School students trained on the same standards our salon guests receive. It’s one brand, one standard of care, across everything we do.",
+   "long": true
+  },
+  {
+   "key": "home.expBtn",
+   "group": "Home · Experience",
+   "label": "Button label",
+   "v": "Discover Afeem",
+   "long": false
+  },
+  {
+   "key": "home.featuredEyebrow",
+   "group": "Home · Featured services",
+   "label": "Small heading",
+   "v": "Signature Services",
+   "long": false
+  },
+  {
+   "key": "home.featuredTitle",
+   "group": "Home · Featured services",
+   "label": "Heading",
+   "v": "Featured at Afeem",
+   "long": false
+  },
+  {
+   "key": "home.featuredBtn",
+   "group": "Home · Featured services",
+   "label": "Button label",
+   "v": "View All Services",
+   "long": false
+  },
+  {
+   "key": "home.reviewsEyebrow",
+   "group": "Home · Reviews",
+   "label": "Small heading",
+   "v": "Reviews",
+   "long": false
+  },
+  {
+   "key": "home.reviewsTitle",
+   "group": "Home · Reviews",
+   "label": "Heading",
+   "v": "Loved by the Afeem Community",
+   "long": false
+  },
+  {
+   "key": "home.insideEyebrow",
+   "group": "Home · Photo carousel",
+   "label": "Small heading",
+   "v": "Inside Afeem",
+   "long": false
+  },
+  {
+   "key": "home.insideTitle",
+   "group": "Home · Photo carousel",
+   "label": "Heading",
+   "v": "A closer look.",
+   "long": false
+  },
+  {
+   "key": "home.insideSub",
+   "group": "Home · Photo carousel",
+   "label": "Sub text",
+   "v": "Real moments from the studio floor — scroll to look around.",
+   "long": false
+  },
+  {
+   "key": "home.schoolEyebrow",
+   "group": "Home · Beauty School teaser",
+   "label": "Small heading",
+   "v": "Afeem Beauty School",
+   "long": false
+  },
+  {
+   "key": "home.schoolTitle",
+   "group": "Home · Beauty School teaser",
+   "label": "Heading",
+   "v": "Learn the Art of Beauty.",
+   "long": false
+  },
+  {
+   "key": "home.schoolBody",
+   "group": "Home · Beauty School teaser",
+   "label": "Paragraph",
+   "v": "Our students train on the same floor as our salon guests — building real skill, a real portfolio, and real client experience before they graduate.",
+   "long": true
+  },
+  {
+   "key": "home.schoolBtn1",
+   "group": "Home · Beauty School teaser",
+   "label": "Button 1",
+   "v": "Explore Courses",
+   "long": false
+  },
+  {
+   "key": "home.schoolBtn2",
+   "group": "Home · Beauty School teaser",
+   "label": "Button 2",
+   "v": "Book Counselling",
+   "long": false
+  },
+  {
+   "key": "home.instaEyebrow",
+   "group": "Home · Instagram",
+   "label": "Small heading",
+   "v": "Follow Along",
+   "long": false
+  },
+  {
+   "key": "home.instaTitle",
+   "group": "Home · Instagram",
+   "label": "Heading",
+   "v": "@afeemspaandsalon on Instagram",
+   "long": false
+  },
+  {
+   "key": "home.finalEyebrow",
+   "group": "Home · Closing banner",
+   "label": "Small heading",
+   "v": "Your turn",
+   "long": false
+  },
+  {
+   "key": "home.finalTitle",
+   "group": "Home · Closing banner",
+   "label": "Heading",
+   "v": "Ready when you are.",
+   "long": false
+  },
+  {
+   "key": "home.finalBody",
+   "group": "Home · Closing banner",
+   "label": "Paragraph",
+   "v": "Pick whichever is easiest — a booking, a quick WhatsApp, or a call. Walk-ins are welcome too.",
+   "long": true
+  },
+  {
+   "key": "home.finalBtn1",
+   "group": "Home · Closing banner",
+   "label": "Book button",
+   "v": "Book an Appointment",
+   "long": false
+  },
+  {
+   "key": "home.finalBtn2",
+   "group": "Home · Closing banner",
+   "label": "WhatsApp button",
+   "v": "Chat on WhatsApp",
+   "long": false
+  },
+  {
+   "key": "home.finalBtn3",
+   "group": "Home · Closing banner",
+   "label": "Call button",
+   "v": "Call Us",
+   "long": false
+  },
+  {
+   "key": "global.stickyBook",
+   "group": "Site-wide",
+   "label": "Mobile bottom “Book Now” bar",
+   "v": "Book Now",
+   "long": false
+  },
+  {
+   "key": "salon.heroEyebrow",
+   "group": "Salon & Spa page",
+   "label": "Small heading",
+   "v": "Afeem Spa & Salon",
+   "long": false
+  },
+  {
+   "key": "salon.heroTitle",
+   "group": "Salon & Spa page",
+   "label": "Page title",
+   "v": "Experience the Art of Beauty.",
+   "long": false
+  },
+  {
+   "key": "salon.heroSub",
+   "group": "Salon & Spa page",
+   "label": "Intro text",
+   "v": "Five studios, one standard of care — Hair, Skin, Spa & Wellness, Makeup and Nails, all under one roof in Jodhpur.",
+   "long": true
+  },
+  {
+   "key": "bridal.heroEyebrow",
+   "group": "Bridal page",
+   "label": "Hero small heading",
+   "v": "Afeem Bridal",
+   "long": false
+  },
+  {
+   "key": "bridal.heroTitle",
+   "group": "Bridal page",
+   "label": "Hero headline",
+   "v": "Your wedding beauty journey, thoughtfully planned.",
+   "long": false
+  },
+  {
+   "key": "bridal.heroSub",
+   "group": "Bridal page",
+   "label": "Hero paragraph",
+   "v": "From the first consultation to your final function, Afeem Bridal plans every detail of your beauty timeline — real brides, real looks, from our own studio.",
+   "long": true
+  },
+  {
+   "key": "bridal.heroBtn1",
+   "group": "Bridal page",
+   "label": "Hero button 1",
+   "v": "Book Bridal Consultation",
+   "long": false
+  },
+  {
+   "key": "bridal.heroBtn2",
+   "group": "Bridal page",
+   "label": "Hero button 2",
+   "v": "View the Gallery",
+   "long": false
+  },
+  {
+   "key": "bridal.coverEyebrow",
+   "group": "Bridal page",
+   "label": "“What we cover” small heading",
+   "v": "What We Cover",
+   "long": false
+  },
+  {
+   "key": "bridal.coverTitle",
+   "group": "Bridal page",
+   "label": "“What we cover” heading",
+   "v": "Everything for Your Celebration",
+   "long": false
+  },
+  {
+   "key": "bridal.journeyEyebrow",
+   "group": "Bridal page",
+   "label": "“Journey” small heading",
+   "v": "The Journey",
+   "long": false
+  },
+  {
+   "key": "bridal.journeyTitle",
+   "group": "Bridal page",
+   "label": "“Journey” heading",
+   "v": "How Afeem Bridal Works",
+   "long": false
+  },
+  {
+   "key": "bridal.galleryEyebrow",
+   "group": "Bridal page",
+   "label": "Gallery small heading",
+   "v": "Real Work, Real Brides",
+   "long": false
+  },
+  {
+   "key": "bridal.galleryTitle",
+   "group": "Bridal page",
+   "label": "Gallery heading",
+   "v": "From the Afeem Bridal Studio",
+   "long": false
+  },
+  {
+   "key": "bridal.gallerySub",
+   "group": "Bridal page",
+   "label": "Gallery text",
+   "v": "A look at the artistry — bridal, engagement and function makeup from real Afeem clients.",
+   "long": true
+  },
+  {
+   "key": "bridal.reviewsEyebrow",
+   "group": "Bridal page",
+   "label": "Reviews small heading",
+   "v": "Loved By Our Brides",
+   "long": false
+  },
+  {
+   "key": "bridal.reviewsTitle",
+   "group": "Bridal page",
+   "label": "Reviews heading",
+   "v": "What They're Saying",
+   "long": false
+  },
+  {
+   "key": "bridal.bookEyebrow",
+   "group": "Bridal page",
+   "label": "Booking small heading",
+   "v": "Get Started",
+   "long": false
+  },
+  {
+   "key": "bridal.bookTitle",
+   "group": "Bridal page",
+   "label": "Booking heading",
+   "v": "Book Your Bridal Consultation",
+   "long": false
+  },
+  {
+   "key": "bridal.bookSub",
+   "group": "Bridal page",
+   "label": "Booking text",
+   "v": "Tell us about your wedding and we'll build a plan around your dates, functions and budget.",
+   "long": true
+  },
+  {
+   "key": "school.heroEyebrow",
+   "group": "Beauty School page",
+   "label": "Hero small heading",
+   "v": "Afeem Beauty School",
+   "long": false
+  },
+  {
+   "key": "school.heroTitle",
+   "group": "Beauty School page",
+   "label": "Hero headline",
+   "v": "Learn the Art of Beauty.",
+   "long": false
+  },
+  {
+   "key": "school.heroSub",
+   "group": "Beauty School page",
+   "label": "Hero sub text",
+   "v": "Build your skills. Create your portfolio. Build your career.",
+   "long": false
+  },
+  {
+   "key": "school.heroBtn1",
+   "group": "Beauty School page",
+   "label": "Hero button 1",
+   "v": "Explore Courses",
+   "long": false
+  },
+  {
+   "key": "school.heroBtn2",
+   "group": "Beauty School page",
+   "label": "Hero button 2",
+   "v": "Book Counselling",
+   "long": false
+  },
+  {
+   "key": "school.diffTitle",
+   "group": "Beauty School page",
+   "label": "“Difference” heading",
+   "v": "Learn Where You'll Work",
+   "long": false
+  },
+  {
+   "key": "school.diffSub",
+   "group": "Beauty School page",
+   "label": "“Difference” text",
+   "v": "Afeem students train on the same floor as our salon guests — the connection between school and salon is the whole point.",
+   "long": true
+  },
+  {
+   "key": "school.coursesTitle",
+   "group": "Beauty School page",
+   "label": "Courses heading",
+   "v": "Find Your Course",
+   "long": false
+  },
+  {
+   "key": "school.currTitle",
+   "group": "Beauty School page",
+   "label": "Curriculum heading",
+   "v": "Theory, technique, and real practice.",
+   "long": false
+  },
+  {
+   "key": "school.currBody",
+   "group": "Beauty School page",
+   "label": "Curriculum paragraph",
+   "v": "Every Afeem course pairs structured theory with hands-on studio time — colour theory before colour application, skin science before facials. Each course page details the full module breakdown, certification and career outcomes.",
+   "long": true
+  },
+  {
+   "key": "school.campusTitle",
+   "group": "Beauty School page",
+   "label": "Photo carousel heading",
+   "v": "Inside Afeem Beauty School",
+   "long": false
+  },
+  {
+   "key": "school.trainersTitle",
+   "group": "Beauty School page",
+   "label": "Trainers heading",
+   "v": "Learn From Working Professionals",
+   "long": false
+  },
+  {
+   "key": "school.trainersSub",
+   "group": "Beauty School page",
+   "label": "Trainers text",
+   "v": "Every course is led by working Afeem stylists and artists, actively practicing on the salon floor — not lecturing from theory alone.",
+   "long": true
+  },
+  {
+   "key": "school.talentTitle",
+   "group": "Beauty School page",
+   "label": "Student showcase heading",
+   "v": "Student Showcase",
+   "long": false
+  },
+  {
+   "key": "school.talentSub",
+   "group": "Beauty School page",
+   "label": "Student showcase text",
+   "v": "Real work from real students — across hair, makeup, nails and skin.",
+   "long": false
+  },
+  {
+   "key": "school.careersTitle",
+   "group": "Beauty School page",
+   "label": "Careers heading",
+   "v": "Where Afeem graduates go",
+   "long": false
+  },
+  {
+   "key": "school.careersList",
+   "group": "Beauty School page",
+   "label": "Careers list (one per line)",
+   "v": "Placement within the Afeem Salon network\nFreelance and independent artistry\nBridal specialist teams\nSalon ownership & entrepreneurship",
+   "long": true
+  },
+  {
+   "key": "school.admissionsTitle",
+   "group": "Beauty School page",
+   "label": "Admissions heading",
+   "v": "Start Your Beauty Career",
+   "long": false
+  },
+  {
+   "key": "school.admissionsSub",
+   "group": "Beauty School page",
+   "label": "Admissions text",
+   "v": "Book a free counselling session to find the right course for your goals.",
+   "long": true
+  },
+  {
+   "key": "about.heroTitle",
+   "group": "About page",
+   "label": "Page title",
+   "v": "Beauty, wellness and education — under one roof.",
+   "long": false
+  },
+  {
+   "key": "about.heroSub",
+   "group": "About page",
+   "label": "Intro text",
+   "v": "Afeem was built on a simple idea: the same standard of care should run through every service we offer, and every student we train.",
+   "long": true
+  },
+  {
+   "key": "about.storyTitle",
+   "group": "About page",
+   "label": "Story heading",
+   "v": "Two verticals, one standard.",
+   "long": false
+  },
+  {
+   "key": "about.storyBody",
+   "group": "About page",
+   "label": "Story paragraph",
+   "v": "Afeem Spa & Salon and Afeem Beauty School share a floor, a philosophy and a name. Our students train under working professionals and gain real, supervised salon exposure — so by the time they graduate, they’ve already worked with real clients. It’s this connection between learning and doing that sets Afeem apart in Jodhpur.",
+   "long": true
+  },
+  {
+   "key": "about.salonBody",
+   "group": "About page",
+   "label": "Salon card text",
+   "v": "Hair, skin, spa, makeup and nails — delivered with an editorial eye and genuine care, across our Jodhpur locations.",
+   "long": true
+  },
+  {
+   "key": "about.schoolBody",
+   "group": "About page",
+   "label": "School card text",
+   "v": "Structured courses in makeup, hair, skin and nails — with real, live salon exposure built into every programme.",
+   "long": true
+  },
+  {
+   "key": "about.teamTitle",
+   "group": "About page",
+   "label": "Team heading",
+   "v": "Trained Specialists, Every Time",
+   "long": false
+  },
+  {
+   "key": "about.teamSub",
+   "group": "About page",
+   "label": "Team text",
+   "v": "Every Afeem stylist, therapist and artist is trained to the same standard — so the quality of your visit never depends on who's on shift.",
+   "long": true
+  },
+  {
+   "key": "contact.heroTitle",
+   "group": "Contact page",
+   "label": "Page title",
+   "v": "Get in Touch",
+   "long": false
+  },
+  {
+   "key": "contact.heroSub",
+   "group": "Contact page",
+   "label": "Intro text",
+   "v": "Book an appointment, ask a question, or plan your visit to Afeem.",
+   "long": false
+  },
+  {
+   "key": "contact.bookTitle",
+   "group": "Contact page",
+   "label": "Booking heading",
+   "v": "Book an Appointment",
+   "long": false
+  },
+  {
+   "key": "contact.bookSub",
+   "group": "Contact page",
+   "label": "Booking text",
+   "v": "Tell us your preferred branch, service, date and time — we'll confirm on WhatsApp.",
+   "long": true
+  },
+  {
+   "key": "contact.callbackTitle",
+   "group": "Contact page",
+   "label": "Callback heading",
+   "v": "Request a Callback",
+   "long": false
+  },
+  {
+   "key": "contact.callbackSub",
+   "group": "Contact page",
+   "label": "Callback text",
+   "v": "Short on time to fill out the full booking form? Leave your number and a good time to call — our team will ring you directly.",
+   "long": true
+  },
+  {
+   "key": "locations.heroTitle",
+   "group": "Locations page",
+   "label": "Page title",
+   "v": "Find Afeem in Jodhpur",
+   "long": false
+  },
+  {
+   "key": "locations.heroSub",
+   "group": "Locations page",
+   "label": "Intro text",
+   "v": "Two branches, one standard of care — Ratanada and Pal Road.",
+   "long": false
+  },
+  {
+   "key": "journal.heroTitle",
+   "group": "Journal page",
+   "label": "Page title",
+   "v": "Stories, guides and expertise.",
+   "long": false
+  },
+  {
+   "key": "journal.heroSub",
+   "group": "Journal page",
+   "label": "Intro text",
+   "v": "Practical advice from our stylists, artists and trainers — hair, skin, bridal and beauty education.",
+   "long": true
+  },
+  {
+   "key": "transformations.heroEyebrow",
+   "group": "Transformations page",
+   "label": "Small heading",
+   "v": "Before. After. Afeem.",
+   "long": false
+  },
+  {
+   "key": "transformations.heroTitle",
+   "group": "Transformations page",
+   "label": "Page title",
+   "v": "Transformations",
+   "long": false
+  },
+  {
+   "key": "transformations.heroSub",
+   "group": "Transformations page",
+   "label": "Intro text",
+   "v": "A living record of the work — filter by category to see real results from real Afeem visits.",
+   "long": true
+  }
+ ],
+ "_builtinImages": [
+  "/images/beauty-school/01.jpg",
+  "/images/beauty-school/02.jpg",
+  "/images/beauty-school/03.jpg",
+  "/images/beauty-school/04.jpg",
+  "/images/beauty-school/05.jpg",
+  "/images/beauty-school/06.jpg",
+  "/images/beauty-school/07.jpg",
+  "/images/beauty-school/08.jpg",
+  "/images/beauty-school/09.jpg",
+  "/images/beauty-school/10.jpg",
+  "/images/beauty-school/11.jpg",
+  "/images/beauty-school/12.jpg",
+  "/images/beauty-school/13.jpg",
+  "/images/bridal/01.jpg",
+  "/images/bridal/02.jpg",
+  "/images/bridal/03.jpg",
+  "/images/bridal/04.jpg",
+  "/images/bridal/05.jpg",
+  "/images/bridal/06.jpg",
+  "/images/bridal/07.jpg",
+  "/images/bridal/08.jpg",
+  "/images/bridal/09.jpg",
+  "/images/bridal/10.jpg",
+  "/images/bridal/11.jpg",
+  "/images/bridal/12.jpg",
+  "/images/bridal/13.jpg",
+  "/images/bridal/14.jpg",
+  "/images/bridal/15.jpg",
+  "/images/bridal/16.jpg",
+  "/images/bridal/17.jpg",
+  "/images/bridal/18.jpg",
+  "/images/bridal/19.jpg",
+  "/images/bridal/20.jpg",
+  "/images/bridal/21.jpg",
+  "/images/bridal/poster-detail-1.jpg",
+  "/images/bridal/poster-hero-2.jpg",
+  "/images/bridal/poster-hero-3.jpg",
+  "/images/bridal/poster-hero-4.jpg",
+  "/images/hair-color/01.jpg",
+  "/images/hair-color/02.jpg",
+  "/images/hair-color/03.jpg",
+  "/images/hair-color/04.jpg",
+  "/images/hair-color/05.jpg",
+  "/images/hair-color/06.jpg",
+  "/images/hair-color/07.jpg",
+  "/images/hair-color/08.jpg",
+  "/images/hair-color/09.jpg",
+  "/images/hair-color/10.jpg",
+  "/images/hair-color/11.jpg",
+  "/images/hair-color/12.jpg",
+  "/images/hair-color/13.jpg",
+  "/images/hair-color/14.jpg",
+  "/images/hair-color/15.jpg",
+  "/images/hair-color/16.jpg",
+  "/images/hair-color/17.jpg",
+  "/images/hair-color/18.jpg",
+  "/images/hair-color/19.jpg",
+  "/images/hair-color/20.jpg",
+  "/images/hair-color/21.jpg",
+  "/images/hair-color/22.jpg",
+  "/images/hair-cut/01.jpg",
+  "/images/hair-cut/02.jpg",
+  "/images/hair-cut/03.jpg",
+  "/images/hair-cut/04.jpg",
+  "/images/hair-cut/05.jpg",
+  "/images/hair-cut/06.jpg",
+  "/images/hair-cut/07.jpg",
+  "/images/hair-cut/08.jpg",
+  "/images/hair-cut/09.jpg",
+  "/images/hair-cut/10.jpg",
+  "/images/hair-cut/11.jpg",
+  "/images/hair-cut/12.jpg",
+  "/images/hair-cut/13.jpg",
+  "/images/hair-cut/14.jpg",
+  "/images/hair-cut/15.jpg",
+  "/images/hair-cut/16.jpg",
+  "/images/hair-cut/17.jpg",
+  "/images/hair-cut/18.jpg",
+  "/images/hair-cut/19.jpg",
+  "/images/hair-cut/20.jpg",
+  "/images/hair-cut/21.jpg",
+  "/images/hair-cut/22.jpg",
+  "/images/hair-spa/01.jpg",
+  "/images/hair-spa/02.jpg",
+  "/images/hair-spa/03.jpg",
+  "/images/hair-spa/04.jpg",
+  "/images/hair-spa/05.jpg",
+  "/images/hair-spa/06.jpg",
+  "/images/hair-spa/07.jpg",
+  "/images/hair-spa/08.jpg",
+  "/images/hair-spa/09.jpg",
+  "/images/hair-spa/10.jpg",
+  "/images/hair-spa/11.jpg",
+  "/images/hair-spa/12.jpg",
+  "/images/nail-art/01.jpg",
+  "/images/nail-art/02.jpg",
+  "/images/nail-art/03.jpg",
+  "/images/nail-art/04.jpg",
+  "/images/nail-art/05.jpg",
+  "/images/nail-art/06.jpg",
+  "/images/nail-art/07.jpg",
+  "/images/nail-art/08.jpg",
+  "/images/nail-art/09.jpg",
+  "/images/nail-art/10.jpg",
+  "/images/nail-art/11.jpg",
+  "/images/nail-art/12.jpg",
+  "/images/nail-art/13.jpg",
+  "/images/pal-road/01.jpg",
+  "/images/pal-road/02.jpg",
+  "/images/pal-road/03.jpg",
+  "/images/pal-road/04.jpg",
+  "/images/pal-road/05.jpg",
+  "/images/pal-road/06.jpg",
+  "/images/pal-road/07.jpg",
+  "/images/pal-road/08.jpg",
+  "/images/pal-road/09.jpg",
+  "/images/pal-road/10.jpg",
+  "/images/pal-road/11.jpg",
+  "/images/pal-road/12.jpg",
+  "/images/pal-road/13.jpg",
+  "/images/pal-road/14.jpg",
+  "/images/pal-road/15.jpg",
+  "/images/pal-road/16.jpg",
+  "/images/pal-road/17.jpg",
+  "/images/pal-road/18.jpg",
+  "/images/pal-road/19.jpg",
+  "/images/pal-road/20.jpg",
+  "/images/pal-road/21.jpg",
+  "/images/pal-road/22.jpg",
+  "/images/pedicure/01.jpg",
+  "/images/pedicure/02.jpg",
+  "/images/pedicure/03.jpg",
+  "/images/pedicure/04.jpg",
+  "/images/pedicure/05.jpg",
+  "/images/pedicure/06.jpg",
+  "/images/ratanada/01.jpg",
+  "/images/ratanada/02.jpg",
+  "/images/ratanada/03.jpg",
+  "/images/ratanada/04.jpg",
+  "/images/ratanada/05.jpg",
+  "/images/ratanada/06.jpg",
+  "/images/ratanada/07.jpg",
+  "/images/ratanada/08.jpg",
+  "/images/ratanada/09.jpg",
+  "/images/ratanada/10.jpg",
+  "/images/ratanada/11.jpg",
+  "/images/ratanada/12.jpg",
+  "/images/ratanada/13.jpg",
+  "/images/ratanada/14.jpg",
+  "/images/ratanada/15.jpg",
+  "/images/ratanada/16.jpg",
+  "/images/ratanada/17.jpg",
+  "/images/ratanada/18.jpg",
+  "/images/ratanada/19.jpg",
+  "/images/ratanada/20.jpg",
+  "/images/ratanada/21.jpg",
+  "/images/ratanada/22.jpg",
+  "/images/ratanada/23.jpg",
+  "/images/ratanada/24.jpg",
+  "/images/ratanada/25.jpg"
+ ]
+}

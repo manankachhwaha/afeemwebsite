@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "prebuild": "node scripts/make-variants.mjs"
+    "cms:pull": "node scripts/fetch-cms.mjs",
+    "prebuild": "node scripts/fetch-cms.mjs && node scripts/make-variants.mjs"
   },
   "dependencies": {
     "lenis": "^1.3.26",

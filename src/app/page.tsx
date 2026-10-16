@@ -10,6 +10,8 @@ import SchoolTeaser from "@/components/home/SchoolTeaser";
 import Reviews from "@/components/home/Reviews";
 import FinalCTA from "@/components/home/FinalCTA";
 import InstagramFeed from "@/components/home/InstagramFeed";
+import OffersBand from "@/components/cms/OffersBand";
+import EventsBand from "@/components/cms/EventsBand";
 
 export default function Home() {
   // The homepage reads as a short story: hook -> pick your path -> brides ->
@@ -19,6 +21,7 @@ export default function Home() {
     <>
       <Hero />
       <WhatBringsYou />
+      <OffersBand />
       <BridalTeaser />
       <ExperienceIntro />
       <Stats />
@@ -27,6 +30,7 @@ export default function Home() {
       <Reviews />
       <InsideAfeem />
       <SchoolTeaser />
+      <EventsBand />
       <InstagramFeed />
       <FinalCTA />
     </>

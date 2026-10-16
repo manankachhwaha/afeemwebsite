@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, FormEvent } from "react";
+import { submitLead, linesToFields } from "@/lib/leads";
 import Button from "@/components/ui/Button";
 import { site } from "@/data/site";
 import { branches, branchWhatsappLink, getBranch } from "@/data/branches";
@@ -40,6 +41,7 @@ export default function BridalConsultationForm() {
       `Additional Requirements: ${form.get("notes") || "—"}`,
     ];
     const message = lines.join("\n");
+    submitLead("bridal", linesToFields(lines));
     const target = branch
       ? branchWhatsappLink(branch, message)
       : `https://wa.me/${site.whatsappNumber}?text=${encodeURIComponent(message)}`;

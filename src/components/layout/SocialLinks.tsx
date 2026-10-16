@@ -41,6 +41,15 @@ function LinkedInIcon() {
   );
 }
 
+function FacebookIcon() {
+  return (
+    <svg {...iconBase}>
+      <rect x="3.5" y="3.5" width="17" height="17" rx="3" />
+      <path d="M15.5 20.5v-6h2l.4-2.5h-2.4V10.4c0-.8.3-1.3 1.4-1.3H18V7a14 14 0 0 0-1.9-.1c-1.9 0-3.1 1.1-3.1 3.2V12H11v2.5h2.1v6" />
+    </svg>
+  );
+}
+
 function YouTubeIcon() {
   return (
     <svg {...iconBase}>
@@ -53,6 +62,7 @@ function YouTubeIcon() {
 const platforms = [
   { key: "instagram", href: site.instagram, label: "Afeem on Instagram", Icon: InstagramIcon },
   { key: "whatsapp", href: whatsappLink(defaultWhatsappMessage), label: "Chat with Afeem on WhatsApp", Icon: WhatsAppIcon },
+  { key: "facebook", href: site.facebook, label: "Afeem on Facebook", Icon: FacebookIcon },
   { key: "linkedin", href: site.linkedin, label: "Afeem on LinkedIn", Icon: LinkedInIcon },
   { key: "youtube", href: site.youtube, label: "Afeem on YouTube", Icon: YouTubeIcon },
 ];
