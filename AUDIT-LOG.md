@@ -73,6 +73,11 @@ Known limits (from CMS-REFERENCE.md + code): no new-enquiry alerts; no draft pre
 - Studio already covers: page text, blog, photos, per-page SEO, redirects, GA4/GTM/Pixel/Ads IDs, offers/events, leads inbox + CSV, users, 15-version history, in-app help.
 - Gaps a marketer will notice (none built yet): new-enquiry email/WhatsApp alerts, draft preview, ad landing pages, Meta/Bing domain-verification tag field, alt-text field on CMS photos.
 
+### In-app help (2026-10-30) — committed, NOT yet deployed to the live CMS
+- `worker/afeem-cms/admin/views.js`: Help page now has a "Used WordPress before? Where things are" table and a note about the cookie banner.
+- Tested on a throwaway local copy (wrangler dev, local KV, test account, since deleted): Help renders, 8 cards, all menu sections open, no console errors.
+- Live CMS still shows the old Help page until someone runs: `cd worker/afeem-cms && npx wrangler deploy` (the assistant's deploy attempt was blocked by the permission rules). Rollback if ever needed: `npx wrangler rollback`.
+
 ## Deliberately NOT changed
 - "Best salon/spa in Jodhpur" keywords/titles/journal post — CLAUDE.md §19 targets these terms on purpose.
 - Pal Road email `afeemspaandsaloon@gmail.com` — matches CLAUDE.md.

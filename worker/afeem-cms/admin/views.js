@@ -162,6 +162,23 @@
     const sec = (t, ...c) => root.append(h("div", { class: "card" }, h("h3", {}, t), ...c));
     sec("The 3 steps", h("ol", {}, h("li", {}, "Open a section in the left menu and edit."), h("li", {}, h("b", {}, "Save"), " (top right). This keeps a private draft — nothing changes on the website yet."), h("li", {}, h("b", {}, "Publish"), ". The live site rebuilds and shows your changes in about 1–2 minutes.")),
       h("p", {}, "Made a mistake after publishing? Dashboard → “Restore an older version”."));
+    sec("Used WordPress before? Where things are",
+      h("p", {}, "This site is not WordPress, so there are no plugins or themes. Everything you would normally do there lives in this panel:"),
+      h("table", { class: "t" },
+        h("tr", {}, h("th", {}, "In WordPress"), h("th", {}, "Here")),
+        ...[
+          ["Pages", "Page text & headings, Page photos & galleries (and the Services, Courses and Branches sections)"],
+          ["Posts", "Journal / blog posts"],
+          ["Media library", "Photo library"],
+          ["Yoast / Rank Math", "Google (SEO) titles, plus the SEO fields inside each service, course and post. Sitemap and canonical links are automatic."],
+          ["Redirection plugin", "Redirects"],
+          ["Header & footer scripts, pixel plugins", "Contact, social & tracking (paste GA4, Tag Manager, Meta Pixel or Ads IDs). Any other tag goes inside Tag Manager."],
+          ["Contact Form 7 / WPForms", "Built in. Submissions arrive in Enquiries inbox."],
+          ["Revisions", "Dashboard → Restore an older version (last 15 publishes)"],
+          ["Users", "Users & password"],
+          ["Preview", "Not available: changes show on the live site only after Publish."],
+        ].map((r) => h("tr", {}, h("td", {}, r[0]), h("td", {}, r[1])))),
+      h("p", {}, "Cookie banner: it appears on the website by itself once you add a tracking ID, and tags load only for visitors who press Accept."));
     sec("Photos", h("ul", {}, h("li", {}, "Anywhere you see “Choose / upload” you can upload from your phone or computer, or reuse a photo already in the library."), h("li", {}, "Use “Edit photo” to crop to the right shape, rotate, mirror or brighten."), h("li", {}, "Galleries: drag photos to re-order, × to remove, “+ Add photos” to add many at once."), h("li", {}, "Photo library → open a photo to rename, replace, download or delete it."), h("li", {}, "Tip: portrait photos (4:5 or 3:4) look best for bridal and transformations.")));
     sec("Adding a service / course / post", h("p", {}, "Open the section, click “+ Add new”, fill the form. The ‘web address’ fills itself from the name. Delete or hide by removing the item (offers, events and team members also have a ‘Show on website’ switch)."));
     sec("Prices", h("p", {}, "Services & prices → pick the category → open the service → ‘Starting price’. Write it exactly as you want it shown, e.g. “₹999” or “From ₹1,500” or “Enquire for pricing”."));
