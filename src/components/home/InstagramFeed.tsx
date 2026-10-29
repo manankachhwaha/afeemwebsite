@@ -24,7 +24,7 @@ export default function InstagramFeed() {
         <RevealGroup className="grid grid-cols-3 md:grid-cols-6 gap-2" stagger={0.05}>
           {feedImages.map((src, i) => (
             <RevealItem key={src} className="group">
-              <a href={site.instagram} target="_blank" rel="noreferrer">
+              <a href={site.instagram} target="_blank" rel="noreferrer" aria-label={`Afeem on Instagram, photo ${i + 1}`}>
                 <ImageReveal delay={i * 0.03}>
                   <Visual src={src} ratio="aspect-square" className="transition-transform duration-500 ease-out group-hover:scale-105" />
                 </ImageReveal>

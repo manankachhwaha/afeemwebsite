@@ -86,7 +86,7 @@ const defaultBranches: Branch[] = [
 /** CMS stores the editable fields only; link/derived fields are rebuilt here so they can never drift out of sync. */
 type CmsBranch = Partial<Branch> & { slug: string; name: string };
 function fromCms(c: CmsBranch): Branch {
-  const wa = String(c.whatsappNumber ?? "").replace(/D/g, "");
+  const wa = String(c.whatsappNumber ?? "").replace(/\D/g, "");
   const shortName = c.shortName || c.name;
   return {
     slug: c.slug,

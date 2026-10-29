@@ -27,6 +27,9 @@ export default function ReviewsCarousel() {
       <div className="relative">
         <div
           ref={trackRef}
+          tabIndex={0}
+          role="region"
+          aria-label="Customer reviews"
           className="flex gap-6 overflow-x-auto snap-x snap-mandatory scroll-px-5 pb-2 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
         >
           {best.map((t) => (

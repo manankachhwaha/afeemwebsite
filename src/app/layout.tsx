@@ -60,6 +60,7 @@ export const metadata: Metadata = {
     template: `%s | ${site.name}`,
   },
   description: homeSeo.description,
+  alternates: { canonical: "./" },
   ...(site.searchConsoleVerification ? { verification: { google: site.searchConsoleVerification } } : {}),
   keywords: [
     "best salon in Jodhpur",

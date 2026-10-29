@@ -8,10 +8,10 @@
   --color-yellow-soft: #f0dca0; /* softer yellow wash */
   --color-gold: #c8801f;        /* primary brand gold accent */
   --color-gold-light: #dc9d4a;  /* lighter gold for hovers/highlights */
-  --color-gold-dark: #96631a;   /* deep gold for text-on-light */
+  --color-gold-dark: #80531a;   /* deep gold for text-on-light */
   --color-brown: #3a2818;       /* espresso brown — headings, dark sections */
   --color-brown-soft: #6b4e35;  /* secondary brown text */
-  --color-brown-mute: #8a715a;  /* muted brown for captions/meta */
+  --color-brown-mute: #725a44;  /* muted brown for captions/meta */
   --color-white: #fffaf0;
 
   /* Bridal accent — a deep bordeaux red, used only within the Bridal
@@ -645,4 +645,12 @@ html.lite form select,
 html.lite form textarea {
   -webkit-backdrop-filter: none;
   backdrop-filter: none;
+}
+
+/* Visible keyboard focus on form controls (fields otherwise only change border colour). */
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid var(--color-gold-dark);
+  outline-offset: 2px;
 }

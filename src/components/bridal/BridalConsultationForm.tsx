@@ -3,6 +3,7 @@
 import { useState, FormEvent } from "react";
 import { submitLead, linesToFields } from "@/lib/leads";
 import Button from "@/components/ui/Button";
+import ConsentNote from "@/components/ui/ConsentNote";
 import { site } from "@/data/site";
 import { branches, branchWhatsappLink, getBranch } from "@/data/branches";
 import { useBranch } from "@/lib/BranchContext";
@@ -135,14 +136,16 @@ export default function BridalConsultationForm() {
       <Field label="Instagram / WhatsApp Handle" name="social" placeholder="@yourhandle" />
 
       <div>
-        <label className="text-sm font-medium text-brown mb-2 block">Additional Requirements</label>
+        <label className="text-sm font-medium text-brown mb-2 block" htmlFor="bridal-notes">Additional Requirements</label>
         <textarea
+          id="bridal-notes"
           name="notes"
           rows={4}
           className="w-full border border-brown/20 bg-cream/60 backdrop-blur-sm px-4 py-3 text-sm text-brown focus:outline-none focus:border-bridal-red"
         />
       </div>
 
+      <ConsentNote />
       <Button type="submit" variant="bridal" className="self-start">
         Book Bridal Consultation
       </Button>

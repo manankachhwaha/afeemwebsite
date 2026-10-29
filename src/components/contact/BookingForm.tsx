@@ -3,6 +3,7 @@
 import { FormEvent, useState } from "react";
 import { submitLead, linesToFields } from "@/lib/leads";
 import Button from "@/components/ui/Button";
+import ConsentNote from "@/components/ui/ConsentNote";
 import { serviceCategories } from "@/data/services";
 import { branches, branchWhatsappLink, getBranch } from "@/data/branches";
 import { site } from "@/data/site";
@@ -123,6 +124,7 @@ export default function BookingForm() {
         <label htmlFor="notes" className="text-sm font-medium text-brown mb-2 block">Notes</label>
         <textarea id="notes" name="notes" rows={3} className="w-full border border-brown/20 bg-cream px-4 py-3 text-sm focus:outline-none focus:border-gold" />
       </div>
+      <ConsentNote />
       <Button type="submit" variant="primary" className="self-start">Book Now</Button>
     </form>
   );

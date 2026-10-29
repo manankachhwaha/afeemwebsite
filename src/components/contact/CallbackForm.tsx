@@ -3,6 +3,7 @@
 import { FormEvent, useState } from "react";
 import { submitLead, linesToFields } from "@/lib/leads";
 import Button from "@/components/ui/Button";
+import ConsentNote from "@/components/ui/ConsentNote";
 import { branches, branchWhatsappLink, getBranch } from "@/data/branches";
 import { site } from "@/data/site";
 import { useBranch } from "@/lib/BranchContext";
@@ -112,6 +113,7 @@ export default function CallbackForm() {
         <label htmlFor="cb-note" className="text-sm font-medium text-brown mb-2 block">What&rsquo;s this about? (optional)</label>
         <input id="cb-note" name="note" placeholder="e.g. bridal makeup, a course, a specific service" className="w-full border border-brown/20 bg-cream px-4 py-3 text-sm focus:outline-none focus:border-gold" />
       </div>
+      <ConsentNote />
       <Button type="submit" variant="primary" className="self-start">Request a Callback</Button>
     </form>
   );

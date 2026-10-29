@@ -88,9 +88,13 @@ export default function Footer() {
             </div>
           ))}
         </div>
-        <div className="mt-16 pt-8 border-t border-white/10 flex flex-col sm:flex-row justify-between gap-4 text-xs text-white/50">
+        <div className="mt-16 pt-8 border-t border-white/10 flex flex-col sm:flex-row justify-between gap-4 text-xs text-white/60">
           <p>© {new Date().getFullYear()} {site.legalName}. All rights reserved. {site.city}, India.</p>
-          <div className="flex gap-6">
+          <div className="flex flex-wrap gap-x-6 gap-y-2">
+            <Link href="/privacy-policy" className="hover:text-gold-light">Privacy</Link>
+            <Link href="/terms" className="hover:text-gold-light">Terms</Link>
+            <Link href="/cookie-policy" className="hover:text-gold-light">Cookies</Link>
+            <Link href="/refund-policy" className="hover:text-gold-light">Refunds &amp; Cancellations</Link>
             <Link href="/contact" className="hover:text-gold-light">Contact</Link>
             <Link href="/locations" className="hover:text-gold-light">Locations</Link>
             <MotionToggle />
