@@ -66,6 +66,13 @@ Known limits (from CMS-REFERENCE.md + code): no new-enquiry alerts; no draft pre
 4. Add analytics IDs in Settings only after deciding on tracking (the cookie banner then appears automatically).
 5. Tell them to check Enquiries daily (no alerts yet) and keep at least one item in each slug-routed list.
 
+## Marketing handoff (2026-10-30)
+- The marketing person asked for a "WordPress login". The site is a static Next.js site with its own CMS (Afeem Studio), so there is no WordPress.
+- Wrote a plain-language guide mapping WordPress tasks to Studio (pages, posts, media, SEO, redirects, tracking, forms/leads, revisions, users) with everyday jobs and limits:
+  https://claude.ai/artifact/5rDLCLr34uPD8kWjcXfWPP (private until the owner shares it).
+- Studio already covers: page text, blog, photos, per-page SEO, redirects, GA4/GTM/Pixel/Ads IDs, offers/events, leads inbox + CSV, users, 15-version history, in-app help.
+- Gaps a marketer will notice (none built yet): new-enquiry email/WhatsApp alerts, draft preview, ad landing pages, Meta/Bing domain-verification tag field, alt-text field on CMS photos.
+
 ## Deliberately NOT changed
 - "Best salon/spa in Jodhpur" keywords/titles/journal post — CLAUDE.md §19 targets these terms on purpose.
 - Pal Road email `afeemspaandsaloon@gmail.com` — matches CLAUDE.md.
