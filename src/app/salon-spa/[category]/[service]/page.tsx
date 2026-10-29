@@ -135,19 +135,21 @@ export default async function ServiceDetailPage({
         </section>
       )}
 
-      <section className="py-12">
-        <Container className="flex flex-col gap-6">
-          <h2 className="font-display text-2xl text-brown">What Clients Say</h2>
-          <RevealGroup className="grid sm:grid-cols-2 gap-6" stagger={0.1}>
-            {relevantReviews.map((r) => (
-              <RevealItem key={r.name} className="border border-brown/10 p-6">
-                <p className="text-sm text-brown-soft leading-relaxed">&ldquo;{r.quote}&rdquo;</p>
-                <p className="text-sm text-brown font-medium mt-3">{r.name} · <span className="text-brown-mute font-normal">{r.service}</span></p>
-              </RevealItem>
-            ))}
-          </RevealGroup>
-        </Container>
-      </section>
+      {relevantReviews.length > 0 && (
+        <section className="py-12">
+          <Container className="flex flex-col gap-6">
+            <h2 className="font-display text-2xl text-brown">What Clients Say</h2>
+            <RevealGroup className="grid sm:grid-cols-2 gap-6" stagger={0.1}>
+              {relevantReviews.map((r) => (
+                <RevealItem key={r.name} className="border border-brown/10 p-6">
+                  <p className="text-sm text-brown-soft leading-relaxed">&ldquo;{r.quote}&rdquo;</p>
+                  <p className="text-sm text-brown font-medium mt-3">{r.name} · <span className="text-brown-mute font-normal">{r.service}</span></p>
+                </RevealItem>
+              ))}
+            </RevealGroup>
+          </Container>
+        </section>
+      )}
 
       {related.length > 0 && (
         <section className="py-12 md:py-16 border-t border-brown/10">

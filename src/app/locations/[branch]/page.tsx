@@ -23,7 +23,7 @@ export async function generateMetadata({
   const b = getBranch(branch);
   if (!b) return {};
   return {
-    title: `Salon & Spa in ${b.area.split(" / ")[0]}, Jodhpur — ${b.name}`,
+    title: `Salon & Spa in ${b.area.split(" / ")[0]}, Jodhpur`,
     description: `Afeem Spa & Salon in ${b.area} — ${b.address}. Rated ${b.googleRating}★ (${b.googleReviewCount} Google reviews). Call ${b.phone} or book online.`,
   };
 }
@@ -52,6 +52,7 @@ export default async function BranchPage({
     },
     telephone: b.phone,
     email: b.email,
+    geo: { "@type": "GeoCoordinates", latitude: b.lat, longitude: b.lng },
     aggregateRating: {
       "@type": "AggregateRating",
       ratingValue: b.googleRating,

@@ -2,6 +2,7 @@
 
 import { useRef } from "react";
 import { testimonials } from "@/data/testimonials";
+import { branches } from "@/data/branches";
 import { BranchGoogleReviewsButton } from "@/components/branch/BranchCTA";
 
 function Stars({ rating }: { rating: number }) {
@@ -20,6 +21,29 @@ export default function ReviewsCarousel() {
 
   function scroll(dir: 1 | -1) {
     trackRef.current?.scrollBy({ left: dir * 340, behavior: "smooth" });
+  }
+
+  if (best.length === 0) {
+    return (
+      <div className="flex flex-col gap-8">
+        <div className="grid sm:grid-cols-2 gap-6 max-w-3xl mx-auto w-full">
+          {branches.map((b) => (
+            <a
+              key={b.slug}
+              href={b.googleMapsSearchUrl}
+              target="_blank"
+              rel="noreferrer"
+              className="bg-white p-8 flex flex-col gap-3 border border-brown/10 text-center hover:border-gold transition-colors"
+            >
+              <span className="text-gold-dark text-3xl font-display">★ {b.googleRating}</span>
+              <span className="text-brown-soft text-sm">{b.googleReviewCount.toLocaleString("en-IN")} Google reviews</span>
+              <span className="text-brown font-medium text-sm">{b.name}</span>
+              <span className="text-gold-dark text-xs underline underline-offset-2">Read reviews on Google</span>
+            </a>
+          ))}
+        </div>
+      </div>
+    );
   }
 
   return (

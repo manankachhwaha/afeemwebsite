@@ -85,10 +85,11 @@ export const metadata: Metadata = {
 
 const localBusinessSchema = {
   "@context": "https://schema.org",
-  "@type": "BeautySalon",
+  "@type": "Organization",
   name: site.name,
   description: site.description,
   url: site.url,
+  logo: `${site.url}/afeem-logo.png`,
   telephone: site.phone,
   email: site.email,
   address: {
@@ -109,11 +110,6 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       className={`${playfair.variable} ${inter.variable} h-full antialiased${FEATURES.heavyMode ? " heavy-mode" : ""}`}
     >
       <body className="min-h-full flex flex-col bg-cream text-brown">
-        {site.analytics.gtmId && (
-          <noscript>
-            <iframe src={`https://www.googletagmanager.com/ns.html?id=${site.analytics.gtmId}`} height="0" width="0" style={{ display: "none", visibility: "hidden" }} />
-          </noscript>
-        )}
         <Analytics />
         <script dangerouslySetInnerHTML={{ __html: LITE_INIT_SCRIPT }} />
         <script dangerouslySetInnerHTML={{ __html: MOTION_INIT_SCRIPT }} />

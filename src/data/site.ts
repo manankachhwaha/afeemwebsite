@@ -57,8 +57,8 @@ export const site = {
   // the footer's social row picks it up automatically.
   linkedin: (s.linkedin?.trim() || null) as string | null,
   youtube: (s.youtube?.trim() || null) as string | null,
-  url: "https://afeem-website.pages.dev",
-  ogImage: s.ogImage?.trim() || null,
+  url: "https://afeemspasalon.com",
+  ogImage: s.ogImage?.trim() || "/og-image.jpg",
   searchConsoleVerification: s.searchConsoleVerification?.trim() || null,
   announcement: {
     enabled: s.announcement ? s.announcement.enabled !== false : true,
