@@ -35,6 +35,16 @@ Done:
 - axe-core: all colour-contrast failures gone on tested pages; only minor "region" / "landmark-unique" notes remain.
 - 0 broken internal links and 0 missing anchors (checked in round 1; no routes removed since).
 
+### Correction found after deploy (2026-10-30)
+- Earlier notes said "CMS content: nothing published". That is only true of the repo's local `src/content/cms/*.json` (all `null`).
+  The Cloudflare build runs `fetch-cms.mjs`, which pulls the LIVE CMS, and the live CMS has all 18 collections published.
+- So production still shows the 5 original testimonials (Ananya S., Karan M., Priyanka D., Ritu J., Vansh & Ishita) because
+  they are saved in the CMS "Testimonials" collection, overriding the code default I emptied.
+  Removing them must be done in the CMS admin (https://afeem-cms.manankachhwaha.workers.dev) → Testimonials → delete, then republish/rebuild.
+  After that the home page shows the Google rating cards.
+- Live CMS settings: analytics IDs are all empty (so the cookie banner stays hidden until one is added); no redirects; no SEO overrides.
+- Live deploy confirmed: canonical/sitemap/robots on afeemspasalon.com, og-image.jpg returns 200.
+
 ## Deliberately NOT changed
 - "Best salon/spa in Jodhpur" keywords/titles/journal post — CLAUDE.md §19 targets these terms on purpose.
 - Pal Road email `afeemspaandsaloon@gmail.com` — matches CLAUDE.md.
