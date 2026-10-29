@@ -45,6 +45,27 @@ Done:
 - Live CMS settings: analytics IDs are all empty (so the cookie banner stays hidden until one is added); no redirects; no SEO overrides.
 - Live deploy confirmed: canonical/sitemap/robots on afeemspasalon.com, og-image.jpg returns 200.
 
+## CMS review (2026-10-30, read-only, no login used)
+Checked and OK:
+- Admin loads (login screen, no console errors); `/api/session` reports setup already done (first-run setup is locked).
+- Every `/api/*` admin route returns 401 when logged out; `.dev.vars`, source and seed files are not reachable.
+- Security headers present on the admin (CSP, frame-ancestors none, nosniff, same-origin referrer).
+- CORS for lead posting only echoes allowed origins (pages.dev, afeemspasalon.com, www, localhost); `SITE_URL` is already afeemspasalon.com.
+- Public feed `/public/content.json` serves all 18 collections; slug-routed lists are non-empty (6 journal posts, 5 courses, 5 service categories, 2 branches). No CMS-uploaded photos are referenced yet.
+- Code review of `worker/afeem-cms/src/index.ts`: PBKDF2 hashes, signed HttpOnly/Secure/SameSite=Strict cookie, CSRF header + origin check, login and lead rate limits, owner-only user management, upload type/size limits.
+Could NOT test (needs a login): saving, publishing, the deploy hook, uploads, the enquiries inbox. Do one test publish before handoff.
+
+Content gaps in the live CMS: `testimonials` still has the 5 unverified entries; `events`, `team`, `studentWork`, `offers` are empty (team empty = no "Meet the experts"); no SEO overrides, redirects or analytics IDs; Facebook/YouTube/LinkedIn blank.
+
+Known limits (from CMS-REFERENCE.md + code): no new-enquiry alerts; no draft preview; the lead form's honeypot field is never sent by the site; lead posts with no Origin header are accepted (rate-limited 20/hour/IP); legal pages are code, not CMS-editable; deleting every item of a slug list can fail the build (the previous site stays live).
+
+### Handoff checklist for the marketing person
+1. Owner (subhanshiratnawat15@gmail.com) signs in and does one test Publish; confirm the site rebuilds (~2–4 min).
+2. Replace the placeholder `marketing@afeem.studio` login/password with the person's real details (Users & password → Add a person, then remove the old one). Never share the owner login.
+3. Delete or replace the 5 testimonials; add team members, offers and events if wanted.
+4. Add analytics IDs in Settings only after deciding on tracking (the cookie banner then appears automatically).
+5. Tell them to check Enquiries daily (no alerts yet) and keep at least one item in each slug-routed list.
+
 ## Deliberately NOT changed
 - "Best salon/spa in Jodhpur" keywords/titles/journal post — CLAUDE.md §19 targets these terms on purpose.
 - Pal Road email `afeemspaandsaloon@gmail.com` — matches CLAUDE.md.
