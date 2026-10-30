@@ -88,3 +88,9 @@ Known limits (from CMS-REFERENCE.md + code): no new-enquiry alerts; no draft pre
 - Review the four legal pages.
 - Provide real testimonials (CMS "Testimonials") if wanted; they will show automatically.
 - Add Facebook/YouTube/LinkedIn URLs and analytics IDs in the CMS when the accounts exist.
+
+## Studio on phones (2026-10-30) — committed, NOT yet deployed to the live CMS
+- Bug fixed: tapping a menu item rebuilt the whole screen, so the side menu jumped back to its top. Menu scroll position is now kept, and the page scrolls to the top only when the section changes.
+- Phone layout (<=900px): menu is a drawer with a dim backdrop (tap outside or Esc closes, page behind doesn't scroll), 44px tap targets, 16px inputs (no iOS zoom), compact top bar (Save/Publish stay in reach, "View live site" moved into the menu), dialogs open as bottom sheets, tables scroll sideways, choosing an item in a list jumps to its editor.
+- Tested on a local throwaway copy at phone styling (menu scroll kept, drawer closes, no sideways page scroll). Not tested on a real phone.
+- Go live with: `cd worker/afeem-cms && npx wrangler deploy`.

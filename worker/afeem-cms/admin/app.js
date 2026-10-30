@@ -373,39 +373,52 @@
     const pb = $("#pubBtn"); if (pb) pb.textContent = S.meta.dirty.length || S.dirty.size ? "Publish changes" : "Publish";
   }
 
+  const closeSide = () => { const sd = $("#side"); if (sd) sd.classList.remove("open"); document.body.classList.remove("noscroll"); };
+  const toggleSide = () => { const sd = $("#side"); if (!sd) return; const o = sd.classList.toggle("open"); document.body.classList.toggle("noscroll", o); if (o) { const on = sd.querySelector("a.nav.on"); if (on) on.scrollIntoView({ block: "nearest" }); } };
+  window.addEventListener("keydown", (e) => { if (e.key === "Escape") closeSide(); });
+  window.addEventListener("resize", () => { if (window.innerWidth > 900) closeSide(); });
+
   function nav() {
     const side = h("aside", { class: "side", id: "side" }, h("h2", {}, h("i"), "Afeem Studio"));
     for (const g of window.SCHEMA.sections) {
       const items = g.items || [g];
       if (g.label) side.append(h("div", { class: "grp" }, g.label));
       for (const it of items) {
-        side.append(h("a", { class: "nav" + (S.route === it.id ? " on" : ""), href: "#/" + it.id, onclick: () => $("#side").classList.remove("open") }, h("b", {}, it.icon), it.label, it.id === "leads" && S.newLeads ? h("span", { class: "badge" }, S.newLeads) : null));
+        side.append(h("a", { class: "nav" + (S.route === it.id ? " on" : ""), href: "#/" + it.id, onclick: closeSide }, h("b", {}, it.icon), it.label, it.id === "leads" && S.newLeads ? h("span", { class: "badge" }, S.newLeads) : null));
       }
     }
     side.append(h("div", { class: "me" }, S.user.name || S.user.email, h("br"), h("small", {}, S.user.role === "owner" ? "Owner" : "Editor"), h("br"),
+      h("a", { class: "btn sm vs-side", href: S.siteUrl, target: "_blank", rel: "noopener" }, "View live site ↗"), " ",
       h("button", { class: "btn sm", onclick: async () => { try { await AF.api("/api/logout", { method: "POST", body: {} }); } catch (e) {} S.user = null; render(); } }, "Log out")));
     return side;
   }
 
   function render() {
     const app = $("#app");
+    const oldSide = $("#side"), keepSide = oldSide ? oldSide.scrollTop : 0;
+    document.body.classList.remove("noscroll");
     app.innerHTML = "";
     if (!S.user) return renderAuth(app);
     const sec = findSection(S.route) || findSection("dashboard");
     const content = h("div", { class: "content", id: "content" });
-    app.append(h("div", { class: "shell" }, nav(), h("div", { class: "main" },
+    app.append(h("div", { class: "shell" }, nav(), h("div", { class: "scrim", onclick: closeSide }), h("div", { class: "main" },
       h("div", { class: "topbar" },
-        h("button", { class: "btn sm menu", onclick: () => $("#side").classList.toggle("open") }, "☰"),
+        h("button", { class: "btn sm menu", onclick: toggleSide, "aria-label": "Menu" }, "☰"),
         h("span", { class: "title" }, sec.label),
         h("span", { class: "sp" }), h("span", { id: "status", class: "status" }),
         h("button", { id: "saveBtn", class: "btn primary", onclick: () => saveCollection(sec.key) }, "Save"),
-        h("a", { class: "btn", href: S.siteUrl, target: "_blank", rel: "noopener" }, "View site ↗"),
+        h("a", { class: "btn vs-top", href: S.siteUrl, target: "_blank", rel: "noopener" }, "View site ↗"),
         h("button", { id: "pubBtn", class: "btn gold", onclick: publishAll }, "Publish")),
       content)));
     if (sec.special) AF.views[sec.special](content, sec);
     else if (sec.kind === "single" || sec.kind === "array-editor") renderSingle(content, sec);
     else if (sec.kind === "list") renderList(content, sec);
     refreshBar();
+    // The whole shell is rebuilt on every render, so put the menu back where it was
+    // (otherwise tapping an item far down the list jumps the menu to its top).
+    const ns = $("#side");
+    if (ns) { ns.scrollTop = keepSide; const on = ns.querySelector("a.nav.on"); if (on && (on.offsetTop < ns.scrollTop || on.offsetTop + on.offsetHeight > ns.scrollTop + ns.clientHeight)) on.scrollIntoView({ block: "nearest" }); }
+    if (S.shownRoute !== S.route) { window.scrollTo(0, 0); S.shownRoute = S.route; }
   }
   AF.render = render;
 
@@ -432,13 +445,14 @@
       arr.forEach((it, i) => {
         const text = (sec.title(it) || "Untitled") + " " + (sec.sub ? sec.sub(it) : "");
         if (q && !text.toLowerCase().includes(q)) return;
-        itemsEl.append(h("div", { class: "li" + (i === sel ? " on" : ""), onclick: () => { sel = i; S.sel[sec.key] = i; drawList(); drawEdit(); } },
+        itemsEl.append(h("div", { class: "li" + (i === sel ? " on" : ""), onclick: () => { sel = i; S.sel[sec.key] = i; drawList(); drawEdit(); toEditor(); } },
           h("div", { class: "tx" }, h("div", { class: "t" }, sec.title(it) || "Untitled"), h("div", { class: "s" }, sec.sub ? sec.sub(it) : "")),
           h("div", { class: "mv" }, h("button", { title: "Move up", onclick: (e) => { e.stopPropagation(); if (i > 0) { arr.splice(i - 1, 0, arr.splice(i, 1)[0]); if (sel === i) sel = i - 1; else if (sel === i - 1) sel = i; S.sel[sec.key] = sel; markDirty(sec.key); drawList(); } } }, "▲"),
             h("button", { title: "Move down", onclick: (e) => { e.stopPropagation(); if (i < arr.length - 1) { arr.splice(i + 1, 0, arr.splice(i, 1)[0]); if (sel === i) sel = i + 1; else if (sel === i + 1) sel = i; S.sel[sec.key] = sel; markDirty(sec.key); drawList(); } } }, "▼"))));
       });
       if (!arr.length) itemsEl.append(h("div", { class: "empty" }, "Nothing yet. Click “+ Add new”."));
     };
+    const toEditor = () => { if (window.innerWidth <= 900) pane.scrollIntoView({ block: "start", behavior: "smooth" }); };
     const drawEdit = () => {
       pane.innerHTML = "";
       const it = arr[sel];
@@ -450,7 +464,7 @@
     };
     const list = h("div", { class: "listpane" }, h("div", { class: "lt" },
       h("input", { type: "search", placeholder: "Search…", oninput: (e) => { q = e.target.value.toLowerCase(); drawList(); } }),
-      h("button", { class: "btn primary sm", onclick: () => { arr.push(sec.blank()); sel = arr.length - 1; S.sel[sec.key] = sel; markDirty(sec.key); q = ""; drawList(); drawEdit(); itemsEl.lastElementChild && itemsEl.lastElementChild.scrollIntoView({ block: "nearest" }); } }, "+ Add new")), itemsEl);
+      h("button", { class: "btn primary sm", onclick: () => { arr.push(sec.blank()); sel = arr.length - 1; S.sel[sec.key] = sel; markDirty(sec.key); q = ""; drawList(); drawEdit(); itemsEl.lastElementChild && itemsEl.lastElementChild.scrollIntoView({ block: "nearest" }); toEditor(); } }, "+ Add new")), itemsEl);
     drawList(); drawEdit();
     root.append(h("div", { class: "md" }, list, pane));
   }
