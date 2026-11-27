@@ -94,3 +94,13 @@ Known limits (from CMS-REFERENCE.md + code): no new-enquiry alerts; no draft pre
 - Phone layout (<=900px): menu is a drawer with a dim backdrop (tap outside or Esc closes, page behind doesn't scroll), 44px tap targets, 16px inputs (no iOS zoom), compact top bar (Save/Publish stay in reach, "View live site" moved into the menu), dialogs open as bottom sheets, tables scroll sideways, choosing an item in a list jumps to its editor.
 - Tested on a local throwaway copy at phone styling (menu scroll kept, drawer closes, no sideways page scroll). Not tested on a real phone.
 - Go live with: `cd worker/afeem-cms && npx wrangler deploy`.
+
+## Handover to the owner (2026-11-27)
+- Studio logins changed on the live CMS (passwords handed over privately, never stored in git):
+  - Owner: `owner@afeemspasalon.com` (Ayush), can add/remove people and reset passwords.
+  - Editor: `marketing@afeem.studio` (Marketing), new password set.
+  - Removed the old developer-created owner account.
+- Both started with simple temporary passwords; each person should change theirs under **Users & password → Change my password** (already built, available to owner and editor, min 10 characters, signs out other sessions).
+- Verified live: both logins work, editor is blocked from user management, password change works, site 200, pages.dev 200, CMS feed 200.
+- Still pending: `cd worker/afeem-cms && npx wrangler deploy` (the in-app help and phone layout updates above are committed but not deployed). `www.afeemspasalon.com` still returns 522.
+- `owner@afeemspasalon.com` only works as a login name; Studio sends no email. Make sure the inbox exists if it is used anywhere else.
