@@ -102,5 +102,6 @@ Known limits (from CMS-REFERENCE.md + code): no new-enquiry alerts; no draft pre
   - Removed the old developer-created owner account.
 - Both started with simple temporary passwords; each person should change theirs under **Users & password → Change my password** (already built, available to owner and editor, min 10 characters, signs out other sessions).
 - Verified live: both logins work, editor is blocked from user management, password change works, site 200, pages.dev 200, CMS feed 200.
-- Still pending: `cd worker/afeem-cms && npx wrangler deploy` (the in-app help and phone layout updates above are committed but not deployed). `www.afeemspasalon.com` still returns 522.
+- Deployed the CMS Worker (in-app help + phone layout are now live). `www.afeemspasalon.com` still returns 522: the hostname is not attached to the Pages project (fix: Pages → afeem-website → Custom domains → add www).
 - `owner@afeemspasalon.com` only works as a login name; Studio sends no email. Make sure the inbox exists if it is used anywhere else.
+- Studio branding: the Afeem logo is now on the login screen, the swirl icon is in the sidebar and browser tab (small copies in `worker/afeem-cms/admin/afeem-logo.png` / `afeem-icon.png`). Deployed and checked in Chrome. The website already used the logo (header, footer, favicon, structured data).

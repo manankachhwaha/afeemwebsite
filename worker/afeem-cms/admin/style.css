@@ -10,12 +10,12 @@ a{color:var(--gold)}
 .auth{min-height:100vh;display:grid;place-items:center;padding:20px;background:radial-gradient(circle at 20% 10%,#4a3422,var(--brown))}
 .auth-card{background:var(--white);width:100%;max-width:400px;padding:34px 30px;border-radius:12px;box-shadow:0 30px 60px -20px rgba(0,0,0,.5);display:flex;flex-direction:column;gap:14px}
 .auth-card h1{font-size:26px}.auth-card p{margin:0;color:var(--brown-soft);font-size:14px}
-.brandmark{width:44px;height:44px;border-radius:50%;border:3px solid var(--gold-l);background:var(--brown);margin-bottom:4px}
+.brandmark{display:block;width:180px;max-width:70%;height:auto;margin:0 auto 6px}
 /* shell */
 .shell{display:grid;grid-template-columns:260px 1fr;min-height:100vh}
 .side{background:var(--brown);color:#e9dcc6;padding:18px 12px;position:sticky;top:0;height:100vh;overflow:auto}
 .side h2{color:#fff;font-size:19px;padding:4px 10px 14px;display:flex;gap:10px;align-items:center}
-.side h2 i{width:26px;height:26px;border-radius:50%;border:2.5px solid var(--gold-l);display:inline-block}
+.side h2 img{width:30px;height:30px;object-fit:contain;flex:none}
 .side .grp{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#a89478;padding:16px 10px 6px}
 .side a.nav{display:flex;gap:10px;align-items:center;padding:8px 10px;border-radius:6px;color:#e9dcc6;text-decoration:none;font-size:14px}
 .side a.nav:hover{background:rgba(255,255,255,.08)}

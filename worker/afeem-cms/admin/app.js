@@ -379,7 +379,7 @@
   window.addEventListener("resize", () => { if (window.innerWidth > 900) closeSide(); });
 
   function nav() {
-    const side = h("aside", { class: "side", id: "side" }, h("h2", {}, h("i"), "Afeem Studio"));
+    const side = h("aside", { class: "side", id: "side" }, h("h2", {}, h("img", { src: "/afeem-icon.png", alt: "" }), "Afeem Studio"));
     for (const g of window.SCHEMA.sections) {
       const items = g.items || [g];
       if (g.label) side.append(h("div", { class: "grp" }, g.label));
@@ -488,7 +488,7 @@
         const m = { invalid_credentials: "Wrong email or password.", too_many_attempts: "Too many attempts. Please wait 15 minutes.", bad_setup_key: "That setup key isn't right.", email_or_short_password: "Enter a valid email and a password of 10+ characters." };
         err.textContent = m[ex.message] || ex.message;
       }
-    } }, h("div", { class: "brandmark" }), h("h1", {}, setup ? "Create the owner account" : "Afeem Studio"),
+    } }, h("img", { class: "brandmark", src: "/afeem-logo.png", alt: "Afeem" }), h("h1", {}, setup ? "Create the owner account" : "Afeem Studio"),
       h("p", {}, setup ? "First-time setup. This account can add other people (like your marketing team)." : "Sign in to manage the Afeem website."),
       setup ? f("Your name", name) : null, f("Email", email), f("Password", pass), setup ? f("Setup key", key) : null, err,
       h("button", { class: "btn primary", style: { justifyContent: "center", padding: "11px" } }, setup ? "Create account" : "Sign in"));
